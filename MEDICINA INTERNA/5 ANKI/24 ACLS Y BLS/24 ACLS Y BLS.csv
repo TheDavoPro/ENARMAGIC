@@ -1,0 +1,51 @@
+¿Cuál es el primer eslabón de la cadena de supervivencia intrahospitalaria?,Reconocimiento y prevención tempranos.
+¿Cuál es el segundo eslabón de la cadena de supervivencia intrahospitalaria?,Activación de la respuesta a emergencias.
+¿Cuál es el tercer eslabón de la cadena de supervivencia intrahospitalaria?,RCP de alta calidad.
+¿Cuál es el cuarto eslabón de la cadena de supervivencia intrahospitalaria?,Desfibrilación.
+¿Cuál es el quinto eslabón de la cadena de supervivencia intrahospitalaria?,Cuidados posparo cardíaco.
+¿Cuál es el sexto eslabón de la cadena de supervivencia intrahospitalaria?,Recuperación.
+¿Cuál es el primer eslabón de la cadena de supervivencia extrahospitalaria?,Activación de la respuesta a emergencias.
+¿Cuál es el segundo eslabón de la cadena de supervivencia extrahospitalaria?,RCP de alta calidad.
+¿Cuál es el tercer eslabón de la cadena de supervivencia extrahospitalaria?,Desfibrilación.
+¿Cuál es el cuarto eslabón de la cadena de supervivencia extrahospitalaria?,Soporte vital avanzado.
+¿Cuál es el quinto eslabón de la cadena de supervivencia extrahospitalaria?,Cuidados posparo cardíaco.
+¿Cuál es el sexto eslabón de la cadena de supervivencia extrahospitalaria?,Recuperación.
+"En el algoritmo BLS, ¿qué acción es prioritaria antes de acercarse a la víctima?",Verificar si la escena es segura.
+"Si la víctima no responde tras el estímulo inicial, ¿qué debe hacer el reanimador de inmediato?",Pedir ayuda en voz alta.
+Acción simultánea a la activación del sistema de emergencias en el algoritmo BLS:,Obtener un DEA y equipo para emergencias.
+¿Cuál es el tiempo máximo permitido para comprobar la respiración y el pulso simultáneamente?,$10$ segundos o menos.
+¿Cuál es la conducta a seguir si el paciente tiene pulso pero no respira?,Proporcionar ventilación de rescate.
+¿Cuál es la frecuencia de la ventilación de rescate en un adulto con pulso?,$1$ ventilación cada $6$ segundos (o $10$ ventilaciones por minuto).
+"En un paciente con ventilación de rescate, ¿cada cuánto tiempo se debe reevaluar el pulso?",Cada $2$ minutos.
+Fármaco indicado en caso de sospecha de sobredosis por opioides durante la reanimación:,Naloxona.
+¿Bajo qué condiciones específicas se deben iniciar ciclos de $30$ compresiones y $2$ ventilaciones?,Si la víctima no respira (o solo jadea/boquea) y no tiene pulso.
+¿Cuál es la profundidad mínima recomendada para las compresiones torácicas en adultos?,Al menos $5\text{ cm}$.
+¿Cuál es la frecuencia recomendada de compresiones torácicas por minuto?,$100-120\text{ cpm}$.
+¿Cada cuánto tiempo se debe cambiar al reanimador que realiza las compresiones?,Cada $2$ minutos (o antes si está cansado).
+"En capnografía cuantitativa, ¿qué valor de $\text{PETCO}_2$ indica la necesidad de mejorar la calidad de las compresiones?",Menor a $10\text{ mmHg}$.
+¿Cuál es el valor objetivo de $\text{PETCO}_2$ durante una RCP de alta calidad?,Mayor a $20\text{ mmHg}$.
+"Si se utiliza monitoreo de presión intraarterial, ¿qué valor de presión diastólica obliga a mejorar la RCP?",Menor a $20\text{ mmHg}$.
+Menciona los dos ritmos clasificados como desfibrilables:,Fibrilación Ventricular (FV) y Taquicardia Ventricular sin pulso (TVSP).
+Menciona los dos ritmos clasificados como no desfibrilables:,Asistolia y Actividad Eléctrica Sin Pulso (AESP).
+¿Cuál es la carga de energía recomendada para una descarga monofásica?,$360\text{ J}$.
+¿Cómo se determina la energía de descarga en un desfibrilador bifásico?,Según la recomendación del fabricante (o el valor máximo disponible si se desconoce).
+¿Cuál es la dosis estándar de Adrenalina en el algoritmo ACLS?,$1\text{ mg}$ cada $3-5$ minutos.
+¿En qué momento se administra la primera dosis de Adrenalina en un ritmo desfibrilable?,Después de la segunda descarga.
+¿En qué momento se administra la Adrenalina en ritmos no desfibrilables (Asistolia/AESP)?,De manera temprana (lo antes posible).
+¿Cuál es la primera dosis de Amiodarona indicada en ritmos desfibrilables refractarios?,Bolo de $300\text{ mg}$.
+¿Cuál es la segunda dosis de Amiodarona si persiste el ritmo desfibrilable?,$150\text{ mg}$.
+¿Cuál es el rango de la primera dosis de Lidocaína en ACLS?,$1-1.5\text{ mg/kg}$.
+¿Cuál es el rango de la segunda dosis de Lidocaína en ACLS?,$0.5-0.75\text{ mg/kg}$.
+¿Cuál es la frecuencia ventilatoria una vez colocado un dispositivo avanzado para la vía aérea?,$1$ ventilación cada $6$ segundos con compresiones continuas.
+Método recomendado para confirmar y monitorizar la colocación del tubo endotraqueal:,Capnografía.
+¿Qué hallazgo en la capnografía sugiere el Retorno de la Circulación Espontánea (RCE)?,Aumento abrupto y sostenido del $\text{PETCO}_2$ mayor a $40\text{ mmHg}$.
+"Menciona las 5 causas reversibles conocidas como las ""H"":","Hipovolemia, Hipoxia, Hidrogeniones (acidosis), Hipo-hiperpotasemia e Hipotermia."
+"Menciona las 5 causas reversibles conocidas como las ""T"":","Tensión (neumotórax), Taponamiento cardíaco, Toxinas, Trombosis pulmonar y Trombosis coronaria."
+"En el algoritmo BLS, ¿qué debe hacerse inmediatamente después de administrar una descarga con el DEA?",Reanudar la RCP inmediatamente por $2$ minutos.
+¿Qué acción se debe evitar rigurosamente durante la ventilación para no comprometer el retorno venoso?,Ventilación excesiva.
+¿Qué indica la presencia de ondas de presión intraarterial espontánea en un paciente monitorizado?,Retorno de la Circulación Espontánea (RCE).
+"En el algoritmo de ritmos no desfibrilables, ¿cuál es el siguiente paso tras 2 minutos de RCP y administración de Adrenalina?",Verificar si el ritmo es desfibrilable.
+¿Cuándo se considera el manejo avanzado de la vía aérea y la capnografía en el algoritmo de FV/TVSP?,Después de la segunda descarga y administración de Adrenalina.
+Causa reversible: ¿A qué entidad clínica se refiere el término 'Tensión'?,Neumotórax a tensión.
+Causa reversible: ¿A qué entidad clínica se refiere el término 'Hidrogeniones'?,Acidosis.
+¿Cuál es el objetivo principal de reducir al mínimo las interrupciones en las compresiones?,Mantener la presión de perfusión coronaria y cerebral.

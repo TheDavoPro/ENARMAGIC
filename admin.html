@@ -1,0 +1,2094 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>ENARMAGIC — Panel Administrativo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #060e20;
+      --surface-1: #0f1930;
+      --surface-2: #141f38;
+      --surface-3: #192540;
+      --border: #1e2d4a;
+      --text-primary: #dee5ff;
+      --text-muted: #8894b4;
+      --text-dim: #5a6680;
+      --accent: #3bbffa;
+      --accent-dim: rgba(59,191,250,.12);
+      --green: #06D6A0;
+      --green-dim: rgba(6,214,160,.12);
+      --red: #FF4D6D;
+      --red-dim: rgba(255,77,109,.12);
+      --yellow: #FFD166;
+      --yellow-dim: rgba(255,209,102,.12);
+      --purple: #a78bfa;
+      --purple-dim: rgba(167,139,250,.12);
+      --sidebar-w: 240px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+    }
+    h1,h2,h3,h4,h5,h6 { font-family: 'Manrope', sans-serif; }
+
+    /* ── Sidebar ── */
+    .sidebar {
+      width: var(--sidebar-w);
+      min-height: 100vh;
+      background: var(--surface-1);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 0; left: 0; bottom: 0;
+      z-index: 30;
+      transition: transform .25s ease;
+    }
+    .sidebar-logo {
+      padding: 1.25rem 1rem 1rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+    .sidebar-logo-icon {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent), var(--green));
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .sidebar-nav { flex: 1; padding: .75rem .5rem; overflow-y: auto; }
+    .nav-section-label {
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      padding: .75rem .75rem .35rem;
+    }
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      padding: .6rem .75rem;
+      border-radius: 8px;
+      cursor: pointer;
+      color: var(--text-muted);
+      font-size: .875rem;
+      font-weight: 500;
+      transition: all .15s ease;
+      margin-bottom: 2px;
+      border: none; background: none; width: 100%; text-align: left;
+    }
+    .nav-item:hover { background: var(--surface-2); color: var(--text-primary); }
+    .nav-item.active { background: var(--accent-dim); color: var(--accent); }
+    .nav-item .material-symbols-outlined { font-size: 18px; flex-shrink: 0; }
+    .nav-badge {
+      margin-left: auto;
+      background: var(--red);
+      color: white;
+      font-size: .65rem;
+      font-weight: 700;
+      padding: 1px 6px;
+      border-radius: 99px;
+    }
+    .sidebar-footer {
+      padding: .75rem .5rem 1rem;
+      border-top: 1px solid var(--border);
+    }
+    .sidebar-user {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      padding: .5rem .75rem;
+      border-radius: 8px;
+      background: var(--surface-2);
+    }
+    .user-avatar-small {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--green));
+      display: flex; align-items: center; justify-content: center;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--bg);
+      flex-shrink: 0;
+    }
+
+    /* ── Main layout ── */
+    .main-wrapper {
+      margin-left: var(--sidebar-w);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .topbar {
+      height: 56px;
+      background: var(--surface-1);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+    .topbar-title { font-size: 1rem; font-weight: 700; }
+    .topbar-actions { display: flex; align-items: center; gap: .75rem; }
+
+    /* ── Views ── */
+    .view { display: none; }
+    .view.active { display: block; }
+    .page-content { padding: 1.5rem; max-width: 1400px; }
+
+    /* ── KPI Cards ── */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .kpi-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      position: relative;
+      overflow: hidden;
+      transition: border-color .2s;
+    }
+    .kpi-card:hover { border-color: var(--accent); }
+    .kpi-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--kpi-color, var(--accent));
+    }
+    .kpi-label { font-size: .75rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: .05em; }
+    .kpi-value { font-size: 2rem; font-weight: 800; color: var(--kpi-color, var(--accent)); line-height: 1.1; margin: .4rem 0 .25rem; }
+    .kpi-sub { font-size: .75rem; color: var(--text-muted); }
+    .kpi-icon {
+      position: absolute;
+      right: 1rem; top: 50%;
+      transform: translateY(-50%);
+      font-size: 40px;
+      opacity: .07;
+      color: var(--kpi-color, var(--accent));
+      font-variation-settings: 'FILL' 1;
+    }
+
+    /* ── Cards / panels ── */
+    .card {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .card-header {
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .card-title { font-size: .9rem; font-weight: 700; }
+    .card-body { padding: 1.25rem; }
+
+    /* ── Tables ── */
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; }
+    thead { background: var(--surface-3); }
+    thead th {
+      padding: .65rem 1rem;
+      text-align: left;
+      font-size: .7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+    tbody tr {
+      border-bottom: 1px solid var(--border);
+      transition: background .15s;
+    }
+    tbody tr:hover { background: var(--surface-1); }
+    tbody tr:last-child { border-bottom: none; }
+    td { padding: .75rem 1rem; font-size: .85rem; }
+
+    /* ── Badges ── */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      padding: 2px 8px;
+      border-radius: 99px;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .02em;
+    }
+    .badge-mip    { background: rgba(138,148,180,.15); color: #8a94b4; border: 1px solid rgba(138,148,180,.25); }
+    .badge-r1     { background: rgba(59,130,246,.15); color: #93c5fd; border: 1px solid rgba(59,130,246,.25); }
+    .badge-r_plus { background: rgba(167,139,250,.15); color: #c4b5fd; border: 1px solid rgba(167,139,250,.25); }
+    .badge-adscrito { background: rgba(255,209,102,.15); color: #fde68a; border: 1px solid rgba(255,209,102,.25); }
+    .badge-active { background: var(--green-dim); color: var(--green); border: 1px solid rgba(6,214,160,.25); }
+    .badge-blocked { background: var(--red-dim); color: var(--red); border: 1px solid rgba(255,77,109,.25); }
+    .badge-paid { background: var(--green-dim); color: var(--green); border: 1px solid rgba(6,214,160,.25); }
+    .badge-pending { background: var(--yellow-dim); color: var(--yellow); border: 1px solid rgba(255,209,102,.25); }
+    .badge-admin { background: rgba(59,191,250,.15); color: var(--accent); border: 1px solid rgba(59,191,250,.25); }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-flex; align-items: center; gap: .4rem;
+      padding: .45rem .9rem;
+      border-radius: 8px;
+      font-size: .8rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all .15s;
+      white-space: nowrap;
+    }
+    .btn .material-symbols-outlined { font-size: 15px; }
+    .btn-primary { background: var(--accent); color: var(--bg); }
+    .btn-primary:hover { background: #29aee0; }
+    .btn-secondary { background: var(--surface-3); color: var(--text-primary); border: 1px solid var(--border); }
+    .btn-secondary:hover { background: var(--surface-1); }
+    .btn-danger { background: var(--red-dim); color: var(--red); border: 1px solid rgba(255,77,109,.3); }
+    .btn-danger:hover { background: rgba(255,77,109,.25); }
+    .btn-success { background: var(--green-dim); color: var(--green); border: 1px solid rgba(6,214,160,.3); }
+    .btn-success:hover { background: rgba(6,214,160,.25); }
+    .btn-warning { background: var(--yellow-dim); color: var(--yellow); border: 1px solid rgba(255,209,102,.3); }
+    .btn-warning:hover { background: rgba(255,209,102,.25); }
+    .btn-ghost { background: transparent; color: var(--text-muted); border: 1px solid var(--border); }
+    .btn-ghost:hover { color: var(--text-primary); background: var(--surface-3); }
+    .btn-icon { padding: .45rem; border-radius: 8px; }
+
+    /* ── Input fields ── */
+    .input {
+      background: var(--surface-3);
+      border: 1px solid var(--border);
+      color: var(--text-primary);
+      padding: .5rem .85rem;
+      border-radius: 8px;
+      font-size: .85rem;
+      font-family: 'Inter', sans-serif;
+      outline: none;
+      transition: border-color .15s;
+      width: 100%;
+    }
+    .input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-dim); }
+    .input::placeholder { color: var(--text-dim); }
+    select.input { cursor: pointer; }
+    textarea.input { resize: vertical; min-height: 80px; }
+
+    /* ── Search bar ── */
+    .search-wrap { position: relative; }
+    .search-wrap .material-symbols-outlined {
+      position: absolute; left: .65rem; top: 50%;
+      transform: translateY(-50%);
+      font-size: 16px; color: var(--text-dim);
+      pointer-events: none;
+    }
+    .search-wrap .input { padding-left: 2.1rem; }
+
+    /* ── User avatar ── */
+    .avatar {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--green));
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: .85rem; color: var(--bg);
+      flex-shrink: 0;
+    }
+    .avatar-sm { width: 28px; height: 28px; font-size: .7rem; }
+
+    /* ── Stat bar (plan distribution) ── */
+    .plan-bar-wrap { display: flex; height: 8px; border-radius: 99px; overflow: hidden; gap: 2px; }
+    .plan-bar-seg { height: 100%; border-radius: 99px; transition: width .8s ease; }
+
+    /* ── Modal ── */
+    .modal-overlay {
+      position: fixed; inset: 0;
+      background: rgba(6,14,32,.82);
+      backdrop-filter: blur(4px);
+      z-index: 100;
+      display: flex; align-items: center; justify-content: center;
+      padding: 1rem;
+    }
+    .modal-overlay.hidden { display: none; }
+    .modal {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      width: 100%;
+      max-width: 480px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 24px 64px rgba(0,0,0,.6);
+    }
+    .modal-lg { max-width: 680px; }
+    .modal-header {
+      padding: 1.25rem 1.5rem 1rem;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .modal-body { padding: 1.25rem 1.5rem; }
+    .modal-footer {
+      padding: 1rem 1.5rem 1.25rem;
+      border-top: 1px solid var(--border);
+      display: flex; justify-content: flex-end; gap: .75rem;
+    }
+    .modal-close {
+      background: none; border: none; color: var(--text-muted);
+      cursor: pointer; padding: .25rem;
+      border-radius: 6px;
+    }
+    .modal-close:hover { color: var(--text-primary); background: var(--surface-3); }
+
+    /* ── Detail panel (slide-in) ── */
+    .detail-panel {
+      position: fixed;
+      top: 0; right: -480px; bottom: 0;
+      width: 480px;
+      background: var(--surface-1);
+      border-left: 1px solid var(--border);
+      z-index: 80;
+      transition: right .3s cubic-bezier(.4,0,.2,1);
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+    .detail-panel.open { right: 0; }
+    .panel-backdrop {
+      position: fixed; inset: 0;
+      background: rgba(6,14,32,.5);
+      z-index: 79;
+      display: none;
+    }
+    .panel-backdrop.visible { display: block; }
+    .panel-header {
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: .75rem;
+      position: sticky; top: 0;
+      background: var(--surface-1);
+      z-index: 2;
+    }
+    .panel-body { padding: 1.25rem; flex: 1; }
+    .panel-section { margin-bottom: 1.5rem; }
+    .panel-section-title {
+      font-size: .7rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .08em;
+      color: var(--text-dim);
+      margin-bottom: .75rem;
+      padding-bottom: .4rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .info-row { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: .6rem; }
+    .info-label { font-size: .8rem; color: var(--text-muted); }
+    .info-value { font-size: .85rem; font-weight: 500; text-align: right; max-width: 60%; word-break: break-all; }
+
+    /* ── Progress bars ── */
+    .prog-bar { height: 6px; background: var(--surface-3); border-radius: 99px; overflow: hidden; }
+    .prog-fill { height: 100%; border-radius: 99px; transition: width .6s ease; }
+
+    /* ── Toast ── */
+    #toastContainer { position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 200; display: flex; flex-direction: column; gap: .5rem; }
+    .toast {
+      padding: .75rem 1.25rem;
+      border-radius: 10px;
+      font-size: .85rem;
+      font-weight: 600;
+      box-shadow: 0 8px 24px rgba(0,0,0,.4);
+      animation: toastIn .25s ease;
+      display: flex; align-items: center; gap: .5rem;
+    }
+    .toast-success { background: var(--green); color: var(--bg); }
+    .toast-error { background: var(--red); color: white; }
+    .toast-info { background: var(--accent); color: var(--bg); }
+    @keyframes toastIn { from { transform: translateX(100%); opacity: 0; } to { transform: none; opacity: 1; } }
+
+    /* ── Spinner ── */
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .spinner { animation: spin .8s linear infinite; }
+
+    /* ── Empty/loading states ── */
+    .state-empty, .state-loading {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: var(--text-muted);
+    }
+    .state-empty .material-symbols-outlined,
+    .state-loading .material-symbols-outlined { font-size: 48px; opacity: .3; display: block; margin: 0 auto .75rem; }
+
+    /* ── Revenue/chart area ── */
+    .revenue-plan-row {
+      display: flex; align-items: center; gap 1rem;
+      padding: .6rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .revenue-plan-row:last-child { border-bottom: none; }
+
+    /* ── Filter row ── */
+    .filter-row {
+      display: flex; flex-wrap: wrap; gap: .65rem; align-items: center;
+    }
+    .filter-row .input { width: auto; min-width: 140px; }
+
+    /* ── Logs table ── */
+    .log-action-BLOCK_USER { color: var(--red); }
+    .log-action-UNBLOCK_USER { color: var(--green); }
+    .log-action-CHANGE_PLAN { color: var(--yellow); }
+    .log-action-DELETE_USER { color: var(--red); font-weight: 700; }
+
+    /* ── Mobile sidebar overlay backdrop ── */
+    .sidebar-backdrop {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(6,14,32,.6);
+      z-index: 29;
+    }
+    .sidebar-backdrop.visible { display: block; }
+
+    /* ── Responsive ── */
+
+    /* — Tablet (≤1024px) — */
+    @media (max-width: 1024px) {
+      .filter-row { flex-direction: column; align-items: stretch; }
+      .filter-row .input { width: 100%; min-width: 0; }
+      .topbar-actions .btn span:not(.material-symbols-outlined) { display: none; }
+    }
+
+    /* — Mobile primary (≤768px) — */
+    @media (max-width: 768px) {
+      /* Sidebar: off-canvas overlay */
+      .sidebar {
+        transform: translateX(-100%);
+        width: 280px;
+        box-shadow: 4px 0 20px rgba(0,0,0,.5);
+      }
+      .sidebar.open { transform: none; }
+      .main-wrapper { margin-left: 0; }
+
+      /* Show hamburger */
+      #sidebarToggle { display: flex !important; }
+
+      /* KPI grid: 2 cols */
+      .kpi-grid { grid-template-columns: repeat(2, 1fr); gap: .75rem; }
+      .kpi-value { font-size: 1.5rem; }
+      .kpi-icon { font-size: 30px; right: .65rem; }
+
+      /* Detail panel: full-width */
+      .detail-panel { width: 100%; right: -100%; }
+
+      /* Topbar: compact */
+      .topbar { padding: 0 .75rem; height: 52px; }
+      .topbar-title { font-size: .9rem; }
+
+      /* Page content: smaller padding */
+      .page-content { padding: 1rem .75rem; }
+
+      /* Tables: card-mode on mobile */
+      .table-responsive-cards thead { display: none; }
+      .table-responsive-cards tbody tr {
+        display: flex;
+        flex-direction: column;
+        gap: .35rem;
+        padding: .85rem;
+        margin-bottom: .65rem;
+        border-radius: 10px;
+        background: var(--surface-2);
+        border: 1px solid var(--border);
+        position: relative;
+      }
+      .table-responsive-cards tbody tr:hover { background: var(--surface-3); }
+      .table-responsive-cards td {
+        padding: 0;
+        font-size: .82rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: .5rem;
+      }
+      .table-responsive-cards td::before {
+        content: attr(data-label);
+        font-size: .68rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: .05em;
+        color: var(--text-dim);
+        flex-shrink: 0;
+        min-width: 70px;
+      }
+      /* First row (name/email) = prominent */
+      .table-responsive-cards td:first-child {
+        font-weight: 600;
+        font-size: .9rem;
+        padding-bottom: .35rem;
+        border-bottom: 1px solid var(--border);
+        margin-bottom: .2rem;
+      }
+      .table-responsive-cards td:first-child::before { display: none; }
+
+      /* Card action buttons row */
+      .table-responsive-cards td:last-child {
+        margin-top: .35rem;
+        justify-content: flex-end;
+      }
+      .table-responsive-cards td:last-child::before { display: none; }
+
+      /* Card header */
+      .card-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: .65rem;
+        padding: .85rem 1rem;
+      }
+      .card-header .filter-row { width: 100%; }
+
+      /* Modal: full-width on mobile */
+      .modal { border-radius: 12px; max-width: calc(100vw - 2rem); }
+      .modal-header { padding: 1rem; }
+      .modal-body { padding: 1rem; }
+      .modal-footer { padding: .85rem 1rem; }
+      .modal-lg { max-width: calc(100vw - 2rem); }
+
+      /* Revenue plan rows */
+      .revenue-plan-row { flex-wrap: wrap; }
+
+      /* Toast: bottom-center on mobile */
+      #toastContainer { left: 1rem; right: 1rem; bottom: 1rem; align-items: stretch; }
+      .toast { justify-content: center; }
+
+      /* Sidebar nav items: tappable */
+      .nav-item { padding: .75rem .85rem; font-size: .9rem; }
+    }
+
+    /* — Small phone (≤480px) — */
+    @media (max-width: 480px) {
+      .kpi-grid { grid-template-columns: 1fr; }
+      .kpi-card { padding: 1rem; }
+
+      .topbar-actions #lastUpdatedLabel { display: none; }
+      .topbar-actions .btn { padding: .4rem .6rem; font-size: .75rem; }
+
+      .info-row { flex-direction: column; align-items: flex-start; gap: .15rem; }
+      .info-value { text-align: left; max-width: 100%; }
+
+      .plan-bar-wrap { height: 6px; }
+
+      .btn { font-size: .75rem; padding: .4rem .65rem; }
+    }
+
+    /* ── Content specialty blocks ── */
+    .sp-block {
+      background: var(--surface-3);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem;
+    }
+    .sp-block-title { font-size: .85rem; font-weight: 700; margin-bottom: .5rem; }
+
+    /* ── Material icons fill ── */
+    .icon-fill { font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24; }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24; }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════ SIDEBAR ═══════════════════════════════════════ -->
+<aside class="sidebar" id="sidebar">
+  <!-- Logo -->
+  <div class="sidebar-logo">
+    <div class="sidebar-logo-icon">
+      <span class="material-symbols-outlined text-[#060e20] icon-fill" style="font-size:20px">medical_information</span>
+    </div>
+    <div>
+      <div style="font-size:.9rem;font-weight:800;color:var(--accent);">ENARMAGIC</div>
+      <div style="font-size:.65rem;color:var(--text-dim);">Panel Admin</div>
+    </div>
+  </div>
+
+  <!-- Nav -->
+  <nav class="sidebar-nav">
+    <div class="nav-section-label">Principal</div>
+    <button class="nav-item active" data-view="resumen" onclick="switchView('resumen')">
+      <span class="material-symbols-outlined">dashboard</span>
+      Resumen General
+    </button>
+    <button class="nav-item" data-view="usuarios" onclick="switchView('usuarios')">
+      <span class="material-symbols-outlined">people</span>
+      Usuarios
+      <span class="nav-badge" id="nav-badge-blocked" style="display:none">!</span>
+    </button>
+
+    <div class="nav-section-label" style="margin-top:.5rem">Análisis</div>
+    <button class="nav-item" data-view="ventas" onclick="switchView('ventas')">
+      <span class="material-symbols-outlined">payments</span>
+      Ventas & Ingresos
+    </button>
+    <button class="nav-item" data-view="actividad" onclick="switchView('actividad')">
+      <span class="material-symbols-outlined">monitoring</span>
+      Actividad
+    </button>
+
+    <div class="nav-section-label" style="margin-top:.5rem">Plataforma</div>
+    <button class="nav-item" data-view="contenido" onclick="switchView('contenido')">
+      <span class="material-symbols-outlined">library_books</span>
+      Contenido
+    </button>
+    <button class="nav-item" data-view="sistema" onclick="switchView('sistema')">
+      <span class="material-symbols-outlined">settings</span>
+      Sistema & Logs
+    </button>
+  </nav>
+
+  <!-- Footer -->
+  <div class="sidebar-footer">
+    <div class="sidebar-user">
+      <div class="user-avatar-small" id="sidebarAvatarLetter">A</div>
+      <div style="flex:1;min-width:0">
+        <div style="font-size:.8rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis" id="sidebarAdminName">Admin</div>
+        <div style="font-size:.65rem;color:var(--text-dim)">Administrador</div>
+      </div>
+      <button class="btn btn-ghost btn-icon" onclick="logout()" title="Cerrar sesión">
+        <span class="material-symbols-outlined" style="font-size:16px">logout</span>
+      </button>
+    </div>
+    <a href="/curso" style="display:flex;align-items:center;gap:.5rem;padding:.5rem .75rem;margin-top:.4rem;font-size:.8rem;color:var(--text-muted);border-radius:8px;transition:background .15s;text-decoration:none" onmouseover="this.style.background='var(--surface-3)'" onmouseout="this.style.background='none'">
+      <span class="material-symbols-outlined" style="font-size:16px">school</span>
+      Ir al Curso
+    </a>
+  </div>
+</aside>
+
+<!-- Mobile sidebar backdrop -->
+<div class="sidebar-backdrop" id="sidebarBackdrop" onclick="closeSidebar()"></div>
+
+<!-- ══════════════════════════════════════ MAIN AREA ══════════════════════════════════════ -->
+<div class="main-wrapper">
+
+  <!-- Topbar -->
+  <header class="topbar">
+    <div style="display:flex;align-items:center;gap:.75rem">
+      <button class="btn btn-ghost btn-icon" id="sidebarToggle" style="display:none" onclick="toggleSidebar()">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+      <span class="topbar-title" id="topbarTitle">Resumen General</span>
+    </div>
+    <div class="topbar-actions">
+      <div style="font-size:.75rem;color:var(--text-dim)" id="lastUpdatedLabel">—</div>
+      <button class="btn btn-secondary" onclick="refreshAll()">
+        <span class="material-symbols-outlined" id="refreshIcon">refresh</span>
+        Actualizar
+      </button>
+    </div>
+  </header>
+
+  <!-- ═══════════════ VIEW: RESUMEN ═══════════════ -->
+  <div class="view active page-content" id="view-resumen">
+
+    <!-- KPI row -->
+    <div class="kpi-grid">
+      <div class="kpi-card" style="--kpi-color:var(--accent)">
+        <div class="kpi-label">Total Usuarios</div>
+        <div class="kpi-value" id="kpi-total">0</div>
+        <div class="kpi-sub" id="kpi-total-sub">—</div>
+        <span class="kpi-icon material-symbols-outlined icon-fill">people</span>
+      </div>
+      <div class="kpi-card" style="--kpi-color:var(--green)">
+        <div class="kpi-label">Nuevos Hoy</div>
+        <div class="kpi-value" id="kpi-new-today">0</div>
+        <div class="kpi-sub" id="kpi-new-week-sub">0 esta semana</div>
+        <span class="kpi-icon material-symbols-outlined icon-fill">person_add</span>
+      </div>
+      <div class="kpi-card" style="--kpi-color:var(--yellow)">
+        <div class="kpi-label">Ingresos Totales</div>
+        <div class="kpi-value" id="kpi-revenue">$0</div>
+        <div class="kpi-sub" id="kpi-revenue-month-sub">$0 este mes</div>
+        <span class="kpi-icon material-symbols-outlined icon-fill">payments</span>
+      </div>
+      <div class="kpi-card" style="--kpi-color:var(--purple)">
+        <div class="kpi-label">Usuarios Pagadores</div>
+        <div class="kpi-value" id="kpi-paying">0</div>
+        <div class="kpi-sub" id="kpi-conversion-sub">0% conversión</div>
+        <span class="kpi-icon material-symbols-outlined icon-fill">workspace_premium</span>
+      </div>
+      <div class="kpi-card" style="--kpi-color:#FF6FD8">
+        <div class="kpi-label">Usuarios Activos</div>
+        <div class="kpi-value" id="kpi-active">0</div>
+        <div class="kpi-sub" id="kpi-blocked-sub">0 bloqueados</div>
+        <span class="kpi-icon material-symbols-outlined icon-fill">how_to_reg</span>
+      </div>
+      <div class="kpi-card" style="--kpi-color:var(--red)">
+        <div class="kpi-label">Nuevos (30 días)</div>
+        <div class="kpi-value" id="kpi-new-month">0</div>
+        <div class="kpi-sub">últimos 30 días</div>
+        <span class="kpi-icon material-symbols-outlined icon-fill">calendar_month</span>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 320px;gap:1rem;margin-bottom:1rem" id="resumen-grid">
+
+      <!-- Plan Distribution -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Distribución por Plan</span>
+        </div>
+        <div class="card-body">
+          <div id="plan-dist-bars" style="margin-bottom:1rem"></div>
+          <div id="plan-dist-rows" style="display:flex;flex-direction:column;gap:.5rem"></div>
+        </div>
+      </div>
+
+      <!-- Recent registrations -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Registros Recientes</span>
+          <button class="btn btn-ghost" style="font-size:.75rem;padding:.25rem .6rem" onclick="switchView('usuarios')">Ver todos</button>
+        </div>
+        <div id="recent-list" style="padding:.5rem 0"></div>
+      </div>
+
+    </div>
+
+    <!-- Revenue by plan -->
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Ingresos por Plan</span>
+        <span style="font-size:.8rem;color:var(--text-muted)">Estimado basado en usuarios actuales</span>
+      </div>
+      <div class="card-body">
+        <div id="revenue-by-plan" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem"></div>
+      </div>
+    </div>
+
+  </div><!-- /view-resumen -->
+
+
+  <!-- ═══════════════ VIEW: USUARIOS ═══════════════ -->
+  <div class="view page-content" id="view-usuarios">
+
+    <!-- Filters -->
+    <div class="card" style="margin-bottom:1rem">
+      <div class="card-body" style="padding:.85rem 1.25rem">
+        <div class="filter-row">
+          <div class="search-wrap" style="flex:1;min-width:220px;max-width:360px">
+            <span class="material-symbols-outlined">search</span>
+            <input class="input" id="u-search" type="text" placeholder="Nombre, correo o usuario…" oninput="applyFilters()">
+          </div>
+          <select class="input" id="u-filter-plan" style="width:140px" onchange="applyFilters()">
+            <option value="">Todos los planes</option>
+            <option value="mip">MIP</option>
+            <option value="r1">R1</option>
+            <option value="r_plus">R+</option>
+            <option value="adscrito">Adscrito</option>
+          </select>
+          <select class="input" id="u-filter-status" style="width:150px" onchange="applyFilters()">
+            <option value="">Todos los estados</option>
+            <option value="active">Activos</option>
+            <option value="blocked">Bloqueados</option>
+          </select>
+          <select class="input" id="u-sort" style="width:180px" onchange="applyFilters()">
+            <option value="created_desc">Registro ↓ más nuevo</option>
+            <option value="created_asc">Registro ↑ más antiguo</option>
+            <option value="name_asc">Nombre A–Z</option>
+            <option value="login_desc">Último acceso ↓</option>
+          </select>
+          <span style="font-size:.8rem;color:var(--text-muted);white-space:nowrap" id="u-count-label">0 usuarios</span>
+          <button class="btn btn-secondary" style="margin-left:auto" onclick="exportUsersCSV()">
+            <span class="material-symbols-outlined">download</span> CSV
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <div class="card">
+      <div class="table-wrap">
+        <table class="table-responsive-cards" id="usersTable">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Usuario</th>
+              <th>Email</th>
+              <th>Plan</th>
+              <th>Estado</th>
+              <th>Registro</th>
+              <th>Último acceso</th>
+              <th style="text-align:right">Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="users-tbody"></tbody>
+        </table>
+        <div id="users-loading" class="state-loading">
+          <span class="material-symbols-outlined spinner">autorenew</span>
+          Cargando usuarios…
+        </div>
+        <div id="users-empty" class="state-empty" style="display:none">
+          <span class="material-symbols-outlined">person_off</span>
+          No se encontraron usuarios
+        </div>
+      </div>
+    </div>
+  </div><!-- /view-usuarios -->
+
+
+  <!-- ═══════════════ VIEW: VENTAS ═══════════════ -->
+  <div class="view page-content" id="view-ventas">
+
+    <div class="kpi-grid" style="grid-template-columns:repeat(4,1fr)">
+      <div class="kpi-card" style="--kpi-color:var(--yellow)">
+        <div class="kpi-label">Ingresos Totales</div>
+        <div class="kpi-value" id="v-total-rev">$0</div>
+        <div class="kpi-sub">acumulado histórico</div>
+        <span class="kpi-icon material-symbols-outlined icon-fill">attach_money</span>
+      </div>
+      <div class="kpi-card" style="--kpi-color:var(--green)">
+        <div class="kpi-label">Este Mes (30d)</div>
+        <div class="kpi-value" id="v-month-rev">$0</div>
+        <div class="kpi-sub">últimos 30 días</div>
+        <span class="kpi-icon material-symbols-outlined icon-fill">calendar_today</span>
+      </div>
+      <div class="kpi-card" style="--kpi-color:var(--accent)">
+        <div class="kpi-label">Usuarios Pagadores</div>
+        <div class="kpi-value" id="v-paying">0</div>
+        <div class="kpi-sub" id="v-conv-sub">0% del total</div>
+        <span class="kpi-icon material-symbols-outlined icon-fill">credit_score</span>
+      </div>
+      <div class="kpi-card" style="--kpi-color:var(--purple)">
+        <div class="kpi-label">Ticket Promedio</div>
+        <div class="kpi-value" id="v-avg-ticket">$0</div>
+        <div class="kpi-sub">por usuario pagador</div>
+        <span class="kpi-icon material-symbols-outlined icon-fill">show_chart</span>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 340px;gap:1rem;margin-bottom:1rem">
+      <!-- Plan breakdown -->
+      <div class="card">
+        <div class="card-header"><span class="card-title">Ingresos por Plan</span></div>
+        <div class="card-body">
+          <div id="v-plan-breakdown"></div>
+        </div>
+      </div>
+      <!-- Plan donut -->
+      <div class="card">
+        <div class="card-header"><span class="card-title">Usuarios por Plan</span></div>
+        <div class="card-body" id="v-plan-chart"></div>
+      </div>
+    </div>
+
+    <!-- Payments table -->
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Historial de Pagos</span>
+        <button class="btn btn-secondary" onclick="exportPaymentsCSV()">
+          <span class="material-symbols-outlined">download</span> CSV
+        </button>
+      </div>
+      <div class="table-wrap">
+        <table class="table-responsive-cards">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Usuario</th>
+              <th>Email</th>
+              <th>Plan</th>
+              <th>Monto</th>
+              <th>Estado</th>
+              <th>Fecha</th>
+            </tr>
+          </thead>
+          <tbody id="payments-tbody"></tbody>
+        </table>
+        <div id="payments-loading" class="state-loading">
+          <span class="material-symbols-outlined spinner">autorenew</span>
+          Cargando pagos…
+        </div>
+        <div id="payments-empty" class="state-empty" style="display:none">
+          <span class="material-symbols-outlined">receipt_long</span>
+          No hay pagos registrados aún
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /view-ventas -->
+
+
+  <!-- ═══════════════ VIEW: ACTIVIDAD ═══════════════ -->
+  <div class="view page-content" id="view-actividad">
+
+    <div class="kpi-grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:1rem">
+      <div class="kpi-card" style="--kpi-color:var(--red)">
+        <div class="kpi-label">Inactivos 7 días</div>
+        <div class="kpi-value" id="act-7d">—</div>
+        <div class="kpi-sub">sin acceso</div>
+        <span class="kpi-icon material-symbols-outlined icon-fill">person_off</span>
+      </div>
+      <div class="kpi-card" style="--kpi-color:var(--yellow)">
+        <div class="kpi-label">Inactivos 14 días</div>
+        <div class="kpi-value" id="act-14d">—</div>
+        <div class="kpi-sub">sin acceso</div>
+        <span class="kpi-icon material-symbols-outlined icon-fill">schedule</span>
+      </div>
+      <div class="kpi-card" style="--kpi-color:#FF6FD8">
+        <div class="kpi-label">Inactivos 30 días</div>
+        <div class="kpi-value" id="act-30d">—</div>
+        <div class="kpi-sub">sin acceso</div>
+        <span class="kpi-icon material-symbols-outlined icon-fill">event_busy</span>
+      </div>
+      <div class="kpi-card" style="--kpi-color:var(--green)">
+        <div class="kpi-label">Activos Hoy</div>
+        <div class="kpi-value" id="act-today">—</div>
+        <div class="kpi-sub">con acceso hoy</div>
+        <span class="kpi-icon material-symbols-outlined icon-fill">online_prediction</span>
+      </div>
+    </div>
+
+    <!-- Filter -->
+    <div class="card" style="margin-bottom:1rem">
+      <div class="card-body" style="padding:.85rem 1.25rem">
+        <div class="filter-row">
+          <label style="font-size:.8rem;color:var(--text-muted)">Filtrar inactivos:</label>
+          <select class="input" id="act-days-filter" style="width:160px" onchange="renderActivityTable()">
+            <option value="0">Todos</option>
+            <option value="7">Más de 7 días</option>
+            <option value="14">Más de 14 días</option>
+            <option value="30" selected>Más de 30 días</option>
+            <option value="60">Más de 60 días</option>
+          </select>
+          <div class="search-wrap" style="flex:1;max-width:300px">
+            <span class="material-symbols-outlined">search</span>
+            <input class="input" id="act-search" type="text" placeholder="Buscar usuario…" oninput="renderActivityTable()">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><span class="card-title">Último Acceso por Usuario</span></div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Usuario</th>
+              <th>Email</th>
+              <th>Plan</th>
+              <th>Último acceso</th>
+              <th>Días inactivo</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="activity-tbody"></tbody>
+        </table>
+        <div id="activity-empty" class="state-empty" style="display:none">
+          <span class="material-symbols-outlined">check_circle</span>
+          No hay usuarios con ese nivel de inactividad
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /view-actividad -->
+
+
+  <!-- ═══════════════ VIEW: CONTENIDO ═══════════════ -->
+  <div class="view page-content" id="view-contenido">
+
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-bottom:1.25rem">
+
+      <!-- Cirugía -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title" style="color:#FF4D6D">🔪 Cirugía</span>
+          <span class="badge badge-adscrito">36 temas</span>
+        </div>
+        <div class="card-body">
+          <div style="margin-bottom:1rem">
+            <div style="font-size:.75rem;color:var(--text-muted);margin-bottom:.5rem">Acceso por plan</div>
+            <div style="display:flex;flex-direction:column;gap:.4rem" id="cnt-cirugia"></div>
+          </div>
+          <div style="font-size:.75rem;color:var(--text-dim)">📁 Contenido: PDFs, PPTX, Videos, Kahoots, Simuladores, Flashcards</div>
+        </div>
+      </div>
+
+      <!-- Pediatría -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title" style="color:#3b82f6">👶 Pediatría</span>
+          <span class="badge badge-adscrito">28 temas</span>
+        </div>
+        <div class="card-body">
+          <div style="margin-bottom:1rem">
+            <div style="font-size:.75rem;color:var(--text-muted);margin-bottom:.5rem">Acceso por plan</div>
+            <div style="display:flex;flex-direction:column;gap:.4rem" id="cnt-pediatria"></div>
+          </div>
+          <div style="font-size:.75rem;color:var(--text-dim)">📁 Contenido: PDFs, PPTX, Videos, Kahoots, Simuladores, Flashcards</div>
+        </div>
+      </div>
+
+      <!-- Ginecobstetricia -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title" style="color:#e9558d">🌸 Ginecobstetricia</span>
+          <span class="badge badge-adscrito">20 temas</span>
+        </div>
+        <div class="card-body">
+          <div style="margin-bottom:1rem">
+            <div style="font-size:.75rem;color:var(--text-muted);margin-bottom:.5rem">Acceso por plan</div>
+            <div style="display:flex;flex-direction:column;gap:.4rem" id="cnt-gineco"></div>
+          </div>
+          <div style="font-size:.75rem;color:var(--text-dim)">📁 Contenido: PDFs, PPTX, Videos, Kahoots, Simuladores, Flashcards</div>
+        </div>
+      </div>
+
+      <!-- Medicina Interna -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title" style="color:#0ec98d">🩺 Medicina Interna</span>
+          <span class="badge badge-adscrito">35 temas</span>
+        </div>
+        <div class="card-body">
+          <div style="margin-bottom:1rem">
+            <div style="font-size:.75rem;color:var(--text-muted);margin-bottom:.5rem">Acceso por plan</div>
+            <div style="display:flex;flex-direction:column;gap:.4rem" id="cnt-medicina"></div>
+          </div>
+          <div style="font-size:.75rem;color:var(--text-dim)">📁 Contenido: PDFs, PPTX, Videos, Kahoots, Simuladores, Flashcards</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Plan access overview -->
+    <div class="card">
+      <div class="card-header"><span class="card-title">Acceso por Plan — Resumen</span></div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Plan</th>
+              <th>Precio</th>
+              <th>Cirugía</th>
+              <th>Pediatría</th>
+              <th>Ginecobstetricia</th>
+              <th>Medicina Interna</th>
+              <th>Total Temas</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="badge badge-mip">MIP</span></td>
+              <td style="color:var(--text-muted)">Gratis</td>
+              <td>4 / 36</td><td>4 / 28</td><td>4 / 20</td><td>4 / 35</td>
+              <td><strong>16 / 119</strong></td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-r1">R1</span></td>
+              <td style="color:var(--yellow)">$1,499</td>
+              <td>10 / 36</td><td>10 / 28</td><td>10 / 20</td><td>10 / 35</td>
+              <td><strong>40 / 119</strong></td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-r_plus">R+</span></td>
+              <td style="color:var(--yellow)">$2,499</td>
+              <td>19 / 36</td><td>19 / 28</td><td>18 / 20</td><td>19 / 35</td>
+              <td><strong>75 / 119</strong></td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-adscrito">Adscrito</span></td>
+              <td style="color:var(--yellow)">$3,499</td>
+              <td>36 / 36</td><td>28 / 28</td><td>20 / 20</td><td>35 / 35</td>
+              <td><strong style="color:var(--green)">119 / 119 ✓</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div><!-- /view-contenido -->
+
+
+  <!-- ═══════════════ VIEW: SISTEMA ═══════════════ -->
+  <div class="view page-content" id="view-sistema">
+
+    <div style="display:grid;grid-template-columns:1fr 320px;gap:1rem;margin-bottom:1rem">
+
+      <!-- Admin Logs -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Registro de Actividad Administrativa</span>
+          <button class="btn btn-secondary" onclick="exportLogsCSV()">
+            <span class="material-symbols-outlined">download</span> CSV
+          </button>
+        </div>
+        <div class="table-wrap">
+          <table class="table-responsive-cards">
+            <thead>
+              <tr>
+                <th>Fecha</th>
+                <th>Admin</th>
+                <th>Acción</th>
+                <th>Usuario afectado</th>
+                <th>Detalle</th>
+              </tr>
+            </thead>
+            <tbody id="logs-tbody"></tbody>
+          </table>
+          <div id="logs-loading" class="state-loading">
+            <span class="material-symbols-outlined spinner">autorenew</span>
+            Cargando logs…
+          </div>
+          <div id="logs-empty" class="state-empty" style="display:none">
+            <span class="material-symbols-outlined">history</span>
+            No hay registros de actividad
+          </div>
+        </div>
+      </div>
+
+      <!-- System Info -->
+      <div style="display:flex;flex-direction:column;gap:1rem">
+        <!-- Exports -->
+        <div class="card">
+          <div class="card-header"><span class="card-title">Exportar Datos</span></div>
+          <div class="card-body" style="display:flex;flex-direction:column;gap:.65rem">
+            <button class="btn btn-secondary" style="width:100%;justify-content:flex-start" onclick="exportUsersCSV()">
+              <span class="material-symbols-outlined">people</span>
+              Exportar Usuarios CSV
+            </button>
+            <button class="btn btn-secondary" style="width:100%;justify-content:flex-start" onclick="exportPaymentsCSV()">
+              <span class="material-symbols-outlined">payments</span>
+              Exportar Pagos CSV
+            </button>
+            <button class="btn btn-secondary" style="width:100%;justify-content:flex-start" onclick="exportLogsCSV()">
+              <span class="material-symbols-outlined">history</span>
+              Exportar Logs CSV
+            </button>
+          </div>
+        </div>
+
+        <!-- DB Info -->
+        <div class="card">
+          <div class="card-header"><span class="card-title">Información del Sistema</span></div>
+          <div class="card-body" style="display:flex;flex-direction:column;gap:.6rem">
+            <div class="info-row">
+              <span class="info-label">Base de datos</span>
+              <span class="info-value" style="color:var(--green)">sql.js (SQLite)</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Autenticación</span>
+              <span class="info-value">Passport.js + Google OAuth</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Pagos</span>
+              <span class="info-value">Stripe Checkout</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Versión</span>
+              <span class="info-value" style="color:var(--accent)">ENARMAGIC 2026</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Total usuarios</span>
+              <span class="info-value" id="sys-total-users">—</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Total pagos</span>
+              <span class="info-value" id="sys-total-payments">—</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Danger zone -->
+        <div class="card" style="border-color:rgba(255,77,109,.3)">
+          <div class="card-header" style="border-color:rgba(255,77,109,.2)">
+            <span class="card-title" style="color:var(--red)">Zona de Peligro</span>
+          </div>
+          <div class="card-body" style="font-size:.8rem;color:var(--text-muted)">
+            Las operaciones destructivas se registran en el log. Proceder con precaución.
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /view-sistema -->
+
+</div><!-- /main-wrapper -->
+
+<!-- ═══════════════════════ DETAIL PANEL (User) ═══════════════════════ -->
+<div class="panel-backdrop" id="panelBackdrop" onclick="closeDetailPanel()"></div>
+<div class="detail-panel" id="detailPanel">
+  <div class="panel-header">
+    <div class="avatar" id="dp-avatar">?</div>
+    <div style="flex:1;min-width:0">
+      <div style="font-weight:700;font-size:.95rem" id="dp-name">—</div>
+      <div style="font-size:.75rem;color:var(--text-muted)" id="dp-email">—</div>
+    </div>
+    <button class="modal-close" onclick="closeDetailPanel()">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+  </div>
+  <div class="panel-body">
+
+    <!-- Plan & Status -->
+    <div class="panel-section">
+      <div class="panel-section-title">Plan & Estado</div>
+      <div class="info-row">
+        <span class="info-label">Plan actual</span>
+        <span class="info-value" id="dp-plan">—</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Estado</span>
+        <span class="info-value" id="dp-status">—</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Rol</span>
+        <span class="info-value" id="dp-role">—</span>
+      </div>
+    </div>
+
+    <!-- Account Info -->
+    <div class="panel-section">
+      <div class="panel-section-title">Información de Cuenta</div>
+      <div class="info-row">
+        <span class="info-label">ID</span>
+        <span class="info-value" id="dp-id">—</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Username</span>
+        <span class="info-value" id="dp-username">—</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Registrado</span>
+        <span class="info-value" id="dp-created">—</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Último acceso</span>
+        <span class="info-value" id="dp-last-login">—</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Auth</span>
+        <span class="info-value" id="dp-auth">—</span>
+      </div>
+    </div>
+
+    <!-- Notes -->
+    <div class="panel-section">
+      <div class="panel-section-title">Notas Internas</div>
+      <textarea class="input" id="dp-notes" placeholder="Agregar nota interna sobre este usuario…" rows="4"></textarea>
+      <button class="btn btn-secondary" style="margin-top:.65rem;width:100%" onclick="saveNote()">
+        <span class="material-symbols-outlined">save</span> Guardar nota
+      </button>
+    </div>
+
+    <!-- Actions -->
+    <div class="panel-section">
+      <div class="panel-section-title">Acciones</div>
+      <div style="display:flex;flex-direction:column;gap:.65rem">
+        <button class="btn btn-primary" style="justify-content:flex-start" onclick="openPlanModal()">
+          <span class="material-symbols-outlined">workspace_premium</span>
+          Cambiar Plan
+        </button>
+        <button class="btn btn-warning" id="dp-block-btn" style="justify-content:flex-start" onclick="toggleBlock()">
+          <span class="material-symbols-outlined">block</span>
+          <span id="dp-block-label">Bloquear Usuario</span>
+        </button>
+        <button class="btn btn-danger" style="justify-content:flex-start" onclick="openDeleteFromPanel()">
+          <span class="material-symbols-outlined">delete</span>
+          Eliminar Usuario
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════ MODALS ═══════════════════════ -->
+
+<!-- Plan Change Modal -->
+<div class="modal-overlay hidden" id="planModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 style="font-size:1rem;font-weight:700">Cambiar Plan</h3>
+      <button class="modal-close" onclick="closePlanModal()"><span class="material-symbols-outlined">close</span></button>
+    </div>
+    <div class="modal-body">
+      <p style="font-size:.85rem;color:var(--text-muted);margin-bottom:1rem">
+        Usuario: <strong id="plan-modal-user" style="color:var(--text-primary)">—</strong>
+      </p>
+      <div style="margin-bottom:.5rem">
+        <label style="font-size:.8rem;font-weight:600;color:var(--text-muted);display:block;margin-bottom:.4rem">Nuevo Plan</label>
+        <select class="input" id="plan-select">
+          <option value="">— Seleccionar Plan —</option>
+          <option value="mip">MIP — Gratis (12 temas)</option>
+          <option value="r1">R1 — $1,499 (40 temas)</option>
+          <option value="r_plus">R+ — $2,499 (75 temas)</option>
+          <option value="adscrito">Adscrito — $3,499 (119 temas)</option>
+        </select>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closePlanModal()">Cancelar</button>
+      <button class="btn btn-primary" onclick="confirmPlanChange()">
+        <span class="material-symbols-outlined">check</span>
+        Confirmar
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal-overlay hidden" id="deleteModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 style="font-size:1rem;font-weight:700;color:var(--red)">Eliminar Usuario</h3>
+      <button class="modal-close" onclick="closeDeleteModal()"><span class="material-symbols-outlined">close</span></button>
+    </div>
+    <div class="modal-body">
+      <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem;padding:1rem;background:var(--red-dim);border-radius:10px;border:1px solid rgba(255,77,109,.2)">
+        <span class="material-symbols-outlined icon-fill" style="color:var(--red);font-size:32px;flex-shrink:0">warning</span>
+        <div>
+          <div style="font-weight:700;margin-bottom:.25rem">Acción irreversible</div>
+          <div style="font-size:.8rem;color:var(--text-muted)">Todos los datos del usuario y sus pagos serán eliminados permanentemente.</div>
+        </div>
+      </div>
+      <p style="font-size:.9rem">¿Eliminar a <strong id="delete-modal-user" style="color:var(--red)">—</strong>?</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeDeleteModal()">Cancelar</button>
+      <button class="btn btn-danger" onclick="confirmDelete()">
+        <span class="material-symbols-outlined">delete_forever</span>
+        Eliminar definitivamente
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast Container -->
+<div id="toastContainer"></div>
+
+<!-- ═══════════════════════════ JAVASCRIPT ═══════════════════════════ -->
+<script>
+// ── State ──
+let allUsers = [];
+let allPayments = [];
+let allLogs = [];
+let statsData = {};
+let currentUser = null; // user being acted on
+let adminUser = null;   // logged-in admin
+
+const PLAN_PRICES = { mip: 0, r1: 1499, r_plus: 2499, adscrito: 3499 };
+const PLAN_LABELS = { mip: 'MIP', r1: 'R1', r_plus: 'R+', adscrito: 'Adscrito' };
+const PLAN_COLORS = { mip: '#8a94b4', r1: '#93c5fd', r_plus: '#c4b5fd', adscrito: '#fde68a' };
+const CONTENT_PLAN = {
+  cirugia:   { mip:4, r1:10, r_plus:19, adscrito:36 },
+  pediatria: { mip:4, r1:10, r_plus:19, adscrito:28 },
+  gineco:    { mip:4, r1:10, r_plus:18, adscrito:20 },
+  medicina:  { mip:4, r1:10, r_plus:19, adscrito:35 },
+};
+
+// ── Init ──
+document.addEventListener('DOMContentLoaded', async () => {
+  await verifyAdmin();
+  renderContentSection();
+  await refreshAll();
+  // Auto-refresh every 60s
+  setInterval(refreshAll, 60000);
+});
+
+async function verifyAdmin() {
+  try {
+    const r = await fetch('/api/user', { credentials: 'include' });
+    if (!r.ok) { window.location.href = '/'; return; }
+    adminUser = await r.json();
+    if (adminUser.role !== 'admin') { window.location.href = '/'; return; }
+    document.getElementById('sidebarAdminName').textContent = adminUser.name || 'Admin';
+    document.getElementById('sidebarAvatarLetter').textContent = (adminUser.name || 'A').charAt(0).toUpperCase();
+  } catch(e) { window.location.href = '/'; }
+}
+
+async function refreshAll() {
+  const icon = document.getElementById('refreshIcon');
+  icon.classList.add('spinner');
+  try {
+    await Promise.all([loadStats(), loadUsers(), loadPayments(), loadLogs()]);
+    const now = new Date().toLocaleTimeString('es-MX', { hour:'2-digit', minute:'2-digit' });
+    document.getElementById('lastUpdatedLabel').textContent = 'Actualizado ' + now;
+  } finally {
+    icon.classList.remove('spinner');
+  }
+}
+
+// ── Load data ──
+async function loadStats() {
+  try {
+    const r = await fetch('/api/admin/stats', { credentials: 'include' });
+    if (!r.ok) return;
+    statsData = await r.json();
+    renderResumen();
+    renderVentasKPIs();
+  } catch(e) { console.error(e); }
+}
+
+async function loadUsers() {
+  try {
+    const r = await fetch('/api/admin/users', { credentials: 'include' });
+    if (!r.ok) return;
+    allUsers = await r.json();
+
+    // Badge for blocked users
+    const blocked = allUsers.filter(u => u.blocked).length;
+    const badge = document.getElementById('nav-badge-blocked');
+    if (badge) { badge.style.display = blocked > 0 ? '' : 'none'; badge.textContent = blocked; }
+
+    document.getElementById('users-loading').style.display = 'none';
+    applyFilters();
+    renderActivityTable();
+    renderActivityKPIs();
+    document.getElementById('sys-total-users').textContent = allUsers.length;
+  } catch(e) { console.error(e); }
+}
+
+async function loadPayments() {
+  try {
+    const r = await fetch('/api/admin/payments', { credentials: 'include' });
+    if (!r.ok) return;
+    allPayments = await r.json();
+    renderPaymentsTable();
+    document.getElementById('sys-total-payments').textContent = allPayments.length;
+  } catch(e) { console.error(e); }
+}
+
+async function loadLogs() {
+  try {
+    const r = await fetch('/api/admin/logs', { credentials: 'include' });
+    if (!r.ok) return;
+    allLogs = await r.json();
+    renderLogsTable();
+  } catch(e) { console.error(e); }
+}
+
+// ── Render Resumen ──
+function renderResumen() {
+  const s = statsData;
+  document.getElementById('kpi-total').textContent = s.totalUsers || 0;
+  document.getElementById('kpi-total-sub').textContent = s.newMonth + ' nuevos este mes';
+  document.getElementById('kpi-new-today').textContent = s.newToday || 0;
+  document.getElementById('kpi-new-week-sub').textContent = (s.newWeek || 0) + ' esta semana';
+  document.getElementById('kpi-revenue').textContent = '$' + (s.totalRevenue || 0).toLocaleString('es-MX');
+  document.getElementById('kpi-revenue-month-sub').textContent = '$' + (s.monthRevenue || 0).toLocaleString('es-MX') + ' este mes';
+  document.getElementById('kpi-paying').textContent = s.payingUsers || 0;
+  document.getElementById('kpi-conversion-sub').textContent = (s.conversionRate || 0) + '% conversión';
+  document.getElementById('kpi-active').textContent = s.activeUsers || 0;
+  document.getElementById('kpi-blocked-sub').textContent = (s.blockedUsers || 0) + ' bloqueados';
+  document.getElementById('kpi-new-month').textContent = s.newMonth || 0;
+
+  renderPlanDistribution(s.planCounts || {}, s.totalUsers || 0);
+  renderRecentUsers(s.recentUsers || []);
+  renderRevenueByPlan(s.planCounts || {}, s.revenueByPlan || {});
+}
+
+function renderPlanDistribution(counts, total) {
+  const plans = ['mip', 'r1', 'r_plus', 'adscrito'];
+  const barsEl = document.getElementById('plan-dist-bars');
+  const rowsEl = document.getElementById('plan-dist-rows');
+
+  barsEl.innerHTML = `<div class="plan-bar-wrap" style="margin-bottom:1rem">
+    ${plans.map(p => {
+      const pct = total > 0 ? ((counts[p] || 0) / total * 100).toFixed(1) : 0;
+      return `<div class="plan-bar-seg" style="width:${pct}%;background:${PLAN_COLORS[p]};min-width:${pct>0?'4px':'0'}" title="${PLAN_LABELS[p]}: ${counts[p]||0}"></div>`;
+    }).join('')}
+  </div>`;
+
+  rowsEl.innerHTML = plans.map(p => {
+    const count = counts[p] || 0;
+    const pct = total > 0 ? ((count / total) * 100).toFixed(1) : 0;
+    return `<div style="display:flex;align-items:center;gap:.75rem;padding:.4rem 0">
+      <div style="width:10px;height:10px;border-radius:50%;background:${PLAN_COLORS[p]};flex-shrink:0"></div>
+      <span style="font-size:.82rem;flex:1">${PLAN_LABELS[p]}</span>
+      <div class="prog-bar" style="width:100px;flex-shrink:0">
+        <div class="prog-fill" style="width:${pct}%;background:${PLAN_COLORS[p]}"></div>
+      </div>
+      <span style="font-size:.82rem;font-weight:700;color:${PLAN_COLORS[p]};width:30px;text-align:right">${count}</span>
+      <span style="font-size:.75rem;color:var(--text-dim);width:40px;text-align:right">${pct}%</span>
+    </div>`;
+  }).join('');
+}
+
+function renderRecentUsers(users) {
+  const el = document.getElementById('recent-list');
+  if (!users.length) { el.innerHTML = '<div class="state-empty" style="padding:1.5rem">Sin usuarios</div>'; return; }
+  el.innerHTML = users.slice(0,8).map(u => `
+    <div style="display:flex;align-items:center;gap:.65rem;padding:.5rem 1.25rem;border-bottom:1px solid var(--border);cursor:pointer;transition:background .15s"
+         onmouseover="this.style.background='var(--surface-3)'" onmouseout="this.style.background='none'"
+         onclick="openDetailPanel(${JSON.stringify(u).replace(/"/g,'&quot;')})">
+      <div class="avatar avatar-sm">${(u.name||'?').charAt(0).toUpperCase()}</div>
+      <div style="flex:1;min-width:0">
+        <div style="font-size:.8rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(u.name)}</div>
+        <div style="font-size:.7rem;color:var(--text-dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(u.email)}</div>
+      </div>
+      <span class="badge badge-${u.plan||'mip'}" style="font-size:.65rem">${PLAN_LABELS[u.plan||'mip']}</span>
+    </div>
+  `).join('');
+}
+
+function renderRevenueByPlan(counts, rev) {
+  const plans = ['mip', 'r1', 'r_plus', 'adscrito'];
+  document.getElementById('revenue-by-plan').innerHTML = plans.map(p => `
+    <div style="background:var(--surface-3);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center">
+      <span class="badge badge-${p}" style="margin-bottom:.5rem;display:inline-flex">${PLAN_LABELS[p]}</span>
+      <div style="font-size:1.4rem;font-weight:800;color:${PLAN_COLORS[p]};margin:.35rem 0">
+        $${(rev[p]||0).toLocaleString('es-MX')}
+      </div>
+      <div style="font-size:.72rem;color:var(--text-muted)">${counts[p]||0} usuario${(counts[p]||0)!==1?'s':''}</div>
+      <div style="font-size:.7rem;color:var(--text-dim);margin-top:.25rem">× $${PLAN_PRICES[p].toLocaleString()}</div>
+    </div>
+  `).join('');
+}
+
+// ── Render Users Table ──
+function applyFilters() {
+  const q = (document.getElementById('u-search').value || '').toLowerCase();
+  const planF = document.getElementById('u-filter-plan').value;
+  const statusF = document.getElementById('u-filter-status').value;
+  const sort = document.getElementById('u-sort').value;
+
+  let users = allUsers.filter(u => {
+    if (q && !(u.name||'').toLowerCase().includes(q) &&
+              !(u.email||'').toLowerCase().includes(q) &&
+              !(u.username||'').toLowerCase().includes(q)) return false;
+    if (planF && u.plan !== planF) return false;
+    if (statusF === 'active' && u.blocked) return false;
+    if (statusF === 'blocked' && !u.blocked) return false;
+    return true;
+  });
+
+  if (sort === 'created_asc') users.sort((a,b) => (a.created_at||'') > (b.created_at||'') ? 1 : -1);
+  else if (sort === 'created_desc') users.sort((a,b) => (b.created_at||'') > (a.created_at||'') ? 1 : -1);
+  else if (sort === 'name_asc') users.sort((a,b) => (a.name||'').localeCompare(b.name||''));
+  else if (sort === 'login_desc') users.sort((a,b) => (b.last_login||'') > (a.last_login||'') ? 1 : -1);
+
+  document.getElementById('u-count-label').textContent = users.length + ' usuario' + (users.length!==1?'s':'');
+  renderUsersTable(users);
+}
+
+function renderUsersTable(users) {
+  const tbody = document.getElementById('users-tbody');
+  const empty = document.getElementById('users-empty');
+  if (!users.length) {
+    tbody.innerHTML = '';
+    empty.style.display = '';
+    return;
+  }
+  empty.style.display = 'none';
+  tbody.innerHTML = users.map((u, i) => `
+    <tr>
+      <td data-label="#" style="color:var(--text-dim);font-size:.75rem">${i+1}</td>
+      <td data-label="Usuario">
+        <div style="display:flex;align-items:center;gap:.65rem;cursor:pointer" onclick="openDetailPanel(${encodeUser(u)})">
+          <div class="avatar avatar-sm">${(u.name||'?').charAt(0).toUpperCase()}</div>
+          <div>
+            <div style="font-weight:600;font-size:.85rem">${esc(u.name)}</div>
+            ${u.username ? `<div style="font-size:.7rem;color:var(--text-dim)">@${esc(u.username)}</div>` : ''}
+          </div>
+        </div>
+      </td>
+      <td data-label="Email" style="color:var(--text-muted);font-size:.82rem">${esc(u.email)}</td>
+      <td data-label="Plan"><span class="badge badge-${u.plan||'mip'}">${PLAN_LABELS[u.plan||'mip']}</span></td>
+      <td data-label="Estado"><span class="badge ${u.blocked ? 'badge-blocked' : 'badge-active'}">${u.blocked ? 'Bloqueado' : 'Activo'}</span></td>
+      <td data-label="Registro" style="font-size:.8rem;color:var(--text-muted);white-space:nowrap">${fmtDate(u.created_at)}</td>
+      <td data-label="Último acceso" style="font-size:.8rem;color:var(--text-muted);white-space:nowrap">${u.last_login ? fmtDate(u.last_login) : '<span style="color:var(--text-dim)">Nunca</span>'}</td>
+      <td data-label="">
+        <div style="display:flex;gap:.35rem;justify-content:flex-end;flex-wrap:wrap">
+          <button class="btn btn-ghost btn-icon" title="Ver perfil" onclick="openDetailPanel(${encodeUser(u)})">
+            <span class="material-symbols-outlined" style="font-size:16px">person</span>
+          </button>
+          <button class="btn btn-secondary btn-icon" title="Cambiar plan" onclick="setCurrentUser(${encodeUser(u)});openPlanModal()">
+            <span class="material-symbols-outlined" style="font-size:16px">workspace_premium</span>
+          </button>
+          <button class="btn ${u.blocked ? 'btn-success' : 'btn-warning'} btn-icon" title="${u.blocked ? 'Desbloquear' : 'Bloquear'}" onclick="setCurrentUser(${encodeUser(u)});toggleBlock()">
+            <span class="material-symbols-outlined" style="font-size:16px">${u.blocked ? 'lock_open' : 'block'}</span>
+          </button>
+          <button class="btn btn-danger btn-icon" title="Eliminar" onclick="setCurrentUser(${encodeUser(u)});openDeleteModal()">
+            <span class="material-symbols-outlined" style="font-size:16px">delete</span>
+          </button>
+        </div>
+      </td>
+    </tr>
+  `).join('');
+}
+
+// ── Render Ventas ──
+function renderVentasKPIs() {
+  const s = statsData;
+  document.getElementById('v-total-rev').textContent = '$' + (s.totalRevenue||0).toLocaleString('es-MX');
+  document.getElementById('v-month-rev').textContent = '$' + (s.monthRevenue||0).toLocaleString('es-MX');
+  document.getElementById('v-paying').textContent = s.payingUsers || 0;
+  const total = s.totalUsers || 0;
+  document.getElementById('v-conv-sub').textContent = total > 0 ? ((s.payingUsers||0)/total*100).toFixed(1)+'% del total' : '0% del total';
+
+  const paying = s.payingUsers || 0;
+  document.getElementById('v-avg-ticket').textContent = paying > 0
+    ? '$' + Math.round((s.totalRevenue||0) / paying).toLocaleString('es-MX')
+    : '$0';
+
+  // Plan breakdown
+  const plans = ['r1', 'r_plus', 'adscrito'];
+  const counts = s.planCounts || {};
+  const rev = s.revenueByPlan || {};
+  const maxRev = Math.max(...plans.map(p => rev[p]||0), 1);
+
+  document.getElementById('v-plan-breakdown').innerHTML = plans.map(p => `
+    <div style="display:flex;align-items:center;gap:.75rem;padding:.75rem 0;border-bottom:1px solid var(--border)">
+      <span class="badge badge-${p}" style="width:64px;justify-content:center">${PLAN_LABELS[p]}</span>
+      <div style="flex:1">
+        <div style="font-size:.8rem;margin-bottom:.3rem;display:flex;justify-content:space-between">
+          <span style="color:var(--text-muted)">${counts[p]||0} usuario${(counts[p]||0)!==1?'s':''}</span>
+          <span style="font-weight:700;color:${PLAN_COLORS[p]}">$${(rev[p]||0).toLocaleString('es-MX')}</span>
+        </div>
+        <div class="prog-bar"><div class="prog-fill" style="width:${((rev[p]||0)/maxRev*100).toFixed(1)}%;background:${PLAN_COLORS[p]}"></div></div>
+      </div>
+    </div>
+  `).join('');
+
+  // Chart (simple donut using conic-gradient)
+  const allCounts = s.planCounts || {};
+  const tot = Object.values(allCounts).reduce((a,b) => a+b, 0) || 1;
+  const allPlans = ['mip','r1','r_plus','adscrito'];
+  let cumul = 0;
+  const gradient = allPlans.map(p => {
+    const pct = (allCounts[p]||0)/tot*100;
+    const from = cumul, to = cumul + pct;
+    cumul += pct;
+    return `${PLAN_COLORS[p]} ${from.toFixed(1)}% ${to.toFixed(1)}%`;
+  }).join(', ');
+
+  document.getElementById('v-plan-chart').innerHTML = `
+    <div style="display:flex;flex-direction:column;align-items:center;gap:1rem">
+      <div style="width:120px;height:120px;border-radius:50%;background:conic-gradient(${gradient});position:relative">
+        <div style="position:absolute;inset:25%;border-radius:50%;background:var(--surface-2);display:flex;align-items:center;justify-content:center">
+          <span style="font-size:.75rem;font-weight:700;color:var(--accent)">${tot}</span>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.35rem .75rem;width:100%">
+        ${allPlans.map(p => `
+          <div style="display:flex;align-items:center;gap:.4rem">
+            <div style="width:8px;height:8px;border-radius:50%;background:${PLAN_COLORS[p]};flex-shrink:0"></div>
+            <span style="font-size:.72rem;color:var(--text-muted)">${PLAN_LABELS[p]}</span>
+            <span style="font-size:.72rem;font-weight:700;margin-left:auto">${allCounts[p]||0}</span>
+          </div>
+        `).join('')}
+      </div>
+    </div>`;
+}
+
+function renderPaymentsTable() {
+  const tbody = document.getElementById('payments-tbody');
+  const loading = document.getElementById('payments-loading');
+  const empty = document.getElementById('payments-empty');
+  if (loading) loading.style.display = 'none';
+  if (!allPayments.length) { empty.style.display = ''; tbody.innerHTML = ''; return; }
+  empty.style.display = 'none';
+  tbody.innerHTML = allPayments.map((p, i) => `
+    <tr>
+      <td data-label="#" style="color:var(--text-dim);font-size:.75rem">${i+1}</td>
+      <td data-label="Usuario" style="font-size:.85rem;font-weight:500">${esc(p.user_name||'—')}</td>
+      <td data-label="Email" style="color:var(--text-muted);font-size:.82rem">${esc(p.user_email||'—')}</td>
+      <td data-label="Plan"><span class="badge badge-${p.plan||'mip'}">${PLAN_LABELS[p.plan||'mip']}</span></td>
+      <td data-label="Monto" style="font-weight:700;color:var(--yellow)">$${Number(p.amount||0).toLocaleString('es-MX')}</td>
+      <td data-label="Estado"><span class="badge ${p.status==='completed'?'badge-paid':'badge-pending'}">${p.status==='completed'?'Pagado':'Pendiente'}</span></td>
+      <td data-label="Fecha" style="font-size:.8rem;color:var(--text-muted);white-space:nowrap">${fmtDate(p.created_at)}</td>
+    </tr>
+  `).join('');
+}
+
+// ── Activity ──
+function renderActivityKPIs() {
+  const now = Date.now();
+  const d7  = new Date(now - 7*86400000).toISOString();
+  const d14 = new Date(now - 14*86400000).toISOString();
+  const d30 = new Date(now - 30*86400000).toISOString();
+  const today = new Date().toISOString().slice(0,10);
+
+  const nonAdmin = allUsers.filter(u => u.role !== 'admin');
+  const hasLogin = nonAdmin.filter(u => u.last_login);
+
+  document.getElementById('act-7d').textContent  = hasLogin.filter(u => u.last_login < d7).length + nonAdmin.filter(u => !u.last_login).length;
+  document.getElementById('act-14d').textContent = hasLogin.filter(u => u.last_login < d14).length + nonAdmin.filter(u => !u.last_login).length;
+  document.getElementById('act-30d').textContent = hasLogin.filter(u => u.last_login < d30).length + nonAdmin.filter(u => !u.last_login).length;
+  document.getElementById('act-today').textContent = nonAdmin.filter(u => u.last_login && u.last_login.slice(0,10) === today).length;
+}
+
+function renderActivityTable() {
+  const days = parseInt(document.getElementById('act-days-filter').value) || 0;
+  const q = (document.getElementById('act-search').value || '').toLowerCase();
+  const tbody = document.getElementById('activity-tbody');
+  const empty = document.getElementById('activity-empty');
+  const cutoff = days > 0 ? new Date(Date.now() - days*86400000).toISOString() : null;
+
+  let users = allUsers.filter(u => {
+    if (u.role === 'admin') return false;
+    if (q && !(u.name||'').toLowerCase().includes(q) && !(u.email||'').toLowerCase().includes(q)) return false;
+    if (days > 0) {
+      if (!u.last_login) return true; // never logged in = always inactive
+      return u.last_login < cutoff;
+    }
+    return true;
+  });
+
+  users.sort((a,b) => {
+    if (!a.last_login && !b.last_login) return 0;
+    if (!a.last_login) return -1;
+    if (!b.last_login) return 1;
+    return a.last_login > b.last_login ? 1 : -1;
+  });
+
+  if (!users.length) { empty.style.display = ''; tbody.innerHTML = ''; return; }
+  empty.style.display = 'none';
+
+  tbody.innerHTML = users.map(u => {
+    const daysSince = u.last_login
+      ? Math.floor((Date.now() - new Date(u.last_login).getTime()) / 86400000)
+      : null;
+    const color = daysSince === null ? 'var(--red)' : daysSince > 30 ? 'var(--yellow)' : daysSince > 7 ? '#FF6FD8' : 'var(--green)';
+    return `<tr>
+      <td>
+        <div style="display:flex;align-items:center;gap:.65rem">
+          <div class="avatar avatar-sm">${(u.name||'?').charAt(0).toUpperCase()}</div>
+          <span style="font-size:.85rem;font-weight:600">${esc(u.name)}</span>
+        </div>
+      </td>
+      <td style="color:var(--text-muted);font-size:.82rem">${esc(u.email)}</td>
+      <td><span class="badge badge-${u.plan||'mip'}">${PLAN_LABELS[u.plan||'mip']}</span></td>
+      <td style="font-size:.82rem;color:var(--text-muted)">${u.last_login ? fmtDate(u.last_login) : '<span style="color:var(--red)">Nunca</span>'}</td>
+      <td style="font-weight:700;color:${color}">${daysSince === null ? '—' : daysSince + 'd'}</td>
+      <td><span class="badge ${u.blocked ? 'badge-blocked' : 'badge-active'}">${u.blocked ? 'Bloqueado' : 'Activo'}</span></td>
+      <td>
+        <button class="btn btn-secondary btn-icon" title="Ver perfil" onclick="openDetailPanel(${encodeUser(u)})">
+          <span class="material-symbols-outlined" style="font-size:15px">open_in_new</span>
+        </button>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+// ── Logs ──
+function renderLogsTable() {
+  const tbody = document.getElementById('logs-tbody');
+  const loading = document.getElementById('logs-loading');
+  const empty = document.getElementById('logs-empty');
+  if (loading) loading.style.display = 'none';
+  if (!allLogs.length) { empty.style.display = ''; tbody.innerHTML = ''; return; }
+  empty.style.display = 'none';
+  const ACTION_LABELS = {
+    CHANGE_PLAN: 'Cambio de plan', BLOCK_USER: 'Usuario bloqueado',
+    UNBLOCK_USER: 'Usuario desbloqueado', DELETE_USER: 'Usuario eliminado'
+  };
+  tbody.innerHTML = allLogs.map(l => `
+    <tr>
+      <td data-label="Fecha" style="font-size:.78rem;color:var(--text-dim);white-space:nowrap">${fmtDate(l.created_at)}</td>
+      <td data-label="Admin" style="font-size:.85rem;font-weight:600">${esc(l.admin_name||'—')}</td>
+      <td data-label="Acción"><span class="log-action-${l.action}" style="font-size:.8rem;font-weight:600">${ACTION_LABELS[l.action]||l.action}</span></td>
+      <td data-label="Usuario" style="font-size:.82rem;color:var(--text-muted)">${l.target_user_name ? esc(l.target_user_name) : '—'}</td>
+      <td data-label="Detalle" style="font-size:.78rem;color:var(--text-dim)">${l.details ? esc(l.details) : '—'}</td>
+    </tr>
+  `).join('');
+}
+
+// ── Content section ──
+function renderContentSection() {
+  const sps = ['cirugia','pediatria','gineco','medicina'];
+  sps.forEach(sp => {
+    const el = document.getElementById('cnt-' + sp);
+    if (!el) return;
+    const plans = ['mip','r1','r_plus','adscrito'];
+    const total = CONTENT_PLAN[sp].adscrito;
+    el.innerHTML = plans.map(p => {
+      const n = CONTENT_PLAN[sp][p];
+      const pct = Math.round(n / total * 100);
+      return `<div style="display:flex;align-items:center;gap:.65rem">
+        <span class="badge badge-${p}" style="width:58px;justify-content:center;font-size:.65rem">${PLAN_LABELS[p]}</span>
+        <div class="prog-bar" style="flex:1">
+          <div class="prog-fill" style="width:${pct}%;background:${PLAN_COLORS[p]}"></div>
+        </div>
+        <span style="font-size:.78rem;color:var(--text-muted);white-space:nowrap">${n} / ${total}</span>
+      </div>`;
+    }).join('');
+  });
+}
+
+// ── Detail Panel ──
+function openDetailPanel(u) {
+  currentUser = typeof u === 'string' ? JSON.parse(u) : u;
+  const p = document.getElementById;
+
+  p('dp-avatar').textContent = (currentUser.name||'?').charAt(0).toUpperCase();
+  p('dp-name').textContent = currentUser.name || '—';
+  p('dp-email').textContent = currentUser.email || '—';
+  p('dp-id').textContent = '#' + currentUser.id;
+  p('dp-username').textContent = currentUser.username ? '@' + currentUser.username : '—';
+  p('dp-plan').innerHTML = `<span class="badge badge-${currentUser.plan||'mip'}">${PLAN_LABELS[currentUser.plan||'mip']}</span>`;
+  p('dp-status').innerHTML = currentUser.blocked
+    ? '<span class="badge badge-blocked">Bloqueado</span>'
+    : '<span class="badge badge-active">Activo</span>';
+  p('dp-role').innerHTML = currentUser.role === 'admin'
+    ? '<span class="badge badge-admin">Admin</span>'
+    : '<span style="color:var(--text-muted);font-size:.85rem">Usuario</span>';
+  p('dp-created').textContent = fmtDate(currentUser.created_at);
+  p('dp-last-login').textContent = currentUser.last_login ? fmtDate(currentUser.last_login) : 'Nunca';
+  p('dp-auth').textContent = currentUser.avatar && currentUser.avatar.startsWith('http') ? 'Google OAuth' : 'Email/Contraseña';
+  p('dp-notes').value = currentUser.notes || '';
+
+  const blockBtn = document.getElementById('dp-block-btn');
+  const blockLabel = document.getElementById('dp-block-label');
+  if (currentUser.blocked) {
+    blockBtn.className = 'btn btn-success';
+    blockLabel.textContent = 'Desbloquear Usuario';
+  } else {
+    blockBtn.className = 'btn btn-warning';
+    blockLabel.textContent = 'Bloquear Usuario';
+  }
+
+  document.getElementById('detailPanel').classList.add('open');
+  document.getElementById('panelBackdrop').classList.add('visible');
+}
+
+function closeDetailPanel() {
+  document.getElementById('detailPanel').classList.remove('open');
+  document.getElementById('panelBackdrop').classList.remove('visible');
+}
+
+// ── Set current user (from table buttons) ──
+function setCurrentUser(u) {
+  currentUser = typeof u === 'string' ? JSON.parse(u) : u;
+}
+
+// ── Plan Modal ──
+function openPlanModal() {
+  if (!currentUser) return;
+  document.getElementById('plan-modal-user').textContent = currentUser.name;
+  document.getElementById('plan-select').value = currentUser.plan || 'mip';
+  document.getElementById('planModal').classList.remove('hidden');
+}
+function closePlanModal() { document.getElementById('planModal').classList.add('hidden'); }
+
+async function confirmPlanChange() {
+  const plan = document.getElementById('plan-select').value;
+  if (!plan) { showToast('Selecciona un plan', 'error'); return; }
+  try {
+    const r = await fetch(`/api/admin/users/${currentUser.id}/plan`, {
+      method: 'POST', credentials: 'include',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ plan })
+    });
+    if (!r.ok) { showToast('Error al cambiar plan', 'error'); return; }
+    showToast(`Plan de ${currentUser.name} → ${PLAN_LABELS[plan]}`, 'success');
+    closePlanModal();
+    await refreshAll();
+    // Refresh panel if open
+    if (document.getElementById('detailPanel').classList.contains('open')) {
+      const updated = allUsers.find(u => u.id === currentUser.id);
+      if (updated) openDetailPanel(updated);
+    }
+  } catch(e) { showToast('Error de conexión', 'error'); }
+}
+
+// ── Delete Modal ──
+function openDeleteModal() {
+  if (!currentUser) return;
+  document.getElementById('delete-modal-user').textContent = currentUser.name;
+  document.getElementById('deleteModal').classList.remove('hidden');
+}
+function openDeleteFromPanel() { openDeleteModal(); }
+function closeDeleteModal() { document.getElementById('deleteModal').classList.add('hidden'); }
+
+async function confirmDelete() {
+  try {
+    const r = await fetch(`/api/admin/users/${currentUser.id}`, {
+      method: 'DELETE', credentials: 'include'
+    });
+    if (!r.ok) { showToast('Error al eliminar', 'error'); return; }
+    showToast(`${currentUser.name} eliminado`, 'success');
+    closeDeleteModal();
+    closeDetailPanel();
+    await refreshAll();
+  } catch(e) { showToast('Error de conexión', 'error'); }
+}
+
+// ── Block/Unblock ──
+async function toggleBlock() {
+  if (!currentUser) return;
+  try {
+    const r = await fetch(`/api/admin/users/${currentUser.id}/block`, {
+      method: 'POST', credentials: 'include'
+    });
+    if (!r.ok) { showToast('Error al actualizar estado', 'error'); return; }
+    const updated = await r.json();
+    showToast(`${updated.name} ${updated.blocked ? 'bloqueado' : 'desbloqueado'}`, updated.blocked ? 'error' : 'success');
+    await refreshAll();
+    if (document.getElementById('detailPanel').classList.contains('open')) {
+      const fresh = allUsers.find(u => u.id === currentUser.id);
+      if (fresh) openDetailPanel(fresh);
+    }
+  } catch(e) { showToast('Error de conexión', 'error'); }
+}
+
+// ── Save note ──
+async function saveNote() {
+  if (!currentUser) return;
+  const note = document.getElementById('dp-notes').value;
+  try {
+    const r = await fetch(`/api/admin/users/${currentUser.id}/note`, {
+      method: 'POST', credentials: 'include',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ note })
+    });
+    if (!r.ok) { showToast('Error al guardar nota', 'error'); return; }
+    showToast('Nota guardada', 'success');
+    await loadUsers();
+  } catch(e) { showToast('Error de conexión', 'error'); }
+}
+
+// ── Navigation ──
+function switchView(viewId) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  const view = document.getElementById('view-' + viewId);
+  if (view) view.classList.add('active');
+  const nav = document.querySelector(`[data-view="${viewId}"]`);
+  if (nav) nav.classList.add('active');
+
+  const titles = {
+    resumen: 'Resumen General', usuarios: 'Gestión de Usuarios',
+    ventas: 'Ventas & Ingresos', actividad: 'Actividad de Usuarios',
+    contenido: 'Gestión de Contenido', sistema: 'Sistema & Logs'
+  };
+  document.getElementById('topbarTitle').textContent = titles[viewId] || viewId;
+}
+
+// ── Export CSV ──
+function downloadCSV(filename, rows) {
+  const csv = rows.map(row => row.map(cell =>
+    typeof cell === 'string' && (cell.includes(',') || cell.includes('"') || cell.includes('\n'))
+      ? '"' + cell.replace(/"/g, '""') + '"'
+      : (cell == null ? '' : String(cell))
+  ).join(',')).join('\n');
+  const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download = filename; a.click();
+  URL.revokeObjectURL(url);
+}
+
+function exportUsersCSV() {
+  const headers = ['ID','Nombre','Email','Username','Plan','Estado','Rol','Registrado','Último acceso'];
+  const rows = [headers, ...allUsers.map(u => [
+    u.id, u.name, u.email, u.username||'', PLAN_LABELS[u.plan||'mip'],
+    u.blocked ? 'Bloqueado' : 'Activo', u.role, u.created_at||'', u.last_login||''
+  ])];
+  downloadCSV('enarmagic-usuarios-' + dateStr() + '.csv', rows);
+  showToast('Exportando usuarios…', 'info');
+}
+
+function exportPaymentsCSV() {
+  const headers = ['ID','Usuario','Email','Plan','Monto','Estado','Fecha'];
+  const rows = [headers, ...allPayments.map(p => [
+    p.id, p.user_name||'', p.user_email||'', PLAN_LABELS[p.plan||'mip'],
+    p.amount, p.status, p.created_at||''
+  ])];
+  downloadCSV('enarmagic-pagos-' + dateStr() + '.csv', rows);
+  showToast('Exportando pagos…', 'info');
+}
+
+function exportLogsCSV() {
+  const headers = ['ID','Fecha','Admin','Acción','Usuario afectado','Detalles'];
+  const rows = [headers, ...allLogs.map(l => [
+    l.id, l.created_at, l.admin_name, l.action, l.target_user_name||'', l.details||''
+  ])];
+  downloadCSV('enarmagic-logs-' + dateStr() + '.csv', rows);
+  showToast('Exportando logs…', 'info');
+}
+
+// ── Logout ──
+async function logout() {
+  try { await fetch('/api/logout', { method: 'POST', credentials: 'include' }); } catch(e) {}
+  window.location.href = '/';
+}
+
+// ── Toast ──
+function showToast(msg, type='success') {
+  const c = document.getElementById('toastContainer');
+  const t = document.createElement('div');
+  const icons = { success: 'check_circle', error: 'error', info: 'info' };
+  t.className = `toast toast-${type}`;
+  t.innerHTML = `<span class="material-symbols-outlined icon-fill" style="font-size:18px">${icons[type]||'info'}</span>${esc(msg)}`;
+  c.appendChild(t);
+  setTimeout(() => t.remove(), 3500);
+}
+
+// ── Utilities ──
+function fmtDate(d) {
+  if (!d) return '—';
+  try {
+    return new Date(d).toLocaleDateString('es-MX', { year:'numeric', month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' });
+  } catch(e) { return d; }
+}
+
+function esc(s) {
+  if (!s) return '';
+  const d = document.createElement('div'); d.textContent = String(s); return d.innerHTML;
+}
+
+function encodeUser(u) {
+  // Encode user object for use in onclick attribute
+  return "'" + JSON.stringify(u).replace(/'/g, '\\x27').replace(/"/g, '&quot;') + "'";
+}
+
+function dateStr() {
+  return new Date().toISOString().slice(0,10);
+}
+
+// ── Sidebar toggle (mobile) ──
+function toggleSidebar() {
+  const sb = document.getElementById('sidebar');
+  const bd = document.getElementById('sidebarBackdrop');
+  const isOpen = sb.classList.toggle('open');
+  bd.classList.toggle('visible', isOpen);
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+}
+function closeSidebar() {
+  const sb = document.getElementById('sidebar');
+  const bd = document.getElementById('sidebarBackdrop');
+  sb.classList.remove('open');
+  bd.classList.remove('visible');
+  document.body.style.overflow = '';
+}
+// Close sidebar on nav item click (mobile)
+document.querySelectorAll('.nav-item').forEach(btn => {
+  btn.addEventListener('click', () => {
+    if (window.innerWidth <= 768) closeSidebar();
+  });
+});
+// Close sidebar when window resizes past breakpoint
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 768) closeSidebar();
+});
+
+// Close modals on backdrop click
+document.getElementById('planModal').addEventListener('click', e => { if (e.target.id === 'planModal') closePlanModal(); });
+document.getElementById('deleteModal').addEventListener('click', e => { if (e.target.id === 'deleteModal') closeDeleteModal(); });
+</script>
+</body>
+</html>

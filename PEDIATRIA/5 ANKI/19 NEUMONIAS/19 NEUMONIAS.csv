@@ -1,0 +1,54 @@
+¿Cómo se define la Neumonía Adquirida en la Comunidad (NAC) respecto al tiempo de hospitalización?,Es una infección aguda del parénquima pulmonar en pacientes no hospitalizados en los últimos $7$ días.
+¿Cuál es la principal causa de muerte infecciosa infantil a nivel mundial en menores de $5$ años?,Neumonía adquirida en la comunidad.
+¿Qué complicación de la NAC se considera la más frecuente?,Derrame pleural.
+¿Qué complicación de la NAC se considera la más grave?,Abscesos pulmonares.
+¿Cuál es el agente bacteriano más frecuente en adultos con NAC ($39\%$ de los casos)?,$Streptococcus$ $pneumoniae$.
+"En pacientes adultos con EPOC, ¿qué agente bacteriano se debe sospechar específicamente?",$Haemophilus$ $influenzae$.
+¿Cuál es el agente etiológico viral más frecuente en pediatría para neumonía?,Virus Sincitial Respiratorio (VSR).
+¿Qué síntoma se considera el más frecuente en el cuadro clínico de la NAC?,Tos.
+¿Cuál es el signo clínico con mayor valor predictivo positivo para neumonía en menores de $2$ años?,Taquipnea.
+¿Qué hallazgo radiológico es característico de una neumonía bacteriana típica?,Infiltrado alveolar homogéneo o consolidación lobar.
+¿Qué patrón radiológico sugiere una etiología viral o atípica?,Infiltrado intersticial difuso bilateral.
+¿Qué nivel de Proteína C Reactiva (PCR) indica una alta probabilidad de etiología bacteriana y necesidad de antibióticos?,Mayor de $100$ $mg/dL$.
+¿A partir de qué nivel de PCR aumenta significativamente el riesgo de muerte en el paciente?,Mayor de $75$ $mg/dL$.
+¿Qué valor de procalcitonina sugiere una sobreinfección bacteriana?,Mayor a $0.8$ $ng/mL$.
+"En el diagnóstico de NAC severa, ¿cuándo es obligatorio realizar una tinción de Gram y cultivo?",En pacientes intubados mediante aspirado endotraqueal o broncoscopia.
+¿Cuál es la saturación de oxígeno ($SpO_2$) que define hipoxemia en un paciente con NAC?,Menor al $92\%$.
+¿Qué característica diferencia el inicio de síntomas entre la neumonía bacteriana típica y la atípica en adultos?,La típica es hiperaguda (menor a $24$ h) y la atípica es subaguda (días a semanas).
+¿Qué síntoma extrapulmonar es característico de la infección por $Legionella$?,Diarrea.
+¿Qué hallazgo en la auscultación es típico de la neumonía bacteriana localizada?,Crepitantes localizados y matidez.
+¿Cómo se describe el estado general de un niño con neumonía atípica (neumonía del caminador)?,Estado general conservado.
+¿Qué escala es la más utilizada para decidir el sitio de tratamiento (ambulatorio vs hospitalario) en adultos?,CURB-65.
+"En la escala CURB-65, ¿qué nivel de nitrógeno ureico en sangre otorga $1$ punto?",Mayor a $19$ $mg/dL$.
+¿Cuál es el punto de corte de la frecuencia respiratoria en el CURB-65?,$\ge 30$ respiraciones por minuto.
+¿Qué valores de presión arterial otorgan un punto en la escala CURB-65?,Sistólica $< 90$ $mmHg$ o diastólica $< 60$ $mmHg$.
+"Según el CURB-65, ¿qué conducta se debe seguir con un paciente que suma $2$ puntos?",Hospitalización corta o tratamiento en casa con supervisión estricta.
+¿Qué puntaje en la escala CRB-65 (sin urea) indica envío inmediato a segundo nivel?,A partir de $1$ punto.
+¿Cuál es el tratamiento de primera línea para NAC leve en adultos sin alergias?,Amoxicilina vía oral por $5$ días.
+¿Qué antibiótico se recomienda para adultos con NAC moderada-grave?,Levofloxacino (quinolona) o cefalosporina de $3^{ra}$ generación.
+¿Cuál es el esquema antibiótico de elección para un paciente con NAC en la UCI?,Betalactámico intravenoso más macrólido o quinolona.
+¿Por qué se debe evitar el uso de Inhibidores de la Bomba de Protones (IBP) en pacientes con riesgo de neumonía?,Porque incrementan el riesgo de desarrollar neumonía en el adulto.
+¿Cuál es la dosis de amoxicilina recomendada como primera línea en pediatría para NAC?,$90$ $mg/kg/dia$.
+¿Qué fármacos están contraindicados en el manejo de la neumonía pediátrica?,"Corticoides, antitusivos y antihistamínicos."
+¿Cuál es el principal factor de riesgo para desarrollar neumonía complicada por $Staphylococcus$ $aureus$?,Infección previa por Influenza.
+¿Cuál es la medida más efectiva para la prevención de la Influenza?,Vacunación.
+¿Qué fármaco antiviral y dosis se indica para el tratamiento de Influenza?,Oseltamivir $75$ $mg$ cada $12$ horas por $5$ días.
+¿En qué plazo se debe administrar la quimioprofilaxis con oseltamivir a los contactos de un caso de Influenza?,En las primeras $48$ horas.
+¿Qué síntoma es el síntoma más frecuente ($90\%$) en la clínica de Influenza?,Tos.
+¿Cuál es el estándar de oro ($Gold$ $Standard$) para el diagnóstico de COVID-19?,PCR-RT por hisopado nasofaríngeo.
+¿Qué hallazgo tomográfico es patognomónico de la neumonía por COVID-19?,Patrón en vidrio despulido con empedrado y distribución periférica.
+¿Bajo qué condición de saturación de oxígeno se indica el uso de dexametasona en pacientes hospitalizados por COVID-19?,Saturación menor al $90\%$ al aire ambiente.
+¿Qué efecto tiene el uso de dexametasona en pacientes con COVID-19 que no requieren oxígeno?,Aumenta la mortalidad en un $20\%$.
+¿Cuál es el tratamiento antiviral de elección para pacientes ambulatorios con COVID-19 y alto riesgo de complicaciones?,Paxlovid (Nirmatrelvir + Ritonavir).
+¿Cómo se define el Síndrome de Insuficiencia Respiratoria Aguda (SIRA) grave según la relación $PaO_2/FiO_2$?,Relación $PaO_2/FiO_2 < 100$ $mmHg$ con PEEP $> 5$ $cmH_2O$.
+¿Cuál es la piedra angular del tratamiento en el SIRA?,Ventilación mecánica protectora.
+¿Qué posición del paciente mejora la oxigenación en cuadros de SIRA grave?,Decúbito prono.
+¿A partir de cuántas horas de estancia hospitalaria se considera Neumonía Intrahospitalaria (NIH)?,Después de $48$ horas del ingreso.
+¿Qué microorganismo es el agente más común en la NIH temprana (menor a $5$ días)?,$Streptococcus$ $pneumoniae$ o $Staphylococcus$ $aureus$ meticilino sensible.
+¿Qué agentes se sospechan en una NIH tardía (mayor a $5$ días)?,"$Pseudomonas$ $aeruginosa$, MRSA o $Acinetobacter$."
+¿Cuál es el tratamiento empírico inicial para NIH con bajo riesgo de multirresistencia?,Ceftriaxona.
+¿Qué medida preventiva reduce la aspiración de secreciones en pacientes hospitalizados?,Mantener la cabecera entre $30$-$45^{\circ}$.
+¿Qué manifestación extrapulmonar sugiere infección por $Mycoplasma$ $pneumoniae$?,Anemia hemolítica (por crioaglutininas positivas).
+¿Cuál es el tratamiento de elección para neumonía por $Mycoplasma$ $pneumoniae$?,Azitromicina o Claritromicina (macrólidos).
+"En pediatría, ¿qué hallazgo auscultatorio diferencia la neumonía viral de la bacteriana?",La viral presenta sibilancias y crepitantes bilaterales; la bacteriana solo crepitantes localizados.
+¿Qué puntaje en la escala PSI (Pneumonia Severity Index) corresponde a la Clase IV?,Entre $91$-$130$ puntos.

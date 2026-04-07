@@ -1,0 +1,54 @@
+Definición: Sensibilidad,Probabilidad de que la prueba sea positiva entre los enfermos.
+Definición: Especificidad,Probabilidad de obtener un resultado negativo entre los individuos sanos.
+Definición: Valor Predictivo Positivo (VPP),Probabilidad de estar enfermo si el resultado de la prueba es positivo.
+Definición: Valor Predictivo Negativo (VPN),Probabilidad de estar sano si el resultado de la prueba es negativo.
+"Cuando una prueba diagnóstica tiene una sensibilidad muy alta, su principal utilidad es _____ la enfermedad.",descartar
+"Cuando una prueba diagnóstica tiene una especificidad muy alta, su principal utilidad es _____ la enfermedad.",confirmar
+¿Cómo se comporta el Valor Predictivo Positivo (VPP) ante un aumento en la prevalencia de la enfermedad?,El VPP aumenta.
+¿Cómo se comporta el Valor Predictivo Negativo (VPN) ante una disminución en la prevalencia de la enfermedad?,El VPN mejora (aumenta).
+¿Cuál es el diseño de estudio que selecciona individuos sanos y los clasifica según su exposición para medir la incidencia?,Estudio de cohorte.
+¿Qué medida de asociación se utiliza típicamente en los estudios de cohorte?,Riesgo Relativo (RR).
+¿Cuál es el rasgo distintivo principal de un estudio de cohorte respecto a la temporalidad?,Posee una secuencia temporal clara de exposición hacia el evento.
+¿Qué diseño de estudio parte de sujetos con la enfermedad y reconstruye su historia de exposición de forma retrospectiva?,Casos y controles.
+¿Qué medida de asociación se emplea en un estudio de casos y controles?,Odds Ratio (OR).
+¿Para qué tipo de enfermedades es especialmente eficiente el diseño de casos y controles?,Enfermedades raras o con períodos de latencia largos.
+"¿Qué diseño de estudio mide simultáneamente la exposición y el resultado, funcionando como una ""fotografía""?",Estudio transversal.
+¿Qué parámetro epidemiológico estima principalmente un estudio transversal?,Prevalencia.
+¿Por qué un estudio transversal no puede establecer causalidad?,"Debido a que mide exposición y resultado simultáneamente, careciendo de secuencia temporal."
+¿Qué diseño de estudio asigna al azar la intervención y permite el mayor control de sesgos?,Ensayo Clínico Aleatorizado (ECA).
+¿Cuál es la medida de asociación típica utilizada en un Ensayo Clínico Aleatorizado (ECA)?,Reducción Absoluta del Riesgo (RAR).
+Definición: Alerta epidemiológica,Comunicado de un evento epidemiológico que representa un daño inminente a la salud de la población.
+Definición: Asociación epidemiológica,"Situación en que dos o más casos comparten características de tiempo, lugar y persona."
+"En vigilancia epidemiológica, ¿qué constituye un ""brote"" además de la ocurrencia de dos casos asociados?",La existencia de un caso único en un área donde no existía el padecimiento.
+Definición: Caso confirmado,Caso corroborado por estudios auxiliares o asociado epidemiológicamente a otro caso confirmado por laboratorio.
+Definición: Caso sospechoso,Individuo susceptible que presenta algunos síntomas o signos compatibles con el evento bajo vigilancia.
+Definición: Caso probable,Persona que presenta signos o síntomas sugerentes de la enfermedad bajo vigilancia.
+"En el sarampión, ¿qué síntomas acompañan a la fiebre y al exantema maculopapular en un caso probable?","Tos, coriza, conjuntivitis o adenomegalias."
+"Para confirmar un caso probable de sarampión sin muestras de laboratorio, se requiere que esté _____ a otro caso confirmado.",asociado epidemiológicamente
+"¿Cuál es el criterio de edad para un caso probable de rubéola, excepto en situaciones de brote?",Ser menor de 15 años.
+¿Qué hallazgo de laboratorio confirma un caso de rubéola?,Serología positiva para anticuerpos IgM específicos o aislamiento del virus.
+"En la fiebre tifoidea, ¿cómo se describe típicamente el patrón de la fiebre en un caso probable?",Fiebre continua en agujas de predominio vespertino.
+¿En qué muestras biológicas se debe aislar Salmonella typhi después de la segunda semana para confirmar fiebre tifoidea?,Orina y heces fecales.
+¿Cuál es el síntoma pivote que define a un caso sospechoso de intoxicación alimentaria estafilocócica?,Vómitos sin causa aparente después de comer.
+¿Cuánto tiempo después de ingerir alimentos suelen aparecer los síntomas en la intoxicación alimentaria estafilocócica?,Después de 2 horas.
+¿Qué tipo de alimentos se asocian preferentemente a la intoxicación alimentaria estafilocócica?,"Lácteos (quesos, flanes) y cárnicos."
+"En la giardiasis, ¿cuántos días de duración debe tener la diarrea para considerarse caso probable?",Más de 14 días (diarrea crónica).
+Mencione dos características de las evacuaciones en un caso probable de giardiasis.,Esteatorrea (heces grasosas) y pálidas.
+¿Qué formas parasitarias deben identificarse en el coproparasitoscópico para confirmar giardiasis?,Quistes o trofozoítos.
+¿Cuánto tiempo después del contacto sexual aparece el chancro en un caso probable de sífilis?,Tres semanas.
+¿Cuáles son las tres características clínicas del chancro sifilítico primario?,"Úlcera indolora, indurada y con exudado seroso."
+"En la sífilis, un caso sospechoso se define clínicamente por la presencia de chancro y un resultado positivo en la prueba de _____.",VDRL
+¿Qué técnica de laboratorio se considera estándar de oro o definitiva para confirmar un caso de sífilis?,Anticuerpos fluorescentes directos (DFA-TP).
+"¿Qué zoonosis requiere notificación inmediata, semanal y cuenta con un sistema de vigilancia especial?",Leptospirosis.
+Nombre las tres entidades bajo vigilancia sindromática que requieren notificación inmediata.,"Enfermedad Febril Exantemática, Parálisis Flácida Aguda y Síndrome Coqueluchoide."
+¿Cuál es la frecuencia de notificación para la Difteria y la Tosferina?,Notificación inmediata.
+"¿Qué enfermedad infecciosa del aparato digestivo requiere notificación inmediata, diaria, semanal y sistema especial?",Cólera.
+Mencione tres enfermedades transmitidas por vectores que requieren notificación inmediata.,"Fiebre amarilla, Peste y Dengue hemorrágico."
+¿Qué tipos de paludismo requieren notificación inmediata según el agente causal?,Paludismo por Plasmodium falciparum.
+¿Cuál es la frecuencia de notificación para el Dengue clásico (fiebre por dengue)?,No tiene notificación inmediata.
+"¿Qué enfermedad transmitida por vectores, además del Dengue clásico, no requiere notificación inmediata?",Paludismo por Plasmodium vivax.
+"En el contexto de la fiebre tifoidea, ¿en qué periodo es más probable aislar el patógeno en sangre?",Durante la primera y segunda semana de la enfermedad.
+"Para el diagnóstico de sarampión, ¿qué institución debe reconocer las técnicas de laboratorio utilizadas?",El InDRE.
+¿Qué síntoma prodrómico diferencia al sarampión de la rubéola en la definición de caso probable?,La coriza y la tos (más características del sarampión).
+¿Cuál es el rasgo distintivo de la postración en la intoxicación estafilocócica según la definición de caso?,Postración acompañada de hipotermia intensa y diaforesis.
+¿Qué criterio de tiempo descarta un caso de intoxicación alimentaria estafilocócica?,No haber ingerido alimentos en más de 8 horas antes del inicio de síntomas.

@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<script>(function(){var t=localStorage.getItem('enarmagic-theme')||'dark';document.documentElement.setAttribute('data-theme',t);})()</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ENARMAGIC | Plataforma de Cursos Médicos</title>
+  <meta name="description" content="Plataforma de preparación ENARM 2026 — Cirugía, Pediatría, Ginecobstetricia y Medicina Interna." />
+  <meta name="robots" content="noindex, nofollow" />
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/favicon.png?v=3" />
+  <link rel="shortcut icon" type="image/png" href="assets/favicon.png?v=3" />
+  <link rel="apple-touch-icon" href="assets/favicon.png?v=3" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            /* ── Stitch Design System ── */
+            'surface-container-high':    '#141f38',
+            'surface-container-low':     '#091328',
+            'surface-container-highest': '#192540',
+            'surface-container':         '#0f1930',
+            'on-surface':                '#dee5ff',
+            'on-surface-variant':        '#a3aac4',
+            'outline':                   '#6d758c',
+            'outline-variant':           '#40485d',
+            'primary':                   '#3bbffa',
+            'primary-dim':               '#05a9e3',
+            'primary-container':         '#22b1ec',
+            'on-primary':                '#00374d',
+            'on-primary-container':      '#002b3d',
+            'secondary':                 '#8a95ff',
+            'on-secondary':              '#000974',
+            'tertiary':                  '#ff86c3',
+            'on-tertiary':               '#5f003e',
+            'background':                '#060e20',
+            'surface':                   '#060e20',
+            /* ── Legacy colours (kept for specialty views) ── */
+            'bg-base':      '#060e20',
+            'surface-1':    '#0f1930',
+            'surface-2':    '#141f38',
+            'surface-3':    '#192540',
+            'surface-hi':   '#1f2b49',
+            'on-surface-2': '#a3aac4',
+            'sp-cirugia':   '#FF4D6D',
+            'sp-pediatria': '#FFD166',
+            'sp-gineco':    '#FF6FD8',
+            'sp-medicina':  '#06D6A0',
+            'gold':         '#FFB800',
+            'anki-violet':  '#7C3AED',
+            'anki-indigo':  '#818CF8',
+            'sim-blue':     '#0EA5E9',
+          },
+          fontFamily: {
+            sans:     ['Inter', 'sans-serif'],
+            body:     ['Inter', 'sans-serif'],
+            headline: ['Manrope', 'sans-serif'],
+            label:    ['Inter', 'sans-serif'],
+          },
+          borderRadius: {
+            DEFAULT: '0.25rem',
+            lg:      '1rem',
+            xl:      '1.5rem',
+            full:    '9999px',
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-background text-on-surface font-body antialiased overflow-hidden mesh-gradient-bg">
+
+<!-- Loading Overlay -->
+<div id="authLoadingOverlay" class="fixed inset-0 z-50 bg-background bg-opacity-95 flex items-center justify-center">
+  <div class="text-center">
+    <div class="mb-4">
+      <div class="inline-block">
+        <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+      </div>
+    </div>
+    <p class="text-on-surface-variant">Verificando autenticación...</p>
+  </div>
+</div>
+
+<!-- Stripe.js CDN -->
+<script src="https://js.stripe.com/v3/"></script>
+
+<!-- Auth Check Script + Stripe Checkout -->
+<script>
+const PLAN_NAMES = { mip: 'Plan MIP (Gratuito)', r1: 'Plan R1', r_plus: 'Plan R+', adscrito: 'Plan Adscrito' };
+
+// Stripe Checkout function (globally accessible)
+async function startCheckout(planName) {
+  try {
+    const res = await fetch('/api/checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify({ plan: planName })
+    });
+    const data = await res.json();
+    if (data.error) {
+      alert(data.error);
+      return;
+    }
+    if (data.sessionId && data.publishableKey) {
+      const stripe = Stripe(data.publishableKey);
+      await stripe.redirectToCheckout({ sessionId: data.sessionId });
+    } else if (data.success) {
+      window.location.reload();
+    }
+  } catch (err) {
+    console.error('Checkout error:', err);
+    alert('Error al procesar el pago. Intenta de nuevo.');
+  }
+}
+window.startCheckout = startCheckout;
+
+(async function() {
+  try {
+    const response = await fetch('/api/user');
+    if (!response.ok) {
+      if (response.status === 401) {
+        window.location.href = '/login';
+        return;
+      }
+      throw new Error('Auth check failed');
+    }
+    const user = await response.json();
+    window.ENARMAGIC_USER = user;
+    window.ENARMAGIC_PLAN_ACCESS = {
+      plan: user.plan || 'mip',
+      name: PLAN_NAMES[user.plan] || 'MIP',
+      role: user.role || 'student'
+    };
+
+    // Update sidebar profile
+    const nameEl = document.querySelector('.stitch-sidebar-name');
+    const roleEl = document.querySelector('.stitch-sidebar-role');
+    if (nameEl) nameEl.textContent = user.name || 'Dr. Estudiante';
+    if (roleEl) roleEl.textContent = PLAN_NAMES[user.plan] || 'Plan MIP';
+
+    // Show admin panel link only for admin users
+    if (user.role === 'admin') {
+      const adminNavItem = document.getElementById('adminNavItem');
+      if (adminNavItem) adminNavItem.style.display = 'flex';
+    }
+
+    // Update hero greeting
+    const heroTitle = document.querySelector('.stitch-hero-title');
+    if (heroTitle) heroTitle.textContent = `Hola, ${user.name ? user.name.split(' ')[0] : 'Dr. Estudiante'}`;
+
+    // Check URL for payment success
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('success') === 'true') {
+      const planPaid = params.get('plan');
+      setTimeout(() => {
+        alert('¡Pago exitoso! Tu plan ha sido actualizado a ' + (PLAN_NAMES[planPaid] || planPaid));
+      }, 500);
+      window.history.replaceState({}, '', '/curso');
+    }
+
+    // Check if user came from landing with a selected plan → trigger checkout
+    const pendingPlan = sessionStorage.getItem('selectedPlan');
+    if (pendingPlan && pendingPlan !== 'mip' && pendingPlan !== user.plan) {
+      sessionStorage.removeItem('selectedPlan');
+      // Map landing plan names to server plan names
+      const planMap = { rplus: 'r_plus', r1: 'r1', adscrito: 'adscrito' };
+      const serverPlan = planMap[pendingPlan] || pendingPlan;
+      setTimeout(() => startCheckout(serverPlan), 800);
+    } else {
+      sessionStorage.removeItem('selectedPlan');
+    }
+
+    // Hide loading overlay
+    const overlay = document.getElementById('authLoadingOverlay');
+    if (overlay) overlay.style.display = 'none';
+
+  } catch (error) {
+    console.error('Auth error:', error);
+    window.location.href = '/login';
+  }
+})();
+</script>
+
+<!-- Ambient background blobs -->
+<div class="ambient-blobs" aria-hidden="true">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+</div>
+
+<div id="app" class="flex h-screen overflow-hidden">
+
+  <!-- ============================
+       SIDEBAR
+       ============================ -->
+  <!-- ============================
+       SIDEBAR (Stitch)
+       ============================ -->
+  <aside id="sidebar" class="stitch-sidebar">
+
+    <!-- User profile -->
+    <div class="stitch-sidebar-profile">
+      <div class="stitch-sidebar-avatar">
+        <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;font-size:28px;color:#3bbffa">account_circle</span>
+      </div>
+      <div class="flex-1">
+        <h3 class="stitch-sidebar-name">Dr. Estudiante</h3>
+        <p class="stitch-sidebar-role">Cirujano en formación</p>
+      </div>
+      <button id="planUpgradeBtn" onclick="scrollToPricingSection()" title="Mejorar Plan" style="padding:4px;background:none;border:none;cursor:pointer;display:none">
+        <span class="material-symbols-outlined" style="font-size:18px;color:#3bbffa">upgrade</span>
+      </button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="stitch-nav" role="navigation">
+      <a href="#" class="stitch-nav-item stitch-nav-item--active" data-view="dashboard" id="nav-dashboard">
+        <span class="material-symbols-outlined stitch-nav-icon">dashboard</span>
+        <span class="stitch-nav-label">Dashboard</span>
+      </a>
+      <a href="#" class="stitch-nav-item" data-view="cirugia" id="nav-cirugia">
+        <span class="material-symbols-outlined stitch-nav-icon">medical_services</span>
+        <span class="stitch-nav-label">Cirugía</span>
+        <span class="nav-badge nav-badge--cirugia">36</span>
+      </a>
+      <a href="#" class="stitch-nav-item" data-view="pediatria" id="nav-pediatria">
+        <span class="material-symbols-outlined stitch-nav-icon">child_care</span>
+        <span class="stitch-nav-label">Pediatría</span>
+        <span class="nav-badge nav-badge--pediatria">28</span>
+      </a>
+      <a href="#" class="stitch-nav-item" data-view="gineco" id="nav-gineco">
+        <span class="material-symbols-outlined stitch-nav-icon">female</span>
+        <span class="stitch-nav-label">Ginecobstetricia</span>
+        <span class="nav-badge nav-badge--gineco">20</span>
+      </a>
+      <a href="#" class="stitch-nav-item" data-view="medicina" id="nav-medicina">
+        <span class="material-symbols-outlined stitch-nav-icon">stethoscope</span>
+        <span class="stitch-nav-label">Medicina Interna</span>
+        <span class="nav-badge nav-badge--medicina">35</span>
+      </a>
+      <button onclick="openSettingsModal()" class="stitch-nav-item" style="border:none;background:none;width:100%;text-align:left;cursor:pointer">
+        <span class="material-symbols-outlined stitch-nav-icon">settings</span>
+        <span class="stitch-nav-label">Configuración</span>
+      </button>
+    </nav>
+
+    <!-- Footer -->
+    <div class="stitch-sidebar-footer">
+      <button class="sidebar-toggle" id="sidebarToggle" aria-label="Cerrar menú" style="display:none">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+      <!-- Admin Panel link — hidden by default, shown only for admin users -->
+      <a href="/admin" id="adminNavItem" class="stitch-nav-item" style="display:none;background:linear-gradient(90deg,rgba(59,191,250,0.12),rgba(138,149,255,0.08));border:1px solid rgba(59,191,250,0.25);border-radius:8px;margin-bottom:4px" title="Panel de Administración">
+        <span class="material-symbols-outlined stitch-nav-icon" style="color:#3bbffa">admin_panel_settings</span>
+        <span class="stitch-nav-label" style="color:#3bbffa;font-weight:600">Panel Admin</span>
+      </a>
+      <a href="#" class="stitch-nav-item" style="margin-top:auto">
+        <span class="material-symbols-outlined stitch-nav-icon">help_outline</span>
+        <span class="stitch-nav-label">Help Center</span>
+      </a>
+      <a href="/" class="stitch-nav-item">
+        <span class="material-symbols-outlined stitch-nav-icon">home</span>
+        <span class="stitch-nav-label">Inicio</span>
+      </a>
+      <button onclick="logoutUser()" class="stitch-nav-item" style="border:none;background:none;width:100%;text-align:left;cursor:pointer">
+        <span class="material-symbols-outlined stitch-nav-icon">logout</span>
+        <span class="stitch-nav-label">Cerrar Sesión</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Mobile overlay for sidebar -->
+  <div class="sidebar-mobile-overlay" id="sidebarOverlay" onclick="document.getElementById('sidebar').classList.remove('open');this.style.display='none';document.body.style.overflow=''"></div>
+
+  <!-- ============================
+       MAIN CONTENT
+       ============================ -->
+  <main class="main-content" id="mainContent">
+
+    <!-- Top Bar (Stitch) -->
+    <header class="stitch-topbar" id="topbar">
+      <div class="stitch-topbar-left">
+        <button class="stitch-sidebar-toggle-btn" id="sidebarToggleBtn" aria-label="Mostrar/ocultar menú" title="Mostrar/ocultar menú">
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+        <a href="#" class="stitch-logo-link" data-view="dashboard" title="ENARMAGIC — Inicio">
+          <img src="assets/logo.png" alt="ENARMAGIC" class="stitch-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline';" />
+          <span class="stitch-logo stitch-logo-fallback" style="display:none">ENARMAGIC</span>
+        </a>
+      </div>
+      <div class="stitch-topbar-center">
+        <div class="stitch-search-wrap">
+          <span class="material-symbols-outlined stitch-search-icon">search</span>
+          <input id="searchBtn" type="text" class="stitch-search-input" placeholder="Buscar temas o simuladores..." aria-label="Buscar temas (Ctrl+K)" readonly onclick="openSearch()" />
+
+        </div>
+      </div>
+      <div class="stitch-topbar-right">
+        <!-- Theme Toggle -->
+        <button class="topbar-theme-btn" onclick="toggleEnarmagicTheme()" id="themeToggleBtn"
+          title="Cambiar tema" aria-label="Alternar tema oscuro/claro">
+          <span class="material-symbols-outlined" id="themeIcon">light_mode</span>
+        </button>
+        <button class="topbar-icon-btn" id="muteBtn" title="Silenciar sonido" aria-label="Silenciar sonido">
+          <span class="material-symbols-outlined" id="muteBtnIcon">volume_up</span>
+        </button>
+        <button class="topbar-icon-btn topbar-notif-btn">
+          <span class="material-symbols-outlined">notifications</span>
+          <span class="topbar-notif-dot"></span>
+        </button>
+        <button class="topbar-icon-btn">
+          <span class="material-symbols-outlined">account_circle</span>
+        </button>
+        <div class="stitch-topbar-divider"></div>
+        <span class="stitch-topbar-profile">Profile</span>
+      </div>
+    </header>
+
+    <!-- Views Container -->
+    <div class="view-container">
+
+      <!-- ================================================
+           DASHBOARD VIEW  (Stitch Design)
+           ================================================ -->
+      <section class="view active" id="view-dashboard">
+
+        <!-- Hero / Greeting -->
+        <section class="stitch-hero">
+          <div class="stitch-hero-left">
+            <h1 class="stitch-hero-title">Hola, Dr. Estudiante</h1>
+            <p class="stitch-hero-sub">Tu camino hacia el éxito en el ENARM continúa. Mantén el enfoque y la precisión quirúrgica en tu estudio hoy.</p>
+          </div>
+          <div class="stitch-hero-right">
+            <div class="stitch-streak-chip">
+              <p class="stitch-streak-label">Racha Actual</p>
+              <div class="stitch-streak-val">
+                <span class="material-symbols-outlined stitch-fire-icon" style="font-variation-settings:'FILL' 1">local_fire_department</span>
+                <span id="kpi-streak-display">1 DÍA</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Bento Grid -->
+        <div class="stitch-bento">
+
+          <!-- Top row: Progress + Sims -->
+          <div class="stitch-top-row">
+
+          <!-- Progreso General (large) -->
+          <div class="stitch-card stitch-card--progress">
+            <div class="stitch-card-glow"></div>
+            <div class="stitch-progress-inner">
+              <!-- Left col -->
+              <div class="stitch-progress-left">
+                <div>
+                  <h2 class="stitch-card-title">Progreso General</h2>
+                  <p class="stitch-card-sub">Resumen de tu avance académico total</p>
+                </div>
+                <div class="stitch-progress-pct">
+                  <span id="kpi-viewed-badge" class="stitch-pct-number">0%</span>
+                  <p class="stitch-pct-label">COMPLETADO</p>
+                </div>
+                <div class="stitch-progress-stats">
+                  <div>
+                    <p class="stitch-stat-label">Total Temas</p>
+                    <p class="stitch-stat-val" id="kpi-temas">119</p>
+                  </div>
+                  <div>
+                    <p class="stitch-stat-label">Simuladores</p>
+                    <p class="stitch-stat-val" id="kpi-quiz-count-db">0</p>
+                  </div>
+                </div>
+              </div>
+              <!-- Right col: ring -->
+              <div class="stitch-ring-wrap">
+                <svg class="stitch-ring-svg" viewBox="0 0 192 192">
+                  <circle class="stitch-ring-track" cx="96" cy="96" r="88" fill="transparent" stroke-width="12"/>
+                  <circle class="stitch-ring-fill" id="dashRingFill" cx="96" cy="96" r="88" fill="transparent" stroke-width="12"
+                    stroke-dasharray="552.92" stroke-dashoffset="552.92" stroke-linecap="round"
+                    transform="rotate(-90 96 96)"/>
+                </svg>
+                <div class="stitch-ring-center">
+                  <span class="material-symbols-outlined stitch-ring-icon">auto_awesome</span>
+                  <span class="stitch-ring-hint">Comienza una lección para ver tu avance</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Simuladores (small) -->
+          <div class="stitch-card stitch-card--sims">
+            <div class="stitch-sims-head">
+              <h2 class="stitch-card-title">Simuladores</h2>
+              <span class="material-symbols-outlined stitch-sims-icon">history_edu</span>
+            </div>
+            <div class="stitch-sims-body" id="db-sims">
+              <!-- filled by dashboard.js -->
+              <div class="stitch-sims-empty">
+                <div class="stitch-sims-empty-icon">
+                  <span class="material-symbols-outlined">pending_actions</span>
+                </div>
+                <p class="stitch-sims-empty-title">Sin pendientes</p>
+                <p class="stitch-sims-empty-sub">No tienes simuladores programados para hoy. ¡Buen trabajo!</p>
+              </div>
+            </div>
+            <button class="stitch-btn-primary" onclick="showView('cirugia')">NUEVO SIMULADOR</button>
+          </div>
+          </div><!-- /stitch-top-row -->
+
+          <!-- Especialidades -->
+          <div class="stitch-specialties-section">
+            <div class="stitch-section-header">
+              <h2 class="stitch-section-title">Especialidades</h2>
+              <a href="#" class="stitch-section-link" onclick="showView('cirugia');return false">Ver todo el contenido</a>
+            </div>
+            <div class="stitch-specialty-grid" id="specialtyGrid">
+
+              <!-- Cirugía -->
+              <div class="stitch-sp-card stitch-sp-card--primary" data-view="cirugia" role="button" tabindex="0"
+                   onclick="showView('cirugia')" onkeydown="if(event.key==='Enter')showView('cirugia')">
+                <div class="stitch-sp-card-top">
+                  <div class="stitch-sp-icon stitch-sp-icon--primary">
+                    <span class="material-symbols-outlined">medical_services</span>
+                  </div>
+                  <span class="stitch-sp-count" id="sp-count-cirugia">0 / 36 Temas</span>
+                </div>
+                <h3 class="stitch-sp-name">Cirugía</h3>
+                <div class="stitch-sp-bar-track">
+                  <div class="stitch-sp-bar-fill stitch-sp-bar-fill--primary" id="sp-bar-cirugia"></div>
+                </div>
+              </div>
+
+              <!-- Pediatría -->
+              <div class="stitch-sp-card stitch-sp-card--secondary" data-view="pediatria" role="button" tabindex="0"
+                   onclick="showView('pediatria')" onkeydown="if(event.key==='Enter')showView('pediatria')">
+                <div class="stitch-sp-card-top">
+                  <div class="stitch-sp-icon stitch-sp-icon--secondary">
+                    <span class="material-symbols-outlined">child_care</span>
+                  </div>
+                  <span class="stitch-sp-count" id="sp-count-pediatria">0 / 28 Temas</span>
+                </div>
+                <h3 class="stitch-sp-name">Pediatría</h3>
+                <div class="stitch-sp-bar-track">
+                  <div class="stitch-sp-bar-fill stitch-sp-bar-fill--secondary" id="sp-bar-pediatria"></div>
+                </div>
+              </div>
+
+              <!-- Ginecobstetricia -->
+              <div class="stitch-sp-card stitch-sp-card--tertiary" data-view="gineco" role="button" tabindex="0"
+                   onclick="showView('gineco')" onkeydown="if(event.key==='Enter')showView('gineco')">
+                <div class="stitch-sp-card-top">
+                  <div class="stitch-sp-icon stitch-sp-icon--tertiary">
+                    <span class="material-symbols-outlined">female</span>
+                  </div>
+                  <span class="stitch-sp-count" id="sp-count-gineco">0 / 20 Temas</span>
+                </div>
+                <h3 class="stitch-sp-name">Ginecobstetricia</h3>
+                <div class="stitch-sp-bar-track">
+                  <div class="stitch-sp-bar-fill stitch-sp-bar-fill--tertiary" id="sp-bar-gineco"></div>
+                </div>
+              </div>
+
+              <!-- Medicina Interna -->
+              <div class="stitch-sp-card stitch-sp-card--sky" data-view="medicina" role="button" tabindex="0"
+                   onclick="showView('medicina')" onkeydown="if(event.key==='Enter')showView('medicina')">
+                <div class="stitch-sp-card-top">
+                  <div class="stitch-sp-icon stitch-sp-icon--sky">
+                    <span class="material-symbols-outlined">stethoscope</span>
+                  </div>
+                  <span class="stitch-sp-count" id="sp-count-medicina">0 / 35 Temas</span>
+                </div>
+                <h3 class="stitch-sp-name">Medicina Interna</h3>
+                <div class="stitch-sp-bar-track">
+                  <div class="stitch-sp-bar-fill stitch-sp-bar-fill--sky" id="sp-bar-medicina"></div>
+                </div>
+              </div>
+
+            </div>
+          </div><!-- /specialties -->
+
+          <!-- Study Suggestion Banner -->
+          <div class="stitch-suggestion-section">
+            <div class="stitch-suggestion-card">
+              <div class="stitch-suggestion-img">
+                <span class="material-symbols-outlined" style="font-size:40px;color:#3bbffa;opacity:0.7">local_hospital</span>
+              </div>
+              <div class="stitch-suggestion-body">
+                <div class="stitch-suggestion-meta">
+                  <span class="stitch-suggestion-badge">Sugerencia de hoy</span>
+                  <span class="stitch-suggestion-time">• 45 min de lectura</span>
+                </div>
+                <h3 class="stitch-suggestion-title" id="db-next-topic">Cargando sugerencia…</h3>
+                <p class="stitch-suggestion-desc" id="db-suggest-desc">Seleccionando el mejor tema para ti…</p>
+              </div>
+              <button class="stitch-btn-outline" id="db-suggest-btn" onclick="showView('cirugia')">COMENZAR LECCIÓN</button>
+            </div>
+          </div>
+
+          <!-- Hidden elements kept for JS compatibility -->
+          <div style="display:none">
+            <div id="db-sp-progress"></div>
+            <div id="db-next-list"></div>
+            <div id="kpi-viewed"></div>
+            <div id="kpi-streak"></div>
+            <div id="kpi-streak-sub"></div>
+            <div id="kpi-viewed-pct"></div>
+            <div id="kpi-quiz"></div>
+            <div id="kpi-quiz-count"></div>
+            <div id="db-greeting-time"></div>
+            <div id="db-clock"></div>
+            <div id="db-date"></div>
+          </div>
+
+          <!-- Reset Progress -->
+          <div class="db-reset-section" id="dbResetSection" style="grid-column:1/-1">
+            <button class="db-reset-btn" id="dbResetBtn" onclick="showResetConfirm()">
+              <span class="material-symbols-outlined">restart_alt</span>
+              Reiniciar Progreso
+            </button>
+          </div>
+
+        </div><!-- /bento -->
+
+        <!-- FAB -->
+        <div class="stitch-fab">
+          <button class="stitch-fab-btn" onclick="showView('cirugia')" aria-label="Nuevo simulador">
+            <span class="material-symbols-outlined">add</span>
+          </button>
+        </div>
+
+      </section><!-- /view-dashboard -->
+
+      <!-- ================================================
+           SPECIALTY VIEWS
+           ================================================ -->
+
+      <!-- Cirugía -->
+      <section class="view" id="view-cirugia">
+        <div class="view-header view-header--cirugia">
+          <div class="view-header-accent-bar"></div>
+          <div class="view-header-icon-wrap"><span class="material-symbols-outlined view-header-icon" style="font-variation-settings:'FILL' 1">content_cut</span></div>
+          <div class="view-header-text">
+            <div class="view-header-eyebrow">Especialidad Quirúrgica</div>
+            <h1 class="view-title">Cirugía</h1>
+            <p class="view-subtitle">36 temas — Preparación completa ENARM</p>
+          </div>
+          <div class="view-header-progress-card">
+            <div class="view-header-prog-label">Tu Progreso</div>
+            <div class="view-header-prog-val" id="cirugia-prog-pct">—</div>
+          </div>
+          <div class="view-header-glow" aria-hidden="true"></div>
+        </div>
+        <div class="section-tabs" id="tabs-cirugia">
+          <button class="section-tab active" data-sp="cirugia" data-section="resumenes">
+            <span class="material-symbols-outlined section-tab-icon">description</span>Resúmenes
+          </button>
+          <button class="section-tab" data-sp="cirugia" data-section="videoclase">
+            <span class="material-symbols-outlined section-tab-icon">play_circle</span>Videoclase
+          </button>
+          <button class="section-tab" data-sp="cirugia" data-section="kahoot">
+            <span class="material-symbols-outlined section-tab-icon">quiz</span>Kahoot
+          </button>
+          <button class="section-tab" data-sp="cirugia" data-section="simulador">
+            <span class="material-symbols-outlined section-tab-icon">biotech</span>Simulador
+          </button>
+          <button class="section-tab" data-sp="cirugia" data-section="anki">
+            <span class="material-symbols-outlined section-tab-icon">style</span>Anki
+          </button>
+        </div>
+        <div class="topic-grid" id="cirugia-content"></div>
+      </section>
+
+      <!-- Pediatría -->
+      <section class="view" id="view-pediatria">
+        <div class="view-header view-header--pediatria">
+          <div class="view-header-accent-bar"></div>
+          <div class="view-header-icon-wrap"><span class="material-symbols-outlined view-header-icon" style="font-variation-settings:'FILL' 1">child_care</span></div>
+          <div class="view-header-text">
+            <div class="view-header-eyebrow">Especialidad Pediátrica</div>
+            <h1 class="view-title">Pediatría</h1>
+            <p class="view-subtitle">28 temas — Preparación completa ENARM</p>
+          </div>
+          <div class="view-header-progress-card">
+            <div class="view-header-prog-label">Tu Progreso</div>
+            <div class="view-header-prog-val" id="pediatria-prog-pct">—</div>
+          </div>
+          <div class="view-header-glow" aria-hidden="true"></div>
+        </div>
+        <div class="section-tabs" id="tabs-pediatria">
+          <button class="section-tab active" data-sp="pediatria" data-section="resumenes">
+            <span class="material-symbols-outlined section-tab-icon">description</span>Resúmenes
+          </button>
+          <button class="section-tab" data-sp="pediatria" data-section="videoclase">
+            <span class="material-symbols-outlined section-tab-icon">play_circle</span>Videoclase
+          </button>
+          <button class="section-tab" data-sp="pediatria" data-section="kahoot">
+            <span class="material-symbols-outlined section-tab-icon">quiz</span>Kahoot
+          </button>
+          <button class="section-tab" data-sp="pediatria" data-section="simulador">
+            <span class="material-symbols-outlined section-tab-icon">biotech</span>Simulador
+          </button>
+          <button class="section-tab" data-sp="pediatria" data-section="anki">
+            <span class="material-symbols-outlined section-tab-icon">style</span>Anki
+          </button>
+        </div>
+        <div class="topic-grid" id="pediatria-content"></div>
+      </section>
+
+      <!-- Ginecobstetricia -->
+      <section class="view" id="view-gineco">
+        <div class="view-header view-header--gineco">
+          <div class="view-header-accent-bar"></div>
+          <div class="view-header-icon-wrap"><span class="material-symbols-outlined view-header-icon" style="font-variation-settings:'FILL' 1">pregnant_woman</span></div>
+          <div class="view-header-text">
+            <div class="view-header-eyebrow">Especialidad Ginecológica</div>
+            <h1 class="view-title">Ginecobstetricia</h1>
+            <p class="view-subtitle">20 temas — Preparación completa ENARM</p>
+          </div>
+          <div class="view-header-progress-card">
+            <div class="view-header-prog-label">Tu Progreso</div>
+            <div class="view-header-prog-val" id="gineco-prog-pct">—</div>
+          </div>
+          <div class="view-header-glow" aria-hidden="true"></div>
+        </div>
+        <div class="section-tabs" id="tabs-gineco">
+          <button class="section-tab active" data-sp="gineco" data-section="resumenes">
+            <span class="material-symbols-outlined section-tab-icon">description</span>Resúmenes
+          </button>
+          <button class="section-tab" data-sp="gineco" data-section="videoclase">
+            <span class="material-symbols-outlined section-tab-icon">play_circle</span>Videoclase
+          </button>
+          <button class="section-tab" data-sp="gineco" data-section="kahoot">
+            <span class="material-symbols-outlined section-tab-icon">quiz</span>Kahoot
+          </button>
+          <button class="section-tab" data-sp="gineco" data-section="simulador">
+            <span class="material-symbols-outlined section-tab-icon">biotech</span>Simulador
+          </button>
+          <button class="section-tab" data-sp="gineco" data-section="anki">
+            <span class="material-symbols-outlined section-tab-icon">style</span>Anki
+          </button>
+        </div>
+        <div class="topic-grid" id="gineco-content"></div>
+      </section>
+
+      <!-- Medicina Interna -->
+      <section class="view" id="view-medicina">
+        <div class="view-header view-header--medicina">
+          <div class="view-header-accent-bar"></div>
+          <div class="view-header-icon-wrap"><span class="material-symbols-outlined view-header-icon" style="font-variation-settings:'FILL' 1">stethoscope</span></div>
+          <div class="view-header-text">
+            <div class="view-header-eyebrow">Especialidad Médica</div>
+            <h1 class="view-title">Medicina Interna</h1>
+            <p class="view-subtitle">35 temas — Preparación completa ENARM</p>
+          </div>
+          <div class="view-header-progress-card">
+            <div class="view-header-prog-label">Tu Progreso</div>
+            <div class="view-header-prog-val" id="medicina-prog-pct">—</div>
+          </div>
+          <div class="view-header-glow" aria-hidden="true"></div>
+        </div>
+        <div class="section-tabs" id="tabs-medicina">
+          <button class="section-tab active" data-sp="medicina" data-section="resumenes">
+            <span class="material-symbols-outlined section-tab-icon">description</span>Resúmenes
+          </button>
+          <button class="section-tab" data-sp="medicina" data-section="videoclase">
+            <span class="material-symbols-outlined section-tab-icon">play_circle</span>Videoclase
+          </button>
+          <button class="section-tab" data-sp="medicina" data-section="kahoot">
+            <span class="material-symbols-outlined section-tab-icon">quiz</span>Kahoot
+          </button>
+          <button class="section-tab" data-sp="medicina" data-section="simulador">
+            <span class="material-symbols-outlined section-tab-icon">biotech</span>Simulador
+          </button>
+          <button class="section-tab" data-sp="medicina" data-section="anki">
+            <span class="material-symbols-outlined section-tab-icon">style</span>Anki
+          </button>
+        </div>
+        <div class="topic-grid" id="medicina-content"></div>
+      </section>
+
+      <!-- Topic Detail -->
+      <section class="view" id="view-topic">
+        <div class="topic-detail-container" id="topicDetail"></div>
+      </section>
+
+    </div><!-- /.view-container -->
+  </main>
+</div><!-- /#app -->
+
+<!-- Image Lightbox -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Cerrar">
+    <span class="material-symbols-outlined">close</span>
+  </button>
+  <button class="lightbox-prev" id="lightboxPrev" aria-label="Anterior">
+    <span class="material-symbols-outlined">chevron_left</span>
+  </button>
+  <button class="lightbox-next" id="lightboxNext" aria-label="Siguiente">
+    <span class="material-symbols-outlined">chevron_right</span>
+  </button>
+  <div class="lightbox-content">
+    <img id="lightboxImg" src="" alt="Infografía" />
+  </div>
+  <div class="lightbox-counter" id="lightboxCounter"></div>
+</div>
+
+<!-- Search Overlay -->
+<div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-label="Buscar temas">
+  <div class="search-modal">
+    <div class="search-modal-header">
+      <span class="material-symbols-outlined search-modal-icon">search</span>
+      <input type="text" id="searchInputField" class="search-modal-input" placeholder="Buscar temas, patologías, especialidades…" autocomplete="off" spellcheck="false" />
+      <button class="search-modal-close" id="searchClose" aria-label="Cerrar">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    <div class="search-results" id="searchResults">
+      <p class="search-hint">Escribe para buscar temas…</p>
+    </div>
+    <div class="search-modal-footer">↑↓ navegar · Enter seleccionar · Esc cerrar</div>
+  </div>
+</div>
+
+<!-- Content Hub Modal -->
+<div class="content-hub-overlay" id="contentHubOverlay" role="dialog" aria-modal="true" aria-label="Centro de contenidos">
+  <div class="content-hub-modal" id="contentHubModal">
+    <div class="content-hub-header">
+      <div class="content-hub-topic-info">
+        <span class="content-hub-num" id="hubTopicNum">Tema 1</span>
+        <span class="content-hub-name" id="hubTopicName">Nombre del tema</span>
+      </div>
+      <button class="content-hub-close" id="contentHubClose" aria-label="Cerrar">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    <div class="content-hub-subtitle">Elige cómo explorar este tema</div>
+    <div class="content-hub-grid" id="contentHubGrid"></div>
+  </div>
+</div>
+
+<!-- File Viewer Modal (PPTX / PDF / DOCX / Images) -->
+<div class="file-viewer-overlay" id="fileViewerOverlay" role="dialog" aria-modal="true">
+  <div class="file-viewer-container" id="fileViewerContainer">
+    <div class="file-viewer-topbar">
+      <div class="file-viewer-topbar-left">
+        <button class="file-viewer-back" id="fileViewerBack" aria-label="Volver">
+          <span class="material-symbols-outlined">arrow_back</span>
+          <span>Volver</span>
+        </button>
+        <div class="file-viewer-title-area">
+          <span class="material-symbols-outlined file-viewer-type-icon" id="fileViewerTypeIcon">slideshow</span>
+          <span class="file-viewer-file-name" id="fileViewerFileName">Presentación</span>
+        </div>
+      </div>
+      <div class="file-viewer-topbar-right">
+        <a class="file-viewer-download-btn" id="fileViewerDownload" download aria-label="Descargar archivo">
+          <span class="material-symbols-outlined">download</span>
+          Descargar
+        </a>
+        <button class="file-viewer-close" id="fileViewerClose" aria-label="Cerrar visor">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+    </div>
+    <!-- PPTX Viewer (slide-based) -->
+    <div class="pptx-viewer" id="pptxViewer" style="display:none">
+      <div class="pptx-viewer-stage" id="pptxStage">
+        <div class="pptx-loading" id="pptxLoading">
+          <div class="pptx-loading-spinner"></div>
+          <div class="pptx-loading-text">Cargando presentación…</div>
+        </div>
+        <div class="pptx-slides-wrap" id="pptxSlidesWrap" style="display:none"></div>
+      </div>
+      <div class="pptx-controls" id="pptxControls" style="display:none">
+        <button class="pptx-ctrl-btn" id="pptxPrev" aria-label="Diapositiva anterior">
+          <span class="material-symbols-outlined">chevron_left</span>
+        </button>
+        <span class="pptx-slide-counter" id="pptxCounter">1 / 1</span>
+        <button class="pptx-ctrl-btn" id="pptxNext" aria-label="Diapositiva siguiente">
+          <span class="material-symbols-outlined">chevron_right</span>
+        </button>
+        <button class="pptx-ctrl-btn pptx-fullscreen-btn" id="pptxFullscreen" aria-label="Pantalla completa">
+          <span class="material-symbols-outlined">fullscreen</span>
+        </button>
+      </div>
+      <!-- Multi-PPTX selector -->
+      <div class="pptx-selector" id="pptxSelector" style="display:none"></div>
+    </div>
+    <!-- PDF Viewer (PDF.js canvas-based) -->
+    <div class="pdf-viewer" id="pdfViewer" style="display:none">
+      <div class="pdf-loading" id="pdfLoading">
+        <div class="pptx-loading-spinner"></div>
+        <div class="pptx-loading-text">Cargando PDF…</div>
+      </div>
+      <div class="pdf-canvas-wrap" id="pdfCanvasWrap"></div>
+      <div class="pptx-controls" id="pdfControls" style="display:none">
+        <button class="pptx-ctrl-btn" id="pdfPrev" aria-label="Página anterior">
+          <span class="material-symbols-outlined">chevron_left</span>
+        </button>
+        <span class="pptx-slide-counter" id="pdfCounter">1 / 1</span>
+        <button class="pptx-ctrl-btn" id="pdfNext" aria-label="Página siguiente">
+          <span class="material-symbols-outlined">chevron_right</span>
+        </button>
+        <button class="pptx-ctrl-btn pptx-fullscreen-btn" id="pdfFullscreen" aria-label="Pantalla completa">
+          <span class="material-symbols-outlined">fullscreen</span>
+        </button>
+      </div>
+    </div>
+    <!-- DOCX Viewer -->
+    <div class="docx-viewer" id="docxViewer" style="display:none">
+      <div class="docx-content" id="docxContent"></div>
+    </div>
+    <!-- Anki Flashcard Viewer -->
+    <div class="anki-viewer" id="ankiViewer" style="display:none">
+      <div class="anki-progress-wrap">
+        <span class="anki-progress-label" id="ankiProgressLabel">Tarjeta 1 de 1</span>
+        <div class="anki-progress-bar"><div class="anki-progress-fill" id="ankiProgressFill"></div></div>
+      </div>
+      <div class="anki-stage">
+        <div class="anki-card" id="ankiCard" onclick="flipAnkiCard()">
+          <div class="anki-card-inner" id="ankiCardInner">
+            <div class="anki-card-front">
+              <span class="anki-card-side-label">PREGUNTA</span>
+              <div class="anki-card-text" id="ankiCardFrontText"></div>
+            </div>
+            <div class="anki-card-back">
+              <span class="anki-card-side-label anki-back-label">RESPUESTA</span>
+              <div class="anki-card-text" id="ankiCardBackText"></div>
+            </div>
+          </div>
+          <div class="anki-flip-hint" id="ankiFlipHint">Toca para ver la respuesta</div>
+        </div>
+      </div>
+      <div class="anki-controls">
+        <button class="pptx-ctrl-btn" id="ankiPrev" aria-label="Tarjeta anterior">
+          <span class="material-symbols-outlined">chevron_left</span>
+        </button>
+        <div class="anki-action-btns">
+          <button class="anki-action-btn anki-fail" onclick="rateAnkiCard('fail')" title="No lo sabía">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+          <button class="anki-action-btn anki-flip-btn" onclick="flipAnkiCard()">
+            <span class="material-symbols-outlined">flip</span>&nbsp;Voltear
+          </button>
+          <button class="anki-action-btn anki-pass" onclick="rateAnkiCard('pass')" title="¡Lo sabía!">
+            <span class="material-symbols-outlined">check</span>
+          </button>
+        </div>
+        <button class="pptx-ctrl-btn" id="ankiNext" aria-label="Tarjeta siguiente">
+          <span class="material-symbols-outlined">chevron_right</span>
+        </button>
+      </div>
+    </div>
+    <!-- Image Gallery Viewer -->
+    <div class="img-viewer" id="imgViewer" style="display:none">
+      <div class="img-viewer-stage" id="imgViewerStage"></div>
+      <div class="img-viewer-controls">
+        <button class="pptx-ctrl-btn" id="imgPrev"><span class="material-symbols-outlined">chevron_left</span></button>
+        <span class="pptx-slide-counter" id="imgCounter">1 / 1</span>
+        <button class="pptx-ctrl-btn" id="imgNext"><span class="material-symbols-outlined">chevron_right</span></button>
+      </div>
+      <div class="img-viewer-thumbs" id="imgViewerThumbs"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Upgrade Modal -->
+<div id="upgradeModal" class="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center" style="display:none; backdrop-filter:blur(4px)">
+  <div class="bg-surface-container-high rounded-xl p-8 max-w-lg w-full mx-4 border border-outline-variant shadow-2xl">
+    <div class="text-center mb-6">
+      <span class="material-symbols-outlined" style="font-size:48px;color:#FFB800;font-variation-settings:'FILL' 1">lock</span>
+      <h2 class="text-2xl font-headline font-bold text-on-surface mt-3">Contenido no disponible</h2>
+      <p class="text-on-surface-variant mt-2">
+        Para ver este tema debes adquirir un plan superior.
+      </p>
+    </div>
+    <input type="hidden" id="upgradeModalSpId" />
+    <input type="hidden" id="upgradeModalTopic" />
+    <div class="space-y-3 mb-6">
+      <button onclick="startCheckout('r1'); closeUpgradeModal();"
+        class="w-full flex items-center justify-between px-5 py-3 rounded-lg border border-outline-variant hover:border-primary transition-all hover:bg-surface-container"
+        style="text-align:left">
+        <div>
+          <p class="font-bold text-on-surface">Plan R1</p>
+          <p class="text-sm text-on-surface-variant">40 temas esenciales</p>
+        </div>
+        <span class="text-primary font-bold">$1,499 MXN</span>
+      </button>
+      <button onclick="startCheckout('r_plus'); closeUpgradeModal();"
+        class="w-full flex items-center justify-between px-5 py-3 rounded-lg border-2 border-primary transition-all"
+        style="text-align:left; background:linear-gradient(135deg, rgba(59,191,250,0.08), rgba(138,149,255,0.08))">
+        <div>
+          <p class="font-bold text-on-surface">Plan R+ <span class="text-xs px-2 py-0.5 rounded-full bg-primary text-on-primary ml-1">POPULAR</span></p>
+          <p class="text-sm text-on-surface-variant">75 temas avanzados</p>
+        </div>
+        <span class="text-primary font-bold">$2,499 MXN</span>
+      </button>
+      <button onclick="startCheckout('adscrito'); closeUpgradeModal();"
+        class="w-full flex items-center justify-between px-5 py-3 rounded-lg border border-outline-variant hover:border-primary transition-all hover:bg-surface-container"
+        style="text-align:left">
+        <div>
+          <p class="font-bold text-on-surface">Plan Adscrito</p>
+          <p class="text-sm text-on-surface-variant">115+ temas — Curso completo</p>
+        </div>
+        <span class="text-primary font-bold">$3,499 MXN</span>
+      </button>
+    </div>
+    <button onclick="closeUpgradeModal()" class="w-full px-4 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors text-sm">
+      Cerrar
+    </button>
+  </div>
+</div>
+
+<!-- Locked Topic Styles -->
+<style>
+.topic-card.locked {
+  position: relative;
+  opacity: 0.65;
+  cursor: pointer;   /* clickable — abre el modal de upgrade */
+  pointer-events: auto;
+}
+
+.topic-card.locked::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: inherit;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.topic-card.locked .lock-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 11;
+  background: rgba(0, 0, 0, 0.82);
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.topic-card.locked .lock-overlay .material-symbols-outlined {
+  color: #FFB800;
+  font-size: 32px;
+  font-variation-settings: 'FILL' 1;
+}
+
+.topic-card.locked:hover {
+  opacity: 0.80;
+}
+
+/* ── Highlight pulse when navigating to a specific topic ── */
+@keyframes topicHighlightPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(59,191,250,0.7); }
+  50%  { box-shadow: 0 0 0 10px rgba(59,191,250,0.2); }
+  100% { box-shadow: 0 0 0 0 rgba(59,191,250,0); }
+}
+.topic-card--highlight {
+  animation: topicHighlightPulse 0.8s ease-out 2;
+  outline: 2px solid #3bbffa;
+  outline-offset: 2px;
+  transition: outline 0.3s ease;
+}
+
+/* ── Lock overlay for Videoclases, Kahoot, Simulador, Anki ── */
+.vc-topic-card.locked,
+.quiz-topic-card.locked {
+  position: relative;
+  opacity: 0.65;
+  cursor: pointer;
+}
+
+.vc-topic-card.locked::after,
+.quiz-topic-card.locked::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: inherit;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.vc-topic-card.locked .lock-overlay,
+.quiz-topic-card.locked .lock-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 11;
+  background: rgba(0, 0, 0, 0.82);
+  border-radius: 50%;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.vc-topic-card.locked .lock-overlay .material-symbols-outlined,
+.quiz-topic-card.locked .lock-overlay .material-symbols-outlined {
+  color: #FFB800;
+  font-size: 28px;
+  font-variation-settings: 'FILL' 1;
+}
+
+.vc-topic-card.locked:hover,
+.quiz-topic-card.locked:hover {
+  opacity: 0.80;
+}
+
+#upgradeModal {
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+</style>
+
+<!-- Plan Access Configuration -->
+<script>
+// Plan access configuration
+const PLAN_ACCESS = {
+  mip: { cirugia: [1,2,3], pediatria: [1,2,3], gineco: [1,2,3], medicina: [1,2,3] },
+  r1: { cirugia: Array.from({length:10},(_,i)=>i+1), pediatria: Array.from({length:10},(_,i)=>i+1), gineco: Array.from({length:10},(_,i)=>i+1), medicina: Array.from({length:10},(_,i)=>i+1) },
+  r_plus: { cirugia: Array.from({length:19},(_,i)=>i+1), pediatria: Array.from({length:19},(_,i)=>i+1), gineco: Array.from({length:18},(_,i)=>i+1), medicina: Array.from({length:19},(_,i)=>i+1) },
+  adscrito: { cirugia: Array.from({length:36},(_,i)=>i+1), pediatria: Array.from({length:28},(_,i)=>i+1), gineco: Array.from({length:20},(_,i)=>i+1), medicina: Array.from({length:35},(_,i)=>i+1) }
+};
+
+function isTopicAccessible(spId, topicNum) {
+  const user = window.ENARMAGIC_USER;
+  if (!user) return false;
+  if (user.role === 'admin') return true;
+  const plan = user.plan || 'mip';
+  const access = PLAN_ACCESS[plan];
+  if (!access || !access[spId]) return false;
+  return access[spId].includes(topicNum);
+}
+
+function showUpgradeModal(spId, topicNum, topicName) {
+  const modal = document.getElementById('upgradeModal');
+  if (!modal) return;
+  document.getElementById('upgradeModalSpId').value = spId || '';
+  document.getElementById('upgradeModalTopic').value = topicNum || '';
+  modal.style.display = 'flex';
+}
+
+function closeUpgradeModal() {
+  const modal = document.getElementById('upgradeModal');
+  if (modal) modal.style.display = 'none';
+}
+
+// Navigate to specialty view and scroll to the specific topic card in Resúmenes
+function navigateToTopicResumenes(spId, topicNum) {
+  showView(spId); // renders specialty → defaults to resumenes
+  setTimeout(function() {
+    const contentEl = document.getElementById(spId + '-content');
+    if (!contentEl) return;
+    const numEls = contentEl.querySelectorAll('.topic-card-num');
+    for (const el of numEls) {
+      if (el.textContent.trim() === 'Tema ' + topicNum) {
+        const card = el.closest('.topic-card');
+        if (card) {
+          card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          card.classList.add('topic-card--highlight');
+          setTimeout(function() { card.classList.remove('topic-card--highlight'); }, 2200);
+        }
+        break;
+      }
+    }
+  }, 300);
+}
+
+function logoutUser() {
+  fetch('/api/logout', { method: 'POST', credentials: 'include' })
+    .then(() => { window.location.href = '/'; })
+    .catch(() => { window.location.href = '/'; });
+}
+
+function scrollToPricingSection() {
+  window.location.href = '/#planes';
+}
+
+// ── Settings Modal ──
+function openSettingsModal() {
+  const modal = document.getElementById('settingsModal');
+  if (!modal) return;
+  // Pre-fill current user data
+  fetch('/api/user', { credentials: 'include' })
+    .then(r => r.json())
+    .then(u => {
+      const nameEl = document.getElementById('settingsName');
+      const userEl = document.getElementById('settingsUsername');
+      if (nameEl) nameEl.value = u.name || '';
+      if (userEl) userEl.value = u.username || '';
+    }).catch(() => {});
+  document.getElementById('settingsAlert').style.display = 'none';
+  document.getElementById('settingsAlert').textContent = '';
+  const successEl = document.getElementById('settingsSuccess');
+  if (successEl) successEl.style.display = 'none';
+  document.getElementById('settingsCurrentPass').value = '';
+  document.getElementById('settingsNewPass').value = '';
+  document.getElementById('settingsConfirmPass').value = '';
+  modal.style.display = 'flex';
+}
+
+function closeSettingsModal() {
+  const modal = document.getElementById('settingsModal');
+  if (modal) modal.style.display = 'none';
+}
+
+async function saveSettings(e) {
+  e.preventDefault();
+  const alertEl = document.getElementById('settingsAlert');
+  const successEl = document.getElementById('settingsSuccess');
+  const saveBtn = document.getElementById('settingsSaveBtn');
+  alertEl.style.display = 'none';
+  if (successEl) successEl.style.display = 'none';
+  saveBtn.disabled = true;
+  saveBtn.textContent = 'Guardando...';
+
+  const name = document.getElementById('settingsName').value.trim();
+  const username = document.getElementById('settingsUsername').value.trim();
+  const currentPassword = document.getElementById('settingsCurrentPass').value;
+  const newPassword = document.getElementById('settingsNewPass').value;
+  const confirmPassword = document.getElementById('settingsConfirmPass').value;
+
+  if (!name) {
+    alertEl.textContent = 'El nombre no puede estar vacío.';
+    alertEl.style.display = 'block';
+    saveBtn.disabled = false; saveBtn.textContent = 'Guardar cambios';
+    return;
+  }
+  if (newPassword && newPassword !== confirmPassword) {
+    alertEl.textContent = 'Las contraseñas nuevas no coinciden.';
+    alertEl.style.display = 'block';
+    saveBtn.disabled = false; saveBtn.textContent = 'Guardar cambios';
+    return;
+  }
+
+  try {
+    const body = { name, username };
+    if (newPassword) { body.currentPassword = currentPassword; body.newPassword = newPassword; }
+
+    const res = await fetch('/api/profile/update', {
+      method: 'POST', credentials: 'include',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    });
+    const data = await res.json();
+
+    if (!res.ok) {
+      alertEl.textContent = data.error || 'Error al guardar los cambios.';
+      alertEl.style.display = 'block';
+    } else {
+      if (successEl) { successEl.textContent = 'Cambios guardados correctamente.'; successEl.style.display = 'block'; }
+      // Update displayed name if present in UI
+      const nameDisplayEl = document.getElementById('sidebarUserName');
+      if (nameDisplayEl && data.user) nameDisplayEl.textContent = data.user.name;
+      setTimeout(() => closeSettingsModal(), 1500);
+    }
+  } catch(err) {
+    alertEl.textContent = 'Error de conexión. Intenta de nuevo.';
+    alertEl.style.display = 'block';
+  }
+  saveBtn.disabled = false; saveBtn.textContent = 'Guardar cambios';
+}
+
+// Attach to window for global access
+window.isTopicAccessible = isTopicAccessible;
+window.showUpgradeModal = showUpgradeModal;
+window.closeUpgradeModal = closeUpgradeModal;
+window.logoutUser = logoutUser;
+window.scrollToPricingSection = scrollToPricingSection;
+window.openSettingsModal = openSettingsModal;
+window.closeSettingsModal = closeSettingsModal;
+window.saveSettings = saveSettings;
+</script>
+
+<!-- CDN Libraries -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+<script src="quiz_data.js"></script>
+<script src="anki_data.js"></script>
+<script src="video-player.js"></script>
+<script src="app.js"></script>
+<script src="dashboard.js"></script>
+
+<!-- ══════════════════════════════════════════
+     MODAL DE CONFIGURACIÓN
+     ══════════════════════════════════════════ -->
+<div id="settingsModal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(6,14,32,0.92);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:1rem;display:none;overflow-y:auto">
+  <div style="width:100%;max-width:460px;background:#0f1930;border-radius:18px;padding:2rem;border:1px solid #192540;box-shadow:0 20px 60px rgba(0,0,0,0.5);margin:auto;max-height:calc(100vh - 2rem);overflow-y:auto">
+    <!-- Header -->
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span class="material-symbols-outlined" style="color:#3bbffa;font-size:26px">manage_accounts</span>
+        <h3 style="color:#dee5ff;font-family:'Manrope',sans-serif;font-size:1.25rem;font-weight:700;margin:0">Configuración</h3>
+      </div>
+      <button onclick="closeSettingsModal()" style="background:none;border:none;cursor:pointer;color:#a3aac4;font-size:22px;line-height:1;padding:2px">✕</button>
+    </div>
+
+    <!-- Alert error -->
+    <div id="settingsAlert" style="display:none;padding:.75rem 1rem;border-radius:10px;background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.4);color:#fca5a5;font-size:.9rem;margin-bottom:1rem"></div>
+    <!-- Alert success -->
+    <div id="settingsSuccess" style="display:none;padding:.75rem 1rem;border-radius:10px;background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.4);color:#86efac;font-size:.9rem;margin-bottom:1rem"></div>
+
+    <form onsubmit="saveSettings(event)" style="display:flex;flex-direction:column;gap:1rem">
+
+      <!-- Nombre -->
+      <div>
+        <label style="display:block;font-size:.85rem;font-weight:600;color:#a3aac4;margin-bottom:6px">Nombre completo</label>
+        <input id="settingsName" type="text" placeholder="Tu nombre completo"
+          style="width:100%;padding:.7rem 1rem;border-radius:10px;background:#141f38;border:1.5px solid #192540;color:#dee5ff;font-size:.95rem;outline:none;box-sizing:border-box"
+          onfocus="this.style.borderColor='#3bbffa'" onblur="this.style.borderColor='#192540'">
+      </div>
+
+      <!-- Username -->
+      <div>
+        <label style="display:block;font-size:.85rem;font-weight:600;color:#a3aac4;margin-bottom:6px">Nombre de usuario</label>
+        <input id="settingsUsername" type="text" placeholder="Sin espacios, en minúsculas"
+          oninput="this.value=this.value.replace(/\s/g,'').toLowerCase()"
+          style="width:100%;padding:.7rem 1rem;border-radius:10px;background:#141f38;border:1.5px solid #192540;color:#dee5ff;font-size:.95rem;outline:none;box-sizing:border-box"
+          onfocus="this.style.borderColor='#3bbffa'" onblur="this.style.borderColor='#192540'">
+      </div>
+
+      <!-- Divider cambio de contraseña -->
+      <div style="border-top:1px solid #192540;padding-top:1rem;margin-top:.25rem">
+        <p style="font-size:.8rem;color:#a3aac4;margin:0 0 .75rem">Cambiar contraseña <span style="font-weight:400">(opcional — déjalo vacío si no quieres cambiarla)</span></p>
+      </div>
+
+      <!-- Contraseña actual -->
+      <div>
+        <label style="display:block;font-size:.85rem;font-weight:600;color:#a3aac4;margin-bottom:6px">Contraseña actual</label>
+        <input id="settingsCurrentPass" type="password" placeholder="Tu contraseña actual"
+          style="width:100%;padding:.7rem 1rem;border-radius:10px;background:#141f38;border:1.5px solid #192540;color:#dee5ff;font-size:.95rem;outline:none;box-sizing:border-box"
+          onfocus="this.style.borderColor='#3bbffa'" onblur="this.style.borderColor='#192540'">
+      </div>
+
+      <!-- Nueva contraseña -->
+      <div>
+        <label style="display:block;font-size:.85rem;font-weight:600;color:#a3aac4;margin-bottom:6px">Nueva contraseña</label>
+        <input id="settingsNewPass" type="password" placeholder="Mínimo 6 caracteres"
+          style="width:100%;padding:.7rem 1rem;border-radius:10px;background:#141f38;border:1.5px solid #192540;color:#dee5ff;font-size:.95rem;outline:none;box-sizing:border-box"
+          onfocus="this.style.borderColor='#3bbffa'" onblur="this.style.borderColor='#192540'">
+      </div>
+
+      <!-- Confirmar contraseña -->
+      <div>
+        <label style="display:block;font-size:.85rem;font-weight:600;color:#a3aac4;margin-bottom:6px">Confirmar nueva contraseña</label>
+        <input id="settingsConfirmPass" type="password" placeholder="Repite la nueva contraseña"
+          style="width:100%;padding:.7rem 1rem;border-radius:10px;background:#141f38;border:1.5px solid #192540;color:#dee5ff;font-size:.95rem;outline:none;box-sizing:border-box"
+          onfocus="this.style.borderColor='#3bbffa'" onblur="this.style.borderColor='#192540'">
+      </div>
+
+      <!-- Botones -->
+      <div style="display:flex;gap:.75rem;justify-content:flex-end;margin-top:.5rem">
+        <button type="button" onclick="closeSettingsModal()"
+          style="padding:.7rem 1.25rem;border-radius:10px;border:1.5px solid #192540;background:transparent;color:#a3aac4;font-weight:600;cursor:pointer">
+          Cancelar
+        </button>
+        <button type="submit" id="settingsSaveBtn"
+          style="padding:.7rem 1.5rem;border-radius:10px;border:none;background:#3bbffa;color:#060e20;font-weight:700;cursor:pointer">
+          Guardar cambios
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Theme Toggle Script -->
+<script>
+(function() {
+  function toggleEnarmagicTheme() {
+    var current = document.documentElement.getAttribute('data-theme') || 'dark';
+    var next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('enarmagic-theme', next);
+    updateThemeIcon(next);
+  }
+  function updateThemeIcon(theme) {
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = theme === 'dark' ? 'light_mode' : 'dark_mode';
+  }
+  // Expose globally so onclick= works
+  window.toggleEnarmagicTheme = toggleEnarmagicTheme;
+  // Set initial icon
+  var t = document.documentElement.getAttribute('data-theme') || 'dark';
+  document.addEventListener('DOMContentLoaded', function() { updateThemeIcon(t); });
+  // Also run immediately in case DOM is already ready
+  if (document.readyState !== 'loading') updateThemeIcon(t);
+})();
+</script>
+</body>
+</html>

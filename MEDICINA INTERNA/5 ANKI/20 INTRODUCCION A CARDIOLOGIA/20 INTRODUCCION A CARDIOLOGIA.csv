@@ -1,0 +1,81 @@
+¿Cuál es la función del nodo sinoatrial (SA) en el sistema de conducción cardíaco?,Actuar como el marcapasos principal generando impulsos eléctricos automáticamente.
+¿En qué espacio intercostal se localiza el foco aórtico?,"Segundo espacio intercostal derecho, línea paraesternal."
+¿Dónde se sitúa el foco pulmonar para la auscultación cardíaca?,"Segundo espacio intercostal izquierdo, línea paraesternal."
+¿En qué localización se ausculta el foco tricuspídeo?,"Cuarto espacio intercostal izquierdo, línea paraesternal."
+¿Cuál es la ubicación exacta del foco mitral?,"Quinto espacio intercostal izquierdo, línea medio-clavicular."
+¿Qué área del corazón representa el foco de Erb?,"El tercer espacio intercostal izquierdo, funcionando como área general del corazón."
+¿Qué evento mecánico produce el primer ruido cardíaco ($R_{1}$)?,El cierre de las válvulas auriculoventriculares (mitral y tricúspide).
+¿En qué foco se escucha con mayor intensidad el primer ruido cardíaco ($R_{1}$)?,En el foco mitral.
+¿Qué fase del ciclo cardíaco ocurre entre los ruidos $R_{1}$ y $R_{2}$?,La sístole.
+¿Qué fenómeno valvular genera el segundo ruido cardíaco ($R_{2}$)?,El cierre de las válvulas semilunares (aórtica y pulmonar).
+¿En qué focos se ausculta mejor el segundo ruido cardíaco ($R_{2}$)?,En los focos aórtico y pulmonar.
+¿Qué fase del ciclo cardíaco sucede entre los ruidos $R_{2}$ y el siguiente $R_{1}$?,La diástole.
+¿A qué proceso fisiológico corresponde el tercer ruido cardíaco ($R_{3}$)?,Al llenado ventricular rápido.
+Mencione una patología asociada a la presencia de un tercer ruido cardíaco ($R_{3}$).,Insuficiencia cardíaca o dilatación ventricular.
+¿Qué mecanismo produce el cuarto ruido cardíaco ($R_{4}$)?,La contracción auricular forzada contra un ventrículo rígido.
+¿Con qué condición estructural se asocia comúnmente el cuarto ruido cardíaco ($R_{4}$)?,Hipertrofia ventricular o cardiopatía isquémica.
+¿En qué momento del ciclo respiratorio ocurre el desdoblamiento fisiológico del segundo ruido?,Durante la inspiración.
+¿Por qué ocurre el desdoblamiento fisiológico del segundo ruido durante la inspiración?,Debido a un retraso en el cierre de la válvula pulmonar.
+¿Qué alteración eléctrica se asocia con un desdoblamiento amplio del segundo ruido?,Bloqueo de rama derecha.
+¿Cuándo se considera que un desdoblamiento del segundo ruido es paradójico?,Cuando los ruidos se separan durante la espiración.
+¿Qué patología eléctrica causa un desdoblamiento paradójico del segundo ruido?,Bloqueo de rama izquierda.
+Definición: Automatismo cardíaco.,"Capacidad de generar impulsos eléctricos automáticamente, principalmente por el nodo SA."
+¿Qué efecto tiene el aumento del automatismo en la frecuencia cardíaca?,Produce una taquicardia sinusal.
+Definición: Inotropismo.,Capacidad de contracción del músculo cardíaco en respuesta a un estímulo.
+¿Qué trastorno clínico resulta de una disminución severa del inotropismo por daño miocárdico?,Insuficiencia cardíaca o shock cardiogénico.
+Definición: Cronotropismo.,Capacidad del corazón para regular la frecuencia cardíaca.
+¿Qué neurotransmisor media el cronotropismo positivo a través de receptores $\beta_{1}$?,Noradrenalina (y adrenalina en estrés).
+¿Qué sistema nervioso y neurotransmisor regulan el cronotropismo negativo?,Sistema parasimpático (vagal) mediante la acetilcolina.
+¿En qué receptores actúa la acetilcolina para disminuir la frecuencia cardíaca?,Receptores muscarínicos $M_{2}$.
+Definición: Dromotropismo.,Propiedad del corazón para la propagación del impulso eléctrico.
+¿Qué estructura es responsable de retrasar el impulso para permitir la contracción auricular previa a la ventricular?,El nodo auriculoventricular (AV).
+¿Qué hallazgo en el EKG es característico de la preexcitación en el Síndrome de Wolff-Parkinson-White?,Presencia de la onda delta.
+Definición: Batmotropismo.,Capacidad del corazón de responder a estímulos eléctricos (excitabilidad).
+¿Qué trastorno electrolítico puede alterar el potencial de reposo afectando el batmotropismo?,Hiperkalemia o hipokalemia.
+¿Qué sucede durante la Fase 0 del potencial de acción ventricular?,"Ingreso masivo de $Na^{+}$ por canales rápidos, provocando despolarización rápida."
+¿Cuál es el cambio de voltaje aproximado durante la Fase 0 del potencial de acción?,De $-90\text{ mV}$ a $+20\text{ mV}$.
+¿Qué eventos iónicos caracterizan la Fase 1 del potencial de acción?,"Salida breve de $K^{+}$ por canales transitorios, resultando en repolarización inicial."
+¿Qué ocurre durante la Fase 2 (meseta) del potencial de acción?,"Entrada lenta de $Ca^{2+}$ compensada por salida de $K^{+}$, manteniendo la contracción."
+¿Por qué es importante la Fase 2 del potencial de acción para la función cardíaca?,Permite una contracción prolongada para el bombeo y asegura el periodo refractario absoluto.
+¿Qué fenómeno iónico define la Fase 3 del potencial de acción?,"Cierre de canales de $Ca^{2+}$ y salida masiva de $K^{+}$, causando repolarización rápida."
+¿Cómo se restablece el equilibrio iónico durante la Fase 4 del potencial de acción?,"Mediante la bomba sodio-potasio ($3Na^{+}$ hacia afuera, $2K^{+}$ hacia adentro)."
+¿Cuál es el potencial de membrana en reposo aproximado en la Fase 4?,$-90\text{ mV}$.
+¿En qué fase del potencial de acción actúan los fármacos Clase I (como lidocaína)?,Fase 0 (bloqueo de canales de $Na^{+}$).
+¿En qué fase del potencial de acción actúan los betabloqueadores (Clase II)?,Fase 4 (disminuyen el automatismo).
+¿Cuál es el mecanismo de acción de la Amiodarona (Clase III)?,Bloqueo de canales de $K^{+}$ prolongando la Fase 3 y el intervalo QT.
+¿Sobre qué fase actúan el Verapamilo y el Diltiazem (Clase IV)?,Fase 2 (bloqueo de canales de $Ca^{2+}$).
+¿Qué evento eléctrico representa la onda P en el EKG?,Despolarización auricular o contracción de las aurículas.
+¿Cuál es la duración normal de la onda P?,Menor a $0.12\text{ s}$.
+¿Qué representa el intervalo PR en el EKG?,El tiempo que tarda el impulso en viajar desde el nodo SA hasta el nodo AV.
+¿Cuál es el rango de duración normal para el intervalo PR?,$0.12$ a $0.20\text{ s}$.
+¿Qué proceso fisiológico representa el complejo QRS?,Despolarización ventricular.
+¿Cuál es la duración normal de un complejo QRS estrecho?,Menor a $0.12\text{ s}$.
+¿Qué representa el segmento ST en el trazado electrocardiográfico?,El intervalo entre la despolarización y la repolarización ventricular.
+¿Qué evento eléctrico corresponde a la onda T?,Repolarización ventricular.
+¿Cuándo inicia y termina la sístole eléctrica en el EKG?,Inicia con el complejo QRS y termina con la onda T.
+¿Cómo se define la bradicardia sinusal?,Frecuencia cardíaca menor a $60\text{ lpm}$ con ondas P y QRS normales.
+¿Qué caracteriza a la taquicardia sinusal?,Frecuencia cardíaca mayor a $100\text{ lpm}$ con ondas P y QRS normales.
+Mencione dos causas no patológicas de bradicardia sinusal.,Sueño profundo y condición de atleta.
+¿Qué arritmia se caracteriza por la ausencia de ondas P y un ritmo irregular?,Fibrilación auricular.
+¿Qué hallazgo patognomónico presenta el Flutter auricular en el EKG?,"Ondas en ""dientes de sierra"" (F) a una frecuencia de $300\text{ lpm}$."
+¿Qué indica un complejo QRS ancho ($>0.12\text{ s}$)?,Que el impulso se genera en los ventrículos o hay un retraso en la conducción (bloqueo).
+¿Qué emergencia médica se caracteriza por actividad eléctrica desorganizada y ausencia de QRS identificable?,Fibrilación ventricular (Paro cardíaco).
+¿Qué alteración electrocardiográfica sugiere un Bloqueo AV de primer grado?,Prolongación del intervalo PR mayor a $0.20\text{ s}$.
+¿Qué sugiere una elevación del segmento ST?,Infarto transmural por oclusión total de una arteria coronaria.
+¿Qué indica la depresión del segmento ST en el contexto de dolor torácico?,Isquemia subendocárdica o angina de esfuerzo.
+¿Cuál es el significado clínico de una onda T picuda?,Hiperpotasemia (hiperkalemia).
+¿Qué patología puede causar una onda T invertida?,Isquemia miocárdica subepicárdica o hipertrofia ventricular.
+La capacidad del corazón para responder a estímulos se conoce como ____.,Batmotropismo
+¿Qué vía accesoria es responsable del acortamiento del PR en el síndrome de WPW?,El Haz de Kent.
+¿Qué efecto tiene el aumento del tono vagal sobre el cronotropismo?,Cronotropismo negativo (disminución de la frecuencia cardíaca).
+¿Qué fármacos se utilizan para bloquear los canales de sodio en la fase 0?,"Fármacos antiarrítmicos Clase I (ej. Lidocaína, Propafenona)."
+¿Qué representa el área general de auscultación llamada Foco de Erb?,El tercer espacio intercostal izquierdo.
+¿En qué fase del potencial de acción se abren los canales lentos de calcio tipo L?,Fase 2 (Meseta).
+¿Qué cambio electrolítico ocurre típicamente en la Fase 3 del potencial de acción?,Salida masiva de potasio ($K^{+}$).
+¿Cuál es la duración máxima normal del complejo QRS?,$0.11\text{ s}$ (debe ser $<0.12\text{ s}$).
+¿Cómo se llama la propiedad de propagar el impulso eléctrico?,Dromotropismo.
+"En el EKG, ¿qué indica la presencia de una onda delta?","Preexcitación ventricular, característica del síndrome de Wolff-Parkinson-White."
+¿A qué frecuencia cardíaca suele presentarse el Flutter auricular?,Aproximadamente $300\text{ lpm}$ en las aurículas.
+¿Qué ruido cardíaco se asocia con el galope auricular?,Cuarto ruido cardíaco ($R_{4}$).
+¿Cuál es la causa del desdoblamiento amplio del segundo ruido?,Bloqueo de rama derecha.
+Concepto: Taquicardia supraventricular.,"Frecuencia de $150$-$250\text{ lpm}$ con QRS estrecho, generalmente por reentrada en el nodo AV."

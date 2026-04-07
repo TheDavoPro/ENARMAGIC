@@ -1,0 +1,1277 @@
+﻿On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   .claude/settings.local.json
+	new file:   .env.example
+	new file:   .gitignore
+	new file:   CIRUGIA/1 RESUMENES/1 INTRODUCCION A CIRUGIA/1 INTRODUCCION A CIRUGIA.pptx
+	new file:   CIRUGIA/1 RESUMENES/1 INTRODUCCION A CIRUGIA/Introduccion a cirugia.pdf
+	new file:   CIRUGIA/1 RESUMENES/10 PATOLOGIA INFLAMATORIA INTESTINAL/10 PATOLOGIA INFLAMATORIA INTESTINAL.pptx
+	new file:   CIRUGIA/1 RESUMENES/10 PATOLOGIA INFLAMATORIA INTESTINAL/Patologia inflamatoria intestinal.pdf
+	new file:   CIRUGIA/1 RESUMENES/11 HERNIAS/11 HERNIAS.pptx
+	new file:   CIRUGIA/1 RESUMENES/11 HERNIAS/Hernias.pdf
+	new file:   CIRUGIA/1 RESUMENES/12 PATOLOGIA HEPATICA/12 PATOLOGIA HEPATICA.pptx
+	new file:   CIRUGIA/1 RESUMENES/12 PATOLOGIA HEPATICA/Patologia hepatica.pdf
+	new file:   CIRUGIA/1 RESUMENES/13 CIRROSIS/13 CIRROSIS.pptx
+	new file:   CIRUGIA/1 RESUMENES/13 CIRROSIS/Cirrosis.pdf
+	new file:   CIRUGIA/1 RESUMENES/14 PATOLOGIA ARTERIAL Y VENOSA/14 PATOLOGIA ARTERIAL Y VENOSA.pptx
+	new file:   CIRUGIA/1 RESUMENES/14 PATOLOGIA ARTERIAL Y VENOSA/Patologia arterial y venosa.pdf
+	new file:   CIRUGIA/1 RESUMENES/15 COLOPROCTO/15 COLOPROCTO.pptx
+	new file:   CIRUGIA/1 RESUMENES/15 COLOPROCTO/Coloprocto.pdf
+	new file:   CIRUGIA/1 RESUMENES/16 UROLOGIA PARTE 1/16 UROLOGIA PARTE 1.pptx
+	new file:   CIRUGIA/1 RESUMENES/16 UROLOGIA PARTE 1/Urologia parte 1.pdf
+	new file:   CIRUGIA/1 RESUMENES/17 UROLOGIA PARTE 2/17 UROLOGIA PARTE 2.pptx
+	new file:   CIRUGIA/1 RESUMENES/17 UROLOGIA PARTE 2/Urologia parte 2.pdf
+	new file:   CIRUGIA/1 RESUMENES/18 PATOLOGIA PROSTATICA/18 PATOLOGIA PROSTATICA.pptx
+	new file:   CIRUGIA/1 RESUMENES/18 PATOLOGIA PROSTATICA/Patologia prostatica.pdf
+	new file:   CIRUGIA/1 RESUMENES/19 ETS/19 ETS.pptx
+	new file:   CIRUGIA/1 RESUMENES/19 ETS/ETS.pdf
+	new file:   CIRUGIA/1 RESUMENES/2 PATOLOGIA ESOFAGICA/2 PATOLOGIA ESOFAGICA.pptx
+	new file:   CIRUGIA/1 RESUMENES/2 PATOLOGIA ESOFAGICA/Patologia esofagica.pdf
+	new file:   CIRUGIA/1 RESUMENES/20 ATLS PARTE 1/20 ATLS PARTE 1.pptx
+	new file:   CIRUGIA/1 RESUMENES/20 ATLS PARTE 1/ATLS 1.pdf
+	new file:   CIRUGIA/1 RESUMENES/21 ATLS PARTE 2/21 ATLS PARTE 2.pptx
+	new file:   CIRUGIA/1 RESUMENES/21 ATLS PARTE 2/ATLS 2.pdf
+	new file:   CIRUGIA/1 RESUMENES/22 ATLS PARTE 3/22 ATLS PARTE 3.pptx
+	new file:   CIRUGIA/1 RESUMENES/22 ATLS PARTE 3/ATLS 3.pdf
+	new file:   CIRUGIA/1 RESUMENES/23 TOXINDROMES/23 TOXINDROMES.pptx
+	new file:   CIRUGIA/1 RESUMENES/23 TOXINDROMES/Toxindromes.pdf
+	new file:   CIRUGIA/1 RESUMENES/24 MORDEDURAS Y PICADURAS/24 MORDEDURAS Y PICADURAS.pptx
+	new file:   CIRUGIA/1 RESUMENES/24 MORDEDURAS Y PICADURAS/Mordeduras y picaduras.pdf
+	new file:   CIRUGIA/1 RESUMENES/25 QUEMADURAS/25 QUEMADURAS.pptx
+	new file:   CIRUGIA/1 RESUMENES/25 QUEMADURAS/Quemaduras.pdf
+	new file:   CIRUGIA/1 RESUMENES/26 ONCOLOGIA PARTE 1/26 ONCOLOGIA PARTE 1.pptx
+	new file:   CIRUGIA/1 RESUMENES/26 ONCOLOGIA PARTE 1/Oncologia parte 1.pdf
+	new file:   CIRUGIA/1 RESUMENES/27 ONCOLOGIA PARTE 2/27 ONCOLOGIA PARTE 2.pptx
+	new file:   CIRUGIA/1 RESUMENES/27 ONCOLOGIA PARTE 2/Oncologia parte 2.pdf
+	new file:   CIRUGIA/1 RESUMENES/28 INTRODUCCION OFTALMO Y PATOLOGIA DE ANEXOS/28 INTRODUCCION OFTALMO Y PATOLOGIA DE ANEXOS.pptx
+	new file:   CIRUGIA/1 RESUMENES/28 INTRODUCCION OFTALMO Y PATOLOGIA DE ANEXOS/Introduccion a oftalmo.pdf
+	new file:   CIRUGIA/1 RESUMENES/29 CAMARA ANTERIOR/29 CAMARA ANTERIOR.pptx
+	new file:   CIRUGIA/1 RESUMENES/29 CAMARA ANTERIOR/Patologia de camara anterior.pdf
+	new file:   CIRUGIA/1 RESUMENES/3 PATOLOGIA GASTRICA/3 PATOLOGIA GASTRICA.pptx
+	new file:   CIRUGIA/1 RESUMENES/3 PATOLOGIA GASTRICA/Patologia gastrica.pdf
+	new file:   CIRUGIA/1 RESUMENES/30 CAMARA POSTERIOR/30 CAMARA POSTERIOR.pptx
+	new file:   CIRUGIA/1 RESUMENES/30 CAMARA POSTERIOR/Patologia de camara posterior.pdf
+	new file:   CIRUGIA/1 RESUMENES/31 HIPOACUSIA Y VERTIGO/Hipoacusia y vertigo.pdf
+	new file:   CIRUGIA/1 RESUMENES/32 OTORRINO/Otorrino.pdf
+	new file:   CIRUGIA/1 RESUMENES/33 TYO PARTE 1/Tyo parte 1.pdf
+	new file:   CIRUGIA/1 RESUMENES/34 TYO PARTE 2/Tyo parte 2.pdf
+	new file:   CIRUGIA/1 RESUMENES/35 TYO PARTE 3/TYO parte 3.pdf
+	new file:   CIRUGIA/1 RESUMENES/36 EPIDEMIOLOGIA/Epidemiologia.pdf
+	new file:   CIRUGIA/1 RESUMENES/4 PATOLOGIA BILIAR/4 PATOLOGIA BILIAR.pptx
+	new file:   CIRUGIA/1 RESUMENES/4 PATOLOGIA BILIAR/Patologia biliar.pdf
+	new file:   CIRUGIA/1 RESUMENES/5 PANCREATITIS/5 PANCREATITIS.pptx
+	new file:   CIRUGIA/1 RESUMENES/5 PANCREATITIS/Pancreatitis.pdf
+	new file:   CIRUGIA/1 RESUMENES/6 APENDICITIS/6 APENDICITIS.pptx
+	new file:   CIRUGIA/1 RESUMENES/6 APENDICITIS/Apendicitis.pdf
+	new file:   CIRUGIA/1 RESUMENES/7 PATOLOGIA DIVERTICULAR/7 PATOLOGIA DIVERTICULAR.pptx
+	new file:   CIRUGIA/1 RESUMENES/7 PATOLOGIA DIVERTICULAR/Patologia diverticular.pdf
+	new file:   CIRUGIA/1 RESUMENES/8 ABDOMEN AGUDO OBSTRUCTIVO/8 ABDOMEN AGUDO OBSTRUCTIVO.pptx
+	new file:   CIRUGIA/1 RESUMENES/8 ABDOMEN AGUDO OBSTRUCTIVO/Abdomen obstructivo.pdf
+	new file:   CIRUGIA/1 RESUMENES/9 PATOLOGIA ISQUEMICA INTESTINAL/9 PATOLOGIA ISQUEMICA INTESTINAL.pptx
+	new file:   CIRUGIA/1 RESUMENES/9 PATOLOGIA ISQUEMICA INTESTINAL/Patologia isquemica intestinal.pdf
+	new file:   CIRUGIA/2 VIDEOCLASE/1 INTRODUCCION A CIRUGIA/1 INTRODUCCION A CIRUGIA SHORT.mp4
+	new file:   CIRUGIA/2 VIDEOCLASE/1 INTRODUCCION A CIRUGIA/1 INTRODUCCION A CIRUGIA.mp4
+	new file:   CIRUGIA/2 VIDEOCLASE/10 PATOLOGIA INFLAMATORIA INTESTINAL/10 PATOLOGIA INFLAMATORIA INTESTINAL.mp4
+	new file:   CIRUGIA/2 VIDEOCLASE/11 HERNIAS/11 HERNIAS.mp4
+	new file:   CIRUGIA/2 VIDEOCLASE/12 PATOLOGIA HEPATICA/12 PATOLOGIA HEPATICA.mp4
+	new file:   CIRUGIA/2 VIDEOCLASE/13 CIRROSIS/13 CIRROSIS.mp4
+	new file:   CIRUGIA/2 VIDEOCLASE/14 PATOLOGIA ARTERIAL Y VENOSA/14 PATOLOGIA ARTERIAL Y VENOSA.mp4
+	new file:   CIRUGIA/2 VIDEOCLASE/15 COLOPROCTO/15 COLOPROCTO.mp4
+	new file:   CIRUGIA/2 VIDEOCLASE/16 UROLOGIA PARTE 1/16- UROLOGIA PARTE 1.mp4
+	new file:   CIRUGIA/2 VIDEOCLASE/17 UROLOGIA PARTE 2/17 UROLOGIA PARTE 2.mp4
+	new file:   CIRUGIA/2 VIDEOCLASE/18 PATOLOGIA PROSTATICA/18 PATOLOGIA PROSTATICA.mp4
+	new file:   CIRUGIA/2 VIDEOCLASE/19 ETS/19 ETS.mp4
+	new file:   CIRUGIA/2 VIDEOCLASE/2 PATOLOGIA ESOFAGICA/2 PATOLOGIA ESOFAGICA LARGO.mp4
+	new file:   CIRUGIA/2 VIDEOCLASE/2 PATOLOGIA ESOFAGICA/2 PATOLOGIA ESOFAGICA.mp4
+	new file:   CIRUGIA/2 VIDEOCLASE/20 ATLS PARTE 1/20- ATLS PARTE 1.mp4
+	new file:   CIRUGIA/2 VIDEOCLASE/21 ATLS PARTE 2/21- ATLS PARTE 2.mp4
+	new file:   CIRUGIA/2 VIDEOCLASE/22 ATLS PARTE 3/22- ATLS PARTE 3.mp4
+	new file:   CIRUGIA/2 VIDEOCLASE/23 TOXINDROMES/23 TOXINDROMES.mp4
+	new file:   CIRUGIA/2 VIDEOCLASE/24 MORDEDURAS Y PICADURAS/24 MORDEDURAS Y PICADURAS.mp4
+	new file:   CIRUGIA/2 VIDEOCLASE/25 QUEMADURAS/25 QUEMADURAS.mp4
+	new file:   CIRUGIA/2 VIDEOCLASE/26 ONCOLOGIA PARTE 1/26- ONCOLOGIA PARTE 1.mp4
+	new file:   CIRUGIA/2 VIDEOCLASE/27 ONCOLOGIA PARTE 2/27- ONCOLOGIA PARTE 2.mp4
+	new file:   CIRUGIA/2 VIDEOCLASE/28 INTRODUCCION OFTALMO Y PATOLOGIA DE ANEXOS/28- INTRODUCCION OFTALMO Y PATOLOGIA DE ANEXOS.mp4
+	new file:   CIRUGIA/2 VIDEOCLASE/29 CAMARA ANTERIOR/29- CAMARA ANTERIOR.mp4
+	new file:   CIRUGIA/2 VIDEOCLASE/3 PATOLOGIA GASTRICA/3 PATOLOGIA GASTRICA LARGO.mp4
+	new file:   CIRUGIA/2 VIDEOCLASE/3 PATOLOGIA GASTRICA/3 PATOLOGIA GASTRICA.mp4
+	new file:   CIRUGIA/2 VIDEOCLASE/30 CAMARA POSTERIOR/30 CAMARA POSTERIOR.mp4
+	new file:   CIRUGIA/2 VIDEOCLASE/31 HIPOACUSIA Y VERTIGO/31 HIPOACUSIA Y VERTIGO.mp4
+	new file:   CIRUGIA/2 VIDEOCLASE/32 OTORRINO 2/32 OTORRINO.mp4
+	new file:   CIRUGIA/2 VIDEOCLASE/33 TYO PARTE 1/33- TYO PARTE 1.mp4
+	new file:   CIRUGIA/2 VIDEOCLASE/34 TYO PARTE 2/34- TYO PARTE 2.mp4
+	new file:   CIRUGIA/2 VIDEOCLASE/35 TYO PARTE 3/35- TYO PARTE 3.mp4
+	new file:   CIRUGIA/2 VIDEOCLASE/36 EPIDEMIOLOGIA/36 EPIDEMIOLOGIA.mp4
+	new file:   CIRUGIA/2 VIDEOCLASE/4 PATOLOGIA BILIAR/4 PATOLOGIA BILIAR.mp4
+	new file:   CIRUGIA/2 VIDEOCLASE/5 PANCREATITIS/5 PANCREATITIS.mp4
+	new file:   CIRUGIA/2 VIDEOCLASE/6 APENDICITIS/6 APENDICITIS.mp4
+	new file:   CIRUGIA/2 VIDEOCLASE/7 PATOLOGIA DIVERTICULAR/7 PATOLOGIA DIVERTICULAR.mp4
+	new file:   CIRUGIA/2 VIDEOCLASE/8 ABDOMEN AGUDO OBSTRUCTIVO/8 ABDOMEN AGUDO OBSTRUCTIVO.mp4
+	new file:   CIRUGIA/2 VIDEOCLASE/9 PATOLOGIA ISQUEMICA INTESTINAL/9 PATOLOGIA ISQUEMICA INTESTINAL.mp4
+	new file:   CIRUGIA/3 KAHOOT/1 INTRODUCCION A CIRUGIA/01_Introduccion_a_Cirugia.xlsx
+	new file:   CIRUGIA/3 KAHOOT/10 PATOLOGIA INFLAMATORIA INTESTINAL/10_Patologia_Inflamatoria_Intestinal.xlsx
+	new file:   CIRUGIA/3 KAHOOT/11 HERNIAS/11_Hernias.xlsx
+	new file:   CIRUGIA/3 KAHOOT/12 PATOLOGIA HEPATICA/12_Patologia_Hepatica.xlsx
+	new file:   CIRUGIA/3 KAHOOT/13 CIRROSIS/13_Cirrosis.xlsx
+	new file:   CIRUGIA/3 KAHOOT/14 PATOLOGIA ARTERIAL Y VENOSA/14_Patologia_Arterial_y_Venosa.xlsx
+	new file:   CIRUGIA/3 KAHOOT/15 COLOPROCTO/15_Coloproctologia.xlsx
+	new file:   CIRUGIA/3 KAHOOT/16 UROLOGIA PARTE 1/16_Urologia_Parte_1.xlsx
+	new file:   CIRUGIA/3 KAHOOT/17 UROLOGIA PARTE 2/17_Urologia_Parte_2.xlsx
+	new file:   CIRUGIA/3 KAHOOT/18 PATOLOGIA PROSTATICA/18_Patologia_Prostatica.xlsx
+	new file:   CIRUGIA/3 KAHOOT/19 ETS/19_ETS.xlsx
+	new file:   CIRUGIA/3 KAHOOT/2 PATOLOGIA ESOFAGICA/02_Patologia_Esofagica.xlsx
+	new file:   CIRUGIA/3 KAHOOT/20 ATLS PARTE 1/20_ATLS_Parte_1.xlsx
+	new file:   CIRUGIA/3 KAHOOT/21 ATLS PARTE 2/21_ATLS_Parte_2.xlsx
+	new file:   CIRUGIA/3 KAHOOT/22 ATLS PARTE 3/22_ATLS_Parte_3.xlsx
+	new file:   CIRUGIA/3 KAHOOT/23 TOXINDROMES/23_Toxindromes.xlsx
+	new file:   CIRUGIA/3 KAHOOT/24 MORDEDURAS Y PICADURAS/24_Mordeduras_y_Picaduras.xlsx
+	new file:   CIRUGIA/3 KAHOOT/25 QUEMADURAS/25_Quemaduras.xlsx
+	new file:   CIRUGIA/3 KAHOOT/26 ONCOLOGIA PARTE 1/26_Oncologia_Parte_1.xlsx
+	new file:   CIRUGIA/3 KAHOOT/27 ONCOLOGIA PARTE 2/27_Oncologia_Parte_2.xlsx
+	new file:   CIRUGIA/3 KAHOOT/28 INTRODUCCION OFTALMO Y PATOLOGIA DE ANEXOS/28_Oftalmo_Patologia_de_Anexos.xlsx
+	new file:   CIRUGIA/3 KAHOOT/29 CAMARA ANTERIOR/29_Camara_Anterior.xlsx
+	new file:   CIRUGIA/3 KAHOOT/3 PATOLOGIA GASTRICA/03_Patologia_Gastrica.xlsx
+	new file:   CIRUGIA/3 KAHOOT/30 CAMARA POSTERIOR/30_Camara_Posterior.xlsx
+	new file:   CIRUGIA/3 KAHOOT/31 HIPOACUSIA Y VERTIGO/31_Hipoacusia_y_Vertigo.xlsx
+	new file:   CIRUGIA/3 KAHOOT/32 OTORRINO 2/32_Otorrino_2_Rinologia.xlsx
+	new file:   CIRUGIA/3 KAHOOT/33 TYO PARTE 1/33_TyO_Parte_1_Generalidades.xlsx
+	new file:   CIRUGIA/3 KAHOOT/34 TYO PARTE 2/34_TyO_Parte_2_Extremidad_Superior.xlsx
+	new file:   CIRUGIA/3 KAHOOT/35 TYO PARTE 3/35_TyO_Parte_3_Extremidad_Inferior.xlsx
+	new file:   CIRUGIA/3 KAHOOT/36 EPIDEMIOLOGIA/36_Epidemiologia.xlsx
+	new file:   CIRUGIA/3 KAHOOT/4 PATOLOGIA BILIAR/04_Patologia_Biliar.xlsx
+	new file:   CIRUGIA/3 KAHOOT/5 PANCREATITIS/05_Pancreatitis.xlsx
+	new file:   CIRUGIA/3 KAHOOT/6 APENDICITIS/06_Apendicitis.xlsx
+	new file:   CIRUGIA/3 KAHOOT/7 PATOLOGIA DIVERTICULAR/07_Patologia_Diverticular.xlsx
+	new file:   CIRUGIA/3 KAHOOT/8 ABDOMEN AGUDO OBSTRUCTIVO/08_Abdomen_Agudo_Obstructivo.xlsx
+	new file:   CIRUGIA/3 KAHOOT/9 PATOLOGIA ISQUEMICA INTESTINAL/09_Patologia_Isquemica_Intestinal.xlsx
+	new file:   CIRUGIA/4 SIMULADOR/1 INTRODUCCION A CIRUGIA/01_Introduccion_a_Cirugia.xlsx
+	new file:   CIRUGIA/4 SIMULADOR/10 PATOLOGIA INFLAMATORIA INTESTINAL/10_Patologia_Inflamatoria_Intestinal.xlsx
+	new file:   CIRUGIA/4 SIMULADOR/11 HERNIAS/11_Hernias.xlsx
+	new file:   CIRUGIA/4 SIMULADOR/12 PATOLOGIA HEPATICA/12_Patologia_Hepatica.xlsx
+	new file:   CIRUGIA/4 SIMULADOR/13 CIRROSIS/13_Cirrosis.xlsx
+	new file:   CIRUGIA/4 SIMULADOR/14 PATOLOGIA ARTERIAL Y VENOSA/14_Patologia_Arterial_y_Venosa.xlsx
+	new file:   CIRUGIA/4 SIMULADOR/15 COLOPROCTO/15_Coloproctologia.xlsx
+	new file:   CIRUGIA/4 SIMULADOR/16 UROLOGIA PARTE 1/16_Urologia_Parte_1.xlsx
+	new file:   CIRUGIA/4 SIMULADOR/17 UROLOGIA PARTE 2/17_Urologia_Parte_2.xlsx
+	new file:   CIRUGIA/4 SIMULADOR/18 PATOLOGIA PROSTATICA/18_Patologia_Prostatica.xlsx
+	new file:   CIRUGIA/4 SIMULADOR/19 ETS/19_ETS.xlsx
+	new file:   CIRUGIA/4 SIMULADOR/2 PATOLOGIA ESOFAGICA/02_Patologia_Esofagica.xlsx
+	new file:   CIRUGIA/4 SIMULADOR/20 ATLS PARTE 1/20_ATLS_Parte_1.xlsx
+	new file:   CIRUGIA/4 SIMULADOR/21 ATLS PARTE 2/21_ATLS_Parte_2_TCE.xlsx
+	new file:   CIRUGIA/4 SIMULADOR/22 ATLS PARTE 3/22_ATLS_Parte_3_Trauma_Abdominal.xlsx
+	new file:   CIRUGIA/4 SIMULADOR/23 TOXINDROMES/23_Toxindromes.xlsx
+	new file:   CIRUGIA/4 SIMULADOR/24 MORDEDURAS Y PICADURAS/24_Mordeduras_y_Picaduras.xlsx
+	new file:   CIRUGIA/4 SIMULADOR/25 QUEMADURAS/25_Quemaduras.xlsx
+	new file:   CIRUGIA/4 SIMULADOR/26 ONCOLOGIA PARTE 1/26_Oncologia_Parte_1.xlsx
+	new file:   CIRUGIA/4 SIMULADOR/27 ONCOLOGIA PARTE 2/27_Oncologia_Parte_2.xlsx
+	new file:   CIRUGIA/4 SIMULADOR/28 INTRODUCCION OFTALMO Y PATOLOGIA DE ANEXOS/28_Oftalmologia_Anexos.xlsx
+	new file:   CIRUGIA/4 SIMULADOR/29 CAMARA ANTERIOR/29_Camara_Anterior.xlsx
+	new file:   CIRUGIA/4 SIMULADOR/3 PATOLOGIA GASTRICA/03_Patologia_Gastrica.xlsx
+	new file:   CIRUGIA/4 SIMULADOR/30 CAMARA POSTERIOR/30_Camara_Posterior.xlsx
+	new file:   CIRUGIA/4 SIMULADOR/31 HIPOACUSIA Y VERTIGO/31_Hipoacusia_y_Vertigo.xlsx
+	new file:   CIRUGIA/4 SIMULADOR/32 OTORRINO 2/32_Otorrino_Rinologia_Faringe.xlsx
+	new file:   CIRUGIA/4 SIMULADOR/33 TYO PARTE 1/33_TyO_Parte_1_Generalidades.xlsx
+	new file:   CIRUGIA/4 SIMULADOR/34 TYO PARTE 2/34_TyO_Parte_2_Extremidad_Superior.xlsx
+	new file:   CIRUGIA/4 SIMULADOR/35 TYO PARTE 3/35_TyO_Parte_3_Extremidad_Inferior.xlsx
+	new file:   CIRUGIA/4 SIMULADOR/36 EPIDEMIOLOGIA/36_Epidemiologia.xlsx
+	new file:   CIRUGIA/4 SIMULADOR/4 PATOLOGIA BILIAR/04_Patologia_Biliar.xlsx
+	new file:   CIRUGIA/4 SIMULADOR/5 PANCREATITIS/05_Pancreatitis.xlsx
+	new file:   CIRUGIA/4 SIMULADOR/6 APENDICITIS/06_Apendicitis.xlsx
+	new file:   CIRUGIA/4 SIMULADOR/7 PATOLOGIA DIVERTICULAR/07_Patologia_Diverticular.xlsx
+	new file:   CIRUGIA/4 SIMULADOR/8 ABDOMEN AGUDO OBSTRUCTIVO/08_Abdomen_Agudo_Obstructivo.xlsx
+	new file:   CIRUGIA/4 SIMULADOR/9 PATOLOGIA ISQUEMICA INTESTINAL/09_Patologia_Isquemica_Intestinal.xlsx
+	new file:   CIRUGIA/5 ANKI/1 INTRODUCCION A CIRUGIA/1 INTRODUCCION A CIRUGIA.csv
+	new file:   CIRUGIA/5 ANKI/10 PATOLOGIA INFLAMATORIA INTESTINAL/10 PATOLOGIA INFLAMATORIA INTESTINAL.csv
+	new file:   CIRUGIA/5 ANKI/11 HERNIAS/11 HERNIAS.csv
+	new file:   CIRUGIA/5 ANKI/12 PATOLOGIA HEPATICA/12 PATOLOGIA HEPATICA.csv
+	new file:   CIRUGIA/5 ANKI/13 CIRROSIS/13 CIRROSIS.csv
+	new file:   CIRUGIA/5 ANKI/14 PATOLOGIA ARTERIAL Y VENOSA/14 PATOLOGIA ARTERIAL Y VENOSA.csv
+	new file:   CIRUGIA/5 ANKI/15 COLOPROCTO/15 COLOPROCTO.csv
+	new file:   CIRUGIA/5 ANKI/16 UROLOGIA PARTE 1/16 UROLOGIA PARTE 1.csv
+	new file:   CIRUGIA/5 ANKI/17 UROLOGIA PARTE 2/17 UROLOGIA PARTE 2.csv
+	new file:   CIRUGIA/5 ANKI/18 PATOLOGIA PROSTATICA/18 PATOLOGIA PROSTATICA.csv
+	new file:   CIRUGIA/5 ANKI/19 ETS/19 ETS.csv
+	new file:   CIRUGIA/5 ANKI/2 PATOLOGIA ESOFAGICA/2 PATOLOGIA ESOFAGICA.csv
+	new file:   CIRUGIA/5 ANKI/20 ATLS PARTE 1/20 ATLS PARTE 1.csv
+	new file:   CIRUGIA/5 ANKI/21 ATLS PARTE 2/21 ATLS PARTE 2.csv
+	new file:   CIRUGIA/5 ANKI/22 ATLS PARTE 3/22 ATLS PARTE 3.csv
+	new file:   CIRUGIA/5 ANKI/23 TOXINDROMES/23 TOXINDROMES.csv
+	new file:   CIRUGIA/5 ANKI/24 MORDEDURAS Y PICADURAS/24 MORDEDURAS Y PICADURAS.csv
+	new file:   CIRUGIA/5 ANKI/25 QUEMADURAS/25 QUEMADURAS.csv
+	new file:   CIRUGIA/5 ANKI/26 ONCOLOGIA PARTE 1/26 ONCOLOGIA PARTE 1.csv
+	new file:   CIRUGIA/5 ANKI/27 ONCOLOGIA PARTE 2/27 ONCOLOGIA PARTE 2.csv
+	new file:   CIRUGIA/5 ANKI/28 INTRODUCCION OFTALMO Y PATOLOGIA DE ANEXOS/28 INTRODUCCION OFTALMO Y PATOLOGIA DE ANEXOS.csv
+	new file:   CIRUGIA/5 ANKI/29 CAMARA ANTERIOR/29 CAMARA ANTERIOR.csv
+	new file:   CIRUGIA/5 ANKI/3 PATOLOGIA GASTRICA/3 PATOLOGIA GASTRICA.csv
+	new file:   CIRUGIA/5 ANKI/30 CAMARA POSTERIOR/30 CAMARA POSTERIOR.csv
+	new file:   CIRUGIA/5 ANKI/31 HIPOACUSIA Y VERTIGO/31 HIPOACUSIA Y VERTIGO.csv
+	new file:   CIRUGIA/5 ANKI/32 OTORRINO/32 OTORRINO.csv
+	new file:   CIRUGIA/5 ANKI/33 TYO PARTE 1/33 TYO PARTE 1.csv
+	new file:   CIRUGIA/5 ANKI/34 TYO PARTE 2/34 TYO PARTE 2.csv
+	new file:   CIRUGIA/5 ANKI/35 TYO PARTE 3/35 TYO PARTE 3.csv
+	new file:   CIRUGIA/5 ANKI/36 EPIDEMIOLOGIA/36 EPIDEMIOLOGIA.csv
+	new file:   CIRUGIA/5 ANKI/4 PATOLOGIA BILIAR/4 PATOLOGIA BILIAR.csv
+	new file:   CIRUGIA/5 ANKI/5 PANCREATITIS/6 PANCREATITIS.csv
+	new file:   CIRUGIA/5 ANKI/6 APENDICITIS/6 APENDICITIS.csv
+	new file:   CIRUGIA/5 ANKI/7 PATOLOGIA DIVERTICULAR/7 PATOLOGIA DIVERTICULAR.csv
+	new file:   CIRUGIA/5 ANKI/8 ABDOMEN AGUDO OBSTRUCTIVO/8 ABDOMEN AGUDO OBSTRUCTIVO.csv
+	new file:   CIRUGIA/5 ANKI/9 PATOLOGIA ISQUEMICA INTESTINAL/9 PATOLOGIA ISQUEMICA INTESTINAL.csv
+	new file:   CIRUGIA/Miniaturas cirugia/1.jpeg
+	new file:   CIRUGIA/Miniaturas cirugia/10.jpeg
+	new file:   CIRUGIA/Miniaturas cirugia/11.jpeg
+	new file:   CIRUGIA/Miniaturas cirugia/12.jpeg
+	new file:   CIRUGIA/Miniaturas cirugia/13.jpeg
+	new file:   CIRUGIA/Miniaturas cirugia/14.jpeg
+	new file:   CIRUGIA/Miniaturas cirugia/15.jpeg
+	new file:   CIRUGIA/Miniaturas cirugia/16.jpeg
+	new file:   CIRUGIA/Miniaturas cirugia/17.jpeg
+	new file:   CIRUGIA/Miniaturas cirugia/18.jpeg
+	new file:   CIRUGIA/Miniaturas cirugia/19.jpeg
+	new file:   CIRUGIA/Miniaturas cirugia/2.jpeg
+	new file:   CIRUGIA/Miniaturas cirugia/20.jpeg
+	new file:   CIRUGIA/Miniaturas cirugia/21.jpeg
+	new file:   CIRUGIA/Miniaturas cirugia/22.jpeg
+	new file:   CIRUGIA/Miniaturas cirugia/23.jpeg
+	new file:   CIRUGIA/Miniaturas cirugia/24.jpeg
+	new file:   CIRUGIA/Miniaturas cirugia/25.jpeg
+	new file:   CIRUGIA/Miniaturas cirugia/26.jpeg
+	new file:   CIRUGIA/Miniaturas cirugia/27.jpeg
+	new file:   CIRUGIA/Miniaturas cirugia/28.jpeg
+	new file:   CIRUGIA/Miniaturas cirugia/29.jpeg
+	new file:   CIRUGIA/Miniaturas cirugia/3.jpeg
+	new file:   CIRUGIA/Miniaturas cirugia/30.jpeg
+	new file:   CIRUGIA/Miniaturas cirugia/31.jpeg
+	new file:   CIRUGIA/Miniaturas cirugia/32.jpeg
+	new file:   CIRUGIA/Miniaturas cirugia/33.jpeg
+	new file:   CIRUGIA/Miniaturas cirugia/34.jpeg
+	new file:   CIRUGIA/Miniaturas cirugia/35.jpeg
+	new file:   CIRUGIA/Miniaturas cirugia/36.jpeg
+	new file:   CIRUGIA/Miniaturas cirugia/4.jpeg
+	new file:   CIRUGIA/Miniaturas cirugia/5.jpeg
+	new file:   CIRUGIA/Miniaturas cirugia/6.jpeg
+	new file:   CIRUGIA/Miniaturas cirugia/7.jpeg
+	new file:   CIRUGIA/Miniaturas cirugia/8.jpeg
+	new file:   CIRUGIA/Miniaturas cirugia/9.jpeg
+	new file:   CIRUGIA/Videos cirugia/1---el-bistur-y-las-pinzas-quirrgicas-sobre-la-mes (1).mp4
+	new file:   CIRUGIA/Videos cirugia/freepik_10-el-colon-con-zonas-de-inflamacin-crnica-se-cont_kling_720p_1-1_24fps_80060.mp4
+	new file:   CIRUGIA/Videos cirugia/freepik_11-el-asa-intestinal-que-sobresale-en-la-hernia-se_kling_720p_1-1_24fps_80061.mp4
+	new file:   CIRUGIA/Videos cirugia/freepik_12-las-herramientas-robticas-alrededor-del-hgado-r_kling_720p_1-1_24fps_80062.mp4
+	new file:   CIRUGIA/Videos cirugia/freepik_13-el-hgado-con-textura-nodular-y-cirrosis-gira-mu_kling_720p_1-1_24fps_80063.mp4
+	new file:   CIRUGIA/Videos cirugia/freepik_14-el-cogulo-de-sangre-dentro-de-la-arteria-se-mue_kling_720p_1-1_24fps_80064.mp4
+	new file:   CIRUGIA/Videos cirugia/freepik_15-las-herramientas-proctolgicas-alrededor-del-rec_kling_720p_1-1_24fps_80065.mp4
+	new file:   CIRUGIA/Videos cirugia/freepik_16-los-riones-y-urteres-palpitan-suavemente-y-el-b_kling_720p_1-1_24fps_80066.mp4
+	new file:   CIRUGIA/Videos cirugia/freepik_17-el-endoscopio-dentro-de-la-vejiga-hace-pequeos-_kling_720p_1-1_24fps_80067.mp4
+	new file:   CIRUGIA/Videos cirugia/freepik_18-la-glndula-prosttica-agrandada-ejerce-una-presi_kling_720p_1-1_24fps_80068.mp4
+	new file:   CIRUGIA/Videos cirugia/freepik_19-los-virus-y-bacterias-flotan-lentamente-alreded_kling_720p_1-1_24fps_80069.mp4
+	new file:   CIRUGIA/Videos cirugia/freepik_2-la-zona-roja-de-inflamacin-en-el-esfago-pulsa-su_kling_720p_1-1_24fps_80052.mp4
+	new file:   CIRUGIA/Videos cirugia/freepik_20-las-ruedas-de-la-camilla-de-trauma-giran-leveme_kling_720p_1-1_24fps_80070.mp4
+	new file:   CIRUGIA/Videos cirugia/freepik_21-el-pecho-del-paciente-se-eleva-y-desciende-simu_kling_720p_1-1_24fps_80071.mp4
+	new file:   CIRUGIA/Videos cirugia/freepik_22-las-lneas-del-monitor-de-signos-vitales-avanzan_kling_720p_1-1_24fps_80072.mp4
+	new file:   CIRUGIA/Videos cirugia/freepik_23-el-lquido-verde-de-los-frascos-de-veneno-burbuj_kling_720p_1-1_24fps_80073.mp4
+	new file:   CIRUGIA/Videos cirugia/freepik_24-el-escorpin-mueve-milimtricamente-su-aguijn-y-s_kling_720p_1-1_24fps_80074.mp4
+	new file:   CIRUGIA/Videos cirugia/freepik_25-las-llamas-de-fuego-sobre-las-capas-de-piel-ond_kling_720p_1-1_24fps_80075.mp4
+	new file:   CIRUGIA/Videos cirugia/freepik_26-la-clula-cancergena-morada-gira-lentamente-mien_kling_720p_1-1_24fps_80076.mp4
+	new file:   CIRUGIA/Videos cirugia/freepik_27-las-pinzas-quirrgicas-levantan-milimtricamente-_kling_720p_1-1_24fps_80077.mp4
+	new file:   CIRUGIA/Videos cirugia/freepik_28-el-ojo-humano-parpadea-una-vez-muy-despacio-y-l_kling_720p_1-1_24fps_80078.mp4
+	new file:   CIRUGIA/Videos cirugia/freepik_29-las-herramientas-de-microciruga-se-ajustan-lent_kling_720p_1-1_24fps_80079.mp4
+	new file:   CIRUGIA/Videos cirugia/freepik_3-el-estmago-anatmico-se-expande-y-contrae-sutilme_kling_720p_1-1_24fps_80053.mp4
+	new file:   CIRUGIA/Videos cirugia/freepik_30-el-lser-verde-barre-sutilmente-la-retina-del-oj_kling_720p_1-1_24fps_80080.mp4
+	new file:   CIRUGIA/Videos cirugia/freepik_31-las-ondas-sonoras-azules-y-prpuras-se-mueven-de_kling_720p_1-1_24fps_80081.mp4
+	new file:   CIRUGIA/Videos cirugia/freepik_32-las-vas-respiratorias-interiores-de-la-nariz-y-_kling_720p_1-1_24fps_80082.mp4
+	new file:   CIRUGIA/Videos cirugia/freepik_33-la-placa-de-titanio-atornillada-al-hueso-reflej_kling_720p_1-1_24fps_80083.mp4
+	new file:   CIRUGIA/Videos cirugia/freepik_34-la-radiografa-de-la-rodilla-se-desliza-lentamen_kling_720p_1-1_24fps_80084.mp4
+	new file:   CIRUGIA/Videos cirugia/freepik_35-la-prtesis-articular-metlica-gira-muy-despacio-_kling_720p_1-1_24fps_80085.mp4
+	new file:   CIRUGIA/Videos cirugia/freepik_36-el-globo-terrqueo-rota-lentamente-con-los-grfic_kling_720p_1-1_24fps_80086.mp4
+	new file:   CIRUGIA/Videos cirugia/freepik_4-los-clculos-amarillos-dentro-de-la-vescula-bilia_kling_720p_1-1_24fps_80054.mp4
+	new file:   CIRUGIA/Videos cirugia/freepik_5-el-pncreas-inflamado-late-sutilmente-mientras-la_kling_720p_1-1_24fps_80055.mp4
+	new file:   CIRUGIA/Videos cirugia/freepik_6-el-apndice-rojo-y-dilatado-palpita-como-un-coraz_kling_720p_1-1_24fps_80056.mp4
+	new file:   CIRUGIA/Videos cirugia/freepik_7-las-pequeas-bolsas-inflamadas-en-la-pared-del-co_kling_720p_1-1_24fps_80057.mp4
+	new file:   CIRUGIA/Videos cirugia/freepik_8-los-intestinos-bloqueados-tienen-un-leve-movimie_kling_720p_1-1_24fps_80058.mp4
+	new file:   CIRUGIA/Videos cirugia/freepik_9-el-segmento-intestinal-oscuro-pulsa-dbilmente-y-_kling_720p_1-1_24fps_80059.mp4
+	new file:   DEPLOY_RAILWAY.md
+	new file:   ENARMAGIC_Auditoria_Rediseno_Stitch.md
+	new file:   ENARMAGIC_Google_Stitch_Prompts.md
+	new file:   "GINECOOBSTETRICIA/1 RESUMEN/1 INTRODUCCION A GINECOLOGIA/Ginecolog\303\255a_de_Alta_Precisi\303\263n.pptx"
+	new file:   GINECOOBSTETRICIA/1 RESUMEN/1 INTRODUCCION A GINECOLOGIA/Introduccion a ginecologia.pdf
+	new file:   GINECOOBSTETRICIA/1 RESUMEN/10 PATOLOGIA INFECCIOSA CERVICAL/Patologia infecciosa cervical.pdf
+	new file:   GINECOOBSTETRICIA/1 RESUMEN/10 PATOLOGIA INFECCIOSA CERVICAL/Pelvic_Infection_Clinical_Blueprint.pptx
+	new file:   GINECOOBSTETRICIA/1 RESUMEN/11 CONTROL PRENATAL PARTE 1/Blueprint_de_Control_Prenatal.pptx
+	new file:   GINECOOBSTETRICIA/1 RESUMEN/11 CONTROL PRENATAL PARTE 1/Control prenatal pt1.pdf
+	new file:   GINECOOBSTETRICIA/1 RESUMEN/12 CONTROL PRENATAL PARTE 2/Control prenatal pt2.pdf
+	new file:   GINECOOBSTETRICIA/1 RESUMEN/12 CONTROL PRENATAL PARTE 2/Prenatal_Management_Blueprint.pptx
+	new file:   GINECOOBSTETRICIA/1 RESUMEN/13 HEMORRAGIAS DE PRIMER TRIMESTRE/Hemorragias_Primer_Trimestre.pptx
+	new file:   GINECOOBSTETRICIA/1 RESUMEN/13 HEMORRAGIAS DE PRIMER TRIMESTRE/Sangrados del primer trimestre.pdf
+	new file:   GINECOOBSTETRICIA/1 RESUMEN/14 HEMORRAGIAS DE TERCER TRIMESTRE/Hemorragia del tercer trimestre.pdf
+	new file:   GINECOOBSTETRICIA/1 RESUMEN/14 HEMORRAGIAS DE TERCER TRIMESTRE/Third_Trimester_Obstetric_Hemorrhages.pptx
+	new file:   GINECOOBSTETRICIA/1 RESUMEN/15 ESTADOS HIPERTENSIVOS DEL EMBARAZO/Estados hipertensivos del embarazo.pdf
+	new file:   GINECOOBSTETRICIA/1 RESUMEN/15 ESTADOS HIPERTENSIVOS DEL EMBARAZO/Pregnancy_Hypertension_Blueprint.pptx
+	new file:   GINECOOBSTETRICIA/1 RESUMEN/16 PATOLOGIA EN EL EMBARAZO/Metabolic_Pregnancy_Pathology.pptx
+	new file:   GINECOOBSTETRICIA/1 RESUMEN/16 PATOLOGIA EN EL EMBARAZO/Patologia en el embarazo.pdf
+	new file:   "GINECOOBSTETRICIA/1 RESUMEN/17 TRABAJO DE PARTO/Arquitect\303\263nica_del_Parto.pptx"
+	new file:   GINECOOBSTETRICIA/1 RESUMEN/17 TRABAJO DE PARTO/Trabajo de parto.pdf
+	new file:   GINECOOBSTETRICIA/1 RESUMEN/18 PARTO PRETERMINO/Obstetric_Syndromes_and_Prematurity.pptx
+	new file:   GINECOOBSTETRICIA/1 RESUMEN/18 PARTO PRETERMINO/Parto pretermino.pdf
+	new file:   GINECOOBSTETRICIA/1 RESUMEN/19 PATOLOGIA DE TRABAJO DE PARTO/Obstetric_Rescue_Dashboard.pptx
+	new file:   GINECOOBSTETRICIA/1 RESUMEN/19 PATOLOGIA DE TRABAJO DE PARTO/Patologia del trabajo de parto.pdf
+	new file:   GINECOOBSTETRICIA/1 RESUMEN/2 AMENORREAS PRIMARIAS Y SECUNDARIAS/Amenorreas primarias y secundarias.pdf
+	new file:   GINECOOBSTETRICIA/1 RESUMEN/2 AMENORREAS PRIMARIAS Y SECUNDARIAS/Amenorrhea_Diagnostic_Blueprint.pptx
+	new file:   GINECOOBSTETRICIA/1 RESUMEN/20 PATOLOGIA PUERPERAL/Obstetric_Delivery_Blueprint.pptx
+	new file:   GINECOOBSTETRICIA/1 RESUMEN/20 PATOLOGIA PUERPERAL/Patologia puerperal.pdf
+	new file:   GINECOOBSTETRICIA/1 RESUMEN/3 SANGRADOS UTERINOS ANORMALES/Reproductive_Medicine_Clinical_Blueprint.pptx
+	new file:   GINECOOBSTETRICIA/1 RESUMEN/3 SANGRADOS UTERINOS ANORMALES/Sangrado uterino anormal.pdf
+	new file:   "GINECOOBSTETRICIA/1 RESUMEN/4 SANGRADO UTERINO DE ORIGEN ANATOMICO/Patolog\303\255a_Uterina_Estructural.pptx"
+	new file:   GINECOOBSTETRICIA/1 RESUMEN/4 SANGRADO UTERINO DE ORIGEN ANATOMICO/Sangrado anatomico.pdf
+	new file:   GINECOOBSTETRICIA/1 RESUMEN/5 PATOLOGIA DE MENOPAUSIA Y CLIMATERIO/Climacteric_Pathology_Manual.pptx
+	new file:   GINECOOBSTETRICIA/1 RESUMEN/5 PATOLOGIA DE MENOPAUSIA Y CLIMATERIO/Menopausia y climaterio.pdf
+	new file:   GINECOOBSTETRICIA/1 RESUMEN/6 ONCOLOGIA GINECOLOGICA/Oncologia ginecologica.pdf
+	new file:   "GINECOOBSTETRICIA/1 RESUMEN/6 ONCOLOGIA GINECOLOGICA/Oncolog\303\255a_Ginecol\303\263gica.pptx"
+	new file:   GINECOOBSTETRICIA/1 RESUMEN/7 LESIONES PRECURSORAS Y CACU/Cervical_Cancer_Clinical_Management.pptx
+	new file:   GINECOOBSTETRICIA/1 RESUMEN/7 LESIONES PRECURSORAS Y CACU/Lesiones precursoras y cacu.pdf
+	new file:   GINECOOBSTETRICIA/1 RESUMEN/8 PATOLOGIA MAMARIA BENIGNA/Benign_Breast_Blueprint.pptx
+	new file:   GINECOOBSTETRICIA/1 RESUMEN/8 PATOLOGIA MAMARIA BENIGNA/Patologia benigna de mama.pdf
+	new file:   GINECOOBSTETRICIA/1 RESUMEN/9 CANCER DE MAMA/Cancer de mama.pdf
+	new file:   GINECOOBSTETRICIA/1 RESUMEN/9 CANCER DE MAMA/Precision_Breast_Oncology.pptx
+	new file:   GINECOOBSTETRICIA/1 RESUMEN/ELIMINAR_WORD.bat
+	new file:   GINECOOBSTETRICIA/1 RESUMEN/eliminar_word.py
+	new file:   GINECOOBSTETRICIA/2 VIDEOCLASE/1 INTRODUCCION A GINECOLOGIA/1 INTRODUCCION A GINECOLOGIA.mp4
+	new file:   GINECOOBSTETRICIA/2 VIDEOCLASE/10 PATOLOGIA INFECCIOSA CERVICAL/10 PATOLOGIA INFECCIOSA CERVICAL.mp4
+	new file:   GINECOOBSTETRICIA/2 VIDEOCLASE/11 CONTROL PRENATAL PARTE 1/11 CONTROL PRENATAL PARTE 1.mp4
+	new file:   GINECOOBSTETRICIA/2 VIDEOCLASE/12 CONTROL PRENATAL PARTE 2/12 CONTROL PRENATAL PARTE 2.mp4
+	new file:   GINECOOBSTETRICIA/2 VIDEOCLASE/13 HEMORRAGIAS DE PRIMER TRIMESTRE/13 HEMORRAGIAS DE PRIMER TRIMESTRE.mp4
+	new file:   GINECOOBSTETRICIA/2 VIDEOCLASE/14 HEMORRAGIAS DE TERCER TRIMESTRE/14 HEMORRAGIAS DE TERCER TRIMESTRE.mp4
+	new file:   GINECOOBSTETRICIA/2 VIDEOCLASE/15 ESTADOS HIPERTENSIVOS DEL EMBARAZO/15 ESTADOS HIPERTENSIVOS DEL EMBARAZO.mp4
+	new file:   GINECOOBSTETRICIA/2 VIDEOCLASE/16 PATOLOGIA EN EL EMBARAZO/16 PATOLOGIA EN EL EMBARAZO.mp4
+	new file:   GINECOOBSTETRICIA/2 VIDEOCLASE/17 TRABAJO DE PARTO/17 TRABAJO DE PARTO.mp4
+	new file:   GINECOOBSTETRICIA/2 VIDEOCLASE/18 PARTO PRETERMINO/18 PARTO PRETERMINO.mp4
+	new file:   GINECOOBSTETRICIA/2 VIDEOCLASE/19 PATOLOGIA DE TRABAJO DE PARTO/19 PATOLOGIA DE TRABAJO DE PARTO.mp4
+	new file:   GINECOOBSTETRICIA/2 VIDEOCLASE/2 AMENORREAS PRIMARIAS Y SECUNDARIAS/2 AMENORREAS PRIMARIAS Y SECUNDARIAS.mp4
+	new file:   GINECOOBSTETRICIA/2 VIDEOCLASE/20 PATOLOGIA PUERPERAL/20 PATOLOGIA PUERPERAL.mp4
+	new file:   GINECOOBSTETRICIA/2 VIDEOCLASE/3 SANGRADOS UTERINOS ANORMALES/3 SANGRADOS UTERINOS ANORMALES.mp4
+	new file:   GINECOOBSTETRICIA/2 VIDEOCLASE/4 SANGRADO UTERINO DE ORIGEN ANATOMICO/4 SANGRADO UTERINO DE ORIGEN ANATOMICO.mp4
+	new file:   GINECOOBSTETRICIA/2 VIDEOCLASE/5 PATOLOGIA DE MENOPAUSIA Y CLIMATERIO/5 PATOLOGIA DE MENOPAUSIA Y CLIMATERIO.mp4
+	new file:   GINECOOBSTETRICIA/2 VIDEOCLASE/6 ONCOLOGIA GINECOLOGICA/6 ONCOLOGIA GINECOLOGICA.mp4
+	new file:   GINECOOBSTETRICIA/2 VIDEOCLASE/7 LESIONES PRECURSORAS Y CACU/7 LESIONES PRECURSORAS Y CACU.mp4
+	new file:   GINECOOBSTETRICIA/2 VIDEOCLASE/8 PATOLOGIA MAMARIA BENIGNA/8 PATOLOGIA MAMARIA BENIGNA.mp4
+	new file:   GINECOOBSTETRICIA/2 VIDEOCLASE/9 CANCER DE MAMA/9 CANCER DE MAMA.mp4
+	new file:   GINECOOBSTETRICIA/3 KAHOOT/1 INTRODUCCION A GINECOLOGIA/1 INTRODUCCION A GINECOLOGIA.xlsx
+	new file:   GINECOOBSTETRICIA/3 KAHOOT/10 PATOLOGIA INFECCIOSA CERVICAL/10 PATOLOGIA INFECCIOSA CERVICAL.xlsx
+	new file:   GINECOOBSTETRICIA/3 KAHOOT/11 CONTROL PRENATAL PARTE 1/11 CONTROL PRENATAL PARTE 1.xlsx
+	new file:   GINECOOBSTETRICIA/3 KAHOOT/12 CONTROL PRENATAL PARTE 2/12 CONTROL PRENATAL PARTE 2.xlsx
+	new file:   GINECOOBSTETRICIA/3 KAHOOT/13 HEMORRAGIAS DE PRIMER TRIMESTRE/13 HEMORRAGIAS DE PRIMER TRIMESTRE.xlsx
+	new file:   GINECOOBSTETRICIA/3 KAHOOT/14 HEMORRAGIAS DE TERCER TRIMESTRE/14 HEMORRAGIAS DE TERCER TRIMESTRE.xlsx
+	new file:   GINECOOBSTETRICIA/3 KAHOOT/15 ESTADOS HIPERTENSIVOS DEL EMBARAZO/15 ESTADOS HIPERTENSIVOS DEL EMBARAZO.xlsx
+	new file:   GINECOOBSTETRICIA/3 KAHOOT/16 PATOLOGIA EN EL EMBARAZO/16 PATOLOGIA EN EL EMBARAZO.xlsx
+	new file:   GINECOOBSTETRICIA/3 KAHOOT/17 TRABAJO DE PARTO/17 TRABAJO DE PARTO.xlsx
+	new file:   GINECOOBSTETRICIA/3 KAHOOT/18 PARTO PRETERMINO/18 PARTO PRETERMINO.xlsx
+	new file:   GINECOOBSTETRICIA/3 KAHOOT/19 PATOLOGIA DE TRABAJO DE PARTO/19 PATOLOGIA DE TRABAJO DE PARTO.xlsx
+	new file:   GINECOOBSTETRICIA/3 KAHOOT/2 AMENORREAS PRIMARIAS Y SECUNDARIAS/2 AMENORREAS PRIMARIAS Y SECUNDARIAS.xlsx
+	new file:   GINECOOBSTETRICIA/3 KAHOOT/20 PATOLOGIA PUERPERAL/20 PATOLOGIA PUERPERAL.xlsx
+	new file:   GINECOOBSTETRICIA/3 KAHOOT/3 SANGRADOS UTERINOS ANORMALES/3 SANGRADOS UTERINOS ANORMALES.xlsx
+	new file:   GINECOOBSTETRICIA/3 KAHOOT/4 SANGRADO UTERINO DE ORIGEN ANATOMICO/4 SANGRADO UTERINO DE ORIGEN ANATOMICO.xlsx
+	new file:   GINECOOBSTETRICIA/3 KAHOOT/5 PATOLOGIA DE MENOPAUSIA Y CLIMATERIO/5 PATOLOGIA DE MENOPAUSIA Y CLIMATERIO.xlsx
+	new file:   GINECOOBSTETRICIA/3 KAHOOT/6 ONCOLOGIA GINECOLOGICA/6 ONCOLOGIA GINECOLOGICA.xlsx
+	new file:   GINECOOBSTETRICIA/3 KAHOOT/7 LESIONES PRECURSORAS Y CACU/7 LESIONES PRECURSORAS Y CACU.xlsx
+	new file:   GINECOOBSTETRICIA/3 KAHOOT/8 PATOLOGIA MAMARIA BENIGNA/8 PATOLOGIA MAMARIA BENIGNA.xlsx
+	new file:   GINECOOBSTETRICIA/3 KAHOOT/9 CANCER DE MAMA/9 CANCER DE MAMA.xlsx
+	new file:   GINECOOBSTETRICIA/4 SIMULADOR/1 INTRODUCCION A GINECOLOGIA/01_Introduccion_a_Ginecologia.xlsx
+	new file:   GINECOOBSTETRICIA/4 SIMULADOR/10 PATOLOGIA INFECCIOSA CERVICAL/10_Patologia_Infecciosa_Cervical.xlsx
+	new file:   GINECOOBSTETRICIA/4 SIMULADOR/11 CONTROL PRENATAL PARTE 1/11_Control_Prenatal_Parte_1.xlsx
+	new file:   GINECOOBSTETRICIA/4 SIMULADOR/12 CONTROL PRENATAL PARTE 2/12_Control_Prenatal_Parte_2.xlsx
+	new file:   GINECOOBSTETRICIA/4 SIMULADOR/13 HEMORRAGIAS DE PRIMER TRIMESTRE/13_Hemorragias_de_Primer_Trimestre.xlsx
+	new file:   GINECOOBSTETRICIA/4 SIMULADOR/14 HEMORRAGIAS DE TERCER TRIMESTRE/14_Hemorragias_de_Tercer_Trimestre.xlsx
+	new file:   GINECOOBSTETRICIA/4 SIMULADOR/15 ESTADOS HIPERTENSIVOS DEL EMBARAZO/15_Estados_Hipertensivos_del_Embarazo.xlsx
+	new file:   GINECOOBSTETRICIA/4 SIMULADOR/16 PATOLOGIA EN EL EMBARAZO/16_Patologia_en_el_Embarazo.xlsx
+	new file:   GINECOOBSTETRICIA/4 SIMULADOR/17 TRABAJO DE PARTO/17_Trabajo_de_Parto.xlsx
+	new file:   GINECOOBSTETRICIA/4 SIMULADOR/18 PARTO PRETERMINO/18_Parto_Pretermino.xlsx
+	new file:   GINECOOBSTETRICIA/4 SIMULADOR/19 PATOLOGIA DE TRABAJO DE PARTO/19_Patologia_de_Trabajo_de_Parto.xlsx
+	new file:   GINECOOBSTETRICIA/4 SIMULADOR/2 AMENORREAS PRIMARIAS Y SECUNDARIAS/02_Amenorreas_Primarias_y_Secundarias.xlsx
+	new file:   GINECOOBSTETRICIA/4 SIMULADOR/20 PATOLOGIA PUERPERAL/20_Patologia_Puerperal.xlsx
+	new file:   GINECOOBSTETRICIA/4 SIMULADOR/3 SANGRADOS UTERINOS ANORMALES/03_Sangrados_Uterinos_Anormales.xlsx
+	new file:   GINECOOBSTETRICIA/4 SIMULADOR/4 SANGRADO UTERINO DE ORIGEN ANATOMICO/04_Sangrado_Uterino_de_Origen_Anatomico.xlsx
+	new file:   GINECOOBSTETRICIA/4 SIMULADOR/5 PATOLOGIA DE MENOPAUSIA Y CLIMATERIO/05_Patologia_de_Menopausia_y_Climaterio.xlsx
+	new file:   GINECOOBSTETRICIA/4 SIMULADOR/6 ONCOLOGIA GINECOLOGICA/06_Oncologia_Ginecologica.xlsx
+	new file:   GINECOOBSTETRICIA/4 SIMULADOR/7 LESIONES PRECURSORAS Y CACU/07_Lesiones_Precursoras_y_CaCu.xlsx
+	new file:   GINECOOBSTETRICIA/4 SIMULADOR/8 PATOLOGIA MAMARIA BENIGNA/08_Patologia_Mamaria_Benigna.xlsx
+	new file:   GINECOOBSTETRICIA/4 SIMULADOR/9 CANCER DE MAMA/09_Cancer_de_Mama.xlsx
+	new file:   GINECOOBSTETRICIA/5 ANKI/1 INTRODUCCION A GINECOLOGIA/1 INTRODUCCION A GINECOLOGIA.csv
+	new file:   GINECOOBSTETRICIA/5 ANKI/10 PATOLOGIA INFECCIOSA CERVICAL/10 PATOLOGIA INFECCIOSA CERVICAL.csv
+	new file:   GINECOOBSTETRICIA/5 ANKI/11 CONTROL PRENATAL PARTE 1/11 CONTROL PRENATAL PARTE 1.csv
+	new file:   GINECOOBSTETRICIA/5 ANKI/12 CONTROL PRENATAL PARTE 2/12 CONTROL PRENATAL PARTE 2.csv
+	new file:   GINECOOBSTETRICIA/5 ANKI/13 HEMORRAGIAS DE PRIMER TRIMESTRE/13 HEMORRAGIAS DE PRIMER TRIMESTRE.csv
+	new file:   GINECOOBSTETRICIA/5 ANKI/14 HEMORRAGIAS DE TERCER TRIMESTRE/14 HEMORRAGIAS DE TERCER TRIMESTRE.csv
+	new file:   GINECOOBSTETRICIA/5 ANKI/15 ESTADOS HIPERTENSIVOS DEL EMBARAZO/15 ESTADOS HIPERTENSIVOS DEL EMBARAZO.csv
+	new file:   GINECOOBSTETRICIA/5 ANKI/16 PATOLOGIA EN EL EMBARAZO/16 PATOLOGIA EN EL EMBARAZO.csv
+	new file:   GINECOOBSTETRICIA/5 ANKI/17 TRABAJO DE PARTO/17 TRABAJO DE PARTO.csv
+	new file:   GINECOOBSTETRICIA/5 ANKI/18 PARTO PRETERMINO/18 PARTO PRETERMINO.csv
+	new file:   GINECOOBSTETRICIA/5 ANKI/19 PATOLOGIA DE TRABAJO DE PARTO/19 PATOLOGIA DE TRABAJO DE PARTO.csv
+	new file:   GINECOOBSTETRICIA/5 ANKI/2 AMENORREAS PRIMARIAS Y SECUNDARIAS/2 AMENORREAS PRIMARIAS Y SECUNDARIAS.csv
+	new file:   GINECOOBSTETRICIA/5 ANKI/20 PATOLOGIA PUERPERAL/20 PATOLOGIA PUERPERAL.csv
+	new file:   GINECOOBSTETRICIA/5 ANKI/3 SANGRADOS UTERINOS ANORMALES/3 SANGRADOS UTERINOS ANORMALES.csv
+	new file:   GINECOOBSTETRICIA/5 ANKI/4 SANGRADO UTERINO DE ORIGEN ANATOMICO/4 SANGRADO UTERINO DE ORIGEN ANATOMICO.csv
+	new file:   GINECOOBSTETRICIA/5 ANKI/5 PATOLOGIA DE MENOPAUSIA Y CLIMATERIO/5 PATOLOGIA DE MENOPAUSIA Y CLIMATERIO.csv
+	new file:   GINECOOBSTETRICIA/5 ANKI/6 ONCOLOGIA GINECOLOGICA/6 ONCOLOGIA GINECOLOGICA.csv
+	new file:   GINECOOBSTETRICIA/5 ANKI/7 LESIONES PRECURSORAS Y CACU/7 LESIONES PRECURSORAS Y CACU.csv
+	new file:   GINECOOBSTETRICIA/5 ANKI/8 PATOLOGIA MAMARIA BENIGNA/8 PATOLOGIA MAMARIA BENIGNA.csv
+	new file:   GINECOOBSTETRICIA/5 ANKI/9 CANCER DE MAMA/9 CANCER DE MAMA.csv
+	new file:   GINECOOBSTETRICIA/Miniaturas Gine/1.jpeg
+	new file:   GINECOOBSTETRICIA/Miniaturas Gine/10.jpeg
+	new file:   GINECOOBSTETRICIA/Miniaturas Gine/11.jpeg
+	new file:   GINECOOBSTETRICIA/Miniaturas Gine/12.jpeg
+	new file:   GINECOOBSTETRICIA/Miniaturas Gine/13.jpeg
+	new file:   GINECOOBSTETRICIA/Miniaturas Gine/14.jpeg
+	new file:   GINECOOBSTETRICIA/Miniaturas Gine/15.jpeg
+	new file:   GINECOOBSTETRICIA/Miniaturas Gine/16.jpeg
+	new file:   GINECOOBSTETRICIA/Miniaturas Gine/17.jpeg
+	new file:   GINECOOBSTETRICIA/Miniaturas Gine/18.jpeg
+	new file:   GINECOOBSTETRICIA/Miniaturas Gine/19.jpeg
+	new file:   GINECOOBSTETRICIA/Miniaturas Gine/2.jpeg
+	new file:   GINECOOBSTETRICIA/Miniaturas Gine/20.jpeg
+	new file:   GINECOOBSTETRICIA/Miniaturas Gine/3.jpeg
+	new file:   GINECOOBSTETRICIA/Miniaturas Gine/3D_illustration_of_202603242331.png
+	new file:   GINECOOBSTETRICIA/Miniaturas Gine/3D_illustration_postpartum_202603242328.jpeg
+	new file:   GINECOOBSTETRICIA/Miniaturas Gine/4.jpeg
+	new file:   GINECOOBSTETRICIA/Miniaturas Gine/5.jpeg
+	new file:   GINECOOBSTETRICIA/Miniaturas Gine/6.jpeg
+	new file:   GINECOOBSTETRICIA/Miniaturas Gine/7.jpeg
+	new file:   GINECOOBSTETRICIA/Miniaturas Gine/8.jpeg
+	new file:   GINECOOBSTETRICIA/Miniaturas Gine/9.jpeg
+	new file:   GINECOOBSTETRICIA/Miniaturas Gine/Birth_canal_with_202603242328.jpeg
+	new file:   GINECOOBSTETRICIA/Miniaturas Gine/Breast_anatomy_healthy_202603242328.jpeg
+	new file:   GINECOOBSTETRICIA/Miniaturas Gine/Cervix_with_protective_202603242328.jpeg
+	new file:   GINECOOBSTETRICIA/Miniaturas Gine/Clipboard_fetal_monitor_202603242328.jpeg
+	new file:   GINECOOBSTETRICIA/Miniaturas Gine/Female_reproductive_system_202603242328.jpeg
+	new file:   GINECOOBSTETRICIA/Miniaturas Gine/Female_silhouette_transitioning_202603242328.jpeg
+	new file:   GINECOOBSTETRICIA/Miniaturas Gine/Female_symbol_and_202603242328.jpeg
+	new file:   GINECOOBSTETRICIA/Miniaturas Gine/Glowing_clock_contraction_202603242328.jpeg
+	new file:   GINECOOBSTETRICIA/Miniaturas Gine/Glowing_pregnant_belly_202603242328.jpeg
+	new file:   GINECOOBSTETRICIA/Miniaturas Gine/Hourglass_with_baby_202603242328.jpeg
+	new file:   GINECOOBSTETRICIA/Miniaturas Gine/Medical_cross_overlapping_202603242328.jpeg
+	new file:   GINECOOBSTETRICIA/Miniaturas Gine/Microscopic_cervical_cells_202603242328.jpeg
+	new file:   GINECOOBSTETRICIA/Miniaturas Gine/Pink_ribbon_breast_202603242328.jpeg
+	new file:   GINECOOBSTETRICIA/Miniaturas Gine/Pregnancy_ultrasound_scan_202603242328.jpeg
+	new file:   GINECOOBSTETRICIA/Miniaturas Gine/Pregnant_belly_profile_202603242328.jpeg
+	new file:   GINECOOBSTETRICIA/Miniaturas Gine/Pregnant_form_blood_202603242328.jpeg
+	new file:   GINECOOBSTETRICIA/Miniaturas Gine/Uterus_showing_internal_202603242328.jpeg
+	new file:   GINECOOBSTETRICIA/Miniaturas Gine/Uterus_with_red_202603242328.jpeg
+	new file:   GINECOOBSTETRICIA/Videos Gine/1---el-estetoscopio-rosa-gira-suavemente-y-el-smbo.mp4
+	new file:   GINECOOBSTETRICIA/Videos Gine/10---los-microorganismos-alrededor-del-cuello-uter.mp4
+	new file:   GINECOOBSTETRICIA/Videos Gine/11-el-bebe-dentro-del-vientre-iluminado-se-mueve-suavemente-y-la-sonda-de-ultrasonido-desliza-levemente._0001.mp4
+	new file:   GINECOOBSTETRICIA/Videos Gine/12---el-papel-del-monitor-fetal-avanza-despacio-mo.mp4
+	new file:   GINECOOBSTETRICIA/Videos Gine/13-los-simbolos-de-alerta-rojos-parpadean-sobre-la-imagen-de-ultrasonido-la-pantalla-tiene-una-leve-vibracion._0001.mp4
+	new file:   GINECOOBSTETRICIA/Videos Gine/14-las-lineas-rojas-de-alerta-sobre-el-vientre-de-tercer-trimestre-pulsan-intermitentemente-la-camara-hace-zoom-lento._0001.mp4
+	new file:   GINECOOBSTETRICIA/Videos Gine/15-el-monitor-de-presion-en-el-brazo-de-la-embarazada-parpadea-con-numeros-subiendo-lentamente-en-la-pantalla._0001.mp4
+	new file:   GINECOOBSTETRICIA/Videos Gine/16-la-cruz-medica-neon-parpadea-suavemente-y-la-silueta-embarazada-tiene-un-brillo-azul-que-pulsa._0001.mp4
+	new file:   GINECOOBSTETRICIA/Videos Gine/17-el-reloj-digital-parpadea-cambiando-los-minutos-y-la-linea-del-monitor-de-contracciones-avanza-lentamente._0001.mp4
+	new file:   GINECOOBSTETRICIA/Videos Gine/18---la-arena-del-reloj-de-vidrio-cae-despacio-y-l.mp4
+	new file:   GINECOOBSTETRICIA/Videos Gine/19-el-bebe-dentro-del-canal-de-parto-se-mueve-imperceptiblemente-y-los-simbolos-de-alerta-parpadean-con-suavidad._0001.mp4
+	new file:   GINECOOBSTETRICIA/Videos Gine/2---el-tero-estilizado-rota-lentamente-mientras-el.mp4
+	new file:   GINECOOBSTETRICIA/Videos Gine/20---la-mam-en-el-silln-mece-levemente-al-beb-las-.mp4
+	new file:   GINECOOBSTETRICIA/Videos Gine/3---el-tero-con-flujo-rojo-tiene-un-movimiento-ond.mp4
+	new file:   GINECOOBSTETRICIA/Videos Gine/4-los-fibroides-del-utero-pulsan-levemente-con-un-brillo-suave-la-camara-hace-un-zoom-lento._0001.mp4
+	new file:   GINECOOBSTETRICIA/Videos Gine/5-la-silueta-femenina-transiciona-suavemente-de-tonos-calidos-a-frios-como-un-gradiente-animado._0001.mp4
+	new file:   GINECOOBSTETRICIA/Videos Gine/6---la-zona-de-tratamiento-brillante-del-tero-puls.mp4
+	new file:   GINECOOBSTETRICIA/Videos Gine/7---la-lupa-se-desplaza-lentamente-sobre-las-clula.mp4
+	new file:   GINECOOBSTETRICIA/Videos Gine/8-las-capas-del-tejido-mamario-tienen-un-leve-movimiento-de-respiracion-expandiendose-y-contrayendose-sutilmente._0001.mp4
+	new file:   GINECOOBSTETRICIA/Videos Gine/9-el-lazo-rosa-gira-despacio-mientras-las-celulas-tumorales-parpadean-y-el-tejido-mamario-pulsa-suavemente._0001.mp4
+	new file:   INFORME_EJECUTIVO_AUDITORIA.md
+	new file:   MEDICINA INTERNA/1 RESUMEN/1 INTRODUCCION A MI/Internal_Medicine_Clinical_Dashboard.pptx
+	new file:   MEDICINA INTERNA/1 RESUMEN/10 SINDROME METABOLICO/Metabolic_Control_Dashboard.pptx
+	new file:   MEDICINA INTERNA/1 RESUMEN/11 DIABETES MELLITUS/Diabetes_Clinical_Blueprint.pptx
+	new file:   MEDICINA INTERNA/1 RESUMEN/12 COMPLICACIONES DE DIABETES/Diabetes_Clinical_Dashboard.pptx
+	new file:   MEDICINA INTERNA/1 RESUMEN/13 PATOLOGIA CENTRAL Y SUPRARRENAL/Endocrine_Control_Panel.pptx
+	new file:   MEDICINA INTERNA/1 RESUMEN/14 PERLAS DE ENDOCRINOLOGIA/Internal_Medicine_Dashboard.pptx
+	new file:   "MEDICINA INTERNA/1 RESUMEN/15 INTRODUCCION A HEMATOLOGIA/Hematolog\303\255a_y_Cl\303\255nica_de_las_Anemias.pptx"
+	new file:   MEDICINA INTERNA/1 RESUMEN/16 ANEMIA HEMOLITICA/Hemolytic_Anemia_Atlas.pptx
+	new file:   MEDICINA INTERNA/1 RESUMEN/17 LEUCEMIAS/Atlas_de_Leucemias.pptx
+	new file:   MEDICINA INTERNA/1 RESUMEN/18 ONCOHEMATOLOGIA/Clinical_Lymphoma_Management.pptx
+	new file:   MEDICINA INTERNA/1 RESUMEN/19 ANORMALIDADES DE LA HEMOSTASIA/Hemostasis_and_Oncohematology.pptx
+	new file:   MEDICINA INTERNA/1 RESUMEN/2 TUBERCULOSIS/Tuberculosis_Clinical_Blueprint.pptx
+	new file:   MEDICINA INTERNA/1 RESUMEN/20 INTRODUCCION A CARDIOLOGIA/Integrated_Cardiology.pptx
+	new file:   "MEDICINA INTERNA/1 RESUMEN/21 INSUFICIENCIA CARDIACA/Abordaje_de_Insuficiencia_Card\303\255aca.pptx"
+	new file:   "MEDICINA INTERNA/1 RESUMEN/22 VALVULOPATIAS/Valvulopat\303\255as_Card\303\255acas.pptx"
+	new file:   MEDICINA INTERNA/1 RESUMEN/23 SINDROMES CORONARIOS/ACS_Clinical_Protocols.pptx
+	new file:   "MEDICINA INTERNA/1 RESUMEN/24 ACLS Y BLS/Reanimaci\303\263n_Avanzada_2025.pptx"
+	new file:   MEDICINA INTERNA/1 RESUMEN/25 TRASTORNOS DEL RITMO/Arrhythmia_Survival_Manual.pptx
+	new file:   MEDICINA INTERNA/1 RESUMEN/26 HIPERTENSION ARTERIAL SISTEMICA/Systemic_Hypertension_Navigator.pptx
+	new file:   MEDICINA INTERNA/1 RESUMEN/27 PERLAS DE CARDIOLOGIA/Cardiology_Diagnostic_Atlas.pptx
+	new file:   MEDICINA INTERNA/1 RESUMEN/28 ENFERMEDAD VASCULAR CEREBRAL/Protocolo_de_Manejo_EVC.pptx
+	new file:   "MEDICINA INTERNA/1 RESUMEN/29 TRASTORNOS DEL MOVIMIENTO/Neuromatriz_de_Trastornos_Neurol\303\263gicos.pptx"
+	new file:   MEDICINA INTERNA/1 RESUMEN/3 VIH/HIV_Clinical_Management.pptx
+	new file:   MEDICINA INTERNA/1 RESUMEN/30 CEFALEAS/Primary_Headaches_and_Cranial_Neuralgias.pptx
+	new file:   MEDICINA INTERNA/1 RESUMEN/31 DEMENCIAS/Dementia_Clinical_Essentials.pptx
+	new file:   "MEDICINA INTERNA/1 RESUMEN/32 DERMATOLOGIA/Gu\303\255a_de_Dermatolog\303\255a_Cl\303\255nica.pptx"
+	new file:   "MEDICINA INTERNA/1 RESUMEN/33 DERMATOLOGIA ONCOLOGICA/Dermatolog\303\255a_Oncol\303\263gica.pptx"
+	new file:   "MEDICINA INTERNA/1 RESUMEN/34 PATOLOGIA DERMATOLOGICA/Atlas_Dermatol\303\263gico_ENARM.pptx"
+	new file:   "MEDICINA INTERNA/1 RESUMEN/35 REUMATOLOGIA/Compendio_de_Reumatolog\303\255a_Cl\303\255nica.pptx"
+	new file:   MEDICINA INTERNA/1 RESUMEN/4 ENFERMEDADES TRANSMITIDAS POR VECTOR/Vector_Disease_Clinical_Dossier.pptx
+	new file:   MEDICINA INTERNA/1 RESUMEN/5 ZOONOSIS Y MICOSIS/Zoonoses_and_Mycoses_Clinical_Guide.pptx
+	new file:   MEDICINA INTERNA/1 RESUMEN/6 TETANOS, BOTULISMO Y RABIA/The_Neurotoxic_Triad.pptx
+	new file:   MEDICINA INTERNA/1 RESUMEN/7 EPOC Y CANCER DE PULMON/The_Respiratory_Blueprint.pptx
+	new file:   MEDICINA INTERNA/1 RESUMEN/8 NEUMONIAS INTERSTICIALES Y DERRAME PLEURAL/Thoracic_Diagnostic_Station.pptx
+	new file:   MEDICINA INTERNA/1 RESUMEN/9 PATOLOGIA TIROIDEA/Thyroid_Clinical_Dashboard.pptx
+	new file:   "MEDICINA INTERNA/2 VIDEOCLASE/1 INTRODUCCION A MI/Infecci\303\263n__La_Batalla_Interior.mp4"
+	new file:   "MEDICINA INTERNA/2 VIDEOCLASE/10 SINDROME METABOLICO/S\303\255ndrome_Metab\303\263lico.mp4"
+	new file:   MEDICINA INTERNA/2 VIDEOCLASE/11 DIABETES MELLITUS/Diabetes_Mellitus_Explicada.mp4
+	new file:   MEDICINA INTERNA/2 VIDEOCLASE/12 COMPLICACIONES DE DIABETES/Complicaciones_de_la_Diabetes.mp4
+	new file:   "MEDICINA INTERNA/2 VIDEOCLASE/13 PATOLOGIA CENTRAL Y SUPRARRENAL/Patolog\303\255a_Central_y_Suprarrenal.mp4"
+	new file:   "MEDICINA INTERNA/2 VIDEOCLASE/14 PERLAS DE ENDOCRINOLOGIA/Decodificando_la_Qu\303\255mica_Interna.mp4"
+	new file:   MEDICINA INTERNA/2 VIDEOCLASE/15 INTRODUCCION A HEMATOLOGIA/Descifrando_la_Anemia.mp4
+	new file:   "MEDICINA INTERNA/2 VIDEOCLASE/16 ANEMIA HEMOLITICA/Anemias_Hemol\303\255ticas.mp4"
+	new file:   MEDICINA INTERNA/2 VIDEOCLASE/17 LEUCEMIAS/Leucemia__Cuando_la_sangre_falla.mp4
+	new file:   "MEDICINA INTERNA/2 VIDEOCLASE/18 ONCOHEMATOLOGIA/Oncohematolog\303\255a__El_Linfoma.mp4"
+	new file:   MEDICINA INTERNA/2 VIDEOCLASE/19 ANORMALIDADES DE LA HEMOSTASIA/Anormalidades_de_Hemostasia.mp4
+	new file:   "MEDICINA INTERNA/2 VIDEOCLASE/2 TUBERCULOSIS/Tuberculosis__Radiograf\303\255a.mp4"
+	new file:   "MEDICINA INTERNA/2 VIDEOCLASE/20 INTRODUCCION A CARDIOLOGIA/Cardiolog\303\255a__El_Viaje_de_un_Latido.mp4"
+	new file:   "MEDICINA INTERNA/2 VIDEOCLASE/21 INSUFICIENCIA CARDIACA/Gu\303\255a__Insuficiencia_Card\303\255aca.mp4"
+	new file:   "MEDICINA INTERNA/2 VIDEOCLASE/22 VALVULOPATIAS/Valvulopat\303\255as__Gu\303\255a_Cl\303\255nica.mp4"
+	new file:   "MEDICINA INTERNA/2 VIDEOCLASE/23 SINDROMES CORONARIOS/S\303\255ndromes_Coronarios.mp4"
+	new file:   MEDICINA INTERNA/2 VIDEOCLASE/24 ACLS Y BLS/Algoritmos_de_Soporte_Vital.mp4
+	new file:   MEDICINA INTERNA/2 VIDEOCLASE/25 TRASTORNOS DEL RITMO/Trastornos_del_Ritmo.mp4
+	new file:   "MEDICINA INTERNA/2 VIDEOCLASE/26 HIPERTENSION ARTERIAL SISTEMICA/Hipertensi\303\263n_Arterial_Sist\303\251mica.mp4"
+	new file:   "MEDICINA INTERNA/2 VIDEOCLASE/27 PERLAS DE CARDIOLOGIA/Repaso_de_Patolog\303\255a_Card\303\255aca.mp4"
+	new file:   MEDICINA INTERNA/2 VIDEOCLASE/28 ENFERMEDAD VASCULAR CEREBRAL/Enfermedad_Vascular_Cerebral.mp4
+	new file:   MEDICINA INTERNA/2 VIDEOCLASE/29 TRASTORNOS DEL MOVIMIENTO/Trastornos_del_Movimiento.mp4
+	new file:   MEDICINA INTERNA/2 VIDEOCLASE/3 VIH/Entendiendo_el_VIH.mp4
+	new file:   "MEDICINA INTERNA/2 VIDEOCLASE/30 CEFALEAS/Cefaleas__Diagn\303\263stico_y_Manejo.mp4"
+	new file:   "MEDICINA INTERNA/2 VIDEOCLASE/31 DEMENCIAS/Revisi\303\263n_Cl\303\255nica_de_Demencias.mp4"
+	new file:   "MEDICINA INTERNA/2 VIDEOCLASE/32 DERMATOLOGIA/Dermatolog\303\255a__Repaso_Cl\303\255nico.mp4"
+	new file:   "MEDICINA INTERNA/2 VIDEOCLASE/33 DERMATOLOGIA ONCOLOGICA/Neoplasias_Cut\303\241neas_Malignas.mp4"
+	new file:   "MEDICINA INTERNA/2 VIDEOCLASE/34 PATOLOGIA DERMATOLOGICA/Patolog\303\255as_Dermatol\303\263gicas.mp4"
+	new file:   "MEDICINA INTERNA/2 VIDEOCLASE/35 REUMATOLOGIA/Reumatolog\303\255a__Claves.mp4"
+	new file:   MEDICINA INTERNA/2 VIDEOCLASE/4 ENFERMEDADES TRANSMITIDAS POR VECTOR/Enfermedades_por_Vector.mp4
+	new file:   MEDICINA INTERNA/2 VIDEOCLASE/5 ZOONOSIS Y MICOSIS/Amenazas_Invisibles.mp4
+	new file:   MEDICINA INTERNA/2 VIDEOCLASE/6 TETANOS, BOTULISMO Y RABIA/Tres_Amenazas_Silenciosas.mp4
+	new file:   "MEDICINA INTERNA/2 VIDEOCLASE/7 EPOC Y CANCER DE PULMON/EPOC_y_C\303\241ncer__Dos_Caminos.mp4"
+	new file:   MEDICINA INTERNA/2 VIDEOCLASE/8 NEUMONIAS INTERSTICIALES Y DERRAME PLEURAL/Cuando_respirar_es_una_batalla.mp4
+	new file:   MEDICINA INTERNA/2 VIDEOCLASE/9 PATOLOGIA TIROIDEA/Descifrando_la_Tiroides.mp4
+	new file:   MEDICINA INTERNA/3 KAHOOT/1 INTRODUCCION A MI/1 INTRODUCCION A MI.xlsx
+	new file:   MEDICINA INTERNA/3 KAHOOT/10 SINDROME METABOLICO/10 SINDROME METABOLICO.xlsx
+	new file:   MEDICINA INTERNA/3 KAHOOT/11 DIABETES MELLITUS/11 DIABETES MELLITUS.xlsx
+	new file:   MEDICINA INTERNA/3 KAHOOT/12 COMPLICACIONES DE DIABETES/12 COMPLICACIONES DE DIABETES.xlsx
+	new file:   MEDICINA INTERNA/3 KAHOOT/13 PATOLOGIA CENTRAL Y SUPRARRENAL/13 PATOLOGIA CENTRAL Y SUPRARRENAL.xlsx
+	new file:   MEDICINA INTERNA/3 KAHOOT/14 PERLAS DE ENDOCRINOLOGIA/14 PERLAS DE ENDOCRINOLOGIA.xlsx
+	new file:   MEDICINA INTERNA/3 KAHOOT/15 INTRODUCCION A HEMATOLOGIA/15 INTRODUCCION A HEMATOLOGIA.xlsx
+	new file:   MEDICINA INTERNA/3 KAHOOT/16 ANEMIA HEMOLITICA/16 ANEMIA HEMOLITICA.xlsx
+	new file:   MEDICINA INTERNA/3 KAHOOT/17 LEUCEMIAS/17 LEUCEMIAS.xlsx
+	new file:   MEDICINA INTERNA/3 KAHOOT/18 ONCOHEMATOLOGIA/18 ONCOHEMATOLOGIA.xlsx
+	new file:   MEDICINA INTERNA/3 KAHOOT/19 ANORMALIDADES DE LA HEMOSTASIA/19 ANORMALIDADES DE LA HEMOSTASIA.xlsx
+	new file:   MEDICINA INTERNA/3 KAHOOT/2 TUBERCULOSIS/2 TUBERCULOSIS.xlsx
+	new file:   MEDICINA INTERNA/3 KAHOOT/20 INTRODUCCION A CARDIOLOGIA/20 INTRODUCCION A CARDIOLOGIA.xlsx
+	new file:   MEDICINA INTERNA/3 KAHOOT/21 INSUFICIENCIA CARDIACA/21 INSUFICIENCIA CARDIACA.xlsx
+	new file:   MEDICINA INTERNA/3 KAHOOT/22 VALVULOPATIAS/22 VALVULOPATIAS.xlsx
+	new file:   MEDICINA INTERNA/3 KAHOOT/23 SINDROMES CORONARIOS/23 SINDROMES CORONARIOS.xlsx
+	new file:   MEDICINA INTERNA/3 KAHOOT/24 ACLS Y BLS/24 ACLS Y BLS.xlsx
+	new file:   MEDICINA INTERNA/3 KAHOOT/25 TRASTORNOS DEL RITMO/25 TRASTORNOS DEL RITMO.xlsx
+	new file:   MEDICINA INTERNA/3 KAHOOT/26 HIPERTENSION ARTERIAL SISTEMICA/26 HIPERTENSION ARTERIAL SISTEMICA.xlsx
+	new file:   MEDICINA INTERNA/3 KAHOOT/27 PERLAS DE CARDIOLOGIA/27 PERLAS DE CARDIOLOGIA.xlsx
+	new file:   MEDICINA INTERNA/3 KAHOOT/28 ENFERMEDAD VASCULAR CEREBRAL/28 ENFERMEDAD VASCULAR CEREBRAL.xlsx
+	new file:   MEDICINA INTERNA/3 KAHOOT/29 TRASTORNOS DEL MOVIMIENTO/29 TRASTORNOS DEL MOVIMIENTO.xlsx
+	new file:   MEDICINA INTERNA/3 KAHOOT/3 VIH/3 VIH.xlsx
+	new file:   MEDICINA INTERNA/3 KAHOOT/30 CEFALEAS/30 CEFALEAS.xlsx
+	new file:   MEDICINA INTERNA/3 KAHOOT/31 DEMENCIAS/31 DEMENCIAS.xlsx
+	new file:   MEDICINA INTERNA/3 KAHOOT/32 DERMATOLOGIA/32 DERMATOLOGIA.xlsx
+	new file:   MEDICINA INTERNA/3 KAHOOT/33 DERMATOLOGIA ONCOLOGICA/33 DERMATOLOGIA ONCOLOGICA.xlsx
+	new file:   MEDICINA INTERNA/3 KAHOOT/34 PATOLOGIA DERMATOLOGICA/34 PATOLOGIA DERMATOLOGICA.xlsx
+	new file:   MEDICINA INTERNA/3 KAHOOT/35 REUMATOLOGIA/35 REUMATOLOGIA.xlsx
+	new file:   MEDICINA INTERNA/3 KAHOOT/4 ENFERMEDADES TRANSMITIDAS POR VECTOR/4 ENFERMEDADES TRANSMITIDAS POR VECTOR.xlsx
+	new file:   MEDICINA INTERNA/3 KAHOOT/5 ZOONOSIS Y MICOSIS/5 ZOONOSIS Y MICOSIS.xlsx
+	new file:   MEDICINA INTERNA/3 KAHOOT/6 TETANOS, BOTULISMO Y RABIA/6 TETANOS, BOTULISMO Y RABIA.xlsx
+	new file:   MEDICINA INTERNA/3 KAHOOT/7 EPOC Y CANCER DE PULMON/7 EPOC Y CANCER DE PULMON.xlsx
+	new file:   MEDICINA INTERNA/3 KAHOOT/8 NEUMONIAS INTERSTICIALES Y DERRAME PLEURAL/8 NEUMONIAS INTERSTICIALES Y DERRAME PLEURAL.xlsx
+	new file:   MEDICINA INTERNA/3 KAHOOT/9 PATOLOGIA TIROIDEA/9 PATOLOGIA TIROIDEA.xlsx
+	new file:   MEDICINA INTERNA/4 SIMULADOR/1 INTRODUCCION A MI/1_INTRODUCCION_A_MI.xlsx
+	new file:   MEDICINA INTERNA/4 SIMULADOR/10 SINDROME METABOLICO/10_SINDROME_METABOLICO.xlsx
+	new file:   MEDICINA INTERNA/4 SIMULADOR/2 TUBERCULOSIS/2_TUBERCULOSIS.xlsx
+	new file:   MEDICINA INTERNA/4 SIMULADOR/21 INSUFICIENCIA CARDIACA/01_Insuficiencia_Cardiaca.xlsx
+	new file:   MEDICINA INTERNA/4 SIMULADOR/22 VALVULOPATIAS/02_Valvulopatias.xlsx
+	new file:   MEDICINA INTERNA/4 SIMULADOR/23 SINDROMES CORONARIOS/03_Sindromes_Coronarios.xlsx
+	new file:   MEDICINA INTERNA/4 SIMULADOR/24 ACLS Y BLS/04_ACLS_BLS.xlsx
+	new file:   MEDICINA INTERNA/4 SIMULADOR/25 TRASTORNOS DEL RITMO/05_Trastornos_Ritmo.xlsx
+	new file:   MEDICINA INTERNA/4 SIMULADOR/26 HIPERTENSION ARTERIAL SISTEMICA/06_Hipertension_Arterial.xlsx
+	new file:   MEDICINA INTERNA/4 SIMULADOR/27 PERLAS DE CARDIOLOGIA/07_Perlas_Cardiologia.xlsx
+	new file:   MEDICINA INTERNA/4 SIMULADOR/28 ENFERMEDAD VASCULAR CEREBRAL/08_Enfermedad_Vascular_Cerebral.xlsx
+	new file:   MEDICINA INTERNA/4 SIMULADOR/29 TRASTORNOS DEL MOVIMIENTO/09_Trastornos_Movimiento.xlsx
+	new file:   MEDICINA INTERNA/4 SIMULADOR/3 VIH/3_VIH.xlsx
+	new file:   MEDICINA INTERNA/4 SIMULADOR/30 CEFALEAS/10_Cefaleas.xlsx
+	new file:   MEDICINA INTERNA/4 SIMULADOR/4 ENFERMEDADES TRANSMITIDAS POR VECTOR/4_ENFERMEDADES_VECTOR.xlsx
+	new file:   MEDICINA INTERNA/4 SIMULADOR/5 ZOONOSIS Y MICOSIS/5_ZOONOSIS_MICOSIS.xlsx
+	new file:   MEDICINA INTERNA/4 SIMULADOR/6 TETANOS, BOTULISMO Y RABIA/6_TETANOS_BOTULISMO_RABIA.xlsx
+	new file:   MEDICINA INTERNA/4 SIMULADOR/7 EPOC Y CANCER DE PULMON/7_EPOC_CANCER_PULMON.xlsx
+	new file:   MEDICINA INTERNA/4 SIMULADOR/8 NEUMONIAS INTERSTICIALES Y DERRAME PLEURAL/8_NEUMONIAS_INTERSTICIALES.xlsx
+	new file:   MEDICINA INTERNA/4 SIMULADOR/9 PATOLOGIA TIROIDEA/9_PATOLOGIA_TIROIDEA.xlsx
+	new file:   MEDICINA INTERNA/5 ANKI/1 INTRODUCCION A MI/1 INTRODUCCION A MI.csv
+	new file:   MEDICINA INTERNA/5 ANKI/12 COMPLICACIONES DE DIABETES/12 COMPLICACIONES DE DIABETES.csv
+	new file:   MEDICINA INTERNA/5 ANKI/13 PATOLOGIA CENTRAL Y SUPRARRENAL/13 PATOLOGIA CENTRAL Y SUPRARRENAL.csv
+	new file:   MEDICINA INTERNA/5 ANKI/14 PERLAS DE ENDOCRINOLOGIA/14 PERLAS DE ENDOCRINOLOGIA.csv
+	new file:   MEDICINA INTERNA/5 ANKI/15 INTRODUCCION A HEMATOLOGIA/15 INTRODUCCION A HEMATOLOGIA.csv
+	new file:   MEDICINA INTERNA/5 ANKI/16 ANEMIA HEMOLITICA/16 ANEMIA HEMOLITICA.csv
+	new file:   MEDICINA INTERNA/5 ANKI/17 LEUCEMIAS/17 LEUCEMIAS.csv
+	new file:   MEDICINA INTERNA/5 ANKI/18 ONCOHEMATOLOGIA/18 ONCOHEMATOLOGIA.csv
+	new file:   MEDICINA INTERNA/5 ANKI/19 ANORMALIDADES DE LA HEMOSTASIA/19 ANORMALIDADES DE LA HEMOSTASIA.csv
+	new file:   MEDICINA INTERNA/5 ANKI/2 TUBERCULOSIS/2 TUBERCULOSIS.csv
+	new file:   MEDICINA INTERNA/5 ANKI/20 INTRODUCCION A CARDIOLOGIA/20 INTRODUCCION A CARDIOLOGIA.csv
+	new file:   MEDICINA INTERNA/5 ANKI/21 INSUFICIENCIA CARDIACA/21 INSUFICIENCIA CARDIACA.csv
+	new file:   MEDICINA INTERNA/5 ANKI/22 VALVULOPATIAS/22 VALVULOPATIAS - Estenosis y Regurgitacion.csv
+	new file:   MEDICINA INTERNA/5 ANKI/22 VALVULOPATIAS/22 VALVULOPATIAS - Fiebre Reumatica y Pericarditis.csv
+	new file:   MEDICINA INTERNA/5 ANKI/23 SINDROMES CORONARIOS/23 SINDROMES CORONARIOS.csv
+	new file:   MEDICINA INTERNA/5 ANKI/24 ACLS Y BLS/24 ACLS Y BLS.csv
+	new file:   MEDICINA INTERNA/5 ANKI/25 TRASTORNOS DEL RITMO/25 TRASTORNOS DEL RITMO.csv
+	new file:   MEDICINA INTERNA/5 ANKI/26 HIPERTENSION ARTERIAL SISTEMICA/26 HIPERTENSION ARTERIAL SISTEMICA.csv
+	new file:   MEDICINA INTERNA/5 ANKI/27 PERLAS DE CARDIOLOGIA/27 PERLAS DE CARDIOLOGIA.csv
+	new file:   MEDICINA INTERNA/5 ANKI/28 ENFERMEDAD VASCULAR CEREBRAL/28 ENFERMEDAD VASCULAR CEREBRAL.csv
+	new file:   MEDICINA INTERNA/5 ANKI/29 TRASTORNOS DEL MOVIMIENTO/29 TRASTORNOS DEL MOVIMIENTO.csv
+	new file:   MEDICINA INTERNA/5 ANKI/31 DEMENCIAS/31 DEMENCIAS.csv
+	new file:   MEDICINA INTERNA/5 ANKI/32 DERMATOLOGIA/32 DERMATOLOGIA.csv
+	new file:   MEDICINA INTERNA/5 ANKI/33 DERMATOLOGIA ONCOLOGICA/33 DERMATOLOGIA ONCOLOGICA.csv
+	new file:   MEDICINA INTERNA/5 ANKI/34 PATOLOGIA DERMATOLOGICA/34 PATOLOGIA DERMATOLOGICA.csv
+	new file:   MEDICINA INTERNA/5 ANKI/35 REUMATOLOGIA/35 REUMATOLOGIA.csv
+	new file:   MEDICINA INTERNA/5 ANKI/4 ENFERMEDADES TRANSMITIDAS POR VECTOR/4 ENFERMEDADES TRANSMITIDAS POR VECTOR.csv
+	new file:   MEDICINA INTERNA/5 ANKI/5 ZOONOSIS Y MICOSIS/5 ZOONOSIS Y MICOSIS.csv
+	new file:   MEDICINA INTERNA/5 ANKI/6 TETANOS, BOTULISMO Y RABIA/6 TETANOS, BOTULISMO Y RABIA.csv
+	new file:   MEDICINA INTERNA/5 ANKI/7 EPOC Y CANCER DE PULMON/7 EPOC Y CANCER DE PULMON.csv
+	new file:   MEDICINA INTERNA/5 ANKI/8 NEUMONIAS INTERSTICIALES Y DERRAME PLEURAL/8 NEUMONIAS INTERSTICIALES Y DERRAME PLEURAL.csv
+	new file:   MEDICINA INTERNA/5 ANKI/9 PATOLOGIA TIROIDEA/9 PATOLOGIA TIROIDEA.csv
+	new file:   MEDICINA INTERNA/Miniaturas MI/1.jpeg
+	new file:   MEDICINA INTERNA/Miniaturas MI/10.jpeg
+	new file:   MEDICINA INTERNA/Miniaturas MI/11.jpeg
+	new file:   MEDICINA INTERNA/Miniaturas MI/12.jpeg
+	new file:   MEDICINA INTERNA/Miniaturas MI/13.jpeg
+	new file:   MEDICINA INTERNA/Miniaturas MI/14.jpeg
+	new file:   MEDICINA INTERNA/Miniaturas MI/15.jpeg
+	new file:   MEDICINA INTERNA/Miniaturas MI/16.jpeg
+	new file:   MEDICINA INTERNA/Miniaturas MI/17.jpeg
+	new file:   MEDICINA INTERNA/Miniaturas MI/18.jpeg
+	new file:   MEDICINA INTERNA/Miniaturas MI/19.jpeg
+	new file:   MEDICINA INTERNA/Miniaturas MI/2.jpeg
+	new file:   MEDICINA INTERNA/Miniaturas MI/20.jpeg
+	new file:   MEDICINA INTERNA/Miniaturas MI/21.jpeg
+	new file:   MEDICINA INTERNA/Miniaturas MI/22.jpeg
+	new file:   MEDICINA INTERNA/Miniaturas MI/23.jpeg
+	new file:   MEDICINA INTERNA/Miniaturas MI/24.jpeg
+	new file:   MEDICINA INTERNA/Miniaturas MI/25.jpeg
+	new file:   MEDICINA INTERNA/Miniaturas MI/26.jpeg
+	new file:   MEDICINA INTERNA/Miniaturas MI/27.jpeg
+	new file:   MEDICINA INTERNA/Miniaturas MI/28.jpeg
+	new file:   MEDICINA INTERNA/Miniaturas MI/29.jpeg
+	new file:   MEDICINA INTERNA/Miniaturas MI/3.jpeg
+	new file:   MEDICINA INTERNA/Miniaturas MI/30.jpeg
+	new file:   MEDICINA INTERNA/Miniaturas MI/31.jpeg
+	new file:   MEDICINA INTERNA/Miniaturas MI/32.jpeg
+	new file:   MEDICINA INTERNA/Miniaturas MI/33.jpeg
+	new file:   MEDICINA INTERNA/Miniaturas MI/34.jpeg
+	new file:   MEDICINA INTERNA/Miniaturas MI/35.jpeg
+	new file:   MEDICINA INTERNA/Miniaturas MI/4.jpeg
+	new file:   MEDICINA INTERNA/Miniaturas MI/5.jpeg
+	new file:   MEDICINA INTERNA/Miniaturas MI/6.jpeg
+	new file:   MEDICINA INTERNA/Miniaturas MI/7.jpeg
+	new file:   MEDICINA INTERNA/Miniaturas MI/8.jpeg
+	new file:   MEDICINA INTERNA/Miniaturas MI/9.jpeg
+	new file:   MEDICINA INTERNA/Videos MI/1.mp4
+	new file:   MEDICINA INTERNA/Videos MI/10.mp4
+	new file:   MEDICINA INTERNA/Videos MI/11.mp4
+	new file:   MEDICINA INTERNA/Videos MI/12.mp4
+	new file:   MEDICINA INTERNA/Videos MI/13.mp4
+	new file:   MEDICINA INTERNA/Videos MI/14.mp4
+	new file:   MEDICINA INTERNA/Videos MI/15.mp4
+	new file:   MEDICINA INTERNA/Videos MI/16.mp4
+	new file:   MEDICINA INTERNA/Videos MI/17.mp4
+	new file:   MEDICINA INTERNA/Videos MI/18.mp4
+	new file:   MEDICINA INTERNA/Videos MI/19.mp4
+	new file:   MEDICINA INTERNA/Videos MI/2.mp4
+	new file:   MEDICINA INTERNA/Videos MI/20.mp4
+	new file:   MEDICINA INTERNA/Videos MI/21.mp4
+	new file:   MEDICINA INTERNA/Videos MI/22.mp4
+	new file:   MEDICINA INTERNA/Videos MI/23.mp4
+	new file:   MEDICINA INTERNA/Videos MI/24.mp4
+	new file:   MEDICINA INTERNA/Videos MI/25.mp4
+	new file:   MEDICINA INTERNA/Videos MI/26.mp4
+	new file:   MEDICINA INTERNA/Videos MI/27.mp4
+	new file:   MEDICINA INTERNA/Videos MI/28.mp4
+	new file:   MEDICINA INTERNA/Videos MI/29.mp4
+	new file:   MEDICINA INTERNA/Videos MI/3.mp4
+	new file:   MEDICINA INTERNA/Videos MI/30.mp4
+	new file:   MEDICINA INTERNA/Videos MI/31.mp4
+	new file:   MEDICINA INTERNA/Videos MI/32.mp4
+	new file:   MEDICINA INTERNA/Videos MI/33.mp4
+	new file:   MEDICINA INTERNA/Videos MI/34.mp4
+	new file:   MEDICINA INTERNA/Videos MI/35.mp4
+	new file:   MEDICINA INTERNA/Videos MI/4.mp4
+	new file:   MEDICINA INTERNA/Videos MI/5.mp4
+	new file:   MEDICINA INTERNA/Videos MI/6.mp4
+	new file:   MEDICINA INTERNA/Videos MI/7.mp4
+	new file:   MEDICINA INTERNA/Videos MI/8.mp4
+	new file:   MEDICINA INTERNA/Videos MI/9.mp4
+	new file:   PEDIATRIA/1 RESUMEN/1 RN SANO/Neonatal_Blueprint.pptx
+	new file:   PEDIATRIA/1 RESUMEN/1 RN SANO/RN SANO.pdf
+	new file:   PEDIATRIA/1 RESUMEN/10 CRECIMIENTO Y DESARROLLO PARTE 1/CRECIMIENTO Y DESARROLLO PT1.pdf
+	new file:   PEDIATRIA/1 RESUMEN/10 CRECIMIENTO Y DESARROLLO PARTE 1/Pediatric_Clinical_Blueprint.pptx
+	new file:   PEDIATRIA/1 RESUMEN/11 CRECIMIENTO Y DESARROLLO PARTE 2/CRECIMIENTO Y DESARROLLO PT2.pdf
+	new file:   PEDIATRIA/1 RESUMEN/11 CRECIMIENTO Y DESARROLLO PARTE 2/Pediatric_Clinical_Blueprint (1).pptx
+	new file:   PEDIATRIA/1 RESUMEN/12 TAMIZ METABOLICO/Neonatal_Metabolic_Screening.pptx
+	new file:   PEDIATRIA/1 RESUMEN/12 TAMIZ METABOLICO/TAMIZ METABOLICO.pdf
+	new file:   PEDIATRIA/1 RESUMEN/13 PATOLOGIA DIGESTIVA/PATOLOGIA DIGESTIVA.pdf
+	new file:   PEDIATRIA/1 RESUMEN/13 PATOLOGIA DIGESTIVA/Pediatric_GI_Blueprint.pptx
+	new file:   PEDIATRIA/1 RESUMEN/14 VACUNAS/2025_Universal_Vaccination_Protocols.pptx
+	new file:   PEDIATRIA/1 RESUMEN/14 VACUNAS/VACUNAS.pdf
+	new file:   PEDIATRIA/1 RESUMEN/15 DIARREA AGUDA Y CRONICA/DIARREA AGUDA Y CRONICA.pdf
+	new file:   PEDIATRIA/1 RESUMEN/15 DIARREA AGUDA Y CRONICA/Diarrhea_Management_Blueprint.pptx
+	new file:   "PEDIATRIA/1 RESUMEN/16 PARASITOSIS/Atlas_de_Parasitolog\303\255a_Cl\303\255nica.pptx"
+	new file:   PEDIATRIA/1 RESUMEN/16 PARASITOSIS/PARASITOSIS.pdf
+	new file:   PEDIATRIA/1 RESUMEN/17 PATOLOGIA RESPIRATORIA DEL PEDIATRICO/PATOLOGIA RESPIRATORIA.pdf
+	new file:   PEDIATRIA/1 RESUMEN/17 PATOLOGIA RESPIRATORIA DEL PEDIATRICO/Pediatric_Respiratory_Guide.pptx
+	new file:   PEDIATRIA/1 RESUMEN/18 PLANES DE REHIDRATACION/Acute_Diarrhea_Protocols.pptx
+	new file:   PEDIATRIA/1 RESUMEN/18 PLANES DE REHIDRATACION/PLANES DE REHIDRATACION.pdf
+	new file:   PEDIATRIA/1 RESUMEN/19 NEUMONIAS/NEUMONIAS.pdf
+	new file:   "PEDIATRIA/1 RESUMEN/19 NEUMONIAS/Neumon\303\255a_Integral.pptx"
+	new file:   PEDIATRIA/1 RESUMEN/2 RENEO 2026/Neonatal_Resuscitation_Lifeline.pptx
+	new file:   PEDIATRIA/1 RESUMEN/2 RENEO 2026/RENEO.pdf
+	new file:   PEDIATRIA/1 RESUMEN/20 ASMA/ASMA.pdf
+	new file:   PEDIATRIA/1 RESUMEN/20 ASMA/Clinical_Asthma_Management.pptx
+	new file:   PEDIATRIA/1 RESUMEN/21 IRAS Y CONVULSIONES/IRAS Y CONVULSIONES.pdf
+	new file:   PEDIATRIA/1 RESUMEN/21 IRAS Y CONVULSIONES/Pediatric_Respiratory_and_Neurology_Manual.pptx
+	new file:   PEDIATRIA/1 RESUMEN/22 ENFERMEDADES EXANTEMATICAS/Clinical_Exanthem_Atlas.pptx
+	new file:   PEDIATRIA/1 RESUMEN/22 ENFERMEDADES EXANTEMATICAS/ENFERMEDADES EXANTEMATICAS.pdf
+	new file:   PEDIATRIA/1 RESUMEN/23 URGENCIAS/URGENCIAS PEDIA.pdf
+	new file:   "PEDIATRIA/1 RESUMEN/23 URGENCIAS/Urgencias_Pedi\303\241tricas_Cr\303\255ticas.pptx"
+	new file:   "PEDIATRIA/1 RESUMEN/24 UROPEDIA/Atlas_de_Urolog\303\255a_Pedi\303\241trica.pptx"
+	new file:   PEDIATRIA/1 RESUMEN/24 UROPEDIA/UROPEDIA.pdf
+	new file:   PEDIATRIA/1 RESUMEN/25 CARDIOPEDIA/CARDIOPEDIA.pdf
+	new file:   PEDIATRIA/1 RESUMEN/25 CARDIOPEDIA/Congenital_Heart_Atlas.pptx
+	new file:   PEDIATRIA/1 RESUMEN/26 ESPECIALIDADES PEDIA PARTE 1/ESPECIALIDADES PT1.pdf
+	new file:   PEDIATRIA/1 RESUMEN/26 ESPECIALIDADES PEDIA PARTE 1/Pediatric_Clinical_Atlas.pptx
+	new file:   PEDIATRIA/1 RESUMEN/27 ESPECIALIDADES PEDIA PARTE 2/Clinical_Pediatric_Oncology_and_Dermatology.pptx
+	new file:   PEDIATRIA/1 RESUMEN/27 ESPECIALIDADES PEDIA PARTE 2/ESPECIALIDADES PEDIA PT2.pdf
+	new file:   "PEDIATRIA/1 RESUMEN/28 CROMOSOMOPATIAS VIH EN EL BINOMIO/Atlas_Diagn\303\263stico_Perinatal.pptx"
+	new file:   PEDIATRIA/1 RESUMEN/28 CROMOSOMOPATIAS VIH EN EL BINOMIO/CROMOSOMOPATIAS VIH.pdf
+	new file:   PEDIATRIA/1 RESUMEN/3 PATOLOGIA INFECCIOSA/Neonatal_Infection_Protocols.pptx
+	new file:   PEDIATRIA/1 RESUMEN/3 PATOLOGIA INFECCIOSA/PATOLOGIA INFECCIOSA NEONATAL.pdf
+	new file:   PEDIATRIA/1 RESUMEN/4 PATOLOGIA RESPIRATORIA NEONATAL/Neonatal_Respiratory_Reference.pptx
+	new file:   PEDIATRIA/1 RESUMEN/4 PATOLOGIA RESPIRATORIA NEONATAL/PATOLOGIA RESPIRATORIA NEONATAL.pdf
+	new file:   PEDIATRIA/1 RESUMEN/5 PATOLOGIA NEONATO SNC/Neonatal_Neurological_Management.pptx
+	new file:   PEDIATRIA/1 RESUMEN/5 PATOLOGIA NEONATO SNC/PATOLOGIA NEONATAL SNC.pdf
+	new file:   PEDIATRIA/1 RESUMEN/6 PATOLOGIA INFECCIOSA CONGENITA/Congenital_Infection_Clinical_Guide.pptx
+	new file:   PEDIATRIA/1 RESUMEN/6 PATOLOGIA INFECCIOSA CONGENITA/INFECCIONES CONGENITAS.pdf
+	new file:   PEDIATRIA/1 RESUMEN/7 ESTENOSIS HIPERTROFICA DEL PILORO/ESTENOSIS HIPERTROFICA DEL PILORO.pdf
+	new file:   PEDIATRIA/1 RESUMEN/7 ESTENOSIS HIPERTROFICA DEL PILORO/Pyloric_Stenosis_Clinical_Blueprint.pptx
+	new file:   PEDIATRIA/1 RESUMEN/8 ICTERICIA NEONATAL/ICTERICIA NEONATAL.pdf
+	new file:   PEDIATRIA/1 RESUMEN/8 ICTERICIA NEONATAL/Neonatal_Jaundice_Clinical_Dossier.pptx
+	new file:   PEDIATRIA/1 RESUMEN/9 MALFORMACIONES CONGENITAS/MALFORMACIONES CONGENITAS.pdf
+	new file:   PEDIATRIA/1 RESUMEN/9 MALFORMACIONES CONGENITAS/Neonatal_Surgical_Atlas.pptx
+	new file:   PEDIATRIA/1 RESUMEN/ELIMINAR_WORD.bat
+	new file:   PEDIATRIA/1 RESUMEN/EXTRAER_RESIDUOS.bat
+	new file:   PEDIATRIA/1 RESUMEN/eliminar_word.py
+	new file:   PEDIATRIA/1 RESUMEN/extraer_residuos.py
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ASMA/1.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ASMA/10.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ASMA/11.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ASMA/2.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ASMA/3.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ASMA/4.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ASMA/5.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ASMA/6.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ASMA/7.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ASMA/8.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ASMA/9.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/CARDIOPEDIA/1.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/CARDIOPEDIA/10.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/CARDIOPEDIA/11.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/CARDIOPEDIA/2.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/CARDIOPEDIA/3.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/CARDIOPEDIA/4.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/CARDIOPEDIA/5.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/CARDIOPEDIA/6.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/CARDIOPEDIA/7.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/CARDIOPEDIA/8.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/CARDIOPEDIA/9.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/CRECIMIENTO Y DESARROLLO PT1/1.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/CRECIMIENTO Y DESARROLLO PT1/10.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/CRECIMIENTO Y DESARROLLO PT1/11.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/CRECIMIENTO Y DESARROLLO PT1/2.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/CRECIMIENTO Y DESARROLLO PT1/3.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/CRECIMIENTO Y DESARROLLO PT1/4.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/CRECIMIENTO Y DESARROLLO PT1/5.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/CRECIMIENTO Y DESARROLLO PT1/6.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/CRECIMIENTO Y DESARROLLO PT1/7.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/CRECIMIENTO Y DESARROLLO PT1/8.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/CRECIMIENTO Y DESARROLLO PT1/9.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/CRECIMIENTO Y DESARROLLO PT2/1.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/CRECIMIENTO Y DESARROLLO PT2/10.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/CRECIMIENTO Y DESARROLLO PT2/11.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/CRECIMIENTO Y DESARROLLO PT2/2.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/CRECIMIENTO Y DESARROLLO PT2/3.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/CRECIMIENTO Y DESARROLLO PT2/4.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/CRECIMIENTO Y DESARROLLO PT2/5.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/CRECIMIENTO Y DESARROLLO PT2/6.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/CRECIMIENTO Y DESARROLLO PT2/7.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/CRECIMIENTO Y DESARROLLO PT2/8.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/CRECIMIENTO Y DESARROLLO PT2/9.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/CROMOSOMOPATIAS VIH/1.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/CROMOSOMOPATIAS VIH/10.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/CROMOSOMOPATIAS VIH/11.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/CROMOSOMOPATIAS VIH/2.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/CROMOSOMOPATIAS VIH/3.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/CROMOSOMOPATIAS VIH/4.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/CROMOSOMOPATIAS VIH/5.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/CROMOSOMOPATIAS VIH/6.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/CROMOSOMOPATIAS VIH/7.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/CROMOSOMOPATIAS VIH/8.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/CROMOSOMOPATIAS VIH/9.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/DIARREA AGUDA Y CRONICA/1.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/DIARREA AGUDA Y CRONICA/10.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/DIARREA AGUDA Y CRONICA/11.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/DIARREA AGUDA Y CRONICA/2.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/DIARREA AGUDA Y CRONICA/3.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/DIARREA AGUDA Y CRONICA/4.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/DIARREA AGUDA Y CRONICA/5.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/DIARREA AGUDA Y CRONICA/6.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/DIARREA AGUDA Y CRONICA/7.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/DIARREA AGUDA Y CRONICA/8.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/DIARREA AGUDA Y CRONICA/9.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ENFERMEDADES EXANTEMATICAS/1.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ENFERMEDADES EXANTEMATICAS/10.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ENFERMEDADES EXANTEMATICAS/11.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ENFERMEDADES EXANTEMATICAS/2.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ENFERMEDADES EXANTEMATICAS/3.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ENFERMEDADES EXANTEMATICAS/4.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ENFERMEDADES EXANTEMATICAS/5.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ENFERMEDADES EXANTEMATICAS/6.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ENFERMEDADES EXANTEMATICAS/7.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ENFERMEDADES EXANTEMATICAS/8.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ENFERMEDADES EXANTEMATICAS/9.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ESPECIALIDADES PEDIA PT2/1.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ESPECIALIDADES PEDIA PT2/10.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ESPECIALIDADES PEDIA PT2/11.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ESPECIALIDADES PEDIA PT2/2.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ESPECIALIDADES PEDIA PT2/3.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ESPECIALIDADES PEDIA PT2/4.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ESPECIALIDADES PEDIA PT2/5.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ESPECIALIDADES PEDIA PT2/6.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ESPECIALIDADES PEDIA PT2/7.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ESPECIALIDADES PEDIA PT2/8.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ESPECIALIDADES PEDIA PT2/9.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ESPECIALIDADES PT1/1.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ESPECIALIDADES PT1/10.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ESPECIALIDADES PT1/11.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ESPECIALIDADES PT1/2.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ESPECIALIDADES PT1/3.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ESPECIALIDADES PT1/4.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ESPECIALIDADES PT1/5.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ESPECIALIDADES PT1/6.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ESPECIALIDADES PT1/7.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ESPECIALIDADES PT1/8.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ESPECIALIDADES PT1/9.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ESTENOSIS HIPERTROFICA DEL PILORO/1.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ESTENOSIS HIPERTROFICA DEL PILORO/10.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ESTENOSIS HIPERTROFICA DEL PILORO/11.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ESTENOSIS HIPERTROFICA DEL PILORO/2.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ESTENOSIS HIPERTROFICA DEL PILORO/3.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ESTENOSIS HIPERTROFICA DEL PILORO/4.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ESTENOSIS HIPERTROFICA DEL PILORO/5.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ESTENOSIS HIPERTROFICA DEL PILORO/6.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ESTENOSIS HIPERTROFICA DEL PILORO/7.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ESTENOSIS HIPERTROFICA DEL PILORO/8.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ESTENOSIS HIPERTROFICA DEL PILORO/9.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ICTERICIA NEONATAL/1.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ICTERICIA NEONATAL/10.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ICTERICIA NEONATAL/11.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ICTERICIA NEONATAL/2.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ICTERICIA NEONATAL/3.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ICTERICIA NEONATAL/4.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ICTERICIA NEONATAL/5.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ICTERICIA NEONATAL/6.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ICTERICIA NEONATAL/7.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ICTERICIA NEONATAL/8.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/ICTERICIA NEONATAL/9.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/INFECCIONES CONGENITAS/1.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/INFECCIONES CONGENITAS/10.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/INFECCIONES CONGENITAS/11.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/INFECCIONES CONGENITAS/2.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/INFECCIONES CONGENITAS/3.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/INFECCIONES CONGENITAS/4.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/INFECCIONES CONGENITAS/5.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/INFECCIONES CONGENITAS/6.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/INFECCIONES CONGENITAS/7.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/INFECCIONES CONGENITAS/8.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/INFECCIONES CONGENITAS/9.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/IRAS Y CONVULSIONES/1.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/IRAS Y CONVULSIONES/10.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/IRAS Y CONVULSIONES/11.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/IRAS Y CONVULSIONES/2.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/IRAS Y CONVULSIONES/3.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/IRAS Y CONVULSIONES/4.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/IRAS Y CONVULSIONES/5.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/IRAS Y CONVULSIONES/6.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/IRAS Y CONVULSIONES/7.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/IRAS Y CONVULSIONES/8.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/IRAS Y CONVULSIONES/9.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/MALFORMACIONES CONGENITAS/1.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/MALFORMACIONES CONGENITAS/10.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/MALFORMACIONES CONGENITAS/11.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/MALFORMACIONES CONGENITAS/2.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/MALFORMACIONES CONGENITAS/3.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/MALFORMACIONES CONGENITAS/4.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/MALFORMACIONES CONGENITAS/5.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/MALFORMACIONES CONGENITAS/6.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/MALFORMACIONES CONGENITAS/7.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/MALFORMACIONES CONGENITAS/8.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/MALFORMACIONES CONGENITAS/9.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/NEUMONIAS/1.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/NEUMONIAS/10.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/NEUMONIAS/11.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/NEUMONIAS/2.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/NEUMONIAS/3.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/NEUMONIAS/4.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/NEUMONIAS/5.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/NEUMONIAS/6.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/NEUMONIAS/7.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/NEUMONIAS/8.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/NEUMONIAS/9.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PARASITOSIS/1.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PARASITOSIS/10.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PARASITOSIS/11.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PARASITOSIS/2.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PARASITOSIS/3.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PARASITOSIS/4.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PARASITOSIS/5.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PARASITOSIS/6.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PARASITOSIS/7.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PARASITOSIS/8.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PARASITOSIS/9.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA DIGESTIVA/1.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA DIGESTIVA/10.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA DIGESTIVA/11.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA DIGESTIVA/2.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA DIGESTIVA/3.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA DIGESTIVA/4.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA DIGESTIVA/5.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA DIGESTIVA/6.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA DIGESTIVA/7.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA DIGESTIVA/8.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA DIGESTIVA/9.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA INFECCIOSA NEONATAL/1.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA INFECCIOSA NEONATAL/10.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA INFECCIOSA NEONATAL/11.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA INFECCIOSA NEONATAL/2.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA INFECCIOSA NEONATAL/3.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA INFECCIOSA NEONATAL/4.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA INFECCIOSA NEONATAL/5.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA INFECCIOSA NEONATAL/6.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA INFECCIOSA NEONATAL/7.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA INFECCIOSA NEONATAL/8.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA INFECCIOSA NEONATAL/9.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA NEONATAL SNC/1.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA NEONATAL SNC/10.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA NEONATAL SNC/11.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA NEONATAL SNC/2.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA NEONATAL SNC/3.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA NEONATAL SNC/4.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA NEONATAL SNC/5.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA NEONATAL SNC/6.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA NEONATAL SNC/7.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA NEONATAL SNC/8.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA NEONATAL SNC/9.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA RESPIRATORIA NEONATAL/1.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA RESPIRATORIA NEONATAL/10.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA RESPIRATORIA NEONATAL/11.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA RESPIRATORIA NEONATAL/2.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA RESPIRATORIA NEONATAL/3.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA RESPIRATORIA NEONATAL/4.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA RESPIRATORIA NEONATAL/5.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA RESPIRATORIA NEONATAL/6.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA RESPIRATORIA NEONATAL/7.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA RESPIRATORIA NEONATAL/8.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA RESPIRATORIA NEONATAL/9.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA RESPIRATORIA/1.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA RESPIRATORIA/10.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA RESPIRATORIA/11.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA RESPIRATORIA/2.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA RESPIRATORIA/3.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA RESPIRATORIA/4.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA RESPIRATORIA/5.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA RESPIRATORIA/6.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA RESPIRATORIA/7.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA RESPIRATORIA/8.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PATOLOGIA RESPIRATORIA/9.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PLANES DE REHIDRATACION/1.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PLANES DE REHIDRATACION/10.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PLANES DE REHIDRATACION/11.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PLANES DE REHIDRATACION/2.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PLANES DE REHIDRATACION/3.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PLANES DE REHIDRATACION/4.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PLANES DE REHIDRATACION/5.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PLANES DE REHIDRATACION/6.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PLANES DE REHIDRATACION/7.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PLANES DE REHIDRATACION/8.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/PLANES DE REHIDRATACION/9.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/RENEO/1.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/RENEO/10.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/RENEO/11.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/RENEO/2.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/RENEO/3.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/RENEO/4.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/RENEO/5.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/RENEO/6.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/RENEO/7.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/RENEO/8.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/RENEO/9.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/RN SANO/1.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/RN SANO/10.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/RN SANO/11.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/RN SANO/2.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/RN SANO/3.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/RN SANO/4.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/RN SANO/5.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/RN SANO/6.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/RN SANO/7.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/RN SANO/8.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/RN SANO/9.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/TAMIZ METABOLICO/1.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/TAMIZ METABOLICO/10.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/TAMIZ METABOLICO/11.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/TAMIZ METABOLICO/2.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/TAMIZ METABOLICO/3.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/TAMIZ METABOLICO/4.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/TAMIZ METABOLICO/5.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/TAMIZ METABOLICO/6.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/TAMIZ METABOLICO/7.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/TAMIZ METABOLICO/8.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/TAMIZ METABOLICO/9.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/URGENCIAS PEDIA/1.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/URGENCIAS PEDIA/10.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/URGENCIAS PEDIA/11.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/URGENCIAS PEDIA/2.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/URGENCIAS PEDIA/3.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/URGENCIAS PEDIA/4.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/URGENCIAS PEDIA/5.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/URGENCIAS PEDIA/6.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/URGENCIAS PEDIA/7.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/URGENCIAS PEDIA/8.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/URGENCIAS PEDIA/9.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/UROPEDIA/1.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/UROPEDIA/10.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/UROPEDIA/11.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/UROPEDIA/2.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/UROPEDIA/3.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/UROPEDIA/4.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/UROPEDIA/5.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/UROPEDIA/6.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/UROPEDIA/7.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/UROPEDIA/8.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/UROPEDIA/9.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/VACUNAS/1.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/VACUNAS/10.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/VACUNAS/11.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/VACUNAS/2.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/VACUNAS/3.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/VACUNAS/4.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/VACUNAS/5.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/VACUNAS/6.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/VACUNAS/7.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/VACUNAS/8.jpeg
+	new file:   PEDIATRIA/1 RESUMEN/residuos pediatria/VACUNAS/9.jpeg
+	new file:   PEDIATRIA/2 VIDEOCLASE/1 RN SANO/1 RN SANO.mp4
+	new file:   "PEDIATRIA/2 VIDEOCLASE/1 RN SANO/El_Primer_Mes_del_Reci\303\251n_Nacido.mp4"
+	new file:   "PEDIATRIA/2 VIDEOCLASE/10 CRECIMIENTO Y DESARROLLO PARTE 1/Los_Primeros_1000_D\303\255as.mp4"
+	new file:   "PEDIATRIA/2 VIDEOCLASE/11 CRECIMIENTO Y DESARROLLO PARTE 2/La_Paradoja_Nutricional_de_M\303\251xico.mp4"
+	new file:   "PEDIATRIA/2 VIDEOCLASE/12 TAMIZ METABOLICO/El_Tamiz_Metab\303\263lico_Neonatal.mp4"
+	new file:   "PEDIATRIA/2 VIDEOCLASE/13 PATOLOGIA DIGESTIVA/Problemas_Digestivos_Pedi\303\241tricos.mp4"
+	new file:   "PEDIATRIA/2 VIDEOCLASE/14 VACUNAS/Programa_de_Vacunaci\303\263n_de_M\303\251xico.mp4"
+	new file:   PEDIATRIA/2 VIDEOCLASE/15 DIARREA AGUDA Y CRONICA/Resolviendo_tu_Caso_Intestinal.mp4
+	new file:   "PEDIATRIA/2 VIDEOCLASE/16 PARASITOSIS/Gu\303\255a_de_Par\303\241sitos_Humanos.mp4"
+	new file:   "PEDIATRIA/2 VIDEOCLASE/17 PATOLOGIA RESPIRATORIA DEL PEDIATRICO/La_Tos_Peligrosa_de_un_Ni\303\261o.mp4"
+	new file:   PEDIATRIA/2 VIDEOCLASE/18 PLANES DE REHIDRATACION/La_Lucha_Contra_la_Diarrea.mp4
+	new file:   "PEDIATRIA/2 VIDEOCLASE/19 NEUMONIAS/Neumon\303\255a__El_Rompecabezas.mp4"
+	new file:   PEDIATRIA/2 VIDEOCLASE/2 RENEO 2026/RENEO 2026.mp4
+	new file:   "PEDIATRIA/2 VIDEOCLASE/2 RENEO 2026/Reanimaci\303\263n_Neonatal.mp4"
+	new file:   PEDIATRIA/2 VIDEOCLASE/20 ASMA/Entendiendo_el_Asma.mp4
+	new file:   "PEDIATRIA/2 VIDEOCLASE/21 IRAS Y CONVULSIONES/Fiebre__De_Infecci\303\263n_a_Crisis.mp4"
+	new file:   PEDIATRIA/2 VIDEOCLASE/22 ENFERMEDADES EXANTEMATICAS/Sarpullidos_Infantiles.mp4
+	new file:   "PEDIATRIA/2 VIDEOCLASE/23 URGENCIAS/Emergencias_Pedi\303\241tricas.mp4"
+	new file:   "PEDIATRIA/2 VIDEOCLASE/24 UROPEDIA/Urolog\303\255a_Pedi\303\241trica.mp4"
+	new file:   "PEDIATRIA/2 VIDEOCLASE/25 CARDIOPEDIA/El_Plano_del_Coraz\303\263n.mp4"
+	new file:   PEDIATRIA/2 VIDEOCLASE/26 ESPECIALIDADES PEDIA PARTE 1/Enfermedades_Infantiles.mp4
+	new file:   "PEDIATRIA/2 VIDEOCLASE/27 ESPECIALIDADES PEDIA PARTE 2/Misterios_de_salud_pedi\303\241trica.mp4"
+	new file:   "PEDIATRIA/2 VIDEOCLASE/28 CROMOSOMOPATIAS VIH EN EL BINOMIO/Anomal\303\255as_Cromos\303\263micas_y_VIH.mp4"
+	new file:   PEDIATRIA/2 VIDEOCLASE/3 PATOLOGIA INFECCIOSA/La_Primera_Lucha__Infecciones_Neonatales.mp4
+	new file:   PEDIATRIA/2 VIDEOCLASE/3 PATOLOGIA INFECCIOSA/PATOLOGIA INFECCIOSA.mp4
+	new file:   PEDIATRIA/2 VIDEOCLASE/4 PATOLOGIA RESPIRATORIA NEONATAL/Dificultad_Respiratoria_Neonatal.mp4
+	new file:   PEDIATRIA/2 VIDEOCLASE/5 PATOLOGIA NEONATO SNC/Asfixia_y_Hemorragia_Neonatal.mp4
+	new file:   "PEDIATRIA/2 VIDEOCLASE/6 PATOLOGIA INFECCIOSA CONGENITA/Infecciones_Cong\303\251nitas.mp4"
+	new file:   "PEDIATRIA/2 VIDEOCLASE/7 ESTENOSIS HIPERTROFICA DEL PILORO/El_caso_del_guardi\303\241n_engrosado.mp4"
+	new file:   PEDIATRIA/2 VIDEOCLASE/8 ICTERICIA NEONATAL/Ictericia_Neonatal.mp4
+	new file:   "PEDIATRIA/2 VIDEOCLASE/9 MALFORMACIONES CONGENITAS/Malformaciones_Cong\303\251nitas.mp4"
+	new file:   PEDIATRIA/3 KAHOOT/1 RN SANO/1 RN SANO.xlsx
+	new file:   PEDIATRIA/3 KAHOOT/10 CRECIMIENTO Y DESARROLLO PARTE 1/10 CRECIMIENTO Y DESARROLLO PARTE 1.xlsx
+	new file:   PEDIATRIA/3 KAHOOT/11 CRECIMIENTO Y DESARROLLO PARTE 2/11 CRECIMIENTO Y DESARROLLO PARTE 2.xlsx
+	new file:   PEDIATRIA/3 KAHOOT/12 TAMIZ METABOLICO/12 TAMIZ METABOLICO.xlsx
+	new file:   PEDIATRIA/3 KAHOOT/13 PATOLOGIA DIGESTIVA/13 PATOLOGIA DIGESTIVA.xlsx
+	new file:   PEDIATRIA/3 KAHOOT/14 VACUNAS/14 VACUNAS.xlsx
+	new file:   PEDIATRIA/3 KAHOOT/15 DIARREA AGUDA Y CRONICA/15 DIARREA AGUDA Y CRONICA.xlsx
+	new file:   PEDIATRIA/3 KAHOOT/16 PARASITOSIS/16 PARASITOSIS.xlsx
+	new file:   PEDIATRIA/3 KAHOOT/17 PATOLOGIA RESPIRATORIA DEL PEDIATRICO/17 PATOLOGIA RESPIRATORIA DEL PEDIATRICO.xlsx
+	new file:   PEDIATRIA/3 KAHOOT/18 PLANES DE REHIDRATACION/18 PLANES DE REHIDRATACION.xlsx
+	new file:   PEDIATRIA/3 KAHOOT/19 NEUMONIAS/19 NEUMONIAS.xlsx
+	new file:   PEDIATRIA/3 KAHOOT/2 RENEO 2026/2 RENEO 2026.xlsx
+	new file:   PEDIATRIA/3 KAHOOT/20 ASMA/20 ASMA.xlsx
+	new file:   PEDIATRIA/3 KAHOOT/21 IRAS Y CONVULSIONES/21 IRAS Y CONVULSIONES.xlsx
+	new file:   PEDIATRIA/3 KAHOOT/22 ENFERMEDADES EXANTEMATICAS/22 ENFERMEDADES EXANTEMATICAS.xlsx
+	new file:   PEDIATRIA/3 KAHOOT/23 URGENCIAS/23 URGENCIAS.xlsx
+	new file:   PEDIATRIA/3 KAHOOT/24 UROPEDIA/24 UROPEDIA.xlsx
+	new file:   PEDIATRIA/3 KAHOOT/25 CARDIOPEDIA/25 CARDIOPEDIA.xlsx
+	new file:   PEDIATRIA/3 KAHOOT/26 ESPECIALIDADES PEDIA PARTE 1/26 ESPECIALIDADES PEDIA PARTE 1.xlsx
+	new file:   PEDIATRIA/3 KAHOOT/27 ESPECIALIDADES PEDIA PARTE 2/27 ESPECIALIDADES PEDIA PARTE 2.xlsx
+	new file:   PEDIATRIA/3 KAHOOT/28 CROMOSOMOPATIAS VIH EN EL BINOMIO/28 CROMOSOMOPATIAS VIH EN EL BINOMIO.xlsx
+	new file:   PEDIATRIA/3 KAHOOT/3 PATOLOGIA INFECCIOSA/3 PATOLOGIA INFECCIOSA.xlsx
+	new file:   PEDIATRIA/3 KAHOOT/4 PATOLOGIA RESPIRATORIA NEONATAL/4 PATOLOGIA RESPIRATORIA NEONATAL.xlsx
+	new file:   PEDIATRIA/3 KAHOOT/5 PATOLOGIA NEONATO SNC/5 PATOLOGIA NEONATO SNC.xlsx
+	new file:   PEDIATRIA/3 KAHOOT/6 PATOLOGIA INFECCIOSA CONGENITA/6 PATOLOGIA INFECCIOSA CONGENITA.xlsx
+	new file:   PEDIATRIA/3 KAHOOT/7 ESTENOSIS HIPERTROFICA DEL PILORO/7 ESTENOSIS HIPERTROFICA DEL PILORO.xlsx
+	new file:   PEDIATRIA/3 KAHOOT/8 ICTERICIA NEONATAL/8 ICTERICIA NEONATAL.xlsx
+	new file:   PEDIATRIA/3 KAHOOT/9 MALFORMACIONES CONGENITAS/9 MALFORMACIONES CONGENITAS.xlsx
+	new file:   PEDIATRIA/4 SIMULADOR/1 RN SANO/1 RN SANO.xlsx
+	new file:   PEDIATRIA/4 SIMULADOR/10 CRECIMIENTO Y DESARROLLO PARTE 1/10 CRECIMIENTO Y DESARROLLO PARTE 1.xlsx
+	new file:   PEDIATRIA/4 SIMULADOR/11 CRECIMIENTO Y DESARROLLO PARTE 2/11 CRECIMIENTO Y DESARROLLO PARTE 2.xlsx
+	new file:   PEDIATRIA/4 SIMULADOR/12 TAMIZ METABOLICO/12 TAMIZ METABOLICO.xlsx
+	new file:   PEDIATRIA/4 SIMULADOR/13 PATOLOGIA DIGESTIVA/13 PATOLOGIA DIGESTIVA.xlsx
+	new file:   PEDIATRIA/4 SIMULADOR/14 VACUNAS/14 VACUNAS.xlsx
+	new file:   PEDIATRIA/4 SIMULADOR/15 DIARREA AGUDA Y CRONICA/15 DIARREA AGUDA Y CRONICA.xlsx
+	new file:   PEDIATRIA/4 SIMULADOR/16 PARASITOSIS/16 PARASITOSIS.xlsx
+	new file:   PEDIATRIA/4 SIMULADOR/17 PATOLOGIA RESPIRATORIA DEL PEDIATRICO/17 PATOLOGIA RESPIRATORIA DEL PEDIATRICO.xlsx
+	new file:   PEDIATRIA/4 SIMULADOR/18 PLANES DE REHIDRATACION/18 PLANES DE REHIDRATACION.xlsx
+	new file:   PEDIATRIA/4 SIMULADOR/19 NEUMONIAS/19 NEUMONIAS.xlsx
+	new file:   PEDIATRIA/4 SIMULADOR/2 RENEO 2026/2 RENEO 2026.xlsx
+	new file:   PEDIATRIA/4 SIMULADOR/20 ASMA/20 ASMA.xlsx
+	new file:   PEDIATRIA/4 SIMULADOR/21 IRAS Y CONVULSIONES/21 IRAS Y CONVULSIONES.xlsx
+	new file:   PEDIATRIA/4 SIMULADOR/22 ENFERMEDADES EXANTEMATICAS/22 ENFERMEDADES EXANTEMATICAS.xlsx
+	new file:   PEDIATRIA/4 SIMULADOR/23 URGENCIAS/23 URGENCIAS.xlsx
+	new file:   PEDIATRIA/4 SIMULADOR/24 UROPEDIA/24 UROPEDIA.xlsx
+	new file:   PEDIATRIA/4 SIMULADOR/25 CARDIOPEDIA/25 CARDIOPEDIA.xlsx
+	new file:   PEDIATRIA/4 SIMULADOR/26 ESPECIALIDADES PEDIA PARTE 1/26 ESPECIALIDADES PEDIA PARTE 1.xlsx
+	new file:   PEDIATRIA/4 SIMULADOR/27 ESPECIALIDADES PEDIA PARTE 2/27 ESPECIALIDADES PEDIA PARTE 2.xlsx
+	new file:   PEDIATRIA/4 SIMULADOR/28 CROMOSOMOPATIAS VIH EN EL BINOMIO/28 CROMOSOMOPATIAS VIH EN EL BINOMIO.xlsx
+	new file:   PEDIATRIA/4 SIMULADOR/3 PATOLOGIA INFECCIOSA/3 PATOLOGIA INFECCIOSA.xlsx
+	new file:   PEDIATRIA/4 SIMULADOR/4 PATOLOGIA RESPIRATORIA NEONATAL/4 PATOLOGIA RESPIRATORIA NEONATAL.xlsx
+	new file:   PEDIATRIA/4 SIMULADOR/5 PATOLOGIA NEONATO SNC/5 PATOLOGIA NEONATO SNC.xlsx
+	new file:   PEDIATRIA/4 SIMULADOR/6 PATOLOGIA INFECCIOSA CONGENITA/6 PATOLOGIA INFECCIOSA CONGENITA.xlsx
+	new file:   PEDIATRIA/4 SIMULADOR/7 ESTENOSIS HIPERTROFICA DEL PILORO/7 ESTENOSIS HIPERTROFICA DEL PILORO.xlsx
+	new file:   PEDIATRIA/4 SIMULADOR/8 ICTERICIA NEONATAL/8 ICTERICIA NEONATAL.xlsx
+	new file:   PEDIATRIA/4 SIMULADOR/9 MALFORMACIONES CONGENITAS/9 MALFORMACIONES CONGENITAS.xlsx
+	new file:   PEDIATRIA/5 ANKI/1 RN SANO/1 RN SANO.csv
+	new file:   PEDIATRIA/5 ANKI/10 CRECIMIENTO Y DESARROLLO PARTE 1/10 CRECIMIENTO Y DESARROLLO PARTE 1.csv
+	new file:   PEDIATRIA/5 ANKI/11 CRECIMIENTO Y DESARROLLO PARTE 2/11 CRECIMIENTO Y DESARROLLO PARTE 2.csv
+	new file:   PEDIATRIA/5 ANKI/12 TAMIZ METABOLICO/12 TAMIZ METABOLICO.csv
+	new file:   PEDIATRIA/5 ANKI/13 PATOLOGIA DIGESTIVA/13 PATOLOGIA DIGESTIVA.csv
+	new file:   PEDIATRIA/5 ANKI/14 VACUNAS/14 VACUNAS.csv
+	new file:   PEDIATRIA/5 ANKI/15 DIARREA AGUDA Y CRONICA/15 DIARREA AGUDA Y CRONICA.csv
+	new file:   PEDIATRIA/5 ANKI/16 PARASITOSIS/16 PARASITOSIS.csv
+	new file:   PEDIATRIA/5 ANKI/17 PATOLOGIA RESPIRATORIA DEL PEDIATRICO/17 PATOLOGIA RESPIRATORIA DEL PEDIATRICO.csv
+	new file:   PEDIATRIA/5 ANKI/18 PLANES DE REHIDRATACION/18 PLANES DE REHIDRATACION.csv
+	new file:   PEDIATRIA/5 ANKI/19 NEUMONIAS/19 NEUMONIAS.csv
+	new file:   PEDIATRIA/5 ANKI/2 RENEO 2026/2 RENEO 2026.csv
+	new file:   PEDIATRIA/5 ANKI/20 ASMA/20 ASMA.csv
+	new file:   PEDIATRIA/5 ANKI/21 IRAS Y CONVULSIONES/21 IRAS Y CONVULSIONES.csv
+	new file:   PEDIATRIA/5 ANKI/22 ENFERMEDADES EXANTEMATICAS/22 ENFERMEDADES EXANTEMATICAS.csv
+	new file:   PEDIATRIA/5 ANKI/23 URGENCIAS/23 URGENCIAS.csv
+	new file:   PEDIATRIA/5 ANKI/24 UROPEDIA/24 UROPEDIA.csv
+	new file:   PEDIATRIA/5 ANKI/25 CARDIOPEDIA/25 CARDIOPEDIA.csv
+	new file:   PEDIATRIA/5 ANKI/26 ESPECIALIDADES PEDIA PARTE 1/26 ESPECIALIDADES PEDIA PARTE 1.csv
+	new file:   PEDIATRIA/5 ANKI/27 ESPECIALIDADES PEDIA PARTE 2/27 ESPECIALIDADES PEDIA PARTE 2 - Sarcoma y tumores oseos.csv
+	new file:   PEDIATRIA/5 ANKI/28 CROMOSOMOPATIAS VIH EN EL BINOMIO/28 CROMOSOMOPATIAS VIH EN EL BINOMIO.csv
+	new file:   PEDIATRIA/5 ANKI/3 PATOLOGIA INFECCIOSA/3 PATOLOGIA INFECCIOSA.csv
+	new file:   PEDIATRIA/5 ANKI/4 PATOLOGIA RESPIRATORIA NEONATAL/4 PATOLOGIA RESPIRATORIA NEONATAL.csv
+	new file:   PEDIATRIA/5 ANKI/5 PATOLOGIA NEONATO SNC/5 PATOLOGIA NEONATO SNC.csv
+	new file:   PEDIATRIA/5 ANKI/6 PATOLOGIA INFECCIOSA CONGENITA/6 PATOLOGIA INFECCIOSA CONGENITA.csv
+	new file:   PEDIATRIA/5 ANKI/7 ESTENOSIS HIPERTROFICA DEL PILORO/7 ESTENOSIS HIPERTROFICA DEL PILORO.csv
+	new file:   PEDIATRIA/5 ANKI/8 ICTERICIA NEONATAL/8 ICTERICIA NEONATAL.csv
+	new file:   PEDIATRIA/5 ANKI/9 MALFORMACIONES CONGENITAS/9 MALFORMACIONES CONGENITAS.csv
+	new file:   PEDIATRIA/Miniaturas Pedia/1.jpeg
+	new file:   PEDIATRIA/Miniaturas Pedia/10.jpeg
+	new file:   PEDIATRIA/Miniaturas Pedia/11.jpeg
+	new file:   PEDIATRIA/Miniaturas Pedia/12.jpeg
+	new file:   PEDIATRIA/Miniaturas Pedia/13.jpeg
+	new file:   PEDIATRIA/Miniaturas Pedia/14.jpeg
+	new file:   PEDIATRIA/Miniaturas Pedia/15.jpeg
+	new file:   PEDIATRIA/Miniaturas Pedia/16.jpeg
+	new file:   PEDIATRIA/Miniaturas Pedia/17.jpeg
+	new file:   PEDIATRIA/Miniaturas Pedia/18.jpeg
+	new file:   PEDIATRIA/Miniaturas Pedia/19.jpeg
+	new file:   PEDIATRIA/Miniaturas Pedia/2.jpeg
+	new file:   PEDIATRIA/Miniaturas Pedia/20.jpeg
+	new file:   PEDIATRIA/Miniaturas Pedia/21.jpeg
+	new file:   PEDIATRIA/Miniaturas Pedia/22.jpeg
+	new file:   PEDIATRIA/Miniaturas Pedia/23.jpeg
+	new file:   PEDIATRIA/Miniaturas Pedia/24.jpeg
+	new file:   PEDIATRIA/Miniaturas Pedia/25.jpeg
+	new file:   PEDIATRIA/Miniaturas Pedia/26.jpeg
+	new file:   PEDIATRIA/Miniaturas Pedia/27.jpeg
+	new file:   PEDIATRIA/Miniaturas Pedia/28.jpeg
+	new file:   PEDIATRIA/Miniaturas Pedia/3.jpeg
+	new file:   PEDIATRIA/Miniaturas Pedia/4.jpeg
+	new file:   PEDIATRIA/Miniaturas Pedia/5.jpeg
+	new file:   PEDIATRIA/Miniaturas Pedia/6.jpeg
+	new file:   PEDIATRIA/Miniaturas Pedia/7.jpeg
+	new file:   PEDIATRIA/Miniaturas Pedia/8.jpeg
+	new file:   PEDIATRIA/Miniaturas Pedia/9.jpeg
+	new file:   PEDIATRIA/Videos Pediatria/1---el-beb-recin-nacido-respira-suavemente-mientra.mp4
+	new file:   PEDIATRIA/Videos Pediatria/10---los-bloques-de-construccin-para-bebs-se-balan.mp4
+	new file:   PEDIATRIA/Videos Pediatria/11---los-juguetes-educativos-de-madera-el-estetosc.mp4
+	new file:   PEDIATRIA/Videos Pediatria/12---la-gota-de-sangre-roja-y-brillante-sobre-el-p.mp4
+	new file:   PEDIATRIA/Videos Pediatria/13---el-tracto-digestivo-completo-en-el-cuerpo-est.mp4
+	new file:   PEDIATRIA/Videos Pediatria/14---la-jeringa-mdica-brillante-baja-lentamente-su.mp4
+	new file:   PEDIATRIA/Videos Pediatria/15---el-estmago-infantil-con-rostro-amigable-y-peq.mp4
+	new file:   PEDIATRIA/Videos Pediatria/16---la-lupa-enfoca-lentamente-los-parsitos-micros.mp4
+	new file:   PEDIATRIA/Videos Pediatria/17---las-vas-respiratorias-dentro-de-los-pulmones-.mp4
+	new file:   PEDIATRIA/Videos Pediatria/18---el-agua-en-el-vaso-de-cristal-ondula-suavemen.mp4
+	new file:   PEDIATRIA/Videos Pediatria/19---las-zonas-de-inflamacin-rojizas-en-los-pulmon.mp4
+	new file:   PEDIATRIA/Videos Pediatria/2---el-estetoscopio-y-el-equipo-mdico-sobre-el-fon.mp4
+	new file:   PEDIATRIA/Videos Pediatria/20---el-inhalador-peditrico-colorido-de-asma-emite.mp4
+	new file:   PEDIATRIA/Videos Pediatria/21---el-cerebro-rodeado-de-chispas-elctricas-y-rel.mp4
+	new file:   PEDIATRIA/Videos Pediatria/22---la-lupa-se-desplaza-milimtricamente-sobre-el-.mp4
+	new file:   PEDIATRIA/Videos Pediatria/23---la-sirena-de-emergencia-mdica-parpadea-altern.mp4
+	new file:   PEDIATRIA/Videos Pediatria/24---los-riones-sanos-y-estilizados-con-rostro-ami.mp4
+	new file:   PEDIATRIA/Videos Pediatria/25---el-corazn-anatmico-y-brillante-late-de-forma-.mp4
+	new file:   PEDIATRIA/Videos Pediatria/26---los-instrumentos-mdicos-peditricos-en-la-band.mp4
+	new file:   PEDIATRIA/Videos Pediatria/27---las-pantallas-y-luces-del-avanzado-equipo-mdi.mp4
+	new file:   PEDIATRIA/Videos Pediatria/28---el-lazo-rojo-de-concientizacin-y-los-cromosom.mp4
+	new file:   PEDIATRIA/Videos Pediatria/3---las-bacterias-y-virus-amigables-flotan-suaveme.mp4
+	new file:   PEDIATRIA/Videos Pediatria/4---los-pulmones-del-recin-nacido-brillan-con-una-.mp4
+	new file:   PEDIATRIA/Videos Pediatria/5---el-cerebro-peditrico-emite-suaves-pulsos-de-lu.mp4
+	new file:   PEDIATRIA/Videos Pediatria/6---la-doble-hlice-de-adn-gira-continuamente-sobre.mp4
+	new file:   PEDIATRIA/Videos Pediatria/7---el-estmago-estilizado-infantil-tiene-un-movimi.mp4
+	new file:   PEDIATRIA/Videos Pediatria/8---la-luz-azul-de-la-lmpara-de-fototerapia-parpad.mp4
+	new file:   PEDIATRIA/Videos Pediatria/9---las-piezas-de-rompecabezas-genticas-flotan-lig.mp4
+	new file:   admin.html
+	new file:   anki_data.js
+	new file:   app.js
+	new file:   app_test.js
+	new file:   assets/favicon.png
+	new file:   assets/icon.png
+	new file:   assets/logo.png
+	new file:   assets/video-hero.mp4
+	new file:   curso.html
+	new file:   dashboard.js
+	new file:   index.html
+	new file:   login.html
+	new file:   package-lock.json
+	new file:   package.json
+	new file:   quiz_data.js
+	new file:   railway.toml
+	new file:   server.js
+	new file:   styles.css
+	new file:   video landing page.mp4
+	new file:   video-player.js
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   index.html
+	modified:   server.js
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	remote.txt
+	status.txt
+

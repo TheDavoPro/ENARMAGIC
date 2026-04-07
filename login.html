@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<script>(function(){var t=localStorage.getItem('enarmagic-theme')||'dark';document.documentElement.setAttribute('data-theme',t);if(t==='light')document.documentElement.classList.add('light-theme');})()</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso - ENARMAGIC</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="shortcut icon" type="image/png" href="assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0">
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Manrope', sans-serif; }
+        :root {
+            --bg: #060e20;
+            --s1: #0f1930;
+            --s2: #141f38;
+            --s3: #192540;
+            --primary: #3bbffa;
+            --primary-dim: #05a9e3;
+            --text: #dee5ff;
+            --text-sub: #a3aac4;
+        }
+        body { background: var(--bg); color: var(--text); min-height: 100vh; }
+
+        /* ── Layout ── */
+        .page-grid { display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; }
+        @media(max-width:768px){ .page-grid { grid-template-columns: 1fr; } .left-panel { display:none; } }
+
+        /* ── Left decorative panel ── */
+        .left-panel { background: linear-gradient(135deg, #0f1930, #060e20); position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center; padding:2rem; }
+        .blob { position:absolute; border-radius:40% 60% 70% 30% / 40% 50% 60% 50%; opacity:.12; }
+        .blob-1 { width:300px;height:300px;background:linear-gradient(135deg,var(--primary),#7c3aed);top:-60px;left:-60px; }
+        .blob-2 { width:200px;height:200px;background:linear-gradient(135deg,#FF6FD8,var(--primary));bottom:80px;right:-40px; }
+        .blob-3 { width:150px;height:150px;background:linear-gradient(135deg,#06D6A0,#3bbffa);bottom:40px;left:40px; }
+
+        /* ── Right panel ── */
+        .right-panel { display:flex; flex-direction:column; justify-content:center; align-items:center; padding:2rem; overflow-y:auto; }
+        .card { width:100%; max-width:420px; }
+
+        /* ── Tabs ── */
+        .tabs { display:flex; background:var(--s2); border-radius:12px; padding:4px; margin-bottom:1.5rem; }
+        .tab-btn { flex:1; padding:.6rem 1rem; border-radius:8px; border:none; cursor:pointer; font-weight:600; font-size:.9rem; transition:all .2s; background:transparent; color:var(--text-sub); }
+        .tab-btn.active { background:var(--primary); color:#060e20; }
+
+        /* ── Inputs ── */
+        .input-field {
+            width:100%; padding:.75rem 1rem; border-radius:10px;
+            background:var(--s2); border:1.5px solid var(--s3);
+            color:var(--text); font-size:.95rem; outline:none; transition:border .2s;
+        }
+        .input-field:focus { border-color:var(--primary); }
+        .input-field::placeholder { color:var(--text-sub); }
+
+        /* ── Buttons ── */
+        .btn-google {
+            width:100%; display:flex; align-items:center; justify-content:center; gap:12px;
+            padding:.85rem 1.5rem; border-radius:12px; border:1.5px solid var(--s3);
+            background:var(--s1); color:var(--text); font-weight:600; font-size:1rem;
+            cursor:pointer; transition:all .2s;
+        }
+        .btn-google:hover { border-color:var(--primary); background:var(--s2); transform:translateY(-1px); }
+        .btn-google svg { width:22px; height:22px; flex-shrink:0; }
+
+        .btn-primary-full {
+            width:100%; padding:.85rem; border-radius:12px; border:none;
+            background:var(--primary); color:#060e20; font-weight:700; font-size:1rem;
+            cursor:pointer; transition:all .2s;
+        }
+        .btn-primary-full:hover { background:var(--primary-dim); transform:translateY(-1px); }
+        .btn-primary-full:disabled { opacity:.6; cursor:not-allowed; transform:none; }
+
+        .btn-outline {
+            width:100%; padding:.75rem; border-radius:12px;
+            border:1.5px solid var(--s3); background:transparent;
+            color:var(--text-sub); font-weight:600; cursor:pointer; transition:all .2s;
+        }
+        .btn-outline:hover { border-color:var(--primary); color:var(--primary); }
+
+        /* ── Divider ── */
+        .divider { display:flex; align-items:center; gap:1rem; margin:1.25rem 0; }
+        .divider::before, .divider::after { content:''; flex:1; height:1px; background:var(--s3); }
+        .divider span { color:var(--text-sub); font-size:.85rem; }
+
+        /* ── Alert messages ── */
+        .alert { padding:.75rem 1rem; border-radius:10px; font-size:.9rem; margin-bottom:1rem; display:none; }
+        .alert.show { display:block; }
+        .alert-error { background:rgba(239,68,68,.15); border:1px solid rgba(239,68,68,.4); color:#fca5a5; }
+        .alert-success { background:rgba(34,197,94,.15); border:1px solid rgba(34,197,94,.4); color:#86efac; }
+
+        /* ── Panel sections ── */
+        .panel { display:none; }
+        .panel.active { display:block; }
+
+        /* ── Plan badge ── */
+        .plan-badge { display:inline-flex; align-items:center; gap:6px; padding:4px 12px; border-radius:999px; background:rgba(59,191,250,.12); border:1px solid rgba(59,191,250,.25); color:var(--primary); font-size:.8rem; font-weight:600; }
+
+        /* ── Profile completion overlay ── */
+        #profileOverlay {
+            position:fixed; inset:0; z-index:100; display:none;
+            background:rgba(6,14,32,.97); backdrop-filter:blur(8px);
+            align-items:center; justify-content:center; padding:1rem;
+        }
+        #profileOverlay.show { display:flex; }
+        .profile-card { width:100%; max-width:480px; background:var(--s1); border-radius:20px; padding:1.5rem; border:1px solid var(--s3); }
+        @media(min-width:480px){ .profile-card { padding:2.5rem; } }
+
+        /* spinner */
+        .spinner { display:inline-block; width:18px; height:18px; border:2px solid rgba(6,14,32,.3); border-top-color:#060e20; border-radius:50%; animation:spin .6s linear infinite; }
+        @keyframes spin { to { transform:rotate(360deg); } }
+
+        /* ══════════════════════════════════
+           THEME TOGGLE BUTTON
+        ══════════════════════════════════ */
+        .theme-toggle {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 300;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 1.5px solid var(--s3);
+            background: var(--s1);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.25s ease;
+            color: var(--text-sub);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+        }
+        .theme-toggle:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: scale(1.1);
+            box-shadow: 0 4px 20px rgba(59,191,250,0.25);
+        }
+        .theme-toggle .material-symbols-outlined { font-size: 20px; line-height: 1; }
+
+        /* ══════════════════════════════════
+           LIGHT THEME OVERRIDES
+        ══════════════════════════════════ */
+        html[data-theme="light"] {
+            --bg: #f0f4ff;
+            --s1: #ffffff;
+            --s2: #f5f7fd;
+            --s3: #dce4f5;
+            --primary: #0097cf;
+            --primary-dim: #007bb0;
+            --text: #0c1324;
+            --text-sub: #4a5578;
+        }
+        html[data-theme="light"] body {
+            background: var(--bg);
+            color: var(--text);
+        }
+        html[data-theme="light"] .left-panel {
+            background: linear-gradient(135deg, #dce8ff, #edf3ff) !important;
+        }
+        html[data-theme="light"] .blob-1,
+        html[data-theme="light"] .blob-2,
+        html[data-theme="light"] .blob-3 {
+            opacity: 0.18;
+        }
+        html[data-theme="light"] #profileOverlay {
+            background: rgba(240,244,255,0.97);
+        }
+        html[data-theme="light"] .profile-card {
+            background: #ffffff;
+            border-color: var(--s3);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+        html[data-theme="light"] .spinner {
+            border-color: rgba(0,151,207,0.2);
+            border-top-color: var(--primary);
+        }
+        html[data-theme="light"] .tab-btn.active {
+            color: #ffffff;
+        }
+        html[data-theme="light"] .plan-badge {
+            background: rgba(0,151,207,0.1);
+            border-color: rgba(0,151,207,0.3);
+        }
+        html[data-theme="light"] .alert-error {
+            background: rgba(239,68,68,.1);
+            border-color: rgba(239,68,68,.3);
+            color: #c0392b;
+        }
+        html[data-theme="light"] .alert-success {
+            background: rgba(34,197,94,.1);
+            border-color: rgba(34,197,94,.3);
+            color: #166534;
+        }
+
+        /* ── Mobile refinements ── */
+        @media (max-width: 480px) {
+            .right-panel { padding: 1.25rem; }
+            .card { max-width: 100%; }
+            .input-field { font-size: 16px; /* prevent iOS zoom */ }
+            .btn-google, .btn-primary-full, .btn-outline { min-height: 48px; font-size: 0.95rem; }
+            .tabs .tab-btn { font-size: 0.82rem; padding: 0.55rem 0.5rem; }
+            .profile-card { padding: 1.25rem !important; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Theme Toggle Button -->
+<button class="theme-toggle" onclick="toggleEnarmagicTheme()" id="themeToggleBtn"
+  title="Cambiar tema" aria-label="Alternar tema oscuro/claro">
+  <span class="material-symbols-outlined" id="themeIcon">light_mode</span>
+</button>
+
+<!-- ══════════════════════════════════════════
+     OVERLAY DE COMPLETAR PERFIL (post-Google)
+     ══════════════════════════════════════════ -->
+<div id="profileOverlay">
+    <div class="profile-card">
+        <div class="text-center mb-6">
+            <span class="material-symbols-outlined" style="font-size:48px;color:var(--primary)">account_circle</span>
+            <h2 class="text-2xl font-bold mt-3" style="color:var(--text)">Completa tu perfil</h2>
+            <p style="color:var(--text-sub)" class="mt-1 text-sm">Solo necesitamos unos datos para personalizar tu experiencia</p>
+        </div>
+
+        <div id="profileAlert" class="alert alert-error"></div>
+
+        <form id="profileForm" class="space-y-4">
+            <div>
+                <label class="block text-sm font-semibold mb-1" style="color:var(--text-sub)">Nombre completo</label>
+                <input id="profileName" type="text" class="input-field" placeholder="Ej. Juan García López" required>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-sm font-semibold mb-1" style="color:var(--text-sub)">Fecha de nacimiento</label>
+                    <input id="profileBirthdate" type="date" class="input-field" required>
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold mb-1" style="color:var(--text-sub)">Edad</label>
+                    <input id="profileAge" type="number" class="input-field" placeholder="Ej. 26" min="18" max="99" required>
+                </div>
+            </div>
+            <div class="pt-2 p-4 rounded-lg" style="background:rgba(59,191,250,.07);border:1px solid rgba(59,191,250,.2)">
+                <p class="text-xs" style="color:var(--text-sub)">
+                    🎉 Al completar tu perfil accederás automáticamente al
+                    <span class="plan-badge ml-1">Plan MIP Gratuito</span>
+                    con 12 temas (3 por especialidad).
+                </p>
+            </div>
+            <button type="submit" class="btn-primary-full" id="profileSubmitBtn">
+                Entrar a la plataforma
+            </button>
+        </form>
+    </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     PÁGINA PRINCIPAL
+     ══════════════════════════════════════════ -->
+<div class="page-grid">
+
+    <!-- Panel izquierdo decorativo -->
+    <div class="left-panel">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+        <div class="relative z-10 text-center max-w-sm">
+            <img src="assets/logo.png" alt="ENARMAGIC" class="w-16 h-16 mx-auto mb-6" onerror="this.style.display='none'">
+            <h1 class="text-4xl font-bold mb-3" style="color:var(--primary)">ENARMAGIC</h1>
+            <p class="mb-10" style="color:var(--text-sub)">Tu plataforma de preparación ENARM 2026</p>
+            <div class="grid grid-cols-2 gap-4 text-center mb-10">
+                <div class="p-4 rounded-xl" style="background:rgba(59,191,250,.07);border:1px solid rgba(59,191,250,.15)">
+                    <p class="text-2xl font-bold" style="color:var(--primary)">119+</p>
+                    <p class="text-xs" style="color:var(--text-sub)">Temas</p>
+                </div>
+                <div class="p-4 rounded-xl" style="background:rgba(59,191,250,.07);border:1px solid rgba(59,191,250,.15)">
+                    <p class="text-2xl font-bold" style="color:var(--primary)">4</p>
+                    <p class="text-xs" style="color:var(--text-sub)">Especialidades</p>
+                </div>
+                <div class="p-4 rounded-xl" style="background:rgba(59,191,250,.07);border:1px solid rgba(59,191,250,.15)">
+                    <p class="text-2xl font-bold" style="color:var(--primary)">5</p>
+                    <p class="text-xs" style="color:var(--text-sub)">Modalidades</p>
+                </div>
+                <div class="p-4 rounded-xl" style="background:rgba(59,191,250,.07);border:1px solid rgba(59,191,250,.15)">
+                    <p class="text-2xl font-bold" style="color:var(--primary)">500+</p>
+                    <p class="text-xs" style="color:var(--text-sub)">Preguntas</p>
+                </div>
+            </div>
+            <div class="p-5 rounded-xl text-left" style="background:rgba(59,191,250,.06);border-left:3px solid var(--primary)">
+                <p class="italic text-sm leading-relaxed" style="color:var(--text)">"La excelencia en medicina no es un destino, es un viaje continuo de aprendizaje y dedicación."</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Panel derecho: formularios -->
+    <div class="right-panel">
+        <div class="card">
+
+            <!-- Logo mobile -->
+            <div class="flex justify-center mb-6 md:hidden">
+                <img src="assets/logo.png" alt="ENARMAGIC" class="w-12 h-12" onerror="this.style.display='none'">
+            </div>
+
+            <!-- Tabs -->
+            <div class="tabs">
+                <button class="tab-btn active" onclick="switchTab('login')">Iniciar sesión</button>
+                <button class="tab-btn" onclick="switchTab('register')">Registrarse</button>
+            </div>
+
+            <!-- ───── PANEL LOGIN ───── -->
+            <div id="panel-login" class="panel active">
+                <h2 class="text-2xl font-bold mb-1" style="color:var(--text)">Bienvenido de vuelta</h2>
+                <p class="text-sm mb-6" style="color:var(--text-sub)">Accede a tu cuenta para continuar</p>
+
+                <div id="loginAlert" class="alert"></div>
+
+                <!-- Google -->
+                <button class="btn-google" onclick="loginWithGoogle()">
+                    <svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                    Continuar con Google
+                </button>
+
+                <div class="divider"><span>o ingresa con tu cuenta</span></div>
+
+                <!-- Email / password login -->
+                <form id="loginForm" class="space-y-4" onsubmit="handleLogin(event)">
+                    <input id="loginEmail" type="email" class="input-field" placeholder="Correo electrónico" required>
+                    <input id="loginPassword" type="password" class="input-field" placeholder="Contraseña" required>
+                    <button type="submit" class="btn-primary-full" id="loginBtn">Iniciar sesión</button>
+                </form>
+
+                <p class="text-center text-sm mt-4" style="color:var(--text-sub)">
+                    ¿No tienes cuenta?
+                    <button onclick="switchTab('register')" style="color:var(--primary);background:none;border:none;cursor:pointer;font-weight:600">Regístrate gratis</button>
+                </p>
+
+            </div>
+
+            <!-- ───── PANEL REGISTRO ───── -->
+            <div id="panel-register" class="panel">
+                <h2 class="text-2xl font-bold mb-1" style="color:var(--text)">Crear cuenta</h2>
+                <p class="text-sm mb-6" style="color:var(--text-sub)">Es gratis y solo toma un minuto</p>
+
+                <div id="registerAlert" class="alert"></div>
+
+                <!-- Google register -->
+                <button class="btn-google" onclick="loginWithGoogle()">
+                    <svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                    Registrarse con Google
+                </button>
+
+                <div class="divider"><span>o crea tu cuenta con correo</span></div>
+
+                <form id="registerForm" class="space-y-4" onsubmit="handleRegister(event)">
+                    <input id="regFullName" type="text" class="input-field" placeholder="Nombre completo" required>
+                    <input id="regUsername" type="text" class="input-field" placeholder="Nombre de usuario (sin espacios)" required
+                        oninput="this.value=this.value.replace(/\s/g,'').toLowerCase()">
+                    <input id="regEmail" type="email" class="input-field" placeholder="Correo electrónico" required>
+                    <input id="regPassword" type="password" class="input-field" placeholder="Contraseña (mín. 6 caracteres)" minlength="6" required>
+                    <input id="regPasswordConfirm" type="password" class="input-field" placeholder="Repetir contraseña" required>
+                    <div class="p-3 rounded-lg text-xs" style="background:rgba(59,191,250,.07);border:1px solid rgba(59,191,250,.2);color:var(--text-sub)">
+                        🎁 Recibirás el <strong style="color:var(--primary)">Plan MIP gratuito</strong> con acceso a 12 temas (3 por especialidad).
+                    </div>
+                    <button type="submit" class="btn-primary-full" id="registerBtn">Crear cuenta gratis</button>
+                </form>
+
+                <p class="text-center text-sm mt-4" style="color:var(--text-sub)">
+                    ¿Ya tienes cuenta?
+                    <button onclick="switchTab('login')" style="color:var(--primary);background:none;border:none;cursor:pointer;font-weight:600">Iniciar sesión</button>
+                </p>
+            </div>
+
+            <!-- Footer -->
+            <div class="mt-8 pt-6" style="border-top:1px solid var(--s3)">
+                <a href="/" style="color:var(--text-sub);text-decoration:none;font-size:.85rem;display:flex;align-items:center;gap:6px;">
+                    <span class="material-symbols-outlined" style="font-size:16px">arrow_back</span>
+                    Volver al inicio
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// ── Tab switching ──
+function switchTab(tab) {
+    document.querySelectorAll('.tab-btn').forEach((b,i) => b.classList.toggle('active', (i===0&&tab==='login')||(i===1&&tab==='register')));
+    document.getElementById('panel-login').classList.toggle('active', tab==='login');
+    document.getElementById('panel-register').classList.toggle('active', tab==='register');
+    clearAlerts();
+}
+
+// ── Alert helpers ──
+function showAlert(id, msg, type='error') {
+    const el = document.getElementById(id);
+    el.textContent = msg;
+    el.className = `alert alert-${type} show`;
+}
+function clearAlerts() {
+    document.querySelectorAll('.alert').forEach(el => { el.className = 'alert'; el.textContent = ''; });
+}
+
+// ── Google login / register ──
+function loginWithGoogle() {
+    const pending = sessionStorage.getItem('selectedPlan');
+    let url = '/auth/google';
+    if (pending) url += '?plan=' + encodeURIComponent(pending);
+    window.location.href = url;
+}
+
+// ── Email login ──
+async function handleLogin(e) {
+    e.preventDefault();
+    clearAlerts();
+    const btn = document.getElementById('loginBtn');
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner"></span> Verificando...';
+    try {
+        const res = await fetch('/auth/login', {
+            method:'POST', headers:{'Content-Type':'application/json'},
+            body: JSON.stringify({ email: document.getElementById('loginEmail').value, password: document.getElementById('loginPassword').value })
+        });
+        const data = await res.json();
+        if (res.ok) {
+            showAlert('loginAlert', '¡Acceso concedido! Redirigiendo...', 'success');
+            setTimeout(() => window.location.href = '/curso', 900);
+        } else {
+            showAlert('loginAlert', data.error || 'Credenciales incorrectas');
+        }
+    } catch { showAlert('loginAlert', 'Error de conexión. Intenta de nuevo.'); }
+    finally { btn.disabled=false; btn.textContent='Iniciar sesión'; }
+}
+
+// ── Register ──
+async function handleRegister(e) {
+    e.preventDefault();
+    clearAlerts();
+    const fullName = document.getElementById('regFullName').value.trim();
+    const username = document.getElementById('regUsername').value.trim();
+    const email    = document.getElementById('regEmail').value.trim();
+    const pass     = document.getElementById('regPassword').value;
+    const pass2    = document.getElementById('regPasswordConfirm').value;
+
+    if (pass !== pass2) { showAlert('registerAlert','Las contraseñas no coinciden'); return; }
+    if (pass.length < 6) { showAlert('registerAlert','La contraseña debe tener al menos 6 caracteres'); return; }
+
+    const btn = document.getElementById('registerBtn');
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner"></span> Creando cuenta...';
+
+    try {
+        const res = await fetch('/auth/register', {
+            method:'POST', headers:{'Content-Type':'application/json'},
+            body: JSON.stringify({ fullName, username, email, password: pass })
+        });
+        const data = await res.json();
+        if (res.ok) {
+            showAlert('registerAlert', '¡Cuenta creada! Iniciando sesión...', 'success');
+            setTimeout(() => window.location.href = '/curso', 1000);
+        } else {
+            showAlert('registerAlert', data.error || 'Error al crear la cuenta');
+        }
+    } catch { showAlert('registerAlert', 'Error de conexión. Intenta de nuevo.'); }
+    finally { btn.disabled=false; btn.textContent='Crear cuenta gratis'; }
+}
+
+
+// ── Profile completion overlay (post-Google) ──
+async function checkProfileCompletion() {
+    try {
+        const res = await fetch('/api/user');
+        if (!res.ok) return; // Not logged in, normal login page
+        const user = await res.json();
+        // If user is logged in but profile is incomplete, show overlay
+        if (user && user.needsProfile) {
+            document.getElementById('profileName').value = user.name || '';
+            document.getElementById('profileOverlay').classList.add('show');
+        } else if (user && !user.needsProfile) {
+            // Already complete → go to curso
+            window.location.href = '/curso';
+        }
+    } catch { /* not logged in */ }
+}
+
+// Handle profile form submission
+document.getElementById('profileForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('profileSubmitBtn');
+    const alertEl = document.getElementById('profileAlert');
+    alertEl.className = 'alert';
+
+    const name      = document.getElementById('profileName').value.trim();
+    const birthdate = document.getElementById('profileBirthdate').value;
+    const age       = document.getElementById('profileAge').value;
+
+    if (!name || !birthdate || !age) {
+        alertEl.textContent = 'Por favor completa todos los campos.';
+        alertEl.className = 'alert alert-error show';
+        return;
+    }
+
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner"></span> Guardando...';
+
+    try {
+        const res = await fetch('/api/profile', {
+            method: 'POST', headers: {'Content-Type':'application/json'},
+            body: JSON.stringify({ name, birthdate, age: parseInt(age) })
+        });
+        if (res.ok) {
+            window.location.href = '/curso';
+        } else {
+            const d = await res.json();
+            alertEl.textContent = d.error || 'Error al guardar el perfil.';
+            alertEl.className = 'alert alert-error show';
+        }
+    } catch {
+        alertEl.textContent = 'Error de conexión.';
+        alertEl.className = 'alert alert-error show';
+    } finally {
+        btn.disabled = false;
+        btn.textContent = 'Entrar a la plataforma';
+    }
+});
+
+// Auto-calculate age from birthdate
+document.getElementById('profileBirthdate').addEventListener('change', function() {
+    const birth = new Date(this.value);
+    const today = new Date();
+    let age = today.getFullYear() - birth.getFullYear();
+    const m = today.getMonth() - birth.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) age--;
+    if (age > 0 && age < 100) document.getElementById('profileAge').value = age;
+});
+
+// Check URL params for tab
+const urlParams = new URLSearchParams(window.location.search);
+if (urlParams.get('tab') === 'register') switchTab('register');
+if (urlParams.get('error')) showAlert('loginAlert', 'Error al iniciar sesión con Google. Intenta de nuevo.');
+
+// Check if already logged in / needs profile
+checkProfileCompletion();
+
+// ── Theme toggle ──
+function toggleEnarmagicTheme() {
+    var current = document.documentElement.getAttribute('data-theme') || 'dark';
+    var next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('enarmagic-theme', next);
+    updateThemeIcon(next);
+}
+function updateThemeIcon(theme) {
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = theme === 'dark' ? 'light_mode' : 'dark_mode';
+}
+// Initialize icon on load
+(function() {
+    var t = document.documentElement.getAttribute('data-theme') || 'dark';
+    updateThemeIcon(t);
+})();
+</script>
+</body>
+</html>

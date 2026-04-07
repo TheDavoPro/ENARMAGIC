@@ -1,0 +1,28 @@
+# ── Dependencias ──────────────────────────────
+node_modules/
+
+# ── Variables de entorno (¡NUNCA subir a GitHub!) ──
+.env
+.env.local
+.env.production
+
+# ── Base de datos ─────────────────────────────
+# El archivo .db contiene datos reales de usuarios
+# Railway usa un volumen persistente para esto en producción
+enarmagic.db
+*.db-journal
+*.db-shm
+*.db-wal
+
+# ── Archivos del sistema ──────────────────────
+.DS_Store
+Thumbs.db
+
+# ── Logs ─────────────────────────────────────
+*.log
+npm-debug.log*
+logs/
+
+# ── Backups ───────────────────────────────────
+*.bak
+*.orig
