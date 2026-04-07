@@ -90,39 +90,39 @@
   </div>
 </div>
 
-<!-- Stripe.js CDN -->
-<script src="https://js.stripe.com/v3/"></script>
-
-<!-- Auth Check Script + Stripe Checkout -->
+<!-- Auth Check Script -->
 <script>
 const PLAN_NAMES = { mip: 'Plan MIP (Gratuito)', r1: 'Plan R1', r_plus: 'Plan R+', adscrito: 'Plan Adscrito' };
 
-// Stripe Checkout function (globally accessible)
-async function startCheckout(planName) {
-  try {
-    const res = await fetch('/api/checkout', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      credentials: 'include',
-      body: JSON.stringify({ plan: planName })
-    });
-    const data = await res.json();
-    if (data.error) {
-      alert(data.error);
-      return;
-    }
-    if (data.sessionId && data.publishableKey) {
-      const stripe = Stripe(data.publishableKey);
-      await stripe.redirectToCheckout({ sessionId: data.sessionId });
-    } else if (data.success) {
-      window.location.reload();
-    }
-  } catch (err) {
-    console.error('Checkout error:', err);
-    alert('Error al procesar el pago. Intenta de nuevo.');
-  }
+// Datos de planes para el modal de transferencia
+const PLAN_TRANSFER_INFO = {
+  r1:      { name: 'Plan R1',       amount: '$1,499 MXN' },
+  r_plus:  { name: 'Plan R+',       amount: '$2,499 MXN' },
+  adscrito:{ name: 'Plan Adscrito', amount: '$3,499 MXN' }
+};
+
+// Mostrar modal de transferencia bancaria (reemplaza startCheckout)
+function startCheckout(planName) {
+  showBankTransferModal(planName);
 }
-window.startCheckout = startCheckout;
+
+function showBankTransferModal(planName) {
+  const info = PLAN_TRANSFER_INFO[planName] || { name: planName, amount: '' };
+  const nameEl   = document.getElementById('btCursoPlanName');
+  const amountEl = document.getElementById('btCursoAmount');
+  if (nameEl)   nameEl.textContent   = info.name;
+  if (amountEl) amountEl.textContent = info.amount;
+  const modal = document.getElementById('bankTransferModalCurso');
+  if (modal) modal.style.display = 'flex';
+}
+
+function closeBankTransferModalCurso() {
+  const modal = document.getElementById('bankTransferModalCurso');
+  if (modal) modal.style.display = 'none';
+}
+
+window.startCheckout       = startCheckout;
+window.showBankTransferModal = showBankTransferModal;
 
 (async function() {
   try {
@@ -158,24 +158,13 @@ window.startCheckout = startCheckout;
     const heroTitle = document.querySelector('.stitch-hero-title');
     if (heroTitle) heroTitle.textContent = `Hola, ${user.name ? user.name.split(' ')[0] : 'Dr. Estudiante'}`;
 
-    // Check URL for payment success
-    const params = new URLSearchParams(window.location.search);
-    if (params.get('success') === 'true') {
-      const planPaid = params.get('plan');
-      setTimeout(() => {
-        alert('¡Pago exitoso! Tu plan ha sido actualizado a ' + (PLAN_NAMES[planPaid] || planPaid));
-      }, 500);
-      window.history.replaceState({}, '', '/curso');
-    }
-
-    // Check if user came from landing with a selected plan → trigger checkout
+    // Check if user came from landing with a selected plan → mostrar modal de transferencia
     const pendingPlan = sessionStorage.getItem('selectedPlan');
     if (pendingPlan && pendingPlan !== 'mip' && pendingPlan !== user.plan) {
       sessionStorage.removeItem('selectedPlan');
-      // Map landing plan names to server plan names
       const planMap = { rplus: 'r_plus', r1: 'r1', adscrito: 'adscrito' };
       const serverPlan = planMap[pendingPlan] || pendingPlan;
-      setTimeout(() => startCheckout(serverPlan), 800);
+      setTimeout(() => showBankTransferModal(serverPlan), 800);
     } else {
       sessionStorage.removeItem('selectedPlan');
     }
@@ -882,13 +871,13 @@ window.startCheckout = startCheckout;
       <span class="material-symbols-outlined" style="font-size:48px;color:#FFB800;font-variation-settings:'FILL' 1">lock</span>
       <h2 class="text-2xl font-headline font-bold text-on-surface mt-3">Contenido no disponible</h2>
       <p class="text-on-surface-variant mt-2">
-        Para ver este tema debes adquirir un plan superior.
+        Para ver este tema selecciona un plan y realiza tu pago por transferencia bancaria.
       </p>
     </div>
     <input type="hidden" id="upgradeModalSpId" />
     <input type="hidden" id="upgradeModalTopic" />
     <div class="space-y-3 mb-6">
-      <button onclick="startCheckout('r1'); closeUpgradeModal();"
+      <button onclick="showBankTransferModal('r1'); closeUpgradeModal();"
         class="w-full flex items-center justify-between px-5 py-3 rounded-lg border border-outline-variant hover:border-primary transition-all hover:bg-surface-container"
         style="text-align:left">
         <div>
@@ -897,7 +886,7 @@ window.startCheckout = startCheckout;
         </div>
         <span class="text-primary font-bold">$1,499 MXN</span>
       </button>
-      <button onclick="startCheckout('r_plus'); closeUpgradeModal();"
+      <button onclick="showBankTransferModal('r_plus'); closeUpgradeModal();"
         class="w-full flex items-center justify-between px-5 py-3 rounded-lg border-2 border-primary transition-all"
         style="text-align:left; background:linear-gradient(135deg, rgba(59,191,250,0.08), rgba(138,149,255,0.08))">
         <div>
@@ -906,7 +895,7 @@ window.startCheckout = startCheckout;
         </div>
         <span class="text-primary font-bold">$2,499 MXN</span>
       </button>
-      <button onclick="startCheckout('adscrito'); closeUpgradeModal();"
+      <button onclick="showBankTransferModal('adscrito'); closeUpgradeModal();"
         class="w-full flex items-center justify-between px-5 py-3 rounded-lg border border-outline-variant hover:border-primary transition-all hover:bg-surface-container"
         style="text-align:left">
         <div>
@@ -921,6 +910,199 @@ window.startCheckout = startCheckout;
     </button>
   </div>
 </div>
+
+<!-- ===================== MODAL TRANSFERENCIA BANCARIA (CURSO) ===================== -->
+<div id="bankTransferModalCurso"
+     style="display:none; position:fixed; inset:0; z-index:9999;
+            background:rgba(0,0,0,0.80); backdrop-filter:blur(8px);
+            align-items:center; justify-content:center; padding:16px;">
+  <div style="background:linear-gradient(160deg,#0d1b3e 0%,#060e20 100%);
+              border:1px solid #3bbffa; border-radius:20px;
+              padding:36px 28px; max-width:480px; width:100%;
+              max-height:90vh; overflow-y:auto; position:relative;
+              box-shadow:0 0 60px rgba(59,191,250,0.25);">
+
+    <!-- Botón cerrar -->
+    <button onclick="closeBankTransferModalCurso()"
+            style="position:absolute;top:14px;right:16px;background:none;border:none;
+                   color:#8a95ff;font-size:22px;cursor:pointer;line-height:1;"
+            title="Cerrar">✕</button>
+
+    <!-- Encabezado -->
+    <div style="text-align:center;margin-bottom:24px;">
+      <div style="font-size:48px;margin-bottom:8px;">🏦</div>
+      <h2 style="color:#3bbffa;font-size:1.5rem;font-weight:800;margin:0 0 6px;">
+        Transferencia Bancaria
+      </h2>
+      <p style="color:#c0c8e0;font-size:0.95rem;margin:0;">
+        Plan seleccionado:
+        <span id="btCursoPlanName"
+              style="color:#fff;font-weight:700;background:rgba(59,191,250,0.15);
+                     padding:2px 10px;border-radius:20px;margin-left:4px;"></span>
+      </p>
+    </div>
+
+    <!-- Datos bancarios -->
+    <div style="background:rgba(59,191,250,0.06);border:1px solid rgba(59,191,250,0.25);
+                border-radius:12px;padding:20px;margin-bottom:20px;">
+      <!-- Logo Nu Bank -->
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+        <div style="width:42px;height:42px;border-radius:50%;background:#820AD1;
+                    display:flex;align-items:center;justify-content:center;
+                    box-shadow:0 4px 14px rgba(130,10,209,0.5);flex-shrink:0;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="30" height="30">
+            <text x="50%" y="56%" dominant-baseline="middle" text-anchor="middle"
+                  font-family="'Helvetica Neue',Arial,sans-serif" font-weight="800"
+                  font-size="17" fill="white">Nu</text>
+          </svg>
+        </div>
+        <span style="color:#c070ff;font-weight:800;font-size:1rem;letter-spacing:0.5px;">Nubank</span>
+      </div>
+      <p style="color:#3bbffa;font-weight:700;font-size:0.85rem;
+                text-transform:uppercase;letter-spacing:1px;margin:0 0 14px;">
+        📋 Datos para la transferencia
+      </p>
+      <table style="width:100%;border-collapse:collapse;color:#c0c8e0;font-size:0.93rem;">
+        <tr>
+          <td style="padding:6px 0;color:#8a95ff;font-weight:600;width:45%;">Banco:</td>
+          <td style="padding:6px 0;color:#fff;font-weight:500;">Nu (Nubank)</td>
+        </tr>
+        <tr>
+          <td style="padding:6px 0;color:#8a95ff;font-weight:600;">Titular:</td>
+          <td style="padding:6px 0;color:#fff;font-weight:500;">David Mendoza</td>
+        </tr>
+        <tr>
+          <td style="padding:6px 0;color:#8a95ff;font-weight:600;">Depósito Oxxo:</td>
+          <td style="padding:6px 0;color:#fff;font-weight:700;letter-spacing:1px;">5101 2569 6958 3053</td>
+        </tr>
+        <tr>
+          <td style="padding:6px 0;color:#8a95ff;font-weight:600;">CLABE:</td>
+          <td style="padding:6px 0;color:#fff;font-weight:700;letter-spacing:1px;">6381 8000 0141 2168 67</td>
+        </tr>
+        <tr>
+          <td style="padding:6px 0;color:#8a95ff;font-weight:600;">Monto:</td>
+          <td style="padding:6px 0;color:#3bbffa;font-weight:800;font-size:1.05rem;"
+              id="btCursoAmount"></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- Instrucciones -->
+    <p style="color:#c0c8e0;font-size:0.9rem;text-align:center;margin-bottom:20px;
+              background:rgba(255,182,0,0.08);border:1px solid rgba(255,182,0,0.25);
+              border-radius:10px;padding:12px;">
+      ⚠️ Una vez realizada la transferencia, envíanos tu <strong style="color:#FFB800;">comprobante de pago</strong>
+      junto con tu nombre y correo de registro para activar tu plan.
+    </p>
+
+    <!-- Redes sociales -->
+    <div style="text-align:center;">
+      <p style="color:#8a95ff;font-weight:700;font-size:0.85rem;
+                text-transform:uppercase;letter-spacing:1px;margin:0 0 16px;">
+        📲 Contáctanos por nuestras redes sociales
+      </p>
+      <div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap;">
+
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/profile.php?id=61578440163449"
+           target="_blank" rel="noopener"
+           style="display:flex;flex-direction:column;align-items:center;gap:6px;
+                  text-decoration:none;transition:transform 0.2s;"
+           onmouseover="this.style.transform='scale(1.1)'"
+           onmouseout="this.style.transform='scale(1)'">
+          <div style="width:52px;height:52px;border-radius:14px;background:#1877F2;
+                      display:flex;align-items:center;justify-content:center;
+                      box-shadow:0 4px 16px rgba(24,119,242,0.4);">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                 fill="white" width="28" height="28">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388
+                       10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007
+                       1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83
+                       c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385
+                       C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+          </div>
+          <span style="color:#c0c8e0;font-size:0.78rem;font-weight:600;">Facebook</span>
+        </a>
+
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/enarmagic_"
+           target="_blank" rel="noopener"
+           style="display:flex;flex-direction:column;align-items:center;gap:6px;
+                  text-decoration:none;transition:transform 0.2s;"
+           onmouseover="this.style.transform='scale(1.1)'"
+           onmouseout="this.style.transform='scale(1)'">
+          <div style="width:52px;height:52px;border-radius:14px;
+                      background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);
+                      display:flex;align-items:center;justify-content:center;
+                      box-shadow:0 4px 16px rgba(220,39,67,0.4);">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                 fill="white" width="27" height="27">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919
+                       4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069
+                       4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07
+                       -4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699
+                       -4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583
+                       .07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057
+                       1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072
+                       2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014
+                       3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986
+                       8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782
+                       -2.618 6.979-6.98.059-1.28.073-1.689.073-4.948
+                       0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98
+                       C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324
+                       6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406
+                       -11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+            </svg>
+          </div>
+          <span style="color:#c0c8e0;font-size:0.78rem;font-weight:600;">Instagram</span>
+        </a>
+
+        <!-- Telegram -->
+        <a href="https://t.me/eldavomd"
+           target="_blank" rel="noopener"
+           style="display:flex;flex-direction:column;align-items:center;gap:6px;
+                  text-decoration:none;transition:transform 0.2s;"
+           onmouseover="this.style.transform='scale(1.1)'"
+           onmouseout="this.style.transform='scale(1)'">
+          <div style="width:52px;height:52px;border-radius:14px;background:#26A5E4;
+                      display:flex;align-items:center;justify-content:center;
+                      box-shadow:0 4px 16px rgba(38,165,228,0.4);">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                 fill="white" width="28" height="28">
+              <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0
+                       12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002
+                       .321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472
+                       -.18 1.898-.96 6.502-1.36 8.627-.168.9-.499 1.201-.82
+                       1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124
+                       -2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977
+                       3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024
+                       c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48
+                       -.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789
+                       .027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014
+                       3.332-1.386 4.025-1.627 4.476-1.635z"/>
+            </svg>
+          </div>
+          <span style="color:#c0c8e0;font-size:0.78rem;font-weight:600;">Telegram</span>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- Botón cerrar inferior -->
+    <button onclick="closeBankTransferModalCurso()"
+            style="margin-top:24px;width:100%;padding:12px;border:1px solid #3bbffa;
+                   border-radius:10px;background:transparent;color:#3bbffa;
+                   font-weight:700;font-size:0.95rem;cursor:pointer;
+                   transition:background 0.2s,color 0.2s;"
+            onmouseover="this.style.background='#3bbffa';this.style.color='#060e20'"
+            onmouseout="this.style.background='transparent';this.style.color='#3bbffa'">
+      Cerrar
+    </button>
+
+  </div>
+</div>
+<!-- ========================================================================= -->
 
 <!-- Locked Topic Styles -->
 <style>
