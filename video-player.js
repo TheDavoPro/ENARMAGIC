@@ -432,7 +432,11 @@ class ENARPlayer {
     this.endedEl.style.display = 'none';
   }
   _onError() {
-    this.errorMsg.textContent = 'Error al cargar el video. Verifica tu conexión e inicia sesión nuevamente.';
+    const err = this.video.error;
+    const code = err ? err.code : 'unknown';
+    console.error(`[ENARPlayer] Error detectado en video. Código: ${code}`);
+
+    this.errorMsg.textContent = `Error al cargar el video (Código ${code}). Verifica tu conexión e inicia sesión nuevamente.`;
     this._showState('error');
   }
 
@@ -606,12 +610,15 @@ async function getSecureVideoUrl(videoPath) {
       credentials: 'same-origin',
       body: JSON.stringify({ path: videoPath })
     });
-    if (!resp.ok) throw new Error('token_error');
+    if (!resp.ok) {
+      console.error(`[ENARPlayer] Error obteniendo token: ${resp.status} ${resp.statusText}`);
+      throw new Error('token_error');
+    }
     const { token } = await resp.json();
     return `/api/video-stream?token=${encodeURIComponent(token)}`;
   } catch(e) {
     // Fallback: URL-encode and use direct path (still protected by requireAuthStatic middleware)
-    console.warn('[ENARPlayer] Token API unavailable, using direct path');
+    console.warn('[ENARPlayer] API de tokens no disponible, usando ruta directa:', e.message);
     return videoPath.split('/').map(seg => encodeURIComponent(seg)).join('/');
   }
 }

@@ -1,26 +1,131 @@
 const express = require('express');
 const session = require('express-session');
-const passport = require('passport');
-const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const bcrypt = require('bcryptjs');
 const path = require('path');
 const fs = require('fs');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
+const nodemailer = require('nodemailer');
 
 // We'll use sql.js (pure JS SQLite)
 let initSqlJs, SQL, db;
 
 const app = express();
+app.set('trust proxy', 1);
 const PORT = process.env.PORT || 3000;
 
-// Environment variables — Google OAuth credentials
-const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID || '765631956556-a65mkv86fu4fqofim4mc5h78nf9mtkcb.apps.googleusercontent.com';
-const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET || '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';
-const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY || 'sk_test_51TIjM374vai7HD1thxtimP3SYgiN9N43fNETlWSaDzQYDlDQf9uttUB83EhaIswRHT3v4XR8eeFJLVEbzWGyGRAJ00Ty4WG5gt';
-const STRIPE_PUBLISHABLE_KEY = process.env.STRIPE_PUBLISHABLE_KEY || 'pk_test_51TIjM374vai7HD1tbfoAN3oJZSDjeM4veUFIEPKE8wrNFG0sbgttUeas0WVwsMQLqjOVygsnVUFfqTQzJ7RIlQUF00Zwfcmjh1';
-const SESSION_SECRET = process.env.SESSION_SECRET || 'enarmagic_session_secret_2026';
-const BASE_URL = process.env.BASE_URL || 'http://localhost:3000';
+// Environment variables
+const STRIPE_SECRET_KEY     = process.env.STRIPE_SECRET_KEY     || 'sk_test_51TIjM374vai7HD1thxtimP3SYgiN9N43fNETlWSaDzQYDlDQf9uttUB83EhaIswRHT3v4XR8eeFJLVEbzWGyGRAJ00Ty4WG5gt';
+const STRIPE_PUBLISHABLE_KEY= process.env.STRIPE_PUBLISHABLE_KEY|| 'pk_test_51TIjM374vai7HD1tbfoAN3oJZSDjeM4veUFIEPKE8wrNFG0sbgttUeas0WVwsMQLqjOVygsnVUFfqTQzJ7RIlQUF00Zwfcmjh1';
+const SESSION_SECRET        = process.env.SESSION_SECRET        || 'enarmagic_session_secret_2026';
+const BASE_URL              = process.env.BASE_URL              || 'http://localhost:3000';
+
+// Email (SMTP) — Gmail ENARMAGIC
+const SMTP_USER = process.env.SMTP_USER || 'cursoenarmagic@gmail.com';
+// Las contraseñas de app de Google se usan sin espacios
+const SMTP_PASS = (process.env.SMTP_PASS || 'ttyg vmgv rycr atxl').replace(/\s+/g, '');
+const EMAIL_FROM= process.env.EMAIL_FROM || '"ENARMAGIC" <cursoenarmagic@gmail.com>';
+
+// Nodemailer transporter — puerto 587 + STARTTLS (más compatible con Gmail)
+const mailer = nodemailer.createTransport({
+  host: 'smtp.gmail.com',
+  port: 587,
+  secure: false,          // STARTTLS
+  auth: { user: SMTP_USER, pass: SMTP_PASS },
+  tls: { rejectUnauthorized: false }
+});
+
+// Verificar conexión SMTP al iniciar
+mailer.verify((err) => {
+  if (err) console.error('[EMAIL] ❌ Error de conexión SMTP:', err.message);
+  else     console.log('[EMAIL] ✅ SMTP Gmail conectado correctamente');
+});
+
+// Envía correo de bienvenida al nuevo usuario
+async function sendWelcomeEmail(email, fullName, username, plainPassword) {
+  if (!mailer) {
+    console.warn('[EMAIL] SMTP no configurado — correo de bienvenida no enviado.');
+    return;
+  }
+  const html = `
+  <!DOCTYPE html>
+  <html lang="es">
+  <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+  <body style="margin:0;padding:0;background:#060e20;font-family:'Segoe UI',Arial,sans-serif;">
+    <table width="100%" cellpadding="0" cellspacing="0" style="background:#060e20;padding:40px 0;">
+      <tr><td align="center">
+        <table width="600" cellpadding="0" cellspacing="0" style="background:#0f1930;border-radius:16px;border:1px solid #192540;overflow:hidden;max-width:600px;">
+          <!-- Header -->
+          <tr>
+            <td style="background:linear-gradient(135deg,#0f1930,#060e20);padding:36px 40px;text-align:center;border-bottom:1px solid #192540;">
+              <h1 style="color:#3bbffa;font-size:2rem;margin:0;letter-spacing:1px;">ENARMAGIC</h1>
+              <p style="color:#a3aac4;margin:8px 0 0;font-size:.95rem;">Plataforma de preparación ENARM 2026</p>
+            </td>
+          </tr>
+          <!-- Body -->
+          <tr>
+            <td style="padding:36px 40px;">
+              <h2 style="color:#dee5ff;font-size:1.4rem;margin:0 0 12px;">¡Bienvenido, ${fullName}! 🎉</h2>
+              <p style="color:#a3aac4;line-height:1.7;margin:0 0 24px;">
+                Tu registro en <strong style="color:#3bbffa;">ENARMAGIC</strong> fue exitoso. A partir de ahora tienes acceso gratuito al <strong style="color:#3bbffa;">Plan MIP</strong> con 12 temas de preparación ENARM.
+              </p>
+              <!-- Datos de la cuenta -->
+              <table width="100%" cellpadding="0" cellspacing="0" style="background:#141f38;border-radius:12px;border:1px solid #192540;margin-bottom:24px;">
+                <tr><td style="padding:20px 24px;">
+                  <p style="color:#3bbffa;font-size:.8rem;font-weight:700;letter-spacing:1px;margin:0 0 16px;">TUS DATOS DE ACCESO</p>
+                  <table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td style="padding:8px 0;color:#a3aac4;font-size:.9rem;width:40%;">👤 Nombre completo</td>
+                      <td style="padding:8px 0;color:#dee5ff;font-size:.9rem;font-weight:600;">${fullName}</td>
+                    </tr>
+                    <tr style="border-top:1px solid #192540;">
+                      <td style="padding:8px 0;color:#a3aac4;font-size:.9rem;">🔑 Usuario</td>
+                      <td style="padding:8px 0;color:#dee5ff;font-size:.9rem;font-weight:600;">${username}</td>
+                    </tr>
+                    <tr style="border-top:1px solid #192540;">
+                      <td style="padding:8px 0;color:#a3aac4;font-size:.9rem;">📧 Correo</td>
+                      <td style="padding:8px 0;color:#dee5ff;font-size:.9rem;font-weight:600;">${email}</td>
+                    </tr>
+                    <tr style="border-top:1px solid #192540;">
+                      <td style="padding:8px 0;color:#a3aac4;font-size:.9rem;">🔒 Contraseña</td>
+                      <td style="padding:8px 0;color:#dee5ff;font-size:.9rem;font-weight:600;">${plainPassword}</td>
+                    </tr>
+                  </table>
+                </td></tr>
+              </table>
+              <p style="color:#a3aac4;font-size:.82rem;line-height:1.6;margin:0 0 24px;background:#0f1930;padding:12px 16px;border-radius:8px;border-left:3px solid #3bbffa;">
+                ⚠️ <strong style="color:#dee5ff;">Guarda este correo en un lugar seguro.</strong> Contiene tu contraseña en texto. Por seguridad te recomendamos no compartirlo y cambiar tu contraseña desde tu perfil si lo deseas.
+              </p>
+              <!-- CTA -->
+              <table width="100%" cellpadding="0" cellspacing="0">
+                <tr><td align="center">
+                  <a href="${BASE_URL}/login" style="display:inline-block;padding:14px 36px;background:#3bbffa;color:#060e20;text-decoration:none;border-radius:10px;font-weight:700;font-size:1rem;">
+                    Ir a la plataforma →
+                  </a>
+                </td></tr>
+              </table>
+            </td>
+          </tr>
+          <!-- Footer -->
+          <tr>
+            <td style="padding:20px 40px;border-top:1px solid #192540;text-align:center;">
+              <p style="color:#a3aac4;font-size:.78rem;margin:0;">© 2026 ENARMAGIC · Todos los derechos reservados</p>
+            </td>
+          </tr>
+        </table>
+      </td></tr>
+    </table>
+  </body>
+  </html>`;
+
+  await mailer.sendMail({
+    from: EMAIL_FROM,
+    to: email,
+    subject: '¡Registro exitoso en ENARMAGIC! 🎓',
+    html
+  });
+  console.log(`[EMAIL] Bienvenida enviada a ${email}`);
+}
 
 // Plan access configuration
 const PLAN_ACCESS = {
@@ -229,6 +334,9 @@ const apiLimiter = rateLimit({
 app.use('/auth/login',       authLimiter);
 app.use('/auth/register',    authLimiter);
 app.use('/auth/admin-login', authLimiter);
+
+// Skip rate limiting specifically for video streaming to prevent interruptions
+app.use('/api/video-stream', (req, res, next) => next());
 app.use('/api/',             apiLimiter);
 
 // ── Middleware ──
@@ -247,68 +355,15 @@ app.use(session({
   }
 }));
 
-// Passport initialization
-app.use(passport.initialize());
-app.use(passport.session());
+// ── (Google OAuth removido — solo autenticación local) ──
 
-// Passport serialization
-passport.serializeUser((user, done) => done(null, user.id));
-passport.deserializeUser((id, done) => {
-  try {
-    const user = dbGet('SELECT * FROM users WHERE id = ?', [id]);
-    done(null, user || false);
-  } catch (err) {
-    console.error('Error al deserializar usuario:', err);
-    done(null, false);
-  }
+// Note: para compatibilidad con código antiguo que llama req.isAuthenticated()
+// definimos un stub que delega a la sesión:
+app.use((req, res, next) => {
+  req.isAuthenticated = () => !!(req.session && req.session.userId);
+  next();
 });
 
-// Google OAuth Strategy
-// callbackURL is intentionally left out here — each route constructs it
-// dynamically from the incoming request so the app works both on localhost
-// AND through any Cloudflare / ngrok tunnel without changing this file.
-passport.use(new GoogleStrategy({
-  clientID: GOOGLE_CLIENT_ID,
-  clientSecret: GOOGLE_CLIENT_SECRET,
-  callbackURL: `${BASE_URL}/auth/google/callback`,
-  proxy: true   // trust X-Forwarded-Proto from Cloudflare
-}, (accessToken, refreshToken, profile, done) => {
-  try {
-    const googleId = profile.id;
-    const email = profile.emails && profile.emails[0] ? profile.emails[0].value : `${googleId}@google.com`;
-    const name = profile.displayName || email.split('@')[0];
-    const avatar = profile.photos && profile.photos[0] ? profile.photos[0].value : null;
-
-    // Check if user exists by google_id
-    let user = dbGet('SELECT * FROM users WHERE google_id = ?', [googleId]);
-
-    if (!user) {
-      // Check if email already exists (e.g., admin account)
-      user = dbGet('SELECT * FROM users WHERE email = ?', [email]);
-      if (user) {
-        // Link Google account to existing user
-        dbRun('UPDATE users SET google_id = ?, avatar = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?',
-          [googleId, avatar, user.id]);
-        user = dbGet('SELECT * FROM users WHERE id = ?', [user.id]);
-      } else {
-        // Create new user with MIP plan — needs profile completion
-        dbRun("INSERT INTO users (google_id, email, name, avatar, plan, role, needs_profile) VALUES (?, ?, ?, ?, 'mip', 'user', 1)",
-          [googleId, email, name, avatar]);
-        user = dbGet('SELECT * FROM users WHERE google_id = ?', [googleId]);
-      }
-    } else {
-      // Update avatar
-      if (avatar) {
-        dbRun('UPDATE users SET avatar = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?', [avatar, user.id]);
-        user.avatar = avatar;
-      }
-    }
-
-    return done(null, user);
-  } catch (err) {
-    return done(err);
-  }
-}));
 
 // ── Auth guard for static premium assets ──
 // Returns 403 (not 401) so the browser doesn't pop up an auth dialog;
@@ -339,9 +394,8 @@ app.use(express.static(__dirname, {
 
 // Auth helpers
 function requireAuth(req, res, next) {
-  // Check passport auth OR session-based auth (for admin login)
+  // Autenticación por sesión
   if (req.isAuthenticated && req.isAuthenticated()) {
-    req.session.userId = req.user.id; // sync passport with session
     return next();
   }
   if (req.session && req.session.userId) return next();
@@ -502,74 +556,83 @@ app.post('/auth/admin-login', (req, res) => {
   res.json({ success: true, user: sanitizeUser(user) });
 });
 
-// Helper: builds the full callback URL from the incoming request,
-// supporting both plain localhost and any Cloudflare / ngrok tunnel.
-function getCallbackURL(req) {
-  const proto = req.headers['x-forwarded-proto'] || req.protocol;
-  const host  = req.headers['x-forwarded-host']  || req.get('host');
-  return `${proto}://${host}/auth/google/callback`;
-}
-
-// Google OAuth routes (REAL Passport flow)
-app.get('/auth/google', (req, res, next) => {
-  passport.authenticate('google', {
-    scope: ['profile', 'email'],
-    callbackURL: getCallbackURL(req)
-  })(req, res, next);
-});
-
-app.get('/auth/google/callback', (req, res, next) => {
-  passport.authenticate('google', {
-    failureRedirect: '/login?error=google_auth_failed',
-    callbackURL: getCallbackURL(req)
-  })(req, res, next);
-}, (req, res) => {
-  if (req.user) {
-    if (req.user.blocked === 1 || req.user.blocked === '1') {
-      req.logout(() => {});
-      return res.redirect('/login?error=account_suspended');
-    }
-    req.session.userId = req.user.id;
-    touchLastLogin(req.user.id);
-  }
-  res.redirect('/curso');
-});
-
-// ── Email / password login ──
+// ── Login — acepta usuario O correo electrónico ──
 app.post('/auth/login', (req, res) => {
-  const { email, password } = req.body;
-  if (!email || !password) return res.status(400).json({ error: 'Correo y contraseña requeridos' });
-  const user = dbGet('SELECT * FROM users WHERE email = ?', [email.toLowerCase().trim()]);
-  if (!user || !user.password_hash) return res.status(401).json({ error: 'Correo o contraseña incorrectos' });
-  if (!bcrypt.compareSync(password, user.password_hash)) return res.status(401).json({ error: 'Correo o contraseña incorrectos' });
-  if (user.blocked === 1 || user.blocked === '1') return res.status(403).json({ error: 'Tu cuenta ha sido suspendida. Contacta al soporte.' });
+  const { identifier, password } = req.body;
+  if (!identifier || !password)
+    return res.status(400).json({ error: 'Usuario/correo y contraseña son requeridos' });
+
+  const normalized = identifier.toLowerCase().trim();
+
+  // Buscar por correo o por username
+  let user = dbGet('SELECT * FROM users WHERE email = ?', [normalized]);
+  if (!user) user = dbGet('SELECT * FROM users WHERE username = ?', [normalized]);
+
+  // Respuesta genérica para no revelar si el usuario existe
+  if (!user || !user.password_hash)
+    return res.status(401).json({ error: 'Usuario o contraseña incorrectos' });
+  if (!bcrypt.compareSync(password, user.password_hash))
+    return res.status(401).json({ error: 'Usuario o contraseña incorrectos' });
+  if (user.blocked === 1 || user.blocked === '1')
+    return res.status(403).json({ error: 'Tu cuenta ha sido suspendida. Contacta al soporte.' });
+
   req.session.userId = user.id;
   touchLastLogin(user.id);
   res.json({ success: true, user: sanitizeUser(user) });
 });
 
-// ── Register with email ──
-app.post('/auth/register', (req, res) => {
+// ── Registro con correo ──
+app.post('/auth/register', async (req, res) => {
   const { fullName, username, email, password } = req.body;
+
+  // Validaciones básicas
   if (!fullName || !username || !email || !password)
     return res.status(400).json({ error: 'Todos los campos son requeridos' });
-  if (password.length < 6)
-    return res.status(400).json({ error: 'La contraseña debe tener al menos 6 caracteres' });
+  if (fullName.trim().length < 3)
+    return res.status(400).json({ error: 'El nombre completo es muy corto' });
+  if (username.trim().length < 3)
+    return res.status(400).json({ error: 'El nombre de usuario debe tener al menos 3 caracteres' });
+  if (!/^[a-z0-9._-]+$/i.test(username.trim()))
+    return res.status(400).json({ error: 'El nombre de usuario solo puede contener letras, números, puntos, guiones y guiones bajos' });
+  if (password.length < 8)
+    return res.status(400).json({ error: 'La contraseña debe tener al menos 8 caracteres' });
 
-  // Check duplicates
+  // Verificar duplicados
   const byEmail = dbGet('SELECT id FROM users WHERE email = ?', [email.toLowerCase().trim()]);
   if (byEmail) return res.status(409).json({ error: 'Ya existe una cuenta con ese correo' });
-  const byUser = dbGet('SELECT id FROM users WHERE username = ?', [username.toLowerCase().trim()]);
-  if (byUser) return res.status(409).json({ error: 'Ese nombre de usuario ya está en uso' });
+  const byUser  = dbGet('SELECT id FROM users WHERE username = ?', [username.toLowerCase().trim()]);
+  if (byUser)  return res.status(409).json({ error: 'Ese nombre de usuario ya está en uso' });
 
-  const hash = bcrypt.hashSync(password, 10);
+  // Hash con bcrypt (12 rounds — más seguro)
+  const hash = bcrypt.hashSync(password, 12);
   dbRun(
     "INSERT INTO users (email, name, username, plan, role, password_hash, needs_profile) VALUES (?, ?, ?, 'mip', 'user', ?, 0)",
     [email.toLowerCase().trim(), fullName.trim(), username.toLowerCase().trim(), hash]
   );
   const user = dbGet('SELECT * FROM users WHERE email = ?', [email.toLowerCase().trim()]);
   req.session.userId = user.id;
+
+  // Enviar correo de bienvenida (sin bloquear la respuesta al usuario)
+  sendWelcomeEmail(email.toLowerCase().trim(), fullName.trim(), username.toLowerCase().trim(), password)
+    .catch(err => console.error('[EMAIL] ❌ Error al enviar bienvenida a', email, ':', err.message));
+
   res.json({ success: true, user: sanitizeUser(user) });
+});
+
+// ── Ruta de prueba de correo (solo admin) ──
+app.get('/api/test-email', requireAdmin, async (req, res) => {
+  try {
+    await mailer.verify();
+    await sendWelcomeEmail(
+      SMTP_USER,
+      'Usuario de Prueba',
+      'prueba_enarmagic',
+      'Contraseña123!'
+    );
+    res.json({ success: true, message: `Correo de prueba enviado a ${SMTP_USER}` });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
 });
 
 // ── Complete profile (post-Google) ──
@@ -605,10 +668,10 @@ app.post('/api/profile/update', requireAuth, (req, res) => {
   // Handle password change
   if (newPassword) {
     if (!currentPassword) return res.status(400).json({ error: 'Debes ingresar tu contraseña actual para cambiarla' });
-    if (!user.password_hash) return res.status(400).json({ error: 'Esta cuenta no tiene contraseña local (usa Google)' });
+    if (!user.password_hash) return res.status(400).json({ error: 'Esta cuenta no tiene contraseña configurada' });
     if (!bcrypt.compareSync(currentPassword, user.password_hash))
       return res.status(401).json({ error: 'La contraseña actual es incorrecta' });
-    if (newPassword.length < 6) return res.status(400).json({ error: 'La nueva contraseña debe tener al menos 6 caracteres' });
+    if (newPassword.length < 8) return res.status(400).json({ error: 'La nueva contraseña debe tener al menos 8 caracteres' });
     const newHash = bcrypt.hashSync(newPassword, 10);
     dbRun('UPDATE users SET name = ?, username = ?, password_hash = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?',
       [name.trim(), username ? username.toLowerCase().trim() : user.username, newHash, userId]);

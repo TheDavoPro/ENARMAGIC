@@ -55,15 +55,6 @@
         .input-field::placeholder { color:var(--text-sub); }
 
         /* ── Buttons ── */
-        .btn-google {
-            width:100%; display:flex; align-items:center; justify-content:center; gap:12px;
-            padding:.85rem 1.5rem; border-radius:12px; border:1.5px solid var(--s3);
-            background:var(--s1); color:var(--text); font-weight:600; font-size:1rem;
-            cursor:pointer; transition:all .2s;
-        }
-        .btn-google:hover { border-color:var(--primary); background:var(--s2); transform:translateY(-1px); }
-        .btn-google svg { width:22px; height:22px; flex-shrink:0; }
-
         .btn-primary-full {
             width:100%; padding:.85rem; border-radius:12px; border:none;
             background:var(--primary); color:#060e20; font-weight:700; font-size:1rem;
@@ -96,16 +87,6 @@
 
         /* ── Plan badge ── */
         .plan-badge { display:inline-flex; align-items:center; gap:6px; padding:4px 12px; border-radius:999px; background:rgba(59,191,250,.12); border:1px solid rgba(59,191,250,.25); color:var(--primary); font-size:.8rem; font-weight:600; }
-
-        /* ── Profile completion overlay ── */
-        #profileOverlay {
-            position:fixed; inset:0; z-index:100; display:none;
-            background:rgba(6,14,32,.97); backdrop-filter:blur(8px);
-            align-items:center; justify-content:center; padding:1rem;
-        }
-        #profileOverlay.show { display:flex; }
-        .profile-card { width:100%; max-width:480px; background:var(--s1); border-radius:20px; padding:1.5rem; border:1px solid var(--s3); }
-        @media(min-width:480px){ .profile-card { padding:2.5rem; } }
 
         /* spinner */
         .spinner { display:inline-block; width:18px; height:18px; border:2px solid rgba(6,14,32,.3); border-top-color:#060e20; border-radius:50%; animation:spin .6s linear infinite; }
@@ -165,14 +146,6 @@
         html[data-theme="light"] .blob-3 {
             opacity: 0.18;
         }
-        html[data-theme="light"] #profileOverlay {
-            background: rgba(240,244,255,0.97);
-        }
-        html[data-theme="light"] .profile-card {
-            background: #ffffff;
-            border-color: var(--s3);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-        }
         html[data-theme="light"] .spinner {
             border-color: rgba(0,151,207,0.2);
             border-top-color: var(--primary);
@@ -200,7 +173,7 @@
             .right-panel { padding: 1.25rem; }
             .card { max-width: 100%; }
             .input-field { font-size: 16px; /* prevent iOS zoom */ }
-            .btn-google, .btn-primary-full, .btn-outline { min-height: 48px; font-size: 0.95rem; }
+            .btn-primary-full, .btn-outline { min-height: 48px; font-size: 0.95rem; }
             .tabs .tab-btn { font-size: 0.82rem; padding: 0.55rem 0.5rem; }
             .profile-card { padding: 1.25rem !important; }
         }
@@ -213,48 +186,6 @@
   title="Cambiar tema" aria-label="Alternar tema oscuro/claro">
   <span class="material-symbols-outlined" id="themeIcon">light_mode</span>
 </button>
-
-<!-- ══════════════════════════════════════════
-     OVERLAY DE COMPLETAR PERFIL (post-Google)
-     ══════════════════════════════════════════ -->
-<div id="profileOverlay">
-    <div class="profile-card">
-        <div class="text-center mb-6">
-            <span class="material-symbols-outlined" style="font-size:48px;color:var(--primary)">account_circle</span>
-            <h2 class="text-2xl font-bold mt-3" style="color:var(--text)">Completa tu perfil</h2>
-            <p style="color:var(--text-sub)" class="mt-1 text-sm">Solo necesitamos unos datos para personalizar tu experiencia</p>
-        </div>
-
-        <div id="profileAlert" class="alert alert-error"></div>
-
-        <form id="profileForm" class="space-y-4">
-            <div>
-                <label class="block text-sm font-semibold mb-1" style="color:var(--text-sub)">Nombre completo</label>
-                <input id="profileName" type="text" class="input-field" placeholder="Ej. Juan García López" required>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                    <label class="block text-sm font-semibold mb-1" style="color:var(--text-sub)">Fecha de nacimiento</label>
-                    <input id="profileBirthdate" type="date" class="input-field" required>
-                </div>
-                <div>
-                    <label class="block text-sm font-semibold mb-1" style="color:var(--text-sub)">Edad</label>
-                    <input id="profileAge" type="number" class="input-field" placeholder="Ej. 26" min="18" max="99" required>
-                </div>
-            </div>
-            <div class="pt-2 p-4 rounded-lg" style="background:rgba(59,191,250,.07);border:1px solid rgba(59,191,250,.2)">
-                <p class="text-xs" style="color:var(--text-sub)">
-                    🎉 Al completar tu perfil accederás automáticamente al
-                    <span class="plan-badge ml-1">Plan MIP Gratuito</span>
-                    con 12 temas (3 por especialidad).
-                </p>
-            </div>
-            <button type="submit" class="btn-primary-full" id="profileSubmitBtn">
-                Entrar a la plataforma
-            </button>
-        </form>
-    </div>
-</div>
 
 <!-- ══════════════════════════════════════════
      PÁGINA PRINCIPAL
@@ -312,22 +243,19 @@
             <!-- ───── PANEL LOGIN ───── -->
             <div id="panel-login" class="panel active">
                 <h2 class="text-2xl font-bold mb-1" style="color:var(--text)">Bienvenido de vuelta</h2>
-                <p class="text-sm mb-6" style="color:var(--text-sub)">Accede a tu cuenta para continuar</p>
+                <p class="text-sm mb-6" style="color:var(--text-sub)">Ingresa con tu usuario o correo electrónico</p>
 
                 <div id="loginAlert" class="alert"></div>
 
-                <!-- Google -->
-                <button class="btn-google" onclick="loginWithGoogle()">
-                    <svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-                    Continuar con Google
-                </button>
-
-                <div class="divider"><span>o ingresa con tu cuenta</span></div>
-
-                <!-- Email / password login -->
+                <!-- Username or email / password login -->
                 <form id="loginForm" class="space-y-4" onsubmit="handleLogin(event)">
-                    <input id="loginEmail" type="email" class="input-field" placeholder="Correo electrónico" required>
-                    <input id="loginPassword" type="password" class="input-field" placeholder="Contraseña" required>
+                    <input id="loginIdentifier" type="text" class="input-field" placeholder="Usuario o correo electrónico" autocomplete="username" required>
+                    <div style="position:relative;">
+                        <input id="loginPassword" type="password" class="input-field" placeholder="Contraseña" autocomplete="current-password" required style="padding-right:3rem;">
+                        <button type="button" onclick="togglePass('loginPassword','eyeLogin')" style="position:absolute;right:.75rem;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--text-sub);">
+                            <span class="material-symbols-outlined" id="eyeLogin" style="font-size:20px;">visibility</span>
+                        </button>
+                    </div>
                     <button type="submit" class="btn-primary-full" id="loginBtn">Iniciar sesión</button>
                 </form>
 
@@ -345,23 +273,48 @@
 
                 <div id="registerAlert" class="alert"></div>
 
-                <!-- Google register -->
-                <button class="btn-google" onclick="loginWithGoogle()">
-                    <svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-                    Registrarse con Google
-                </button>
-
-                <div class="divider"><span>o crea tu cuenta con correo</span></div>
-
                 <form id="registerForm" class="space-y-4" onsubmit="handleRegister(event)">
-                    <input id="regFullName" type="text" class="input-field" placeholder="Nombre completo" required>
-                    <input id="regUsername" type="text" class="input-field" placeholder="Nombre de usuario (sin espacios)" required
-                        oninput="this.value=this.value.replace(/\s/g,'').toLowerCase()">
-                    <input id="regEmail" type="email" class="input-field" placeholder="Correo electrónico" required>
-                    <input id="regPassword" type="password" class="input-field" placeholder="Contraseña (mín. 6 caracteres)" minlength="6" required>
-                    <input id="regPasswordConfirm" type="password" class="input-field" placeholder="Repetir contraseña" required>
+                    <!-- Nombre completo al inicio del formulario -->
+                    <div>
+                        <label class="block text-xs font-semibold mb-1" style="color:var(--text-sub)">NOMBRE COMPLETO</label>
+                        <input id="regFullName" type="text" class="input-field" placeholder="Ej. Juan García López" autocomplete="name" required>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold mb-1" style="color:var(--text-sub)">NOMBRE DE USUARIO</label>
+                        <input id="regUsername" type="text" class="input-field" placeholder="Sin espacios, ej: juangarcia" autocomplete="username" required
+                            oninput="this.value=this.value.replace(/\s/g,'').toLowerCase()">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold mb-1" style="color:var(--text-sub)">CORREO ELECTRÓNICO</label>
+                        <input id="regEmail" type="email" class="input-field" placeholder="tucorreo@ejemplo.com" autocomplete="email" required>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold mb-1" style="color:var(--text-sub)">CONTRASEÑA</label>
+                        <div style="position:relative;">
+                            <input id="regPassword" type="password" class="input-field" placeholder="Mín. 8 caracteres" autocomplete="new-password" minlength="8" required style="padding-right:3rem;" oninput="checkPasswordStrength(this.value)">
+                            <button type="button" onclick="togglePass('regPassword','eyeReg')" style="position:absolute;right:.75rem;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--text-sub);">
+                                <span class="material-symbols-outlined" id="eyeReg" style="font-size:20px;">visibility</span>
+                            </button>
+                        </div>
+                        <!-- Barra de fortaleza -->
+                        <div id="strengthBar" style="display:none;margin-top:6px;">
+                            <div style="height:4px;border-radius:4px;background:var(--s3);overflow:hidden;">
+                                <div id="strengthFill" style="height:100%;width:0%;transition:width .3s,background .3s;border-radius:4px;"></div>
+                            </div>
+                            <p id="strengthLabel" style="font-size:.75rem;margin-top:3px;color:var(--text-sub);"></p>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold mb-1" style="color:var(--text-sub)">CONFIRMAR CONTRASEÑA</label>
+                        <div style="position:relative;">
+                            <input id="regPasswordConfirm" type="password" class="input-field" placeholder="Repite tu contraseña" autocomplete="new-password" required style="padding-right:3rem;">
+                            <button type="button" onclick="togglePass('regPasswordConfirm','eyeReg2')" style="position:absolute;right:.75rem;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--text-sub);">
+                                <span class="material-symbols-outlined" id="eyeReg2" style="font-size:20px;">visibility</span>
+                            </button>
+                        </div>
+                    </div>
                     <div class="p-3 rounded-lg text-xs" style="background:rgba(59,191,250,.07);border:1px solid rgba(59,191,250,.2);color:var(--text-sub)">
-                        🎁 Recibirás el <strong style="color:var(--primary)">Plan MIP gratuito</strong> con acceso a 12 temas (3 por especialidad).
+                        🎁 Recibirás el <strong style="color:var(--primary)">Plan MIP gratuito</strong> con acceso a 12 temas (3 por especialidad). Recibirás un correo de confirmación.
                     </div>
                     <button type="submit" class="btn-primary-full" id="registerBtn">Crear cuenta gratis</button>
                 </form>
@@ -402,15 +355,42 @@ function clearAlerts() {
     document.querySelectorAll('.alert').forEach(el => { el.className = 'alert'; el.textContent = ''; });
 }
 
-// ── Google login / register ──
-function loginWithGoogle() {
-    const pending = sessionStorage.getItem('selectedPlan');
-    let url = '/auth/google';
-    if (pending) url += '?plan=' + encodeURIComponent(pending);
-    window.location.href = url;
+// ── Toggle password visibility ──
+function togglePass(inputId, iconId) {
+    const input = document.getElementById(inputId);
+    const icon  = document.getElementById(iconId);
+    if (input.type === 'password') { input.type = 'text';     icon.textContent = 'visibility_off'; }
+    else                           { input.type = 'password'; icon.textContent = 'visibility'; }
 }
 
-// ── Email login ──
+// ── Password strength indicator ──
+function checkPasswordStrength(val) {
+    const bar   = document.getElementById('strengthBar');
+    const fill  = document.getElementById('strengthFill');
+    const label = document.getElementById('strengthLabel');
+    if (!val) { bar.style.display = 'none'; return; }
+    bar.style.display = 'block';
+    let score = 0;
+    if (val.length >= 8)  score++;
+    if (val.length >= 12) score++;
+    if (/[A-Z]/.test(val)) score++;
+    if (/[0-9]/.test(val)) score++;
+    if (/[^A-Za-z0-9]/.test(val)) score++;
+    const levels = [
+        { w:'20%', bg:'#ef4444', txt:'Muy débil' },
+        { w:'40%', bg:'#f97316', txt:'Débil' },
+        { w:'60%', bg:'#eab308', txt:'Regular' },
+        { w:'80%', bg:'#22c55e', txt:'Fuerte' },
+        { w:'100%',bg:'#06b6d4', txt:'Muy fuerte' }
+    ];
+    const lv = levels[Math.min(score, 4)];
+    fill.style.width      = lv.w;
+    fill.style.background = lv.bg;
+    label.textContent     = lv.txt;
+    label.style.color     = lv.bg;
+}
+
+// ── Login (username o correo) ──
 async function handleLogin(e) {
     e.preventDefault();
     clearAlerts();
@@ -420,7 +400,10 @@ async function handleLogin(e) {
     try {
         const res = await fetch('/auth/login', {
             method:'POST', headers:{'Content-Type':'application/json'},
-            body: JSON.stringify({ email: document.getElementById('loginEmail').value, password: document.getElementById('loginPassword').value })
+            body: JSON.stringify({
+                identifier: document.getElementById('loginIdentifier').value.trim(),
+                password:   document.getElementById('loginPassword').value
+            })
         });
         const data = await res.json();
         if (res.ok) {
@@ -433,7 +416,7 @@ async function handleLogin(e) {
     finally { btn.disabled=false; btn.textContent='Iniciar sesión'; }
 }
 
-// ── Register ──
+// ── Registro ──
 async function handleRegister(e) {
     e.preventDefault();
     clearAlerts();
@@ -443,8 +426,9 @@ async function handleRegister(e) {
     const pass     = document.getElementById('regPassword').value;
     const pass2    = document.getElementById('regPasswordConfirm').value;
 
-    if (pass !== pass2) { showAlert('registerAlert','Las contraseñas no coinciden'); return; }
-    if (pass.length < 6) { showAlert('registerAlert','La contraseña debe tener al menos 6 caracteres'); return; }
+    if (pass !== pass2)   { showAlert('registerAlert','Las contraseñas no coinciden'); return; }
+    if (pass.length < 8)  { showAlert('registerAlert','La contraseña debe tener al menos 8 caracteres'); return; }
+    if (!fullName)        { showAlert('registerAlert','El nombre completo es requerido'); return; }
 
     const btn = document.getElementById('registerBtn');
     btn.disabled = true;
@@ -457,8 +441,8 @@ async function handleRegister(e) {
         });
         const data = await res.json();
         if (res.ok) {
-            showAlert('registerAlert', '¡Cuenta creada! Iniciando sesión...', 'success');
-            setTimeout(() => window.location.href = '/curso', 1000);
+            showAlert('registerAlert', '¡Cuenta creada exitosamente! Te enviamos un correo de confirmación. Redirigiendo...', 'success');
+            setTimeout(() => window.location.href = '/curso', 2000);
         } else {
             showAlert('registerAlert', data.error || 'Error al crear la cuenta');
         }
@@ -466,82 +450,22 @@ async function handleRegister(e) {
     finally { btn.disabled=false; btn.textContent='Crear cuenta gratis'; }
 }
 
-
-// ── Profile completion overlay (post-Google) ──
-async function checkProfileCompletion() {
+// ── Redirigir si ya hay sesión activa ──
+async function checkSession() {
     try {
         const res = await fetch('/api/user');
-        if (!res.ok) return; // Not logged in, normal login page
+        if (!res.ok) return;
         const user = await res.json();
-        // If user is logged in but profile is incomplete, show overlay
-        if (user && user.needsProfile) {
-            document.getElementById('profileName').value = user.name || '';
-            document.getElementById('profileOverlay').classList.add('show');
-        } else if (user && !user.needsProfile) {
-            // Already complete → go to curso
-            window.location.href = '/curso';
-        }
-    } catch { /* not logged in */ }
+        if (user && user.id) window.location.href = '/curso';
+    } catch { /* no session */ }
 }
 
-// Handle profile form submission
-document.getElementById('profileForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const btn = document.getElementById('profileSubmitBtn');
-    const alertEl = document.getElementById('profileAlert');
-    alertEl.className = 'alert';
-
-    const name      = document.getElementById('profileName').value.trim();
-    const birthdate = document.getElementById('profileBirthdate').value;
-    const age       = document.getElementById('profileAge').value;
-
-    if (!name || !birthdate || !age) {
-        alertEl.textContent = 'Por favor completa todos los campos.';
-        alertEl.className = 'alert alert-error show';
-        return;
-    }
-
-    btn.disabled = true;
-    btn.innerHTML = '<span class="spinner"></span> Guardando...';
-
-    try {
-        const res = await fetch('/api/profile', {
-            method: 'POST', headers: {'Content-Type':'application/json'},
-            body: JSON.stringify({ name, birthdate, age: parseInt(age) })
-        });
-        if (res.ok) {
-            window.location.href = '/curso';
-        } else {
-            const d = await res.json();
-            alertEl.textContent = d.error || 'Error al guardar el perfil.';
-            alertEl.className = 'alert alert-error show';
-        }
-    } catch {
-        alertEl.textContent = 'Error de conexión.';
-        alertEl.className = 'alert alert-error show';
-    } finally {
-        btn.disabled = false;
-        btn.textContent = 'Entrar a la plataforma';
-    }
-});
-
-// Auto-calculate age from birthdate
-document.getElementById('profileBirthdate').addEventListener('change', function() {
-    const birth = new Date(this.value);
-    const today = new Date();
-    let age = today.getFullYear() - birth.getFullYear();
-    const m = today.getMonth() - birth.getMonth();
-    if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) age--;
-    if (age > 0 && age < 100) document.getElementById('profileAge').value = age;
-});
-
-// Check URL params for tab
+// ── URL params ──
 const urlParams = new URLSearchParams(window.location.search);
 if (urlParams.get('tab') === 'register') switchTab('register');
-if (urlParams.get('error')) showAlert('loginAlert', 'Error al iniciar sesión con Google. Intenta de nuevo.');
 
-// Check if already logged in / needs profile
-checkProfileCompletion();
+// Verificar sesión activa
+checkSession();
 
 // ── Theme toggle ──
 function toggleEnarmagicTheme() {
@@ -555,7 +479,6 @@ function updateThemeIcon(theme) {
     var icon = document.getElementById('themeIcon');
     if (icon) icon.textContent = theme === 'dark' ? 'light_mode' : 'dark_mode';
 }
-// Initialize icon on load
 (function() {
     var t = document.documentElement.getAttribute('data-theme') || 'dark';
     updateThemeIcon(t);
