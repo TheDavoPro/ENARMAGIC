@@ -1,0 +1,5 @@
+﻿e0fd3d9 Eliminar todos los archivos
+ad6ad6c Delete src directory
+50f73a1 Add files via upload
+513dcc3 Add files via upload
+0bd120a Merge pull request #1 from TheDavoPro/cloudflare/workers-autoconfig
