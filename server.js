@@ -982,7 +982,7 @@ app.post('/api/video-token', requireAuth, (req, res) => {
       
       if (cloudflareId) {
         // We use the HLS manifest URL for the custom player
-        const cloudflareUrl = `https://customer-010kwcw7rkskh8op.cloudflarestream.com/${cloudflareId}/manifest/video.m3u8`;
+        const cloudflareUrl = `https://customer-o4924y0m29p6klye.cloudflarestream.com/${cloudflareId}/manifest/video.m3u8`;
         return res.json({ token: null, cloudflareUrl });
       }
     }
