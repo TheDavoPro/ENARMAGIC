@@ -26,3 +26,27 @@ logs/
 # ── Backups ───────────────────────────────────
 *.bak
 *.orig
+
+# ── Videos (Usar Cloudflare Stream para producción) ──
+*.mp4
+*.MOV
+*.wmv
+*.avi
+assets/*.mp4
+
+# ── Temporales ──
+tmp/
+*.xlsx
+~$*.xlsx
+all_videos.txt
+status.txt
+video_map.json.bak
+app.js.bak
+dashboard.js.orig
+log_*.txt
+*.txt
+remote.txt
+branch_r.txt
+push_error.txt
+push_error_utf8.txt
+!README.md

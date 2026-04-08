@@ -971,30 +971,27 @@ app.post('/api/video-token', requireAuth, (req, res) => {
 
   // Decode URI components in case frontend sent encoded path
   let relPath;
-  try { relPath = decodeURIComponent(videoPath); } catch(e) { relPath = videoPath; }
+  try { relPath = decodeURIComponent(videoPath).replace(/\\/g, '/'); } catch(e) { relPath = videoPath.replace(/\\/g, '/'); }
 
-  // Security: only allow paths inside approved directories
-  if (!isAllowedVideoPath(relPath)) {
-    return res.status(403).json({ error: 'Ruta no permitida' });
+  // 1. Check Cloudflare Stream mapping
+  try {
+    const mappingPath = path.join(__dirname, 'video_map.json');
+    if (fs.existsSync(mappingPath)) {
+      const mapping = JSON.parse(fs.readFileSync(mappingPath, 'utf8') || '{}');
+      const cloudflareId = mapping[relPath];
+      
+      if (cloudflareId) {
+        // We use the HLS manifest URL for the custom player
+        const cloudflareUrl = `https://customer-010kwcw7rkskh8op.cloudflarestream.com/${cloudflareId}/manifest/video.m3u8`;
+        return res.json({ token: null, cloudflareUrl });
+      }
+    }
+  } catch (err) {
+    console.error('[CLOUD_MAP] Error reading video_map.json:', err.message);
   }
 
-  // Verify the file actually exists on disk
-  const absPath = path.join(__dirname, relPath);
-  if (!fs.existsSync(absPath)) {
-    return res.status(404).json({ error: 'Video no encontrado' });
-  }
-
-  pruneExpiredTokens();
-
-  // Generate cryptographically random token
-  const token = require('crypto').randomBytes(24).toString('hex');
-  videoTokens.set(token, {
-    userId,
-    path: absPath,
-    expiresAt: Date.now() + VIDEO_TOKEN_TTL_MS,
-  });
-
-  res.json({ token });
+  // 2. All videos must be served from Cloudflare Stream
+  return res.status(404).json({ error: 'Video no encontrado en Cloudflare. Sincronice el mapeo primero.' });
 });
 
 /**

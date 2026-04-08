@@ -220,7 +220,34 @@ class ENARPlayer {
 
   _loadSrc(src) {
     this._showState('loading');
-    this.video.src = src;
+    
+    // Check if it's an HLS stream (Cloudflare Stream)
+    if (src.includes('.m3u8')) {
+      if (typeof Hls !== 'undefined' && Hls.isSupported()) {
+        if (this._hls) this._hls.destroy();
+        this._hls = new Hls();
+        this._hls.loadSource(src);
+        this._hls.attachMedia(this.video);
+        this._hls.on(Hls.Events.MANIFEST_PARSED, () => {
+          if (this.opts.autoplay) this.video.play().catch(() => {});
+        });
+        this._hls.on(Hls.Events.ERROR, (event, data) => {
+          if (data.fatal) this._onError();
+        });
+        return;
+      } else if (this.video.canPlayType('application/vnd.apple.mpegurl')) {
+        // Native HLS support (Safari)
+        this.video.src = src;
+      } else {
+        this.errorMsg.textContent = 'Tu navegador no soporta streaming HLS.';
+        this._showState('error');
+        return;
+      }
+    } else {
+      // Normal MP4
+      this.video.src = src;
+    }
+    
     this.video.load();
   }
 
@@ -586,6 +613,10 @@ class ENARPlayer {
     this._destroyed = true;
     clearTimeout(this._hideTimer);
     if (this._keyHandler) document.removeEventListener('keydown', this._keyHandler);
+    if (this._hls) {
+      this._hls.destroy();
+      this._hls = null;
+    }
     this.pause();
     this.video.src = '';
     this.root.remove();
@@ -614,10 +645,16 @@ async function getSecureVideoUrl(videoPath) {
       console.error(`[ENARPlayer] Error obteniendo token: ${resp.status} ${resp.statusText}`);
       throw new Error('token_error');
     }
-    const { token } = await resp.json();
-    return `/api/video-stream?token=${encodeURIComponent(token)}`;
+    const data = await resp.json();
+    
+    // If server returned a Cloudflare HLS manifest URL, use it directly
+    if (data.cloudflareUrl) {
+      return data.cloudflareUrl;
+    }
+    
+    return `/api/video-stream?token=${encodeURIComponent(data.token)}`;
   } catch(e) {
-    // Fallback: URL-encode and use direct path (still protected by requireAuthStatic middleware)
+    // Fallback: URL-encode and use direct path
     console.warn('[ENARPlayer] API de tokens no disponible, usando ruta directa:', e.message);
     return videoPath.split('/').map(seg => encodeURIComponent(seg)).join('/');
   }
