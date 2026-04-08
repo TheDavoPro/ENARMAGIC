@@ -700,8 +700,8 @@ async function _upgradeToSecureUrls(spId, topicNum, meta, accent) {
       const inst = _enpInstances[key];
       if (inst && !inst._destroyed) {
         const secUrl = await getSecureVideoUrl(meta.express.path);
-        // Only switch if URL actually improved (token-based)
-        if (secUrl.startsWith('/api/video-stream')) {
+        // Switch if URL is different from the direct path (meaning we found a secure or Cloudflare URL)
+        if (secUrl && secUrl !== directUrl(meta.express.path)) {
           const pos = inst.video.currentTime;
           inst.setSrc(secUrl);
           inst.video.currentTime = pos;
@@ -714,7 +714,7 @@ async function _upgradeToSecureUrls(spId, topicNum, meta, accent) {
       const inst = _enpInstances[key];
       if (inst && !inst._destroyed) {
         const secUrl = await getSecureVideoUrl(meta.complete.path);
-        if (secUrl.startsWith('/api/video-stream')) {
+        if (secUrl && secUrl !== directUrl(meta.complete.path)) {
           const pos = inst.video.currentTime;
           inst.setSrc(secUrl);
           inst.video.currentTime = pos;

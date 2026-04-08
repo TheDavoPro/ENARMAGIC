@@ -971,14 +971,27 @@ app.post('/api/video-token', requireAuth, (req, res) => {
 
   // Decode URI components in case frontend sent encoded path
   let relPath;
-  try { relPath = decodeURIComponent(videoPath).replace(/\\/g, '/'); } catch(e) { relPath = videoPath.replace(/\\/g, '/'); }
+  try { relPath = decodeURIComponent(videoPath).replace(/\\/g, '/').replace(/^\/+/, ''); } catch(e) { relPath = videoPath.replace(/\\/g, '/').replace(/^\/+/, ''); }
 
   // 1. Check Cloudflare Stream mapping
   try {
     const mappingPath = path.join(__dirname, 'video_map.json');
     if (fs.existsSync(mappingPath)) {
       const mapping = JSON.parse(fs.readFileSync(mappingPath, 'utf8') || '{}');
-      const cloudflareId = mapping[relPath];
+      
+      // Normalise key by stripping accents for fuzzy matching
+      function norm(s) { 
+        return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase(); 
+      }
+      
+      const target = norm(relPath);
+      let cloudflareId = mapping[relPath]; // Try exact match first
+      
+      if (!cloudflareId) {
+        // Try fuzzy match (normalized keys)
+        const matchKey = Object.keys(mapping).find(k => norm(k) === target);
+        if (matchKey) cloudflareId = mapping[matchKey];
+      }
       
       if (cloudflareId) {
         // We use the HLS manifest URL for the custom player
